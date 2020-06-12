@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imageTest/btn_add.png</file>
+        <file>imageTest/btn_close.png</file>
+        <file>imageTest/btn_delete.png</file>
+        <file>imageTest/btn_get.png</file>
+        <file>imageTest/btn_ok.png</file>
+        <file>imageTest/btn_print.png</file>
+        <file>imageTest/btn_save.png</file>
+        <file>imageTest/btn_search.png</file>
+        <file>imageTest/btn_set.png</file>
+        <file>imageTest/buttondevice_gray.png</file>
+        <file>imageTest/buttondevice_green.png</file>
+        <file>imageTest/buttondevice_red.png</file>
+        <file>imageTest/buttonpilot_gray.png</file>
+        <file>imageTest/buttonpilot_green.png</file>
+        <file>imageTest/buttonpilot_red.png</file>
+        <file>imageTest/buttonpower_0.png</file>
+        <file>imageTest/buttonpower_1.png</file>
+        <file>imageTest/buttonpower_2.png</file>
+        <file>imageTest/buttonpower_3.png</file>
+        <file>imageTest/buttonpower_4.png</file>
+        <file>imageTest/buttonpower_5.png</file>
+        <file>imageTest/fontawesome-webfont.ttf</file>
+        <file>imageTest/msg_error.png</file>
+        <file>imageTest/msg_info.png</file>
+        <file>imageTest/msg_question.png</file>
+        <file>imageTest/qt_zh_CN.qm</file>
+        <file>imageTest/tree_child.png</file>
+        <file>imageTest/tree_parent.png</file>
+        <file>imageTest/widgets.qm</file>
+        <file>main.ico</file>
+    </qresource>
+</RCC>

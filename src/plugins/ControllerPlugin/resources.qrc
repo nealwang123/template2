@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Controller.ico</file>
+        <file>ledgreen.ico</file>
+        <file>ledlightblue.ico</file>
+        <file>ledred.ico</file>
+        <file>ledyellow.ico</file>
+        <file>Off.ico</file>
+        <file>On.ico</file>
+        <file>settings.ico</file>
+        <file>OSW.png</file>
+    </qresource>
+</RCC>

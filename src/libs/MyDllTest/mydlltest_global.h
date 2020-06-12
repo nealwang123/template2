@@ -1,0 +1,12 @@
+#ifndef MYDLLTEST_GLOBAL_H
+#define MYDLLTEST_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(MYDLLTEST_LIBRARY)
+#  define MYDLLTESTSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define MYDLLTESTSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // MYDLLTEST_GLOBAL_H

@@ -1,0 +1,341 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 1560 Radar_OUTPUT: 8 Vector__XXX
+ SG_ Head_ID_0x618 M : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdPlace m2 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdYear m2 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdMonth m2 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdDay m2 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdReserved m2 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO__ProdID m2 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__RadarType m0 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__RadarStage m0 : 23|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__HwVersion m0 : 19|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__HwDsp m0 : 31|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__HwFpga m0 : 30|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__RadarIdentity m0 : 29|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__Reserved1 m0 : 28|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO__SwVersion m0 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__RadarType m200 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__HwVersion m200 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__HwDsp m200 : 31|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__HwFpga m200 : 30|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__SwMajor m200 : 29|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__SwMinor m200 : 37|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__SwSuffix m200 : 45|6@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__SwFpga m200 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ SYSTEM_INFO06__Reserved m200 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__WorkMode m1 : 15|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__Reserved1 m1 : 11|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__RxCHNum m1 : 23|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__TxCHNum m1 : 19|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__FastChirp m1 : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO__Reserved2 m1 : 31|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__WorkMode m201 : 15|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__Reserved1 m201 : 11|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__RxCHNum m201 : 23|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__TxCHNum m201 : 19|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__FastChirp m201 : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__Reserved2 m201 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_INFO06__ID m201 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_CONFIG_INFO__OutputType m3 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_CONFIG_INFO__ChipID m3 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_CONFIG_INFO__Reserved1 m3 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_CONFIG_INFO__CfgValue m3 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__Index m16 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__VcoTemp m16 : 23|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__CFOffset m16 : 31|16@0+ (1,76000) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__ProcTime m16 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__WaveType m16 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FRAME_STATUS_INFO__SentNum m16 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__FrameIndex m17 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__VcoTemp m17 : 23|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__Rx1Temp m17 : 31|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__Rx2Temp m17 : 39|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__Tx1Temp m17 : 47|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__Tx2Temp m17 : 55|8@0+ (1,-64) [0|0] "" Vector__XXX
+ SG_ RF_TEMP_INFO__Reserved1 m17 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ LIFE_TIME_INFO__Reserved1 m18 : 15|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ LIFE_TIME_INFO__LifeTime m18 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__FrameNum m19 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__SampleTime m19 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__FFTTime m19 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__CFARTime m19 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__ParaCalTime m19 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__TrackTime m19 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PROCESS_TIME__CanTxTime m19 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_SteerAngle__ValidFlage m32 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_SteerAngle__ValidData m32 : 23|16@0+ (1,-780) [0|0] "" Vector__XXX
+ SG_ VEH_SteerAngle__ProcCount m32 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_YawRate__ValidFlage m33 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_YawRate__ValidData m33 : 23|16@0+ (0.027,-21.6) [0|0] "" Vector__XXX
+ SG_ VEH_YawRate__ProcCount m33 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_Speed__ValidFlage m34 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VEH_Speed__ValidData m34 : 23|16@0+ (0.05625,0) [0|0] "" Vector__XXX
+ SG_ VEH_Speed__ProcCount m34 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEST_DATA__Reserved m48 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEST_DATA__GroupID m48 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEST_DATA__ItemID m48 : 31|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RF_TEST_DATA__Data m48 : 47|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__CaliType m64 : 15|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__CaliStat m64 : 11|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__StateTime m64 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__NowTime m64 : 39|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__CaliPara1 m64 : 55|16@0+ (0.1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_INFO__CaliPara2 m64 : 55|16@0+ (0.25,-20) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__CaliDataType m65 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__RxCH m65 : 23|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__TxCH m65 : 19|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__Reserved1 m65 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__TargetApm m65 : 39|16@0+ (0.1,0) [0|0] "" Vector__XXX
+ SG_ CALI_TEST_DATA__TargetPhase m65 : 55|16@0+ (0.001,0) [0|0] "" Vector__XXX
+ SG_ FLASH_DATA_TYPE__Reserved1 m72 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_DATA_TYPE__Type m72 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_DATA_TYPE__ByteNum m72 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_RXCHN_DATA__Reserved1 m73 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_RXCHN_DATA__Address m73 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_RXCHN_DATA__Data m73 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_ANGLE_DATA__Reserved1 m74 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_ANGLE_DATA__Address m74 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FLASH_ANGLE_DATA__Data m74 : 39|32@0+ (0.01,0) [0|0] "" Vector__XXX
+ SG_ TEST_POINT_DATA__PwmValue m96 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TEST_POINT_DATA__DACValue m96 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TEST_POINT_DATA__PointValue m96 : 39|32@0+ (0.01,0) [0|0] "" Vector__XXX
+ SG_ CALI_STATU_INFO__CaliType m244 : 15|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_STATU_INFO__Reserved1 m244 : 11|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_STATU_INFO__Reserved2 m244 : 23|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_STATU_INFO__CaliResult m244 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_HEIGHT_INFO__CaliType m245 : 15|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_HEIGHT_INFO__Reserved1 m245 : 11|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_HEIGHT_INFO__Reserved2 m245 : 23|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CALI_HEIGHT_INFO__HeightResult m245 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CMD_ERR_INFO__Reserved1 m255 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CMD_ERR_INFO__ErrType m255 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CMD_ERR_INFO__CmdID m255 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1552 QUERY: 8 Vector__XXX
+ SG_ TS_MRD2001V_CONFIG__DATA m80 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_MRD2001T1_CONFIG__DATA m81 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_MRD2001R1_CONFIG__DATA m82 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_MRD2001R2_CONFIG__DATA m83 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__VehOut m111 : 38|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__VcoTemp m111 : 48|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__VcoCfgF m111 : 50|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__TraceOut m111 : 58|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__TimeInfo m111 : 53|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__SysFrame m111 : 52|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__StatFrame m111 : 51|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved6 m111 : 63|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved5 m111 : 55|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved4 m111 : 43|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved3 m111 : 47|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved2 m111 : 35|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__Reserved1 m111 : 15|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__PeriDiag m111 : 40|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__InsertOut m111 : 57|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__FrameStat m111 : 49|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__EnetOut m111 : 32|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__DotFreq m111 : 54|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__DetectOut m111 : 56|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__ChirpOut m111 : 39|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__CaliRx m111 : 45|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_INFO_OUTPUT_CONFIG__CaliAngle m111 : 44|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_SWITCH__Reserved1 m112 : 15|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_SWITCH__FcwSwitch m112 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_SWITCH__FcwLevel m112 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_TRIGGER_SPD__FcwActSpd m113 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_TRIGGER_SPD__Reserved1 m113 : 15|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_RESPONSE_TIME__ResTime2 m114 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_RESPONSE_TIME__ResTime1 m114 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_RESPONSE_TIME__ResTime0 m114 : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_RESPONSE_TIME__Reserved1 m114 : 15|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_VECH_TYPE__VechType m115 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_FCW_VECH_TYPE__Reserved1 m115 : 15|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_CENTRE_FREQ_CONFIG__Reserved m97 : 15|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_CENTRE_FREQ_CONFIG__CF_Data m97 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_WAVE_TYPE_CONFIG__WaveType m98 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_WAVE_TYPE_CONFIG__Reserved m98 : 23|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_DOTFREQ_PARA_CONFIG__DotFreq m99 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_DOTFREQ_PARA_CONFIG__Reserved m99 : 15|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PHASE_VALUE_SET__Reserved m100 : 15|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PHASE_VALUE_SET__PhaseData m100 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_TEST_TX_CHN__TestTX m101 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_TEST_TX_CHN__Reserved m101 : 15|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PWR_SYNC_SET__Reserved m102 : 15|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PWR_SYNC_SET__PWM_SET m102 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_SOFT_RESET_SET__ResetID m105 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_SOFT_RESET_SET__ResetData m105 : 47|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_SOFT_RESET_SET__Reserved m105 : 15|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_RFFT_ETHN_SEND__SendFlg m106 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_RFFT_ETHN_SEND__Reserved2 m106 : 47|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_RFFT_ETHN_SEND__Reserved1 m106 : 15|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PWR_TYPE2_CONFIG__DATA m88 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PWR_TYPE1_CONFIG__DATA m87 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PROPERIOD_CONF__Reserved m96 : 31|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PROPERIOD_CONF__OPT_TIME2 m96 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_PROPERIOD_CONF__OPT_TIME1 m96 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_OUTPUT_ENET_CONFIG__Reserve1 m160 : 8|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_OUTPUT_ENET_CONFIG__OutputVal m160 : 8|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ PASSWORD__Password m200 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ HOST_IAQ_REQUEST_Reserved1 m201 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_DATA_CLEAR__Reserved1 m74 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_DATA_CLEAR__CLEAR_ID m74 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_DATA_CLEAR__Reserved2 m74 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_CALI_STOP__Reserved m73 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_START__Reserved m72 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_START__TX_CH m72 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_START__CALI_TYPE m72 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_START__START_TIMES m72 : 39|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_START__TARGET_INFO m72 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_HEIGHT__Reserved m70 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_HEIGHT__START m70 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_HEIGHT__DATA m70 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_VEHICLE_TYPE__TYPE m69 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_VEHICLE_TYPE__Reserved m69 : 23|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_IDENTITY__IDENTITY m68 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_IDENTITY__Reserved m68 : 23|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_CFREQ__Reserved m67 : 15|40@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_CFREQ__DATA m67 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_ANGLE__Reserved m66 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_ANGLE__START m66 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_ANGLE__DATA m66 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_RXCHN__Reserved m65 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_RXCHN__START m65 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_RXCHN__DATA m65 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_TYPE__Reserved m64 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_TYPE__TYPE m64 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CA_WRITE_TYPE__LENGTH m64 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO_PROGRAMME__PRO_POS m48 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO_PROGRAMME__ID_YEAR m48 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO_PROGRAMME__ID_MONTH m48 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO_PROGRAMME__ID_DAY m48 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DEVICE_INFO_PROGRAMME__ID m48 : 47|24@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_ERASE_FLASH__Reserved m47 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ DIAG_QUERY_FLASH__Reserved m32 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ POWER_CONTROL__Reserved m16 : 23|48@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ POWER_CONTROL__MMR_POWER_MODE m16 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ MODE_SWITCH__MMR_KEY_WORD m1 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ MODE_SWITCH__Reserved_2 m1 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ MODE_SWITCH__MMR_DEBUG_FUNCTION m1 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ MODE_SWITCH__MMR_RADAR_MODE m1 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ STATUS_QUERY__Reserved m0 : 15|56@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Head_ID M : 7|8@0+ (1,0) [0|0] "1" Vector__XXX
+
+
+
+CM_ BO_ 1560 "雷达反馈信息，包含周期性和非周期性查询信息；";
+CM_ SG_ 1560 Head_ID_0x618 "雷达反馈信息内部ID，用于区分不同类型状态数据；";
+CM_ SG_ 1560 DEVICE_INFO__ProdPlace "A1: 苏州第1条生产线，B0: 北京研发样件（A苏州，B北京，1为第1条，0为研发样件）";
+CM_ BO_ 1552 "发送给雷达的查询或控制信息";
+CM_ SG_ 1552 Head_ID "发送给雷达数据内部ID，区分不同请求类型；";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+SIG_GROUP_ 1560 Rcv_CMD_ERR_INFO 1 : CMD_ERR_INFO__Reserved1 CMD_ERR_INFO__ErrType CMD_ERR_INFO__CmdID;
+SIG_GROUP_ 1560 Rcv_CALI_HEIGHT_INFO 1 : CALI_HEIGHT_INFO__CaliType CALI_HEIGHT_INFO__Reserved1 CALI_HEIGHT_INFO__Reserved2 CALI_HEIGHT_INFO__HeightResult;
+SIG_GROUP_ 1560 Rcv_CALI_MODE_STATU_INFO 1 : CALI_STATU_INFO__CaliType CALI_STATU_INFO__Reserved1 CALI_STATU_INFO__Reserved2 CALI_STATU_INFO__CaliResult;
+SIG_GROUP_ 1560 Rcv_TEST_POTFREQ_INFO 1 : TEST_POINT_DATA__PwmValue TEST_POINT_DATA__DACValue TEST_POINT_DATA__PointValue;
+SIG_GROUP_ 1560 Rcv_FLASH_ANGLE_DATA 1 : FLASH_ANGLE_DATA__Reserved1 FLASH_ANGLE_DATA__Address FLASH_ANGLE_DATA__Data;
+SIG_GROUP_ 1560 Rcv_FLASH_RXCHN_DATA 1 : FLASH_RXCHN_DATA__Reserved1 FLASH_RXCHN_DATA__Address FLASH_RXCHN_DATA__Data;
+SIG_GROUP_ 1560 Rcv_FLASH_DATA_TYPE 1 : FLASH_DATA_TYPE__Reserved1 FLASH_DATA_TYPE__Type FLASH_DATA_TYPE__ByteNum;
+SIG_GROUP_ 1560 Rcv_CALI_TEST_DATA 1 : CALI_TEST_DATA__CaliDataType CALI_TEST_DATA__RxCH CALI_TEST_DATA__TxCH CALI_TEST_DATA__Reserved1 CALI_TEST_DATA__TargetApm CALI_TEST_DATA__TargetPhase;
+SIG_GROUP_ 1560 Rcv_CALI_TEST_INFO 1 : CALI_TEST_INFO__CaliType CALI_TEST_INFO__CaliStat CALI_TEST_INFO__StateTime CALI_TEST_INFO__NowTime CALI_TEST_INFO__CaliPara1 CALI_TEST_INFO__CaliPara2;
+SIG_GROUP_ 1560 Rcv_RF_TEST_DATA 1 : RF_TEST_DATA__Reserved RF_TEST_DATA__GroupID RF_TEST_DATA__ItemID RF_TEST_DATA__Data;
+SIG_GROUP_ 1560 Rcv_VEHICLE_353_INFO 1 : VEH_Speed__ValidFlage VEH_Speed__ValidData VEH_Speed__ProcCount;
+SIG_GROUP_ 1560 Rcv_VEHICLE_1E9_INFO 1 : VEH_YawRate__ValidFlage VEH_YawRate__ValidData VEH_YawRate__ProcCount;
+SIG_GROUP_ 1560 Rcv_VEHICLE_1E5_INFO 1 : VEH_SteerAngle__ValidFlage VEH_SteerAngle__ValidData VEH_SteerAngle__ProcCount;
+SIG_GROUP_ 1560 Rcv_PROCESS_TIME_INFO 1 : PROCESS_TIME__FrameNum PROCESS_TIME__SampleTime PROCESS_TIME__FFTTime PROCESS_TIME__CFARTime PROCESS_TIME__ParaCalTime PROCESS_TIME__TrackTime PROCESS_TIME__CanTxTime;
+SIG_GROUP_ 1560 Rcv_LIFE_TIME_INFO 1 : LIFE_TIME_INFO__Reserved1 LIFE_TIME_INFO__LifeTime;
+SIG_GROUP_ 1560 Rcv_RF_TEMP_INFO 1 : RF_TEMP_INFO__FrameIndex RF_TEMP_INFO__VcoTemp RF_TEMP_INFO__Rx1Temp RF_TEMP_INFO__Rx2Temp RF_TEMP_INFO__Tx1Temp RF_TEMP_INFO__Tx2Temp RF_TEMP_INFO__Reserved1;
+SIG_GROUP_ 1560 Rcv_FRAME_STATUS_INFO 1 : FRAME_STATUS_INFO__Index FRAME_STATUS_INFO__VcoTemp FRAME_STATUS_INFO__CFOffset FRAME_STATUS_INFO__ProcTime FRAME_STATUS_INFO__WaveType FRAME_STATUS_INFO__SentNum;
+SIG_GROUP_ 1560 Rcv_RF_CONFIG_INFO 1 : RF_CONFIG_INFO__OutputType RF_CONFIG_INFO__ChipID RF_CONFIG_INFO__Reserved1 RF_CONFIG_INFO__CfgValue;
+SIG_GROUP_ 1560 Rcv_STATUS_INFO_P18006 1 : STATUS_INFO06__WorkMode STATUS_INFO06__Reserved1 STATUS_INFO06__RxCHNum STATUS_INFO06__TxCHNum STATUS_INFO06__FastChirp STATUS_INFO06__Reserved2 STATUS_INFO06__ID;
+SIG_GROUP_ 1560 Rcv_SYSTEM_INFO_P18006 1 : SYSTEM_INFO06__RadarType SYSTEM_INFO06__HwVersion SYSTEM_INFO06__HwDsp SYSTEM_INFO06__HwFpga SYSTEM_INFO06__SwMajor SYSTEM_INFO06__SwMinor SYSTEM_INFO06__SwSuffix SYSTEM_INFO06__SwFpga SYSTEM_INFO06__Reserved;
+SIG_GROUP_ 1560 Rcv_STATUS_INFO 1 : STATUS_INFO__WorkMode STATUS_INFO__Reserved1 STATUS_INFO__RxCHNum STATUS_INFO__TxCHNum STATUS_INFO__FastChirp STATUS_INFO__Reserved2;
+SIG_GROUP_ 1560 Rcv_SYSTEM_INFO 1 : SYSTEM_INFO__RadarType SYSTEM_INFO__RadarStage SYSTEM_INFO__HwVersion SYSTEM_INFO__HwDsp SYSTEM_INFO__HwFpga SYSTEM_INFO__RadarIdentity SYSTEM_INFO__Reserved1 SYSTEM_INFO__SwVersion;
+SIG_GROUP_ 1560 Rcv_DEVICE_INFO 1 : DEVICE_INFO__ProdPlace DEVICE_INFO__ProdYear DEVICE_INFO__ProdMonth DEVICE_INFO__ProdDay DEVICE_INFO__ProdReserved DEVICE_INFO__ProdID;
+SIG_GROUP_ 1552 Send_FCW_VECH_TYPE 1 : TS_FCW_VECH_TYPE__VechType TS_FCW_VECH_TYPE__Reserved1;
+SIG_GROUP_ 1552 Send_FCW_RESPONSE_TIME 1 : TS_FCW_RESPONSE_TIME__ResTime2 TS_FCW_RESPONSE_TIME__ResTime1 TS_FCW_RESPONSE_TIME__ResTime0 TS_FCW_RESPONSE_TIME__Reserved1;
+SIG_GROUP_ 1552 Send_FCW_TRIGGER_SPD 1 : TS_FCW_TRIGGER_SPD__FcwActSpd TS_FCW_TRIGGER_SPD__Reserved1;
+SIG_GROUP_ 1552 Send_FCW_SWITCH 1 : TS_FCW_SWITCH__Reserved1 TS_FCW_SWITCH__FcwSwitch TS_FCW_SWITCH__FcwLevel;
+SIG_GROUP_ 1552 Send_OUTPUT_ENET_CONFIG 1 : TS_OUTPUT_ENET_CONFIG__Reserve1 TS_OUTPUT_ENET_CONFIG__OutputVal;
+SIG_GROUP_ 1552 Send_INFO_OUTPUT_CONFIG 1 : TS_INFO_OUTPUT_CONFIG__VehOut TS_INFO_OUTPUT_CONFIG__VcoTemp TS_INFO_OUTPUT_CONFIG__VcoCfgF TS_INFO_OUTPUT_CONFIG__TraceOut TS_INFO_OUTPUT_CONFIG__TimeInfo TS_INFO_OUTPUT_CONFIG__SysFrame TS_INFO_OUTPUT_CONFIG__StatFrame TS_INFO_OUTPUT_CONFIG__Reserved6 TS_INFO_OUTPUT_CONFIG__Reserved5 TS_INFO_OUTPUT_CONFIG__Reserved4 TS_INFO_OUTPUT_CONFIG__Reserved3 TS_INFO_OUTPUT_CONFIG__Reserved2 TS_INFO_OUTPUT_CONFIG__Reserved1 TS_INFO_OUTPUT_CONFIG__PeriDiag TS_INFO_OUTPUT_CONFIG__InsertOut TS_INFO_OUTPUT_CONFIG__FrameStat TS_INFO_OUTPUT_CONFIG__EnetOut TS_INFO_OUTPUT_CONFIG__DotFreq TS_INFO_OUTPUT_CONFIG__DetectOut TS_INFO_OUTPUT_CONFIG__ChirpOut TS_INFO_OUTPUT_CONFIG__CaliRx TS_INFO_OUTPUT_CONFIG__CaliAngle;
+SIG_GROUP_ 1552 Send_RFFT_ETHN_SEND 1 : TS_RFFT_ETHN_SEND__SendFlg TS_RFFT_ETHN_SEND__Reserved2 TS_RFFT_ETHN_SEND__Reserved1;
+SIG_GROUP_ 1552 Send_SOFT_RESET_SET 1 : TS_SOFT_RESET_SET__ResetID TS_SOFT_RESET_SET__ResetData TS_SOFT_RESET_SET__Reserved;
+SIG_GROUP_ 1552 Send_PWR_SYNC_SET 1 : TS_PWR_SYNC_SET__Reserved TS_PWR_SYNC_SET__PWM_SET;
+SIG_GROUP_ 1552 Send_TEST_TX_CHN 1 : TS_TEST_TX_CHN__TestTX TS_TEST_TX_CHN__Reserved;
+SIG_GROUP_ 1552 Send_BI_PHASE_VALUE_SET 1 : TS_PHASE_VALUE_SET__Reserved TS_PHASE_VALUE_SET__PhaseData;
+SIG_GROUP_ 1552 Send_DOTFREQ_PARA_CONFIG 1 : TS_DOTFREQ_PARA_CONFIG__DotFreq TS_DOTFREQ_PARA_CONFIG__Reserved;
+SIG_GROUP_ 1552 Send_WAVE_TYPE_CONFIG 1 : TS_WAVE_TYPE_CONFIG__WaveType TS_WAVE_TYPE_CONFIG__Reserved;
+SIG_GROUP_ 1552 Send_CENTRE_FREQ_CONFIG 1 : TS_CENTRE_FREQ_CONFIG__Reserved TS_CENTRE_FREQ_CONFIG__CF_Data;
+SIG_GROUP_ 1552 Send_PROCESS_PERIOD_CONFIG 1 : TS_PROPERIOD_CONF__Reserved TS_PROPERIOD_CONF__OPT_TIME2 TS_PROPERIOD_CONF__OPT_TIME1;
+SIG_GROUP_ 1552 Send_PWR_TYPE2_CONFIG 1 : TS_PWR_TYPE2_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_PWR_TYPE1_CONFIG 1 : TS_PWR_TYPE1_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_MRD2001R2_CONFIG 1 : TS_MRD2001R2_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_MRD2001R1_CONFIG 1 : TS_MRD2001R1_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_MRD2001T1_CONFIG 1 : TS_MRD2001T1_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_MRD2001V_CONFIG 1 : TS_MRD2001V_CONFIG__DATA;
+SIG_GROUP_ 1552 Send_CALI_DATA_CLEAR 1 : CA_DATA_CLEAR__Reserved2 CA_DATA_CLEAR__CLEAR_ID CA_DATA_CLEAR__Reserved1;
+SIG_GROUP_ 1552 Send_CALI_STOP 1 : CA_CALI_STOP__Reserved;
+SIG_GROUP_ 1552 Send_CALI_START 1 : CA_START__TARGET_INFO CA_START__START_TIMES CA_START__CALI_TYPE CA_START__TX_CH CA_START__Reserved;
+SIG_GROUP_ 1552 Send_CALI_WRITE_HEIGHT_DATA 1 : CA_WRITE_HEIGHT__DATA CA_WRITE_HEIGHT__START CA_WRITE_HEIGHT__Reserved;
+SIG_GROUP_ 1552 Send_CALI_VEHICLE_TYPE 1 : CA_VEHICLE_TYPE__Reserved CA_VEHICLE_TYPE__TYPE;
+SIG_GROUP_ 1552 Send_CALI_RADAR_IDENTITY 1 : CA_IDENTITY__Reserved CA_IDENTITY__IDENTITY;
+SIG_GROUP_ 1552 Send_CALI_CENTER_FREQ 1 : CA_WRITE_CFREQ__DATA CA_WRITE_CFREQ__Reserved;
+SIG_GROUP_ 1552 Send_CALI_WRITE_ANGLE_DATA 1 : CA_WRITE_ANGLE__DATA CA_WRITE_ANGLE__START CA_WRITE_ANGLE__Reserved;
+SIG_GROUP_ 1552 Send_CALI_WRITE_RXCHN_DATA 1 : CA_WRITE_RXCHN__DATA CA_WRITE_RXCHN__START CA_WRITE_RXCHN__Reserved;
+SIG_GROUP_ 1552 Send_CALI_WRITE_TYPE 1 : CA_WRITE_TYPE__LENGTH CA_WRITE_TYPE__TYPE CA_WRITE_TYPE__Reserved;
+SIG_GROUP_ 1552 Send_DEVICE_INFO_PROGRAMME 1 : DEVICE_INFO_PROGRAMME__ID DEVICE_INFO_PROGRAMME__ID_DAY DEVICE_INFO_PROGRAMME__ID_MONTH DEVICE_INFO_PROGRAMME__ID_YEAR DEVICE_INFO_PROGRAMME__PRO_POS;
+SIG_GROUP_ 1552 Send_DIAG_ERASE_FLASH 1 : DIAG_ERASE_FLASH__Reserved;
+SIG_GROUP_ 1552 Send_DIAG_QUERY_FLASH 1 : DIAG_QUERY_FLASH__Reserved;
+SIG_GROUP_ 1552 Send_POWER_CONTROL 1 : POWER_CONTROL__MMR_POWER_MODE POWER_CONTROL__Reserved;
+SIG_GROUP_ 1552 Send_RADAR_MODE_SWITCH 1 : MODE_SWITCH__MMR_KEY_WORD MODE_SWITCH__Reserved_2 MODE_SWITCH__MMR_DEBUG_FUNCTION MODE_SWITCH__MMR_RADAR_MODE;
+SIG_GROUP_ 1552 Send_STATUS_QUERY 1 : STATUS_QUERY__Reserved;
+

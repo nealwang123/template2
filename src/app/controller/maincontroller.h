@@ -6,9 +6,9 @@
 #include "quiwidget.h"
 #include "appinit.h"
 #include "trayicon.h"
-#include"frmmain.h"
-#include"mainform.h"
-
+#include "frmmain.h"
+#include "mainform.h"
+#include "udsform.h"
 #include"candevicefactory.h"
 #include"usbdevicefactory.h"
 #include"candevicemanager.h"
@@ -27,6 +27,7 @@ public:
     ~MainController();
    MainForm& getMainForm();
    SocketFormMain & getSocketFormMain();
+   UDSForm& getUDSForm();
    void initConnect();
 
 signals:
@@ -44,6 +45,7 @@ private:
     AbstractDataModel* m_CanDataModel;
     MainForm frm;
     SocketFormMain socketformmain;
+    UDSForm udsfrm;
 
 };
 

@@ -47,6 +47,9 @@ SocketFormMain & MainController::getSocketFormMain(){
 MainForm& MainController::getMainForm(){
     return frm;
 }
+UDSForm& MainController::getUDSForm(){
+    return udsfrm;
+}
 void MainController::freeDevice(){
     //关闭candata
     m_CanDataModel->stopDeviceProcess();//关闭两个线程

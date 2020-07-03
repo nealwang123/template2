@@ -58,14 +58,15 @@ int main(int argc, char *argv[])
 //    frmMain frm;
     //初始化托盘
 //    TrayIcon::Instance()->setMainWidget(&c.getMainForm());
-    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
+//    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
+    TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
 
     TrayIcon::Instance()->setIcon(":/main.ico");
     TrayIcon::Instance()->setToolTip(QStringLiteral("标定程序"));
     TrayIcon::Instance()->setVisible(true);
 
     //初始化主窗体
-    qui.setMainWidget(&c.getSocketFormMain());
+    qui.setMainWidget(&c.getUDSForm());
     qui.setTitle(QStringLiteral("标定程序"));
     qui.setMinHide(false);
     qui.setAlignment(Qt::AlignCenter);

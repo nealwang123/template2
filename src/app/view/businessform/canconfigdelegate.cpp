@@ -1,4 +1,4 @@
-#include "canconfigdelegate.h"
+﻿#include "canconfigdelegate.h"
 #include "ui_canconfigdelegate.h"
 
 CANConfigDelegate::CANConfigDelegate(QWidget *parent) :
@@ -61,10 +61,10 @@ bool CANConfigDelegate:: createConnection()
 
    }
    if(ret == false){
-       qDebug() << "CANConfigDelegate连接数据失败！";
+       qDebug()<<tr("CANConfigDelegate连接数据失败")<<endl;
        return false;
    }
-   qDebug() << "CANConfigDelegate连接数据库成功";
+   qDebug()<<tr("CANConfigDelegate连接数据库成功")<<endl;
    return true;
 
 }

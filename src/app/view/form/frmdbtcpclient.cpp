@@ -10,6 +10,7 @@ frmDbTcpClient::frmDbTcpClient(QWidget *parent) :
     ui->setupUi(this);
     this->initForm();
     this->initConfig();
+
 }
 
 frmDbTcpClient::~frmDbTcpClient()

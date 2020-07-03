@@ -1,4 +1,4 @@
-#ifndef MAINCONTROLLER_H
+﻿#ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
 
 #include <QObject>
@@ -13,6 +13,11 @@
 #include"usbdevicefactory.h"
 #include"candevicemanager.h"
 #include"usbdevicemanager.h"
+
+#include"candatamodelfactory.h"
+
+#include"socketformmain.h"
+
 class MainController : public QObject
 {
     Q_OBJECT
@@ -21,6 +26,7 @@ public:
     explicit MainController(QObject *parent = nullptr);
     ~MainController();
    MainForm& getMainForm();
+   SocketFormMain & getSocketFormMain();
    void initConnect();
 
 signals:
@@ -33,7 +39,12 @@ private:
 //       static QScopedPointer<MainController> self;
     AbstractDeviceManager* m_canDeviceManager;
     AbstractDeviceFactory* m_CanDeviceFactory;
+
+    AbstractDataModelFactory* m_CanDataModelFactory;
+    AbstractDataModel* m_CanDataModel;
     MainForm frm;
+    SocketFormMain socketformmain;
+
 };
 
 #endif // MAINCONTROLLER_H

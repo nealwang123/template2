@@ -4,7 +4,7 @@
 #include"abstractdevice.h"
 #include<windef.h>
 #include<windows.h>
-#include"MT_API.h"
+//#include"MT_API.h"
 
 class USBDevice : public AbstractDevice
 {

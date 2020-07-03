@@ -13,6 +13,7 @@ int AbstractDeviceManager::startProcess(){//遍历设备列表启动其线程处
 //        qDebug()<<"AbstractDeviceManager::startProcess()"<<m_device_list.length();
         m_device_list.at(i)->startDeviceProcess();
     }
+    return 0;
 }
 int AbstractDeviceManager::stopProcess(){//遍历设备列表关闭其线程处理
     qDebug()<<"AbstractDeviceManager::stopProcess()... m_device_list.length():"<<m_device_list.length();
@@ -21,6 +22,7 @@ int AbstractDeviceManager::stopProcess(){//遍历设备列表关闭其线程处�
         m_device_list.at(i)->stopDeviceProcess();
 
     }
+    return 0;
 }
 int AbstractDeviceManager::readConfig(){
     if(this->initSql()!=0){//初始化数据库
@@ -31,6 +33,7 @@ int AbstractDeviceManager::readConfig(){
         qDebug()<<"unInitSql() failed!";
         return -1;
     }
+    return 0;
 }
 
 int AbstractDeviceManager::initSql(){//初始化数据库
@@ -120,6 +123,7 @@ int AbstractDeviceManager::setAttrubute(){//设置设备相关属性
         qDebug()<<"AbstractDeviceManager::setAttrubute()"<<m_device_list.length();
         m_device_list.at(i)->setDeviceAttrubute(m_listMap.find(i).value());
     }
+    return 0;
 }
 int AbstractDeviceManager::InitDevice(){
     qDebug()<<"AbstractDeviceManager::InitDevice";
@@ -149,6 +153,7 @@ int AbstractDeviceManager::InitDeviceFactory(AbstractDeviceFactory* device_facto
         qDebug() << "添加设备对象参数 key:" << iter.key()<< "value:" << iter.value() << "\n";
         this->m_device_list.append(this->m_device_factory->createDeviceMethod());
     }
+    return 0;
 }
 //todo:
 int AbstractDeviceManager::UnInitDevice(){

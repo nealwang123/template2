@@ -3,7 +3,7 @@ include(../../qtproject.pri)
 TEMPLATE  = subdirs
 SUBDIRS =   \
     dllTest \
-    aggregation \
+#    aggregation \
     MyDllTest \
     DbcReader
 #SUBDIRS =   \

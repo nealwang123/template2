@@ -5,7 +5,7 @@ PSBrokerMonitor::PSBrokerMonitor(int brokerType,int exitFlage):m_brokerType(brok
     qDebug()<<"PSBrokerMonitor::PSBrokerMonitor()"<<QThread::currentThread();
 }
 void PSBrokerMonitor::run(){
-    qDebug()<<"PSBrokerMonitor::run()"<<QThread::currentThread();
+    qDebug()<<"后台程序请勿关闭！"<<QThread::currentThread();
     //启动监控端
     zmq::context_t context (1);
     //  Socket to  server
@@ -22,6 +22,7 @@ void PSBrokerMonitor::run(){
     if(this->m_brokerType==0){//自定义,支持多帧消息
         zmq::proxy(static_cast<void*>(listen),static_cast<void*>(broker),nullptr);
     }else if(this->m_brokerType==1){//自定义,支持多帧消息
+        static int monitorcount=0;
         while (this->m_exitFlage) {
             while (1) {
                 zmq::message_t message;
@@ -31,10 +32,17 @@ void PSBrokerMonitor::run(){
                 //  Process all parts of the message
                 listen.recv(&message);
                 listen.getsockopt( ZMQ_RCVMORE, &more, &more_size);
+
                 broker.send(message, more? ZMQ_SNDMORE: 0);
+
                 if (!more)
                     break;      //  Last message part
             }
+            qDebug()<<"\r监控计数"<<monitorcount;
+            if(monitorcount>0xFFFFF){
+                monitorcount=0;
+            }
+            monitorcount++;
         }
     }
 
@@ -43,6 +51,7 @@ void PSBrokerMonitor::run(){
 }
 int PSBrokerMonitor::setExitFlage(int exit){
     this->m_exitFlage=exit;
+    return 0;
 }
 int PSBrokerMonitor::setType(QString type){
     if(type=="TYPE0"){
@@ -50,5 +59,5 @@ int PSBrokerMonitor::setType(QString type){
     }else if(type=="TYPE1"){
         this->m_brokerType=1;
     }
-
+    return 0;
 }

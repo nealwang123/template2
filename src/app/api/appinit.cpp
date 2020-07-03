@@ -4,14 +4,14 @@
 #include "saveruntime.h"
 #include "dblocalthread.h"
 
-AppInit *AppInit::self = NULL;
+AppInit *AppInit::self = nullptr;
 AppInit::AppInit(QObject *parent) : QObject(parent)
 {
 }
 
 bool AppInit::eventFilter(QObject *obj, QEvent *evt)
 {
-    QWidget *w = (QWidget *)obj;
+    QWidget *w = (QWidget *) obj;
     if (!w->property("canMove").toBool()) {
         return QObject::eventFilter(obj, evt);
     }

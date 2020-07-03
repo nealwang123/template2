@@ -116,7 +116,7 @@ void USBDevice::stateThread(){
     double xPos, yPos;
     int count=0;
     //  Get values that will fool the boss
-    zipcode     = "usbState";
+    zipcode     = (char *)"usbState";
 
     while(m_exitStateThread2){
         qDebug()<<"usbState thread:"<< QThread::currentThread()<<"m_exitStateThread2"<<m_exitStateThread2;
@@ -203,5 +203,5 @@ int USBDevice::gotoAbs(int obj,double AStepAngle,int ADiv,double AcircleRatio,do
 }
 
 int USBDevice::initZmq(){
-
+    return 0;
 }

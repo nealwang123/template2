@@ -8,7 +8,10 @@ FORMS += \
     $$PWD/frmmain.ui \
     $$PWD/frmdbdelegate.ui \
     $$PWD/frmdatacreate.ui \
-    $$PWD/frmdbclean.ui
+    $$PWD/frmdbclean.ui \
+    $$PWD/frmtcpclient.ui \
+    $$PWD/mypainterwidget.ui \
+    $$PWD/socketformmain.ui
 
 HEADERS += \
     $$PWD/frmdbpage.h \
@@ -20,7 +23,10 @@ HEADERS += \
     $$PWD/frmmain.h \
     $$PWD/frmdbdelegate.h \
     $$PWD/frmdatacreate.h \
-    $$PWD/frmdbclean.h
+    $$PWD/frmdbclean.h \
+    $$PWD/frmtcpclient.h \
+    $$PWD/mypainterwidget.h \
+    $$PWD/socketformmain.h
 
 SOURCES += \
     $$PWD/frmdbpage.cpp \
@@ -32,4 +38,7 @@ SOURCES += \
     $$PWD/frmmain.cpp \
     $$PWD/frmdbdelegate.cpp \
     $$PWD/frmdatacreate.cpp \
-    $$PWD/frmdbclean.cpp
+    $$PWD/frmdbclean.cpp \
+    $$PWD/frmtcpclient.cpp \
+    $$PWD/mypainterwidget.cpp \
+    $$PWD/socketformmain.cpp

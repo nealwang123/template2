@@ -5,12 +5,16 @@
 #-------------------------------------------------
 include(../../qtproject.pri)
 include(../../rpath.pri)
-QT       += core gui
+QT+ = core
+QT -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+CONFIG += c++11 console
+CONFIG -= app_bundle
+
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = PSBroker
-TEMPLATE = app
+#TEMPLATE = app
 
 DESTDIR = $$IDE_APP_PATH
 
@@ -27,21 +31,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-LIBS+= -L../ -lzmq
-#INCLUDEPATH+= D:\qtPro\zeroMQTest\C
-INCLUDEPATH+= ../C++
-INCLUDEPATH+= ../
+LIBS *= -L$$PWD/../../ThirdPartLib/ZeroMQ/ -llibzmq-v141-mt-4_3_2
+INCLUDEPATH += $$PWD/../../ThirdPartLib/ZeroMQ
+INCLUDEPATH+= $$PWD/../../ThirdPartLib/ZeroMQ/C++
+INCLUDEPATH+= $$PWD/../../ThirdPartLib/ZeroMQ/C
+DEPENDPATH += $$PWD/../../ThirdPartLib/ZeroMQ
+
 SOURCES += \
         main.cpp \
-        psbrokerwidget.cpp \
+#        psbrokerwidget.cpp \
         psbrokermonitor.cpp
 
 HEADERS += \
-        psbrokerwidget.h \
+#        psbrokerwidget.h \
         psbrokermonitor.h
 
-FORMS += \
-        psbrokerwidget.ui
+#FORMS += \
+#        psbrokerwidget.ui
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

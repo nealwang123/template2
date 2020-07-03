@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
@@ -27,19 +27,20 @@
 //#include <qtsingleapplication.h>
 #include <QApplication>
 #include"maincontroller.h"
+#include<QProcess>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QStringList args;
+//    args.append("a");
+    QProcess p;
+    p.start("./PSBroker.exe"); //command是要执行的命令,args是参数)
 
-//    const QString libexecPath = QCoreApplication::applicationDirPath()
-//            + '/' + RELATIVE_LIBEXEC_PATH;
-//#ifdef ENABLE_QT_BREAKPAD
-//    QtSystemExceptionHandler systemExceptionHandler(libexecPath);
-//#else
-//    // Display a backtrace once a serious signal is delivered (Linux only).
-//    CrashHandlerSetup setupCrashHandler(Core::Constants::IDE_DISPLAY_NAME,
-//                                        CrashHandlerSetup::EnableRestart, libexecPath);
-//#endif
+
+    App::Intervals << "1" << "10" << "20" << "50" << "100" << "200" << "300" << "500" << "1000" << "1500" << "2000" << "3000" << "5000" << "10000";
+    App::readSendData();
+    App::readDeviceData();
+
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion("1.0.0");
     a.setWindowIcon(QIcon(":/main.ico"));
@@ -50,24 +51,27 @@ int main(int argc, char *argv[])
     AppInit::Instance()->start();
     QUIWidget qui;
     MainController c;
+
 //    MainWindow frm;
 
 //    frm.show();
 //    frmMain frm;
     //初始化托盘
-    TrayIcon::Instance()->setMainWidget(&c.getMainForm());
+//    TrayIcon::Instance()->setMainWidget(&c.getMainForm());
+    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
+
     TrayIcon::Instance()->setIcon(":/main.ico");
-    TrayIcon::Instance()->setToolTip("测试程序");
+    TrayIcon::Instance()->setToolTip(QStringLiteral("标定程序"));
     TrayIcon::Instance()->setVisible(true);
 
     //初始化主窗体
-    qui.setMainWidget(&c.getMainForm());
-    qui.setTitle("Main");
+    qui.setMainWidget(&c.getSocketFormMain());
+    qui.setTitle(QStringLiteral("标定程序"));
     qui.setMinHide(false);
     qui.setAlignment(Qt::AlignCenter);
     qui.setVisible(QUIWidget::BtnMenu, true);
     qui.show();
-    QObject::connect(&qui, SIGNAL(changeStyle(QString)), &c.getMainForm(), SLOT(changeStyle(QString)));
+//    QObject::connect(&qui, SIGNAL(changeStyle(QString)), &c.getMainForm(), SLOT(changeStyle(QString)));
     QObject::connect(&qui, SIGNAL(closing()), TrayIcon::Instance(), SLOT(closeAll()));
 
     return a.exec();

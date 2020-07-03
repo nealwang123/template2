@@ -13,7 +13,7 @@ QT       += core gui network sql xml multimedia concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG -= qml_debug
-
+CONFIG += console
 TARGET = app
 TEMPLATE = app
 DESTDIR = $$IDE_APP_PATH
@@ -34,18 +34,30 @@ CONFIG += c++11
 # lib can相关库
 #LIBS *= -l$$qtLibraryName(ExtensionSystem) -l$$qtLibraryName(Aggregation) -l$$qtLibraryName(Utils)
 LIBS *= -l$$qtLibraryName(DllTest) -l$$qtLibraryName(DbcReader)
-LIBS *= -L$$IDE_SOURCE_TREE/ThirdPartLib/CAN/ControlCAN -lControlCAN
-INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/CAN
 
+#LIBS += -L"C:\Qt\build-qwt-Desktop_Qt_5_9_3_MinGW_32bit-Debug\lib" -lqwtd
+#LIBS += -L"C:\Qt\build-qwt-Desktop_Qt_5_9_3_MinGW_32bit-Debug\lib" -lqwt
+#INCLUDEPATH += C:\Qt\Qt5.9.3\5.9.3\mingw53_32\include\qwt
+
+#LIBS += -L"D:\GitPro\GitPro\templatePro\template2\ThirdPartLib\CAN\x64" -lControlCAN
+#LIBS += -L$$PWD/../../ThirdPartLib/CAN/ -lControlCAN
+
+LIBS *= -L$$PWD/../../ThirdPartLib/CAN/ -lControlCAN
+INCLUDEPATH += $$PWD/../../ThirdPartLib/CAN
+DEPENDPATH += $$PWD/../../ThirdPartLib/CAN
 #zeromq debug库
-LIBS+= -L$$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ -lzmq
+LIBS += -L$$PWD/../../ThirdPartLib/ZeroMQ/ -llibzmq-v141-mt-4_3_2
+INCLUDEPATH += $$PWD/../../ThirdPartLib/ZeroMQ
+DEPENDPATH += $$PWD/../../ThirdPartLib/ZeroMQ
+#LIBS+= -L$$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ -lzmq
+#LIBS+= -L$$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ -llibzmq-v141-mt-4_3_2
 INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ/C++
 INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ/C
 INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/ZeroMQ
 
-#USB转台相关库
-LIBS+= -L$$IDE_SOURCE_TREE/ThirdPartLib/USBSlider -lMT_API
-INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/USBSlider
+##USB转台相关库
+#LIBS+= -L$$IDE_SOURCE_TREE/ThirdPartLib/USBSlider -lMT_API
+#INCLUDEPATH+= $$IDE_SOURCE_TREE/ThirdPartLib/USBSlider
 
 
 #添加外部资源
@@ -62,6 +74,7 @@ INCLUDEPATH         += $$PWD/api
 INCLUDEPATH         += $$PWD/dbapi
 INCLUDEPATH         += $$PWD/usercontrol
 INCLUDEPATH         += $$PWD/model/device
+INCLUDEPATH         += $$PWD/model/dataModel
 INCLUDEPATH         += $$PWD/view/form
 INCLUDEPATH         += $$PWD/view/businessform
 INCLUDEPATH         += $$PWD/controller
@@ -85,3 +98,4 @@ QMAKE_SUBSTITUTES += $$PWD/app_version.h.in
 RESOURCES           += other/main.qrc
 RESOURCES           += other/qss.qrc
 #RC_FILE =app_resource.rc
+

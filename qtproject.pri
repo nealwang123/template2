@@ -266,10 +266,14 @@ unix {
 
 msvc {
     #Don't warn about sprintf, fopen etc being 'unsafe'
+    DEFINES += WIN32_LEAN_AND_MEAN
     DEFINES += _CRT_SECURE_NO_WARNINGS
     QMAKE_CXXFLAGS_WARN_ON *= -w44996
+    # disable C4819 warning
+    QMAKE_CXXFLAGS_WARN_ON += -wd4819
     # Speed up startup time when debugging with cdb
     QMAKE_LFLAGS_DEBUG += /INCREMENTAL:NO
+    QMAKE_CXXFLAGS += /utf-8
 }
 
 qt {

@@ -78,10 +78,41 @@ public:
     static QString MysqlUserPwd;    //mysql数据库密码
     static QString MysqlSql;        //mysql数据库脚本
 
+    //add config
+    static int AlignCount;
+    static int AlignFilter;
+    static QString AlignAngle;
+    static QString AlignDistance;
+
+    //TCP客户端配置参数
+    static bool HexSendTcpClient;       //16进制发送
+    static bool HexReceiveTcpClient;    //16进制接收
+    static bool AsciiTcpClient;         //ASCII模式
+    static bool DebugTcpClient;         //启用数据调试
+    static bool AutoSendTcpClient;      //自动发送数据
+    static int IntervalTcpClient;       //发送数据间隔
+    static QString TcpServerIP;         //服务器IP
+    static int TcpServerPort;           //服务器端口
+    //轨迹配置
+    static int XWidth;         //水平
+    static int YHeight;        //纵向
+    static float ZeroPointX;         //零点X
+    static float ZeroPointY;        //零点Y
+
     static void readConfig();       //读取配置文件,在main函数最开始加载程序载入
     static void writeConfig();      //写入配置文件,在更改配置文件程序关闭时调用
     static void newConfig();        //以初始值新建配置文件
     static bool checkConfig();      //校验配置文件
+
+    static QString SendFileName;        //发送配置文件名
+    static QString DeviceFileName;      //模拟设备数据文件名
+
+    static QStringList Intervals;
+    static QStringList Datas;
+    static QStringList Keys;
+    static QStringList Values;
+    static void readSendData();
+    static void readDeviceData();
 };
 
 #endif // APP_H

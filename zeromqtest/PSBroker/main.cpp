@@ -1,11 +1,11 @@
-#include "psbrokerwidget.h"
-#include <QApplication>
+﻿#include "psbrokerwidget.h"
+#include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    PSBrokerWidget w;
-    w.show();
-
+    QCoreApplication a(argc, argv);
+    PSBrokerMonitor *broker=new PSBrokerMonitor(1,1);
+    broker->start();
     return a.exec();
+
 }

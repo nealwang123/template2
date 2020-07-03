@@ -10,4 +10,5 @@ TEMPLATE = subdirs
 CONFIG += ordered
 
 SUBDIRS +=  src \
-            zeromqtest
+            MyDBDelegate
+

@@ -1,36 +1,26 @@
-ï»¿#ifndef CONTROLCAN_H
+#ifndef CONTROLCAN_H
 #define CONTROLCAN_H
-//UTF-8
-//æ–‡ä»¶ç‰ˆæœ¬ï¼šv2.01 20190410  
-//#include <cvidef.h>	//ä½¿ç”¨CVIå¹³å°å¼€å‘ï¼Œè¯·ä½¿ç”¨è¯¥è¯­å¥ã€‚
 
-//æ¥å£å¡ç±»å‹å®šä¹‰
-#define VCI_USBCAN1			3
-#define VCI_USBCAN2			4
+////ÎÄ¼ş°æ±¾£ºv2.00 20150920
+//#include <cvidef.h>	//Ê¹ÓÃCVIÆ½Ì¨¿ª·¢£¬ÇëÊ¹ÓÃ¸ÃÓï¾ä¡£
+
+//½Ó¿Ú¿¨ÀàĞÍ¶¨Òå
+
+#define VCI_USBCAN1		3
+#define VCI_USBCAN2		4
 #define VCI_USBCAN2A		4
 
 #define VCI_USBCAN_E_U 		20
 #define VCI_USBCAN_2E_U 	21
 
-//å‡½æ•°è°ƒç”¨è¿”å›çŠ¶æ€å€¼
+
+
+//º¯Êıµ÷ÓÃ·µ»Ø×´Ì¬Öµ
 #define	STATUS_OK					1
 #define STATUS_ERR					0
-
-//ç±»å‹å®šä¹‰ï¼Œå¦‚æœæ˜¾ç¤ºé‡å¤å®šä¹‰ï¼Œæ³¨é‡Šå³å¯ã€‚
-//QTä¸­éœ€è¦å®šä¹‰
-/*
-typedef unsigned char       BYTE;
-typedef char				CHAR;
-typedef unsigned char		UCHAR;
-typedef int                 INT;
-typedef unsigned int        UINT;
-typedef unsigned short		USHORT;
-typedef unsigned long		ULONG;
-typedef unsigned long       DWORD;
-*/
 	
-/*------------------------------------------------å…¼å®¹ZLGçš„å‡½æ•°åŠæ•°æ®ç±»å‹------------------------------------------------*/
-//1.ZLGCANç³»åˆ—æ¥å£å¡ä¿¡æ¯çš„æ•°æ®ç±»å‹ã€‚
+/*------------------------------------------------¼æÈİZLGµÄº¯Êı¼°Êı¾İÀàĞÍ------------------------------------------------*/
+//1.ZLGCANÏµÁĞ½Ó¿Ú¿¨ĞÅÏ¢µÄÊı¾İÀàĞÍ¡£
 typedef  struct  _VCI_BOARD_INFO{
 		USHORT	hw_Version;
 		USHORT	fw_Version;
@@ -43,20 +33,20 @@ typedef  struct  _VCI_BOARD_INFO{
 		USHORT	Reserved[4];
 } VCI_BOARD_INFO,*PVCI_BOARD_INFO; 
 
-//2.å®šä¹‰CANä¿¡æ¯å¸§çš„æ•°æ®ç±»å‹ã€‚
+//2.¶¨ÒåCANĞÅÏ¢Ö¡µÄÊı¾İÀàĞÍ¡£
 typedef  struct  _VCI_CAN_OBJ{
 	UINT	ID;
 	UINT	TimeStamp;
 	BYTE	TimeFlag;
 	BYTE	SendType;
-	BYTE	RemoteFlag;//æ˜¯å¦æ˜¯è¿œç¨‹å¸§
-	BYTE	ExternFlag;//æ˜¯å¦æ˜¯æ‰©å±•å¸§
+	BYTE	RemoteFlag;//ÊÇ·ñÊÇÔ¶³ÌÖ¡
+	BYTE	ExternFlag;//ÊÇ·ñÊÇÀ©Õ¹Ö¡
 	BYTE	DataLen;
 	BYTE	Data[8];
 	BYTE	Reserved[3];
 }VCI_CAN_OBJ,*PVCI_CAN_OBJ;
 
-//3.å®šä¹‰åˆå§‹åŒ–CANçš„æ•°æ®ç±»å‹
+//3.¶¨Òå³õÊ¼»¯CANµÄÊı¾İÀàĞÍ
 typedef struct _VCI_INIT_CONFIG{
 	DWORD	AccCode;
 	DWORD	AccMask;
@@ -69,7 +59,7 @@ typedef struct _VCI_INIT_CONFIG{
 
 ///////// new add struct for filter /////////
 typedef struct _VCI_FILTER_RECORD{
-	DWORD ExtFrame;	//æ˜¯å¦ä¸ºæ‰©å±•å¸§
+	DWORD ExtFrame;	//ÊÇ·ñÎªÀ©Õ¹Ö¡
 	DWORD Start;
 	DWORD End;
 }VCI_FILTER_RECORD,*PVCI_FILTER_RECORD;
@@ -83,8 +73,6 @@ EXTERNC DWORD __stdcall VCI_InitCAN(DWORD DeviceType, DWORD DeviceInd, DWORD CAN
 EXTERNC DWORD __stdcall VCI_ReadBoardInfo(DWORD DeviceType,DWORD DeviceInd,PVCI_BOARD_INFO pInfo);
 
 EXTERNC DWORD __stdcall VCI_SetReference(DWORD DeviceType,DWORD DeviceInd,DWORD CANInd,DWORD RefType,PVOID pData);
-//QTä¸­è¯·å®šä¹‰ï¼š
-//EXTERNC DWORD __stdcall VCI_SetReference(DWORD DeviceType,DWORD DeviceInd,DWORD CANInd,DWORD RefType,void *pData);
 
 EXTERNC ULONG __stdcall VCI_GetReceiveNum(DWORD DeviceType,DWORD DeviceInd,DWORD CANInd);
 EXTERNC DWORD __stdcall VCI_ClearBuffer(DWORD DeviceType,DWORD DeviceInd,DWORD CANInd);
@@ -96,12 +84,48 @@ EXTERNC ULONG __stdcall VCI_Transmit(DWORD DeviceType,DWORD DeviceInd,DWORD CANI
 EXTERNC ULONG __stdcall VCI_Receive(DWORD DeviceType,DWORD DeviceInd,DWORD CANInd,PVCI_CAN_OBJ pReceive,ULONG Len,INT WaitTime);
 
 
-/*------------------------------------------------å…¶ä»–è¡¥å……å‡½æ•°åŠæ•°æ®ç»“æ„æè¿°------------------------------------------------*/
+/*------------------------------------------------ÆäËû²¹³äº¯Êı¼°Êı¾İ½á¹¹ÃèÊö------------------------------------------------*/
+
+//USB-CAN×ÜÏßÊÊÅäÆ÷°å¿¨ĞÅÏ¢µÄÊı¾İÀàĞÍ1£¬¸ÃÀàĞÍÎªVCI_FindUsbDeviceº¯ÊıµÄ·µ»Ø²ÎÊı¡£
+typedef  struct  _VCI_BOARD_INFO1{
+	USHORT	hw_Version;
+	USHORT	fw_Version;
+	USHORT	dr_Version;
+	USHORT	in_Version;
+	USHORT	irq_Num;
+	BYTE	can_Num;
+	BYTE	Reserved;
+	CHAR	str_Serial_Num[8];
+	CHAR	str_hw_Type[16];
+	CHAR	str_Usb_Serial[4][4];
+} VCI_BOARD_INFO1,*PVCI_BOARD_INFO1;
+
+//USB-CAN×ÜÏßÊÊÅäÆ÷°å¿¨ĞÅÏ¢µÄÊı¾İÀàĞÍ2£¬¸ÃÀàĞÍÎªVCI_FindUsbDeviceº¯ÊıµÄ·µ»Ø²ÎÊı¡£ÎªÀ©Õ¹¸ü¶àµÄÉè±¸
+typedef  struct  _VCI_BOARD_INFO2{
+	USHORT	hw_Version;
+	USHORT	fw_Version;
+	USHORT	dr_Version;
+	USHORT	in_Version;
+	USHORT	irq_Num;
+	BYTE	can_Num;
+	BYTE	Reserved;
+	CHAR	str_Serial_Num[8];
+	CHAR	str_hw_Type[16];
+	CHAR	str_Usb_Serial[10][4];
+} VCI_BOARD_INFO2,*PVCI_BOARD_INFO2;
 
 
 #define EXTERNC		extern "C"
 
+EXTERNC DWORD __stdcall VCI_GetReference2(DWORD DevType,DWORD DevIndex,DWORD CANIndex,DWORD Reserved,BYTE *pData);
+EXTERNC DWORD __stdcall VCI_SetReference2(DWORD DevType,DWORD DevIndex,DWORD CANIndex,DWORD RefType,BYTE *pData);
+
+
+EXTERNC DWORD __stdcall VCI_ConnectDevice(DWORD DevType,DWORD DevIndex);
 EXTERNC DWORD __stdcall VCI_UsbDeviceReset(DWORD DevType,DWORD DevIndex,DWORD Reserved);
+EXTERNC DWORD __stdcall VCI_FindUsbDevice(PVCI_BOARD_INFO1 pInfo);
 EXTERNC DWORD __stdcall VCI_FindUsbDevice2(PVCI_BOARD_INFO pInfo);
+
+
 
 #endif

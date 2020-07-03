@@ -21,6 +21,7 @@ int AbstractDevice::setExitState(int threadIndex,int exi){
     }else if(threadIndex==1){
         this->m_exitStateThread2=exi;
     }
+    return 0;
 }
 void AbstractDevice::slot_ThreadID(){
     qDebug()<<"AbstractDevice::slot_ThreadID():"<<QThread::currentThread();
@@ -43,4 +44,5 @@ int AbstractDevice::stopDeviceProcess(){
     setExitState(0,0);
     QThread::msleep(50);
     setExitState(1,0);
+    return 0;
 }

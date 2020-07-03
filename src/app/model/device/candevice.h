@@ -5,7 +5,7 @@
 #include<windef.h>
 #include<windows.h>
 #include"ControlCan.h"
-#include"MT_API.h"
+//#include"MT_API.h"
 
 class CanDevice : public AbstractDevice
 {
@@ -29,7 +29,7 @@ protected:
     virtual void star();
     virtual void stateThread();
     virtual int initZmq();
-    int readData(int len=1000);
+    int readData(int len=2500);
     int sendData(QString msg);
 private:
 
@@ -46,7 +46,7 @@ private:
     QString m_accMask;//屏蔽码 默认全F
     QString m_filterFlage;//过滤器开关
     QString m_canDeviceName;//can设备名称
-    VCI_CAN_OBJ vco[1000];//can接收数据结构
+    VCI_CAN_OBJ vco[2500];//can接收数据结构
 
 //    //zmq add
 //    zmq::context_t context;

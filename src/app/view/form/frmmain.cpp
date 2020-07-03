@@ -19,11 +19,11 @@ frmMain::frmMain(QWidget *parent) :
     this->initForm();
     this->changeBtnStyle();
 
-    qDebug() << "Available drivers:";
-    QStringList drivers = QSqlDatabase::drivers();
-    foreach(QString driver, drivers)
-        qDebug() << "\t "<< driver;
-    qDebug() << "End";
+//    qDebug() << "Available drivers:";
+//    QStringList drivers = QSqlDatabase::drivers();
+//    foreach(QString driver, drivers)
+//        qDebug() << "\t "<< driver;
+//    qDebug() << "End";
 
 
 }

@@ -81,6 +81,26 @@ QString App::MysqlUserName = "root";
 QString App::MysqlUserPwd = "root";
 QString App::MysqlSql = "/tcms.sql";
 
+int App::AlignCount=10;
+int App::AlignFilter=1;
+QString App::AlignAngle="0";
+QString App::AlignDistance="2";
+
+bool App::HexSendTcpClient = false;
+bool App::HexReceiveTcpClient = false;
+bool App::AsciiTcpClient = false;
+bool App::DebugTcpClient = false;
+bool App::AutoSendTcpClient = false;
+int App::IntervalTcpClient = 1000;
+QString App::TcpServerIP = "127.0.0.1";
+int App::TcpServerPort = 6000;
+
+
+int App::XWidth=70;
+int App::YHeight=300;
+float App::ZeroPointX=0.5;
+float App::ZeroPointY=0.8;
+
 void App::readConfig()
 {
     if (!checkConfig()) {
@@ -175,6 +195,32 @@ void App::readConfig()
     App::MysqlUserPwd = set.value("MysqlUserPwd").toString();
     App::MysqlSql = set.value("MysqlSql").toString();
     set.endGroup();
+
+    set.beginGroup("Align");
+    App::AlignCount = set.value("AlignCount").toInt();
+    App::AlignFilter= set.value("AlignFilter").toInt();
+    App::AlignAngle= set.value("AlignAngle").toString();
+    App::AlignDistance= set.value("AlignDistance").toString();
+    set.endGroup();
+
+    set.beginGroup("TcpClientConfig");
+    App::HexSendTcpClient = set.value("HexSendTcpClient").toBool();
+    App::HexReceiveTcpClient = set.value("HexReceiveTcpClient").toBool();
+    App::AsciiTcpClient = set.value("AsciiTcpClient").toBool();
+    App::DebugTcpClient = set.value("DebugTcpClient").toBool();
+    App::AutoSendTcpClient = set.value("AutoSendTcpClient").toBool();
+    App::IntervalTcpClient = set.value("IntervalTcpClient").toInt();
+    App::TcpServerIP = set.value("TcpServerIP").toString();
+    App::TcpServerPort = set.value("TcpServerPort").toInt();
+    set.endGroup();
+
+    set.beginGroup("PainterConfig");
+    App::XWidth = set.value("XWidth").toInt();
+    App::YHeight = set.value("YHeight").toInt();
+    App::ZeroPointX = set.value("ZeroPointX").toFloat();
+    App::ZeroPointY = set.value("ZeroPointY").toFloat();
+    set.endGroup();
+
 }
 
 void App::writeConfig()
@@ -266,6 +312,30 @@ void App::writeConfig()
     set.setValue("MysqlUserPwd", App::MysqlUserPwd);
     set.setValue("MysqlSql", App::MysqlSql);
     set.endGroup();
+
+    set.beginGroup("Align");
+    set.setValue("AlignCount", App::AlignCount);
+    set.setValue("AlignFilter", App::AlignFilter);
+    set.setValue("AlignFilter", App::AlignAngle);
+    set.setValue("AlignFilter", App::AlignDistance);
+    set.endGroup();
+
+    set.beginGroup("TcpClientConfig");
+    set.setValue("HexSendTcpClient", App::HexSendTcpClient);
+    set.setValue("HexReceiveTcpClient", App::HexReceiveTcpClient);
+    set.setValue("DebugTcpClient", App::DebugTcpClient);
+    set.setValue("AutoSendTcpClient", App::AutoSendTcpClient);
+    set.setValue("IntervalTcpClient", App::IntervalTcpClient);
+    set.setValue("TcpServerIP", App::TcpServerIP);
+    set.setValue("TcpServerPort", App::TcpServerPort);
+    set.endGroup();
+
+    set.beginGroup("PainterConfig");
+    set.setValue("XWidth", App::XWidth);
+    set.setValue("YHeight", App::YHeight);
+    set.setValue("ZeroPointX", App::ZeroPointX);
+    set.setValue("ZeroPointY", App::ZeroPointY);
+    set.endGroup();
 }
 
 void App::newConfig()
@@ -317,4 +387,63 @@ bool App::checkConfig()
     }
 
     return true;
+}
+QStringList App::Intervals = QStringList();
+QStringList App::Datas = QStringList();
+QStringList App::Keys = QStringList();
+QStringList App::Values = QStringList();
+QString App::SendFileName = "send.txt";
+QString App::DeviceFileName = "device.txt";
+
+void App::readSendData()
+{
+    //读取发送数据列表
+    App::Datas.clear();
+    QString fileName = QString("%1/%2").arg(QUIHelper::appPath()).arg(App::SendFileName);
+    QFile file(fileName);
+    if (file.size() > 0 && file.open(QFile::ReadOnly | QIODevice::Text)) {
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            line = line.trimmed();
+            line = line.replace("\r", "");
+            line = line.replace("\n", "");
+            if (!line.isEmpty()) {
+                App::Datas.append(line);
+            }
+        }
+
+        file.close();
+    }
+}
+
+void App::readDeviceData()
+{
+    //读取转发数据列表
+    App::Keys.clear();
+    App::Values.clear();
+    QString fileName = QString("%1/%2").arg(QUIHelper::appPath()).arg(App::DeviceFileName);
+    QFile file(fileName);
+    if (file.size() > 0 && file.open(QFile::ReadOnly | QIODevice::Text)) {
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            line = line.trimmed();
+            line = line.replace("\r", "");
+            line = line.replace("\n", "");
+            if (!line.isEmpty()) {
+                QStringList list = line.split(";");
+                QString key = list.at(0);
+                QString value;
+                for (int i = 1; i < list.count(); i++) {
+                    value += QString("%1;").arg(list.at(i));
+                }
+
+                //去掉末尾分号
+                value = value.mid(0, value.length() - 1);
+                App::Keys.append(key);
+                App::Values.append(value);
+            }
+        }
+
+        file.close();
+    }
 }

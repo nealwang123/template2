@@ -1,5 +1,5 @@
 ﻿#include "candevice.h"
-
+#include "app.h"
 CanDevice::CanDevice()
 {
     qDebug()<<"构造函数CanDevice::CanDevice()";
@@ -92,7 +92,7 @@ int CanDevice::initCan(){
     *2   只接收标准帧 滤波器只对标准帧过滤，扩展帧将直接被滤除。
     *3   只接收扩展帧 滤波器只对扩展帧过滤，标准帧将直接被滤除。
     */
-    vic.Filter=1;//this->m_filterMode.toInt();
+    vic.Filter=0;//this->m_filterMode.toInt();
     /*
     * CAN波特率 Timing0(BTR0) Timing1(BTR1)
     * 10 Kbps    0x31            0x1C
@@ -127,7 +127,7 @@ int CanDevice::initCan(){
     * 1-仅监听模式
     * 2-自发自收测试模式
     */
-    vic.Mode=this->m_workMode.toInt();
+    vic.Mode=0;//this->m_workMode.toInt();
 
     int dwRel=0;
     dwRel = VCI_InitCAN(m_canDeviceType, m_canDeviceIndex, m_canChannelIndex, &vic);
@@ -172,7 +172,7 @@ int CanDevice::close(){
 }
 int CanDevice::readData(int len){
 
-    int ret=VCI_Receive(m_canDeviceType,m_canDeviceIndex,m_canChannelIndex,vco,len,-1);
+    int ret=VCI_Receive(m_canDeviceType,m_canDeviceIndex,m_canChannelIndex,vco,len,0);
     return ret;
 }
 int CanDevice::sendData(QString msg){
@@ -180,12 +180,22 @@ int CanDevice::sendData(QString msg){
     QStringList list=msg.split(" ");
     sendobj.ID=list.at(5).toInt(nullptr,16);
     sendobj.DataLen=list.at(6).toInt(nullptr,16);
-    qDebug()<<"list.len()========="<<list.length();
+//    qDebug()<<"list.len()========="<<list.length();
     for(int i=0;i<sendobj.DataLen;i++){
         sendobj.Data[i]=list.at(7+i).toInt(nullptr,16);
     }
 
     int ret=VCI_Transmit(m_canDeviceType,m_canDeviceIndex,m_canChannelIndex,&sendobj,1);
+    qDebug()<<"VCI_Transmit ret:"<<ret<<QString("ID:%1 len:%2 Data:%3 %4 %5 %6 %7 %8 %9 %10").arg(sendobj.ID,8,16,QChar('0'))
+              .arg(sendobj.DataLen,4,16,QChar('0'))
+              .arg(sendobj.Data[0],2,16,QChar('0'))
+            .arg(sendobj.Data[1],2,16,QChar('0'))
+            .arg(sendobj.Data[2],2,16,QChar('0'))
+            .arg(sendobj.Data[3],2,16,QChar('0'))
+            .arg(sendobj.Data[4],2,16,QChar('0'))
+            .arg(sendobj.Data[5],2,16,QChar('0'))
+            .arg(sendobj.Data[6],2,16,QChar('0'))
+            .arg(sendobj.Data[7],2,16,QChar('0'));
     return ret;
 }
 //线程1
@@ -195,41 +205,57 @@ void CanDevice::processHandle(){//处理线程
     zmq::context_t context (1);
     zmq::socket_t publisher (context, ZMQ_PUB);
     publisher.connect("tcp://localhost:7777");
-    resetCAN();
+//    resetCAN();
+//    clearBuffer();
+//    App::readConfig();
+    static int statecount=0;
     while(m_exitStateThread1){
-        int lRel=readData(1000);
+        int count=VCI_GetReceiveNum(m_canDeviceType,m_canDeviceIndex,m_canChannelIndex);
+        int lRel=readData(2500);
+//        qDebug()<<"count"<<count<<"readData lRel="<<lRel;
+        if(statecount%20==0){
+        QString header1=QString("CANSTATE %1 %2 %3 %4").arg(m_canDeviceType).arg(m_canDeviceIndex).arg(m_canChannelIndex).arg(lRel);
+        s_send(publisher,header1.toStdString());
+        statecount=0;
+        }
+        statecount++;
         if(lRel > 0){ /* 数据处理 */
 //            qDebug()<<"CanDevice::processHandle()"<<QThread::currentThread()<<m_canDeviceType<<m_canDeviceIndex<<m_canChannelIndex<<lRel;
+
             for(int i=0;i<lRel;i++){
+
                 QString data;
                 data.clear();
                 QString temp;
-                for(int j=0;j<vco[i].DataLen;j++){
-                    temp=QString("%1").arg(vco[i].Data[j],2,16,QChar('0'));
-                    data.append(temp);
-                    data.append(" ");
+                if(vco[i].ID==0x07A9||vco[i].ID==0x04E0)
+                {//限定id,减轻ui压力
+                    for(int j=0;j<vco[i].DataLen;j++){
+                        temp=QString("%1").arg(vco[i].Data[j],2,16,QChar('0'));
+                        data.append(temp);
+                        data.append(" ");
+                    }
+                    //TOPC 4  0  0  time  ID DataLen Data........................  index
+                    //TOPC %1 %2 %3  %4   %5 %6      %7 %8 %9 %10 %11 %12 %13 %14  %15
+                    QString header=QString("TOPC %1 %2 %3").arg(m_canDeviceType).arg(m_canDeviceIndex).arg(m_canChannelIndex);
+                    QString senddata=QString(" %1 %2 %3 %4 %5")
+                            .arg(vco[i].TimeStamp,8,16,QChar('0'))
+                            .arg(vco[i].ID,8,16,QChar('0'))
+                            .arg(vco[i].DataLen,4,10,QChar('0'))
+                            .arg(data)
+                            .arg(i,4,10,QChar('0'));
+                    header=header+senddata;
+    //                qDebug()<<header;
+                    s_send(publisher,header.toStdString());
                 }
-                //TOPC 4  0  0  time  ID DataLen Data........................  index
-                //TOPC %1 %2 %3  %4   %5 %6      %7 %8 %9 %10 %11 %12 %13 %14  %15
-                QString header=QString("TOPC %1 %2 %3").arg(m_canDeviceType).arg(m_canDeviceIndex).arg(m_canChannelIndex);
-                QString senddata=QString(" %1 %2 %3 %4 %5")
-                        .arg(vco[i].TimeStamp,8,16,QChar('0'))
-                        .arg(vco[i].ID,8,16,QChar('0'))
-                        .arg(vco[i].DataLen,4,10,QChar('0'))
-                        .arg(data)
-                        .arg(i,4,10,QChar('0'));
-                header=header+senddata;
-//                qDebug()<<header;
-                s_send(publisher,header.toStdString());
             }
 
         }else if(lRel == -1){/* USB-CAN设备不存在或USB掉线，可以调用VCI_CloseDevice并重新VCI_OpenDevice。如此可以达到USB-CAN设备热插拔的效果。 */
             //todo,设备掉线,异常处理
-            qDebug()<<"CanDevice::processHandle() error:"<<QThread::currentThread()<<lRel;
+            qDebug()<<"CanDevice::processHandle() device down error:"<<QThread::currentThread()<<lRel;
         }
         QThread::msleep(50);
     }
-    qDebug()<<"CanDevice::processHandle() exit!";
+    qDebug()<<"CanDevice::processHandle() end thread!";
 }
 //线程2启动函数
 void CanDevice::star()//启动函数是需要在原有代码基础上增加
@@ -249,14 +275,14 @@ void CanDevice::stateThread(){
     qDebug()<<"CanDevice::stateThread():"<<QThread::currentThread();
     zmq::context_t context (1);
     //  Socket to talk to server
-    std::cout << "Collecting CAN control command  client...\n" << std::endl;
+    qDebug()<<"before sub:";
     zmq::socket_t subscriber (context, ZMQ_SUB);
     subscriber.connect("tcp://localhost:7888");
 
     //  Subscribe to zipcode, default is NYC, 10001
-    const char *filter = "TORADAR ";//s
+    const char *filter = "TORAD ";
     subscriber.setsockopt(ZMQ_SUBSCRIBE, filter, strlen (filter));
-    while (m_exitStateThread2) {
+    while (m_exitStateThread2){
 //        //  Read address
         std::string toRadarMsg = s_recv(subscriber);
 //        //  Read identify
@@ -267,8 +293,8 @@ void CanDevice::stateThread(){
         std::cout << "[command:]" <<m_exitStateThread2<<toRadarMsg<< std::endl;
         sendData(QString::fromStdString(toRadarMsg));
     }
-    qDebug()<<"CanDevice::stateThread() end!!";
+    qDebug()<<"CanDevice::stateThread() end thread!!";
 }
 int CanDevice::initZmq(){
-
+    return 0;
 }

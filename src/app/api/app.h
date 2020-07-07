@@ -113,6 +113,7 @@ public:
     static QStringList Values;
     static void readSendData();
     static void readDeviceData();
+
 };
 
 #endif // APP_H

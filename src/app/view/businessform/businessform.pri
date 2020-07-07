@@ -5,6 +5,7 @@ FORMS += \
     $$PWD/udsform.ui
 
 HEADERS += \
+    $$PWD/canapi.h \
     $$PWD/canconfigdelegate.h \
     $$PWD/demarcationdelegate.h \
     $$PWD/mainform.h \
@@ -12,6 +13,7 @@ HEADERS += \
     $$PWD/udsform.h
 
 SOURCES += \
+    $$PWD/canapi.cpp \
     $$PWD/canconfigdelegate.cpp \
     $$PWD/demarcationdelegate.cpp \
     $$PWD/mainform.cpp \

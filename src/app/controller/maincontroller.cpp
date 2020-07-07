@@ -16,12 +16,12 @@ MainController::MainController(QObject *parent) : QObject(parent)
 {
 
     /*****************can设备*****************/
-    m_canDeviceManager=new CanDeviceManager();
-    m_CanDeviceFactory=new CANDeviceFactory();
-    //读取配置，目前从sqlite数据库
-    m_canDeviceManager->readConfig();
-    //根据工厂方法创建设备对象
-    m_canDeviceManager->InitDeviceFactory(m_CanDeviceFactory);
+//    m_canDeviceManager=new CanDeviceManager();
+//    m_CanDeviceFactory=new CANDeviceFactory();
+//    //读取配置，目前从sqlite数据库
+//    m_canDeviceManager->readConfig();
+//    //根据工厂方法创建设备对象
+//    m_canDeviceManager->InitDeviceFactory(m_CanDeviceFactory);
 
     /*******************can DataModel***********************/
     //创建工厂
@@ -64,10 +64,10 @@ void MainController::initDevice(){
     //启动candata
     m_CanDataModel->startDeviceProcess();//开启两个线程
 
-    //初始化设备
-    m_canDeviceManager->InitDevice();
-    //启动can处理线程
-    m_canDeviceManager->startProcess();
+//    //初始化设备
+//    m_canDeviceManager->InitDevice();
+//    //启动can处理线程
+//    m_canDeviceManager->startProcess();
 
 
 

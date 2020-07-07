@@ -13,8 +13,8 @@ QT       += core gui network sql xml multimedia concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG -= qml_debug
-CONFIG += console
-TARGET = app
+#CONFIG += console
+TARGET = UDSApp
 TEMPLATE = app
 DESTDIR = $$IDE_APP_PATH
 

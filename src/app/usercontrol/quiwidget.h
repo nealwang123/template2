@@ -406,6 +406,7 @@ public:
     static void setCode();
     //设置延时
     static void sleep(int sec);
+    static bool sleep(int sec,bool& exitFlage);
     //设置系统时间
     static void setSystemDateTime(const QString &year, const QString &month, const QString &day,
                                   const QString &hour, const QString &min, const QString &sec);
@@ -557,7 +558,10 @@ public:
 
     //弹出日期选择框
     static void showDateSelect(QString &dateStart, QString &dateEnd, const QString &format = "yyyy-MM-dd");
-
+    //获取文件内容列表
+    static QStringList readFileList(QString path,QString file);
+    //获取文件内容列表前两列有效
+    static void readFileList(QString path,QString filename,QStringList& list1,QStringList& list2);
 };
 
 //图形字体处理类

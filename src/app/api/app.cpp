@@ -447,3 +447,4 @@ void App::readDeviceData()
         file.close();
     }
 }
+

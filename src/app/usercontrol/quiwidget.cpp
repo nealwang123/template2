@@ -1686,7 +1686,20 @@ void QUIHelper::sleep(int sec)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
     }
 }
+bool QUIHelper::sleep(int sec,bool& exitFlage)
+{
+    QTime dieTime = QTime::currentTime().addMSecs(sec);
+    while (QTime::currentTime() < dieTime) {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        qDebug()<<"延时等待。。。";
+        if(exitFlage){
+            qDebug()<<"延时等待结束";
+            return true;
+        }
 
+    }
+    return false;
+}
 void QUIHelper::setSystemDateTime(const QString &year, const QString &month, const QString &day, const QString &hour, const QString &min, const QString &sec)
 {
 #ifdef Q_OS_WIN
@@ -2673,8 +2686,59 @@ void QUIHelper::showDateSelect(QString &dateStart, QString &dateEnd, const QStri
     dateStart = select.getStartDateTime();
     dateEnd = select.getEndDateTime();
 }
+////////////////////////////////add by wq///////////////////////////////////////
+QStringList QUIHelper::readFileList(QString path,QString filename)
+{
+    QStringList list;
+    list.clear();
 
+    //读取文件列表
+    QString fileName = QString("%1/%2").arg((path=="")?appPath():path).arg(filename);
+    QFile file(fileName);
+    if (file.size() > 0 && file.open(QFile::ReadOnly | QIODevice::Text)) {
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            line = line.trimmed();
+            line = line.replace("\r", "");
+            line = line.replace("\n", "");
+            if (!line.isEmpty()) {
+                list.append(line);
+            }
+        }
 
+        file.close();
+    }
+    return list;
+}
+////////////////////////////////add by wq///////////////////////////////////////
+void QUIHelper::readFileList(QString path,QString filename,QStringList& list1,QStringList& list2)
+{
+    QStringList list;
+    list.clear();
+    list1.clear();
+    list2.clear();
+    //读取文件列表
+    QString fileName = QString("%1/%2").arg((path=="")?appPath():path).arg(filename);
+    QFile file(fileName);
+    if (file.size() > 0 && file.open(QFile::ReadOnly | QIODevice::Text)) {
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            line = line.trimmed();
+            line = line.replace("\r", "");
+            line = line.replace("\n", "");
+
+            if (!line.isEmpty()) {
+                QStringList list=line.split(",");
+                if(list.length()>=2){
+                    list1.append(list.at(0));
+                    list2.append(list.at(1));
+                }
+            }
+        }
+
+        file.close();
+    }
+}
 IconHelper *IconHelper::self = NULL;
 IconHelper *IconHelper::Instance()
 {

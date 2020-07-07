@@ -152,6 +152,7 @@ void frmTcpClient::handleMsg(){
     {
         return;
     }
+    qDebug()<<"handleMsg###############################";
     //临时获得从缓存区取出来的数据，但是不确定每次取出来的是多少。
     QByteArray buffer;
     //如果是信号readyRead触发的，使用readAll时会一次把这一次可用的数据全总读取出来
@@ -172,27 +173,49 @@ void frmTcpClient::handleMsg(){
     {
         return;
     }
+    qDebug()<<"totalLen=="<<totalLen;
     //与QDataStream绑定，方便操作。
     QDataStream packet(m_buffer);
     packet.setByteOrder(QDataStream::BigEndian);
+    while(totalLen >= 4){
 
-    packet >> type_id >> mesg_len;
-    totalLen = m_buffer.size();
+        packet >> type_id;
+        if(type_id!=MSG_TYPE_ID){
+            m_buffer.remove(0,4);
+            totalLen-=4;
+        }else{
+            break;
+        }
+
+    }
+    //不够包头的数据直接就不处理。
+    if( totalLen < MINSIZE )//
+    {
+        return;
+    }
+    packet >> mesg_len;
     //小端转换
     int len=qFromBigEndian(mesg_len);
+    //如果不够长度等够了在来解析
+    if(totalLen <len)
+    {
+        return;
+    }
     qDebug()<<QString("type_id:0x%1 mesg_len:0x%2 len:0x%3 totalLen:%4").arg(type_id,8,16,QChar('0'))
               .arg(mesg_len,8,16,QChar('0'))
               .arg(len,8,10,QChar('0'))
               .arg(totalLen,8,10,QChar('0'));
-
+//    //缓存多余的数据
+//    buffer = m_buffer.right(totalLen - len-8);
+//    //更新长度
+//    totalLen = buffer.size();
+//    //更新多余数据
+//    m_buffer = buffer;
+//    return;
     while(1)
     {
-        //如果不够长度等够了在来解析
-        if(totalLen <len)
-        {
-            break;
-        }
-        qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
+
+        //qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
         //数据足够多，且满足我们定义的包头的几种类型
         switch(type_id)
         {
@@ -216,38 +239,39 @@ void frmTcpClient::handleMsg(){
             break;
 
 
-            case MSG_TYPE_FILE_START:
-            {
-                packet >> m_fileName;
-            }
-            break;
+//            case MSG_TYPE_FILE_START:
+//            {
+//                packet >> m_fileName;
+//            }
+//            break;
 
 
-            case MSG_TYPE_FILE_SENDING:
-            {
-//                QByteArray tmpdata;
-//                packet >> tmpdata;
-//                //这里我把所有的数据都缓存在内存中，因为我们传输的文件不大，最大才几M;
-//                //大家可以这里收到一个完整的数据包，就往文件里面写入，即使保存。
-//                m_recvData.append(tmpdata);
-//                //这个可以最后拿来校验文件是否传完，或者是否传的完整。
-//                m_checkSize += tmpdata.size();
-//                //打印提示，或者可以连到进度条上面。
-//                emit sig_displayMesg(QString("recv: %1").arg(m_checkSize));
-            }
-            break;
+//            case MSG_TYPE_FILE_SENDING:
+//            {
+////                QByteArray tmpdata;
+////                packet >> tmpdata;
+////                //这里我把所有的数据都缓存在内存中，因为我们传输的文件不大，最大才几M;
+////                //大家可以这里收到一个完整的数据包，就往文件里面写入，即使保存。
+////                m_recvData.append(tmpdata);
+////                //这个可以最后拿来校验文件是否传完，或者是否传的完整。
+////                m_checkSize += tmpdata.size();
+////                //打印提示，或者可以连到进度条上面。
+////                emit sig_displayMesg(QString("recv: %1").arg(m_checkSize));
+//            }
+//            break;
 
 
-            case MSG_TYPE_FILE_END:
-            {
-//                packet >> m_DataSize;
-//                saveImage();
-//                clearData();
-            }
-                break;
+//            case MSG_TYPE_FILE_END:
+//            {
+////                packet >> m_DataSize;
+////                saveImage();
+////                clearData();
+//            }
+//                break;
 
 
             default:
+                qDebug()<<"异常id";
             break;
         }
         //缓存多余的数据
@@ -261,7 +285,8 @@ void frmTcpClient::handleMsg(){
 //接收消息
 void frmTcpClient::slot_readmesg()
 {
-    qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
+    qDebug() <<"rmTcpClient::slot_readmesg():"  << QThread::currentThreadId() << QThread::currentThread();
+    //qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
     QFuture<void> f1 =QtConcurrent::run(this,&frmTcpClient::handleMsg);
 
 }

@@ -176,9 +176,25 @@ void frmTcpClient::handleMsg(){
     QDataStream packet(m_buffer);
     packet.setByteOrder(QDataStream::BigEndian);
 
-    packet >> type_id >> mesg_len;
-    totalLen = m_buffer.size();
-    //小端转换
+    //packet >> type_id >> mesg_len;
+    //totalLen = m_buffer.size();
+    while(totalLen >= 4){
+
+        packet >> type_id;
+        if(type_id!=MSG_TYPE_ID){
+            m_buffer.remove(0,4);
+            totalLen-=4;
+        }else{
+            break;
+        }
+
+    }
+    //不够包头的数据直接就不处理。
+    if( totalLen < MINSIZE )//
+    {
+        return;
+    }
+    packet >> mesg_len;    //小端转换
     int len=qFromBigEndian(mesg_len);
     qDebug()<<QString("type_id:0x%1 mesg_len:0x%2 len:0x%3 totalLen:%4").arg(type_id,8,16,QChar('0'))
               .arg(mesg_len,8,16,QChar('0'))
@@ -192,7 +208,7 @@ void frmTcpClient::handleMsg(){
         {
             break;
         }
-        qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
+        //qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
         //数据足够多，且满足我们定义的包头的几种类型
         switch(type_id)
         {
@@ -261,7 +277,7 @@ void frmTcpClient::handleMsg(){
 //接收消息
 void frmTcpClient::slot_readmesg()
 {
-    qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
+    //qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
     QFuture<void> f1 =QtConcurrent::run(this,&frmTcpClient::handleMsg);
 
 }

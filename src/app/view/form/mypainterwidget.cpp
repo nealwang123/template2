@@ -132,3 +132,6 @@ void MyPainterWidget::paintEvent(QPaintEvent *)
     QPainter Painter(this);
     Painter.drawPixmap(0, 0, this->width(), this->height(),Pix);
 }
+void MyPainterWidget::clearPath(){
+     memset(mypath,0,100*sizeof (MyPoints));
+}

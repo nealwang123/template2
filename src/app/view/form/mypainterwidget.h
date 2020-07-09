@@ -22,6 +22,7 @@ public:
     ~MyPainterWidget();
     void paintEvent(QPaintEvent *);
     void draw_point(int const x, int const y, QColor const c, Frame_Content& frame);
+    void clearPath();
 public slots:
     void slot_timerOut_mTimer();
     void slot_FrameContent(Frame_Content&);

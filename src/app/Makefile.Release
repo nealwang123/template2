@@ -24355,58 +24355,14 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbpage.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QComboBox \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractstate.h \
@@ -24423,6 +24379,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdatetime.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborcommon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\quuid.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcbormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborstream.h \
@@ -24430,6 +24387,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -24455,6 +24413,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qisenum.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsondocument.h \
@@ -24542,6 +24501,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -24549,6 +24509,8 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -24620,6 +24582,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocumentwriter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlist.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtexttable.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtguiversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSqlDepends \
@@ -24636,7 +24599,20 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlresult.h \
@@ -24656,6 +24632,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -24708,9 +24685,16 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -24719,6 +24703,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -24756,11 +24741,13 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -24787,6 +24774,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsizegrip.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qspinbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsplashscreen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsplitter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstackedlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstackedwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstatusbar.h \
@@ -24795,6 +24783,7 @@ release\frmdbpage.obj: view\form\frmdbpage.cpp view\form\frmdbpage.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylepainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
@@ -24924,36 +24913,6 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbsql.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqldatabase.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qtsqlglobal.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qtsql-config.h \
@@ -24964,6 +24923,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
@@ -24989,6 +24949,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -25083,9 +25044,13 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
@@ -25098,6 +25063,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -25105,6 +25071,8 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -25198,6 +25166,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
@@ -25221,6 +25190,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -25273,9 +25243,16 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -25284,6 +25261,7 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -25320,11 +25298,14 @@ release\frmdbsql.obj: view\form\frmdbsql.cpp view\form\frmdbsql.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QVector3D \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -25488,45 +25469,13 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbtcpclient.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
@@ -25552,6 +25501,7 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -25646,9 +25596,14 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -25660,6 +25615,7 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -25667,6 +25623,8 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -25764,8 +25722,10 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
@@ -25786,6 +25746,7 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -25838,9 +25799,16 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -25849,6 +25817,7 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -25888,9 +25857,11 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -25902,6 +25873,7 @@ release\frmdbtcpclient.obj: view\form\frmdbtcpclient.cpp view\form\frmdbtcpclien
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -26054,46 +26026,13 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbtcpdata.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
@@ -26119,6 +26058,7 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -26213,9 +26153,14 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -26227,6 +26172,7 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -26234,6 +26180,8 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -26331,8 +26279,10 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
@@ -26353,6 +26303,7 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -26405,9 +26356,16 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -26416,6 +26374,7 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -26455,9 +26414,11 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -26469,6 +26430,7 @@ release\frmdbtcpdata.obj: view\form\frmdbtcpdata.cpp view\form\frmdbtcpdata.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -26621,68 +26583,14 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbtcpserver.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTreeWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreewidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreeview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreewidgetitemiterator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		usercontrol\panelwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtDesigner\QDesignerExportWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\QDesignerExportWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\qdesignerexportwidget.h \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractstate.h \
@@ -26699,6 +26607,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdatetime.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborcommon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\quuid.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcbormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborstream.h \
@@ -26706,6 +26615,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -26731,6 +26641,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qisenum.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsondocument.h \
@@ -26799,9 +26710,14 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -26813,6 +26729,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -26820,6 +26737,8 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -26891,6 +26810,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocumentwriter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlist.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtexttable.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtguiversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSqlDepends \
@@ -26907,7 +26827,19 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
@@ -26928,6 +26860,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -26980,9 +26913,16 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -26991,6 +26931,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -27028,10 +26969,13 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -27043,6 +26987,7 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -27073,6 +27018,9 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtooltip.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreeview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreewidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreewidgetitemiterator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qundogroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qundostack.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qundoview.h \
@@ -27082,6 +27030,9 @@ release\frmdbtcpserver.obj: view\form\frmdbtcpserver.cpp view\form\frmdbtcpserve
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtwidgetsversion.h \
 		api\app.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QList \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtDesigner\QDesignerExportWidget \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\QDesignerExportWidget \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\qdesignerexportwidget.h \
 		dbapi\dbtcpserverthread.h \
 		view\form\frmdevicepanel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtMultimedia\QtMultimedia \
@@ -27648,23 +27599,6 @@ release\frmdevicepanel.obj: view\form\frmdevicepanel.cpp view\form\frmdevicepane
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtMultimedia\qtmultimediaversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtMultimedia\QSound \
 		ui_frmdevicepanel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		usercontrol\buttondevice.h \
-		usercontrol\buttonpilot.h \
-		usercontrol\buttonpower.h \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
@@ -27691,6 +27625,7 @@ release\frmdevicepanel.obj: view\form\frmdevicepanel.cpp view\form\frmdevicepane
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
@@ -27712,6 +27647,12 @@ release\frmdevicepanel.obj: view\form\frmdevicepanel.cpp view\form\frmdevicepane
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -27764,6 +27705,7 @@ release\frmdevicepanel.obj: view\form\frmdevicepanel.cpp view\form\frmdevicepane
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -27928,35 +27870,13 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmmain.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstackedwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QToolButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QWidget \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
@@ -27982,6 +27902,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -28095,6 +28016,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -28102,6 +28024,8 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -28199,6 +28123,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
@@ -28222,6 +28147,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -28274,9 +28200,16 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -28339,6 +28272,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmessagebox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QWidget \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
@@ -28357,6 +28291,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsplashscreen.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsplitter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstackedlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstackedwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstatusbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleditemdelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylefactory.h \
@@ -28368,6 +28303,7 @@ release\frmmain.obj: view\form\frmmain.cpp view\form\frmmain.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtooltip.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreeview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtreewidget.h \
@@ -28654,27 +28590,6 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlresult.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qtsqlversion.h \
 		ui_frmdbdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QIcon \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGui \
@@ -28707,6 +28622,8 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -28794,6 +28711,7 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -28846,9 +28764,16 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -28857,6 +28782,7 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -28894,6 +28820,7 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
@@ -28935,6 +28862,7 @@ release\frmdbdelegate.obj: view\form\frmdbdelegate.cpp view\form\frmdbdelegate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylepainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
@@ -29063,63 +28991,14 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdatacreate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractstate.h \
@@ -29136,6 +29015,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdatetime.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborcommon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\quuid.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcbormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborstream.h \
@@ -29143,6 +29023,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -29168,6 +29049,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qisenum.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsondocument.h \
@@ -29236,9 +29118,14 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -29250,6 +29137,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -29257,6 +29145,8 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -29328,6 +29218,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocumentwriter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlist.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtexttable.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtguiversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSqlDepends \
@@ -29344,7 +29235,19 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
@@ -29365,6 +29268,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -29417,9 +29321,16 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -29428,6 +29339,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -29465,10 +29377,13 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -29480,6 +29395,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -29503,6 +29419,7 @@ release\frmdatacreate.obj: view\form\frmdatacreate.cpp view\form\frmdatacreate.h
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylepainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
@@ -29631,63 +29548,14 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_frmdbclean.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCore \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractstate.h \
@@ -29704,6 +29572,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdatetime.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborcommon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qregularexpression.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\quuid.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcbormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcborstream.h \
@@ -29711,6 +29580,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -29736,6 +29606,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qisenum.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsonvalue.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qjsondocument.h \
@@ -29804,9 +29675,14 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -29818,6 +29694,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -29825,6 +29702,8 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -29896,6 +29775,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocumentwriter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlist.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtexttable.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtguiversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSqlDepends \
@@ -29912,7 +29792,19 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
@@ -29933,6 +29825,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -29985,9 +29878,16 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -29996,6 +29896,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -30033,10 +29934,13 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -30048,6 +29952,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -30071,6 +29976,7 @@ release\frmdbclean.obj: view\form\frmdbclean.cpp view\form\frmdbclean.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylepainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
@@ -30400,60 +30306,20 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtConcurrent\qtconcurrentversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QFuture \
 		ui_frmtcpclient.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QCheckBox \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QComboBox \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGui \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessibleobject.h \
@@ -30465,6 +30331,7 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QRect \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurface.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qbitmap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qclipboard.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qdesktopservices.h \
@@ -30472,6 +30339,8 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -30541,6 +30410,7 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocumentwriter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlist.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtexttable.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvalidator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtguiversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSql \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\QtSqlDepends \
@@ -30557,8 +30427,20 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcombobox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqltablemodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtSql\qsqlresult.h \
@@ -30572,16 +30454,25 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtXml\qtxmlversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolordialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -30621,9 +30512,11 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -30635,6 +30528,7 @@ release\frmtcpclient.obj: view\form\frmtcpclient.cpp view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmouseeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qplaintextedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressbar.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qprogressdialog.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qproxystyle.h \
@@ -30990,11 +30884,6 @@ release\mypainterwidget.obj: view\form\mypainterwidget.cpp view\form\mypainterwi
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtConcurrent\qtconcurrentversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QFuture \
 		ui_mypainterwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QPainter \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
@@ -31032,6 +30921,8 @@ release\mypainterwidget.obj: view\form\mypainterwidget.cpp view\form\mypainterwi
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -31148,6 +31039,8 @@ release\mypainterwidget.obj: view\form\mypainterwidget.cpp view\form\mypainterwi
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
@@ -31368,22 +31261,6 @@ release\socketformmain.obj: view\form\socketformmain.cpp view\form\socketformmai
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_socketformmain.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTabWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qicon.h \
 		view\form\frmtcpclient.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\QtNetwork \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\QtNetworkDepends \
@@ -31391,6 +31268,7 @@ release\socketformmain.obj: view\form\socketformmain.cpp view\form\socketformmai
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qeventloop.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qabstractproxymodel.h \
@@ -31416,6 +31294,7 @@ release\socketformmain.obj: view\form\socketformmain.cpp view\form\socketformmai
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcollator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcoreapplication.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qcryptographichash.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qdeadlinetimer.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\qelapsedtimer.h \
@@ -31513,6 +31392,7 @@ release\socketformmain.obj: view\form\socketformmain.cpp view\form\socketformmai
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QSharedDataPointer \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -32141,15 +32021,7 @@ release\canconfigdelegate.obj: view\businessform\canconfigdelegate.cpp view\busi
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\QDesignerExportWidget \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtUiPlugin\qdesignerexportwidget.h \
 		dbapi\dbdelegate.h \
-		ui_canconfigdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QIcon \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout
+		ui_canconfigdelegate.h
 
 release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\businessform\demarcationdelegate.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QWidget \
@@ -32433,45 +32305,19 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		..\..\ThirdPartLib\ZeroMQ\zmq.hpp \
 		..\..\ThirdPartLib\ZeroMQ\zmq.h \
 		ui_demarcationdelegate.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QIcon \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QFrame \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		usercontrol\quiwidget.h \
 		api\head.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGui \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QtGuiDepends \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qrawfont.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextcursor.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessible.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qaccessiblebridge.h \
@@ -32491,6 +32337,8 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericmatrix.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qgenericpluginfactory.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qinputmethod.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengine.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qiconengineplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\qimageiohandler.h \
@@ -32578,6 +32426,7 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QString \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QUrl \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QVariant \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qauthenticator.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qdnslookup.h \
@@ -32630,9 +32479,16 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtNetwork\qtnetworkversion.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgets \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QtWidgetsDepends \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaccessiblewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qaction.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcalendarwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcheckbox.h \
@@ -32641,6 +32497,7 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolormap.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcolumnview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommandlinkbutton.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcommonstyle.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qcompleter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qdatawidgetmapper.h \
@@ -32678,10 +32535,13 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgraphicsview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qscrollarea.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qgroupbox.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qinputdialog.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlineedit.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qitemeditorfactory.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeyeventtransition.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qkeysequenceedit.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlabel.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -32717,6 +32577,7 @@ release\demarcationdelegate.obj: view\businessform\demarcationdelegate.cpp view\
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstylepainter.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qstyleplugin.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtableview.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtextbrowser.h \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\qtoolbar.h \
@@ -33333,18 +33194,6 @@ release\mainform.obj: view\businessform\mainform.cpp view\businessform\mainform.
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtCore\QTimer \
 		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtGui\QStandardItemModel \
 		ui_mainform.h \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QApplication \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLabel \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTableView \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QTextBrowser \
-		D:\Qt\Qt5.12.6\5.12.6\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		..\..\ThirdPartLib\CAN\ControlCAN.h
 
 release\maincontroller.obj: controller\maincontroller.cpp controller\maincontroller.h \

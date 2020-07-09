@@ -98,8 +98,8 @@ int App::TcpServerPort = 6000;
 
 int App::XWidth=70;
 int App::YHeight=300;
-float App::ZeroPointX=0.5;
-float App::ZeroPointY=0.8;
+double App::ZeroPointX=0.5;
+double App::ZeroPointY=0.8;
 
 void App::readConfig()
 {

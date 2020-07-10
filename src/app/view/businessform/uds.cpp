@@ -8,6 +8,10 @@ UDS::UDS(QObject *parent) : QObject(parent)
     thread->start();
     workmode=FACTORY;
 
+    dbcloader=new DBCReader;
+    dbcloader->loadDBCFile("./高低温测试DBC.dbc");
+    qDebug()<<"dbcloader loadDBCFile end";
+
 }
 /// <summary>
 /// 接收和发送函数
@@ -355,11 +359,69 @@ void UDS::ReceiveDataProc(){
 
                     memcpy(&ReceiveOneFrame,&gRecMsgBuf[i],sizeof (VCI_CAN_OBJ));
                     //qDebug()<<("recvdata:"+QUIHelper::byteArrayToHexStr(QByteArray((char *)ReceiveOneFrame.Data)));
-                    //EOL
-                    if((ReceiveOneFrame.ID>=0&&ReceiveOneFrame.ID<=9999&&workmode!=UDSUPDATE)){
-                        qDebug()<<"ReceiveOneFrame.ID"<<QString::number(ReceiveOneFrame.ID,16);
+                    //工厂模式或者客户模式下
+                    if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode!=UDSUPDATE))){
+                        qDebug()<<"_ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'));;
+                        QByteArray b ;
+                        b.resize(ReceiveOneFrame.DataLen);
+                        b=QByteArray((const char*)ReceiveOneFrame.Data);
+                        QString str=QUIHelper::byteArrayToAsciiStr(b);
+                        str=str.left(4);
+                        static quint32 lastlen=0;
 
-                        m_waitforNext=1;
+                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"){
+
+                            respHead=str;
+                            lastlen=(quint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
+                            qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
+                            m_recvArray.clear();
+                            m_recvArray.resize(lastlen);
+                            if(lastlen==0){
+                                //获取完有效数据发送到界面
+                                emit(emitEOLInfo(respHead,m_recvArray));
+                                qDebug()<<"1获取到有效数据。。。。。。";
+                                m_waitforNext=1;
+                            }
+
+                        }else{//非限定字符串
+                            if(lastlen>0){//限定字符串后续有效内容
+                                if(lastlen-ReceiveOneFrame.DataLen<0){
+                                    qDebug()<<"出现不连续帧现象";
+                                    continue;
+                                }
+                                static int index=0;
+//                                QByteArray bar;
+//                                bar.resize(ReceiveOneFrame.DataLen);
+                                for(int count=0;count<ReceiveOneFrame.DataLen;count++){
+                                    m_recvArray[index]=ReceiveOneFrame.Data[count];
+                                    index++;
+                                }
+                               // m_recvArray=QByteArray((const char*)ReceiveOneFrame.Data);
+                                //m_recvArray.append(bar);
+                                lastlen-=ReceiveOneFrame.DataLen;
+                                if(lastlen==0){
+                                    //获取完有效数据发送到界面
+                                    emit(emitEOLInfo(respHead,m_recvArray));
+                                    qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                    m_waitforNext=1;
+                                    index=0;
+                                }
+                            }else{//lastlen==0执行内容，非限定字符串
+
+                                //qDebug()<<lastlen<<"非工厂模式限定字符串 ReceiveOneFrame.Data[0]:"<<QString::number(ReceiveOneFrame.Data[0])<<QString::number(ReceiveOneFrame.Data[0]&0x0F)<<QString::number((ReceiveOneFrame.Data[0]&0x0F)==0x02);
+                                if((ReceiveOneFrame.Data[0]&0x0F)==0x02){//高低温测试
+                                    QStringList list;
+                                    list=dbcloader->parseMSGWithData(0x01,ReceiveOneFrame.Data);
+                                    QString tempstr="";
+                                    for(int i=0;i<ReceiveOneFrame.DataLen;i++){
+                                        tempstr.append(QString("%1 ").arg(ReceiveOneFrame.Data[i],2,16,QChar('0')));
+                                    }
+                                    //发送数据到界面
+                                    emit(emitTemperatureTest(ReceiveOneFrame.ID,tempstr.trimmed(),list));
+                                }
+                            }
+
+                        }
                     }
                     //step7：判断接收到的数据帧的ID地址是否与设定地址相同
                     else if (RECEIVE_CAN_ID == ReceiveOneFrame.ID)

@@ -7,6 +7,7 @@
 #include "quiwidget.h"
 #include "canapi.h"
 #include "mythread.h"
+#include"DbcReader/dbcreader.h"
 /// UDS协议数据帧
 /// </summary>
 struct UDSDataFrame//UDS数据帧
@@ -31,7 +32,7 @@ public:
     byte FS;                     //FC返回的状态，继续，等待，超限
     byte BS;                     //每次发送CF的个数，最后一次可能小于BS值
     byte STmin;                  //发送两个CF帧之间的最小间隔
-    byte receivedData[1026];       //要发送数据的总长度
+    byte receivedData[1024+2];       //要发送数据的总长度
     int receivedDataCount;     //接收的数据量
     int expectCFSerialNumber;    //期望的连续帧序列号
     int length;                  //数据长度
@@ -197,8 +198,14 @@ private:
     quint8 dataVerify;
     quint8 consistencyVerify;
     int workmode;
+    QByteArray m_recvArray;
+    QString respHead;
+    DBCReader *dbcloader;
+
 signals:
     void emitEventRecv(VCI_CAN_OBJ obj);
+    void emitEOLInfo(QString respHead,QByteArray array);
+    void emitTemperatureTest(int id,QString rawdata,QStringList list);
 public slots:
 
 };
@@ -238,11 +245,6 @@ class FileParse
         static uint gRecMsgBufHead;//接收缓冲区首地址
 
         static uint gRecMsgBufTail;//接收缓冲区尾地址
-
-
-
-
-
 
 
         bool ParseBinFile(QString path, QList<BinRecordBlock>& binBlockList)

@@ -4,9 +4,9 @@
 /// 设备连接
 /// </summary>
 /// <returns></returns>
-bool CANApi::OpenDevice(){
+bool CANApi::OpenDevice(int devicetype,int deviceindex,int ch){
 
-    ECANStatus eCANStatus = (ECANStatus)VCI_OpenDevice(4, 0, 0);
+    ECANStatus eCANStatus = (ECANStatus)VCI_OpenDevice(devicetype,deviceindex,ch);
 
     if (eCANStatus == _STATUS_OK)
     {
@@ -21,8 +21,8 @@ bool CANApi::OpenDevice(){
 /// 设备关闭
 /// </summary>
 /// <returns></returns>
-bool CANApi::CloseDevice(){
-    ECANStatus eCANStatus = (ECANStatus)VCI_CloseDevice(4,0);
+bool CANApi::CloseDevice(int devicetype,int deviceindex){
+    ECANStatus eCANStatus = (ECANStatus)VCI_CloseDevice(devicetype,deviceindex);
 
     if (eCANStatus == _STATUS_OK)
     {
@@ -37,7 +37,7 @@ bool CANApi::CloseDevice(){
 /// CAN设备参数初始化
 /// </summary>
 /// <returns></returns>
-bool CANApi::CANInit(int baudrate){
+bool CANApi::CANInit(int devicetype,int deviceindex,int ch,int baudrate){
 
     VCI_INIT_CONFIG iNIT_CONFIG ;
     iNIT_CONFIG.AccCode = 0;
@@ -137,7 +137,7 @@ bool CANApi::CANInit(int baudrate){
             }
             break;
     }
-    ECANStatus eCANStatus = (ECANStatus)VCI_InitCAN(4 , 0 , 0 , &iNIT_CONFIG);
+    ECANStatus eCANStatus = (ECANStatus)VCI_InitCAN(devicetype,deviceindex,ch, &iNIT_CONFIG);
 
     if (eCANStatus == _STATUS_OK)
     {
@@ -152,9 +152,9 @@ bool CANApi::CANInit(int baudrate){
 /// 启动CAN通信
 /// </summary>
 /// <returns></returns>
-bool CANApi::StartCan(){
+bool CANApi::StartCan(int devicetype,int deviceindex,int ch){
 
-    ECANStatus eCANStatus = (ECANStatus)VCI_StartCAN(4,0,0);
+    ECANStatus eCANStatus = (ECANStatus)VCI_StartCAN(devicetype,deviceindex,ch);
 
     if (eCANStatus == _STATUS_OK)
     {

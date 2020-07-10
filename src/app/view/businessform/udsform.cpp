@@ -2,6 +2,14 @@
 #include "ui_udsform.h"
 #include "quiwidget.h"
 #include "dbdelegate.h"
+
+QString BurnInfo::SN_Head = "";
+QString BurnInfo::SN_Year = "";
+QString BurnInfo::SN_MD = "";
+QString BurnInfo::SN_Tail = "";
+QString BurnInfo::HW_A = "";
+QString BurnInfo::HW_B = "";
+
 //整块block数据bin文件
 QList<BinRecordBlock> UDSForm::binRecordBlocks_DriverList ;
 UDSForm::UDSForm(QWidget *parent) :
@@ -16,11 +24,23 @@ UDSForm::UDSForm(QWidget *parent) :
     demarcationTimer=new QTimer(this);
     connect(demarcationTimer,&QTimer::timeout,this,&UDSForm::slot_demarcationTimer);
     connect(&uDS,&UDS::emitEventRecv,this,&UDSForm::slot_UDSFrameRecv,Qt::QueuedConnection);
+    connect(&uDS,&UDS::emitEOLInfo,this,&UDSForm::slot_EOLInfo,Qt::QueuedConnection);
+    connect(&uDS,&UDS::emitTemperatureTest,this,&UDSForm::slot_TemperatureTest,Qt::QueuedConnection);
+
+
     sendCommandTimer=new QTimer(this);
     sendCommandTimer->setSingleShot(true);
     connect(sendCommandTimer,&QTimer::timeout,this,&UDSForm::slot_demarcationTimer);
+    //初始化eol定时器
+    m_eolsendCommandTimer=new QTimer(this);
+    m_eolsendCommandTimer->setSingleShot(true);
+    connect(m_eolsendCommandTimer,&QTimer::timeout,this,&UDSForm::slot_eolsendCommandTimer);
+    m_eolcommandIndex=0;
+
     ui->dateEdit->setDateTime(QDateTime::currentDateTime());
     ui->dateEdit->setCalendarPopup(true);  // 正确
+    ui->dateEdit_SN->setDateTime(QDateTime::currentDateTime());
+    ui->dateEdit_SN->setCalendarPopup(true);  // 正确
 
     //testing 日期
     qDebug()<<ui->dateEdit->text();
@@ -44,11 +64,115 @@ UDSForm::UDSForm(QWidget *parent) :
                 .arg(arraysn[7],2,16,QChar('0'))
                 .arg(arraysn[8],2,16,QChar('0'))
                 .arg(arraysn[9],2,16,QChar('0'));
+
+   qDebug()<< model->record(0).value(1).toString()<<model->record(0).value(2).toString();
+   ui->lineEdit_User->setPlaceholderText("请输入用户名");
+   ui->lineEdit_PW->setPlaceholderText("请输入密码");
+   QPixmap pixmap(QString(":/imageTest/buttonpilot_gray.png"));
+   ui->label_state->setFixedSize(pixmap.size());
+   ui->label_state->setPixmap(pixmap);
+   ui->label_state->setScaledContents(true);
+   //高低温测试窗口初始化
+   tempwidget=new TemperatureDelegate();
+   QHBoxLayout *lapv=new QHBoxLayout;
+   lapv->addWidget(tempwidget);
+   ui->widget_Temp->setLayout(lapv);
+//   tempwidget->setParent(ui->widget_Temp);
+//   tempwidget->show();
 }
 
 UDSForm::~UDSForm()
 {
     delete ui;
+}
+void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
+    if(ui->pushButton_2->text()!="记录中..."){
+        ui->label_TempState->setText("未记录温度数据...");
+        return;
+    }
+    ui->label_TempState->setText("记录中...");
+    QStringList templist=list;
+    if(templist.length()!=8){
+        QUIHelper::showMessageBoxError("温度测试列表长度异常！");
+        return;
+    }
+    qDebug()<<QString("id:%1 data:%2").arg(id)
+              .arg(raw)
+              ;
+    qDebug()<<list;
+    QString swVer=templist.at(0).split("|").at(1);
+    QString frameID=templist.at(6).split("|").at(2);
+    QString vcoTemp=templist.at(3).split("|").at(2);
+    QString flagRunSeq01=templist.at(5).split("|").at(2).right(1);
+    QString flagRunSeq02=templist.at(4).split("|").at(2).right(2);
+    QString flagRunSeq03=templist.at(1).split("|").at(2).right(1);
+    //QString vcoTemp=templist.at(3).split("|").at(2).right(1);
+    int count=tempwidget->addRow();
+    tempwidget->setData(count,0,QString::number(count));
+    tempwidget->setData(count,1,QString("0x%1").arg(id,4,16,QChar('0')));
+    tempwidget->setData(count,2,raw);
+    tempwidget->setData(count,3,frameID);
+    tempwidget->setData(count,4,vcoTemp);
+    tempwidget->setData(count,5,flagRunSeq01);
+    tempwidget->setData(count,6,flagRunSeq02);
+    tempwidget->setData(count,7,flagRunSeq03);
+    tempwidget->setData(count,8,flagRunSeq01+flagRunSeq02+flagRunSeq03);
+    tempwidget->setData(count,11,ui->lineEdit_Temp->text());
+    //判定
+    tempwidget->setData(count,9,"PASS");
+    tempwidget->setData(count,10,QString("%1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")));
+    //保存到sql数据库
+    tempwidget->on_btnSave_clicked();
+}
+void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
+    qDebug()<<QString("Head:%1  Context:%2 %3")
+              .arg(respHead)
+              .arg(QUIHelper::byteArrayToHexStr(array))
+              .arg(QUIHelper::byteArrayToAsciiStr(array))
+              ;
+    //str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"
+    ui->label_out->setText(respHead);
+    int testItem=0;
+    QString tempstr;
+    if(respHead=="DONE"){//正常反馈
+
+    }else if(respHead=="RRCF"){//读取模式
+        if(QUIHelper::byteArrayToHexStr(array)!="5A 5A 5A 5A"){
+            tempstr="工厂模式";
+        }else {//客户模式
+            tempstr="客户模式";
+        }
+        ui->pushButton_workMode->setText(tempstr);
+        model->setData(model->index(m_modelIndex, 3),tempstr);
+        ui->tableMain->setCurrentIndex(model->index(m_modelIndex, 0));
+        //testItem=
+    }else if(respHead=="EOLR"){//进入EOL模式反馈
+
+    }else if(respHead=="EOLS"){//EOL子模式
+
+    }else if(respHead=="RRSN"){//SN获取
+        tempstr=QUIHelper::byteArrayToAsciiStr(array).remove(QRegExp("\\s"));
+        ui->lineEdit_SNoutput->setText(tempstr);
+        model->setData(model->index(m_modelIndex, 5), tempstr);
+    }else if(respHead=="RRSV"){//软件版本获取
+        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+        ui->lineEdit_SWOutput->setText(tempstr);
+        model->setData(model->index(m_modelIndex, 6), tempstr);
+    }else if(respHead=="RRHV"){//硬件版本获取
+        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+        ui->lineEdit_HWOutput->setText(tempstr);
+        model->setData(model->index(m_modelIndex, 7), tempstr);
+    }else if(respHead=="RRBV"){//boot版本获取
+        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+        ui->lineEdit_BootOutput->setText(tempstr);
+        model->setData(model->index(m_modelIndex, 8), tempstr);
+    }else if(respHead=="PARA"){//算法参数版本获取
+        //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
+    }
+
+    //judgeResult();
+    //保存到sql数据库
+    on_btnSave_clicked();
 }
 void UDSForm::slot_UDSFrameRecv(VCI_CAN_OBJ cAN_OBJ1){
     //qDebug()<<"slot_UDSFrameRecv";
@@ -225,9 +349,10 @@ void UDSForm::initForm(QString fileName)
 
 //    columnNames << "端口编号" << "端口名称" << "连接类型" << "通讯方式" << "串口号" << "波特率" << "IP地址" << "通讯端口" << "采集周期(秒)" << "通讯超时(次)";
 //    columnNames << "索引" << "描述" << "传输方向" << "步骤"<< "类型" << "ID(Hex)"<< "协议头" << "数据" << "协议尾"<<"回执"<<"延时"<<"校验结果" ;
-    columnNames << "序号" << "名称" << "帧ID" << "类型"<< "格式" << "DLC"<< "数据" << "帧数" << "方向" ;
+//    columnNames << "序号" << "名称" << "帧ID" << "类型"<< "格式" << "DLC"<< "数据" << "帧数" << "方向" ;
+    columnNames << "序号" <<"详细结果"<<"结果"<< "模式"<< "写入" << "序列号"<< "软件版本" << "硬件版本" <<"Boot版本"<< "雷达参数" << "用户" << "时间" ;
     columnWidths.clear();
-    columnWidths <<40<<40<<50<<40<<50<<40<<170<<40<<40<<40<<40<<40 ;
+    columnWidths <<40<<50<<70<<70<<130<<130<<130<<130<<80<<80<<160<<160 ;
 
     for (int i = 0; i < columnNames.count(); i++) {
         model->setHeaderData(i, Qt::Horizontal, columnNames.at(i));
@@ -394,15 +519,19 @@ void UDSForm::on_btnSave_clicked()
 
 void UDSForm::on_btnDelete_clicked()
 {
-//    if (ui->tableMain->currentIndex().row() < 0) {
-//        QUIHelper::showMessageBoxError("请选择要删除的设备!");
-//        return;
-//    }
+    if (ui->tableMain->currentIndex().row() < 0) {
+        QUIHelper::showMessageBoxError("请选择要删除的内容!");
+        return;
+    }
+    if (ui->tableMain->currentIndex().row() == 0) {
+        QUIHelper::showMessageBoxError("第一行不能删除!");
+        return;
+    }
 
-//    int row = ui->tableMain->currentIndex().row();
-//    model->removeRow(row);
-//    model->submitAll();
-//    ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
+    int row = ui->tableMain->currentIndex().row();
+    model->removeRow(row);
+    model->submitAll();
+    ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
 }
 
 void UDSForm::on_btnReturn_clicked()
@@ -520,7 +649,7 @@ void UDSForm::on_button_Connect_released()
 {
 
     if(ui->button_Connect->text()=="连接"){//连接设备
-        bool result = CANApi::OpenDevice();
+        bool result = CANApi::OpenDevice(4,0,0);
         if(result==true)
         {
             ui->textBrowser_Debug->append("设备连接成功");
@@ -531,7 +660,7 @@ void UDSForm::on_button_Connect_released()
            return;
         }
 
-        result = CANApi::CANInit(ui->cBox_Baud->currentIndex());
+        result = CANApi::CANInit(4,0,0,ui->cBox_Baud->currentIndex());
         if (result == true)
         {
             ui->textBrowser_Debug->append("设备初始化成功");
@@ -542,7 +671,7 @@ void UDSForm::on_button_Connect_released()
             return;
         }
 
-        result = CANApi::StartCan();
+        result = CANApi::StartCan(4,0,0);
         if (result == true)
         {
             ui->textBrowser_Debug->append("CAN通信启动成功");
@@ -556,7 +685,7 @@ void UDSForm::on_button_Connect_released()
         }
         ui->button_Connect->setText("关闭");
     }else if(ui->button_Connect->text()=="关闭"){//关闭设备
-        bool result = CANApi::CloseDevice();
+        bool result = CANApi::CloseDevice(4,0);
 
         if (result == true)
         {
@@ -682,13 +811,13 @@ ECANStatus UDSForm::writeBinBlockData(QList<BinRecordBlock> BinBlockList, int ty
     for (int i = 0; i < cansendframe.count(); i++)
     {
         QByteArray arr;
-        arr.resize(1026);
-        for(int j=0;j<1026;j++) {
+        arr.resize(1024+2);
+        for(int j=0;j<(1024+2);j++) {
             arr[j]=cansendframe[i].DATA[j];
         }
         ui->progressBar->setValue(100*i/cansendframe.count());
         qDebug()<<"send:"<<(QUIHelper::byteArrayToHexStr(arr))<<"i="<<i<<"cansendframe.count()="<<cansendframe.count();
-        result=uDS.SendAndReceive( UDS::SEND_CAN_ID,cansendframe[i].DATA,1026);
+        result=uDS.SendAndReceive( UDS::SEND_CAN_ID,cansendframe[i].DATA,1024+2);
         if (result != _STATUS_OK)
         {
             return result;
@@ -881,16 +1010,27 @@ void UDSForm::on_pushButton_released()
 //    }
 
 }
+void UDSForm::slot_eolsendCommandTimer(){
+    //定时
+    ui->cBoxcansend->setCurrentIndex(m_eolcommandIndex);
+    on_cBoxcansend_activated(m_eolcommandIndex);
+    eolSendCommandOnce();
+    if(ui->cBox_eolContinue->isChecked()){
+         m_eolcommandIndex++;
+        if(m_eolcommandIndex<16){
+            if(m_eolcommandIndex==2)
+                m_eolsendCommandTimer->start(4000);
+            else
+                m_eolsendCommandTimer->start(200);
+        }else{
+            m_eolcommandIndex=0;
+            //索引加1
+            ui->lineEdit_SNTail->setText(QString("%1").arg(ui->lineEdit_SNTail->text().toInt()+1,4,10,QChar('0')));
+        }
+    }
+}
 void UDSForm::slot_demarcationTimer(){
-    //定时判断是否可以进行下一条指令
-//    if(uDS.getNextState()==1){
-//        ui->textBrowser_Debug->append("正响应");
-//    }else if(uDS.getNextState()==0){
-//        ui->textBrowser_Debug->append("暂无响应");
-//    }else if(uDS.getNextState()==-1){
-//        ui->textBrowser_Debug->append("负响应");
-//    }
-
+    //定时
     ui->cBox_command->setCurrentIndex(commandIndex);
     on_cBox_command_activated(commandIndex);
     on_buttonSingleTest_released();
@@ -942,13 +1082,77 @@ void UDSForm::on_checkBox_released()
 //can指令测试，非UDS数据帧发送
 void UDSForm::on_buttonSendcan1_released()
 {
-    //获取指令
-    QString cmd=ui->cBoxcansend->currentText();
+    //判断设备连接状态
+    if(ui->button_Connect->text()!="关闭"){
+        QUIHelper::showMessageBoxError("请确保设备连接正常，并再次尝试！");
+        return;
+    }
+    //判断合法性，获取参数真值
+    {
+        if((ui->lineEdit_SNHead->text().length()!=4)&&
+           (ui->dateEdit_SN->text().length()!=8)&&
+           (ui->lineEdit_SNTail->text().length()!=4)&&
+           (ui->lineEdit_HV->text().length()!=16))
+        {
+            QUIHelper::showMessageBoxError("写入信息格式有误，请检查确认后继续操作！");
+            return;
+        }
+        BurnInfo::SN_Head=ui->lineEdit_SNHead->text();
+        BurnInfo::SN_Year=ui->dateEdit_SN->text().left(4);
+        BurnInfo::SN_MD=ui->dateEdit_SN->text().right(4);
+        BurnInfo::SN_Tail=ui->lineEdit_SNTail->text();
+        BurnInfo::HW_A=ui->lineEdit_HV->text().left(8);
+        BurnInfo::HW_B=ui->lineEdit_HV->text().right(8);
+    }
+    m_eolsendCommandTimer->start(200);
+    //此处可添加can连接判定
+    if(ui->cBox_eolContinue->isChecked()){//且为自动发送添加记录到表中
+        m_compare_para.clear();
+        for (int i=0;i<model->record(0).count();i++) {
+            m_compare_para.append(model->record(0).value(i).toString());
+        }
+        m_modelIndex=model->rowCount();
+        model->insertRow(m_modelIndex);
+        //更新序号
+        model->setData(model->index(m_modelIndex, 0),m_modelIndex+1);
+        //更新写入sn到数据库
+        model->setData(model->index(m_modelIndex, 4),QString("%1%2%3")
+                       .arg(ui->lineEdit_SNHead->text())
+                       .arg(ui->dateEdit_SN->text())
+                       .arg(ui->lineEdit_SNTail->text()));
+        //更新用户
+        model->setData(model->index(m_modelIndex, 10),QString("%1")
+                       .arg(ui->lineEdit_User->text())
+                       );
+        //更新开始时间到数据库
+        model->setData(model->index(m_modelIndex, 11),QString("%1")
+                       .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss"))
+                       );
+    }
+
+}
+void UDSForm::eolSendCommandOnce(){
     //生成指令
-    QByteArray array=QUIHelper::hexStrToByteArray(cmd);
+    QByteArray array=QUIHelper::hexStrToByteArray(m_eolselfSendStr);
+    qDebug()<<"m_eolselfSendStr:"<<m_eolselfSendStr;
     uDS.setWorkMode(FACTORY);
+    QPixmap pixmap(QString(":/imageTest/buttonpilot_gray.png"));
+    ui->label_state->setFixedSize(pixmap.size());
+    ui->label_state->setPixmap(pixmap);
+    ui->label_state->setScaledContents(true);
     //发送指令
-    SendAndReceive(CANApi::SEND_CAN_ID_Self1,(byte*)array.data(),array.size());
+    ECANStatus ret= SendAndReceive(CANApi::SEND_CAN_ID_Self1,(byte*)array.data(),array.size());
+    if(ret==_STATUS_OK){
+        QPixmap pixmap(QString(":/imageTest/buttonpilot_green.png"));
+        ui->label_state->setFixedSize(pixmap.size());
+        ui->label_state->setPixmap(pixmap);
+        ui->label_state->setScaledContents(true);
+    }else{
+        QPixmap pixmap(QString(":/imageTest/buttonpilot_red.png"));
+        ui->label_state->setFixedSize(pixmap.size());
+        ui->label_state->setPixmap(pixmap);
+        ui->label_state->setScaledContents(true);
+    }
 }
 //非uds
 ECANStatus UDSForm::SendAndReceive(uint can_id,byte data[],int dataLength){
@@ -962,13 +1166,21 @@ ECANStatus UDSForm::SendAndReceive(uint can_id,byte data[],int dataLength){
     memset(obj,0,sizeof (VCI_CAN_OBJ));
     for (int i=0;i<n;i++) {
         obj[i].ID=can_id;
+
+        obj[i].ExternFlag = 0;
+        obj[i].RemoteFlag = 0;
         if ((dataLength - i * 8) >= 8){
+            obj[i].DataLen=8;
             memcpy(obj[i].Data,(data+i*8),8);
         }else{
+            obj[i].DataLen=dataLength - i*8;
             memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
         }
+        qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'));
     }
-    VCI_Transmit(4,0,0,obj,n);
+
+    int ret=VCI_Transmit(4,0,0,obj,n);
+    qDebug()<<"ret=="<<ret;
     if(uDS.udsSleep(2000)){
         qDebug()<<"指令正常完成！";
     }else{
@@ -976,4 +1188,60 @@ ECANStatus UDSForm::SendAndReceive(uint can_id,byte data[],int dataLength){
         return _STATUS_TIME_OUT;
     }
     return _STATUS_OK;
+}
+
+void UDSForm::on_cBoxcansend_activated(int index)
+{
+    m_eolcommandIndex=ui->cBoxcansend->currentIndex();
+
+    if(ui->cBoxcansend->currentIndex()==2){//SRHV
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Head));
+        m_eolselfSendStr="53 52 48 56 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Head));
+    }else if(ui->cBoxcansend->currentIndex()==3){//SMYE
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Year));
+        m_eolselfSendStr="53 4D 59 45 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Year));
+    }else if(ui->cBoxcansend->currentIndex()==4){//SMMD
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_MD));
+        m_eolselfSendStr="53 4D 4D 44 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_MD));
+    }else if(ui->cBoxcansend->currentIndex()==5){//SRSN
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Tail));
+        m_eolselfSendStr="53 52 53 4E 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray(BurnInfo::SN_Tail));
+    }else if(ui->cBoxcansend->currentIndex()==6){//SHVA
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_A));
+        m_eolselfSendStr="53 48 56 41 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_A));
+    }else if(ui->cBoxcansend->currentIndex()==7){//SHVB
+        qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_B));
+        m_eolselfSendStr="53 48 56 42 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_B));
+    }else{
+        m_eolselfSendStr=ui->cBoxcansend->currentText();
+    }
+
+    ui->labelCanSendDiscrib->setText(m_list_canSendDiscrib.at(index));
+}
+
+void UDSForm::on_lineEdit_PW_editingFinished()
+{
+    //判断权限
+    if(ui->lineEdit_PW->text()=="admin"){
+        ui->cBox_eolContinue->setEnabled(true);
+        ui->checkBox_autoadd->setEnabled(true);
+        ui->btnDelete->setEnabled(true);
+        ui->btnSave->setEnabled(true);
+    }
+}
+
+void UDSForm::on_pushButton_2_released()
+{
+    int result=QUIHelper::showMessageBoxQuestion("请确认是否输入温度："
+                                                 "确认：继续后续测试，取消：返回录入温度！");
+    if (result==QMessageBox::Yes){
+
+    }else if(result==QMessageBox::No){
+        return;
+    }
+    if(ui->pushButton_2->text()=="开始记录"){
+        ui->pushButton_2->setText("记录中...");
+    }else{
+        ui->pushButton_2->setText("开始记录");
+    }
 }

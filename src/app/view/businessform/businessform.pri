@@ -1,4 +1,5 @@
 FORMS += \
+    $$PWD/algorithmparadelegate.ui \
     $$PWD/canconfigdelegate.ui \
     $$PWD/demarcationdelegate.ui \
     $$PWD/mainform.ui \
@@ -6,6 +7,7 @@ FORMS += \
     $$PWD/udsform.ui
 
 HEADERS += \
+    $$PWD/algorithmparadelegate.h \
     $$PWD/canapi.h \
     $$PWD/canconfigdelegate.h \
     $$PWD/demarcationdelegate.h \
@@ -15,6 +17,7 @@ HEADERS += \
     $$PWD/udsform.h
 
 SOURCES += \
+    $$PWD/algorithmparadelegate.cpp \
     $$PWD/canapi.cpp \
     $$PWD/canconfigdelegate.cpp \
     $$PWD/demarcationdelegate.cpp \

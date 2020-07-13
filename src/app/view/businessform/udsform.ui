@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>6</number>
+      <number>2</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -227,7 +227,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -610,7 +610,7 @@
               <widget class="QLineEdit" name="lineEdit_SerialNum">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>100</horstretch>
+                 <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
@@ -867,29 +867,10 @@
            <property name="title">
             <string>写入信息</string>
            </property>
-           <widget class="QCheckBox" name="checkBox_autoadd">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="geometry">
-             <rect>
-              <x>630</x>
-              <y>20</y>
-              <width>91</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>序列号自加</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
            <widget class="QWidget" name="layoutWidget_2">
             <property name="geometry">
              <rect>
-              <x>370</x>
+              <x>390</x>
               <y>20</y>
               <width>221</width>
               <height>31</height>
@@ -928,12 +909,12 @@
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>10</x>
               <y>20</y>
-              <width>351</width>
+              <width>370</width>
               <height>32</height>
              </rect>
             </property>
@@ -1040,7 +1021,109 @@
                  </property>
                 </widget>
                </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_autoadd">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>自加</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
               </layout>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="layoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>710</x>
+              <y>20</y>
+              <width>201</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_29">
+             <item>
+              <widget class="QLabel" name="label_22">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>单项测试</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <item>
+                <property name="text">
+                 <string>模式查询</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>工厂模式</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>写入序列号</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>写入硬件号</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>进入EOL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>查询序列号</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>查询软件版本</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>查询boot版本</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>查询硬件版本</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>查询参数</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>退出EOL</string>
+                </property>
+               </item>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -1063,13 +1146,13 @@
            <property name="title">
             <string>输出内容</string>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>506</x>
               <y>20</y>
               <width>331</width>
-              <height>41</height>
+              <height>66</height>
              </rect>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -1115,6 +1198,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_out">
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -1122,7 +1211,7 @@
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>10</x>
@@ -1440,6 +1529,21 @@
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="tab_8">
+      <attribute name="title">
+       <string>参数读写</string>
+      </attribute>
+      <widget class="QWidget" name="widget_Algorithm" native="true">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>10</y>
+         <width>781</width>
+         <height>571</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_5">
       <attribute name="title">

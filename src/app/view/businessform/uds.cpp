@@ -361,7 +361,16 @@ void UDS::ReceiveDataProc(){
                     //qDebug()<<("recvdata:"+QUIHelper::byteArrayToHexStr(QByteArray((char *)ReceiveOneFrame.Data)));
                     //工厂模式或者客户模式下
                     if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode!=UDSUPDATE))){
-                        qDebug()<<"_ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'));;
+                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
+                               <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8")
+                                .arg(ReceiveOneFrame.Data[0],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[1],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[2],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[3],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[4],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[5],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[6],2,16,QChar('0'))
+                                .arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
                         QByteArray b ;
                         b.resize(ReceiveOneFrame.DataLen);
                         b=QByteArray((const char*)ReceiveOneFrame.Data);
@@ -369,7 +378,7 @@ void UDS::ReceiveDataProc(){
                         str=str.left(4);
                         static quint32 lastlen=0;
 
-                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"){
+                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="PARA"){
 
                             respHead=str;
                             lastlen=(quint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
@@ -382,6 +391,9 @@ void UDS::ReceiveDataProc(){
                                 qDebug()<<"1获取到有效数据。。。。。。";
                                 m_waitforNext=1;
                             }
+
+                        }else if(str=="GBYE"){//异常指令，相当于uds异常帧，帧重发
+                            m_waitforNext=-1;
 
                         }else{//非限定字符串
                             if(lastlen>0){//限定字符串后续有效内容
@@ -402,7 +414,7 @@ void UDS::ReceiveDataProc(){
                                 if(lastlen==0){
                                     //获取完有效数据发送到界面
                                     emit(emitEOLInfo(respHead,m_recvArray));
-                                    qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                    //qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
                                     m_waitforNext=1;
                                     index=0;
                                 }

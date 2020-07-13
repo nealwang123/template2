@@ -261,15 +261,20 @@ void DemarcationDelegate::on_btnSave_clicked()
 
 void DemarcationDelegate::on_btnDelete_clicked()
 {
-//    if (ui->tableMain->currentIndex().row() < 0) {
-//        QUIHelper::showMessageBoxError("请选择要删除的设备!");
-//        return;
-//    }
+    if (ui->tableMain->currentIndex().row() < 0) {
+        QUIHelper::showMessageBoxError("请选择要删除的内容!");
+        return;
+    }
+    if (ui->tableMain->currentIndex().row() == 0) {
+        QUIHelper::showMessageBoxError("第一行不能删除!");
+        return;
+    }
 
-//    int row = ui->tableMain->currentIndex().row();
-//    model->removeRow(row);
-//    model->submitAll();
-//    ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
+
+    int row = ui->tableMain->currentIndex().row();
+    model->removeRow(row);
+    model->submitAll();
+    ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
 }
 
 void DemarcationDelegate::on_btnReturn_clicked()

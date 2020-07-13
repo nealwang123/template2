@@ -1,30 +1,46 @@
-﻿#include "canconfigdelegate.h"
-#include "ui_canconfigdelegate.h"
+﻿#include "algorithmparadelegate.h"
+#include "ui_algorithmparadelegate.h"
 
-CANConfigDelegate::CANConfigDelegate(QWidget *parent) :
+AlgorithmParaDelegate::AlgorithmParaDelegate(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::CANConfigDelegate)
+    ui(new Ui::AlgorithmParaDelegate)
 {
     ui->setupUi(this);
     createConnection();
-    this->initForm("CAN");
+    this->initForm("Algorithm");
 }
 
-CANConfigDelegate::~CANConfigDelegate()
+AlgorithmParaDelegate::~AlgorithmParaDelegate()
 {
     delete ui;
 }
-bool CANConfigDelegate:: createConnection()
+int AlgorithmParaDelegate::addRow(){
+    int count = model->rowCount();
+    model->insertRow(count);
+    ui->tableMain->setCurrentIndex(model->index(count, 0));
+    return count;
+}
+int AlgorithmParaDelegate::getRow(){
+    return model->rowCount();
+}
+int AlgorithmParaDelegate::getType(int row){
+    return model->record(row).value(4).toInt();
+}
+void AlgorithmParaDelegate::setData(int row,int col,QString data){
+    model->setData(model->index(row, col), data);
+}
+
+bool AlgorithmParaDelegate:: createConnection()
 {
 
-    if (QSqlDatabase::contains("qt_sql_default_connection")){
-        _db = QSqlDatabase::database("qt_sql_default_connection");
+    if (QSqlDatabase::contains("qt_sql_default_connection_")){
+        _db = QSqlDatabase::database("qt_sql_default_connection_");
     }else{
         //建立和sqlite数据的连接
-        _db = QSqlDatabase::addDatabase("QSQLITE","qt_sql_default_connection");
+        _db = QSqlDatabase::addDatabase("QSQLITE","qt_sql_default_connection_");
         //设置数据库文件的名字
 //         _db.setDatabaseName(QUIHelper::appPath() + App::LocalDBName);
-        _db.setDatabaseName(QUIHelper::appPath() +"/tcms.db");
+        _db.setDatabaseName(QUIHelper::appPath() +"/targetDb.db");
     }
    QString path=QUIHelper::appPath() + App::LocalDBName;
    //自定义文件
@@ -61,14 +77,14 @@ bool CANConfigDelegate:: createConnection()
 
    }
    if(ret == false){
-       qDebug()<<tr("CANConfigDelegate连接数据失败")<<endl;
+       qDebug()<<tr("TemperatureDelegate连接数据失败")<<endl;
        return false;
    }
-   qDebug()<<tr("CANConfigDelegate连接数据库成功")<<endl;
+   qDebug()<<tr("TemperatureDelegate连接数据库成功")<<endl;
    return true;
 
 }
-void CANConfigDelegate::initForm(QString fileName)
+void AlgorithmParaDelegate::initForm(QString fileName)
 {
    ui->tableMain->setSelectionBehavior(QAbstractItemView::SelectRows);
    ui->tableMain->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -90,10 +106,11 @@ void CANConfigDelegate::initForm(QString fileName)
    columnNames.clear();
 
 //    columnNames << "端口编号" << "端口名称" << "连接类型" << "通讯方式" << "串口号" << "波特率" << "IP地址" << "通讯端口" << "采集周期(秒)" << "通讯超时(次)";
-   columnNames << "序号" << "字段个数" << "设备类型" << "设备编号"<< "通道号" << "波特率"<< "dbc路径" << "用途策略" << "工作模式"<<"滤波模式"
-               <<"AccCode"<<"AccMask"<<"滤波使能"<<"设备名称"<<"备注" ;
+//   columnNames << "序号" << "字段个数" << "设备类型" << "设备编号"<< "通道号" << "波特率"<< "dbc路径" << "用途策略" << "工作模式"<<"滤波模式"
+//               <<"AccCode"<<"AccMask"<<"滤波使能"<<"设备名称"<<"备注" ;
+   columnNames<<"ID"<<"索引"<<"读原始值"<<"读真实值"<<"类型"<<"写原始值"<<"写真实值"<< "描述";
    columnWidths.clear();
-   columnWidths <<30<<60<<60<<60<<60<<60<<60<<60<<60<<60<<60<<60<<60<<60<<60;
+   columnWidths <<30<<60<<100<<60<<60<<100<<60<<100;
    if(columnNames.length()!=columnWidths.length()){
        QUIHelper::showMessageBoxError(QString("columnWidths!=columnNames:columnWidths=%1 columnNames=%2").arg(columnWidths.length()).arg(columnNames.length()));
        return;
@@ -102,6 +119,8 @@ void CANConfigDelegate::initForm(QString fileName)
        model->setHeaderData(i, Qt::Horizontal, columnNames.at(i));
        ui->tableMain->setColumnWidth(i, columnWidths.at(i));
    }
+   qDebug()<<columnNames;
+   qDebug()<<columnWidths;
 
 //    //端口编号委托
 //    QStringList portID;
@@ -144,8 +163,7 @@ void CANConfigDelegate::initForm(QString fileName)
 //    d_cbox_comName->setDelegateValue(comName);
 //    ui->tableMain->setItemDelegateForColumn(4, d_cbox_comName);
 }
-
-void CANConfigDelegate::on_btnAdd_clicked()
+void AlgorithmParaDelegate::on_btnAdd_clicked()
 {
 
        int count = model->rowCount();
@@ -195,7 +213,7 @@ void CANConfigDelegate::on_btnAdd_clicked()
 
 }
 
-void CANConfigDelegate::on_btnSave_clicked()
+void AlgorithmParaDelegate::on_btnSave_clicked()
 {
    //启用数据库事务加快执行速度
    model->database().transaction();
@@ -208,7 +226,25 @@ void CANConfigDelegate::on_btnSave_clicked()
    }
 }
 
-void CANConfigDelegate::on_btnDelete_clicked()
+void AlgorithmParaDelegate::on_btnDelete_clicked()
+{
+   if (ui->tableMain->currentIndex().row() < 0) {
+       QUIHelper::showMessageBoxError("请选择要删除的设备!");
+       return;
+   }
+
+   int row = ui->tableMain->currentIndex().row();
+   model->removeRow(row);
+   model->submitAll();
+   ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
+}
+
+void AlgorithmParaDelegate::on_btnReturn_clicked()
+{
+   model->revertAll();
+}
+
+void AlgorithmParaDelegate::on_btnClear_clicked()
 {
     if (ui->tableMain->currentIndex().row() < 0) {
         QUIHelper::showMessageBoxError("请选择要删除的内容!");
@@ -220,37 +256,10 @@ void CANConfigDelegate::on_btnDelete_clicked()
     }
 
 
-   int row = ui->tableMain->currentIndex().row();
-   model->removeRow(row);
-   model->submitAll();
-   ui->tableMain->setCurrentIndex(model->index(model->rowCount() - 1, 0));
-}
-
-void CANConfigDelegate::on_btnReturn_clicked()
-{
-   model->revertAll();
-}
-
-void CANConfigDelegate::on_btnClear_clicked()
-{
-   if (model->rowCount() <= 0) {
-       return;
-   }
-
    if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
        QString sql = "delete from PortInfo";
        QSqlQuery query;
        query.exec(sql);
        model->select();
    }
-}
-QStringList CANConfigDelegate::getModelData(int index){
-    QStringList list;
-    qDebug()<<"model->rowCount()"<<model->rowCount();
-    if(model->rowCount()>0)
-        list<<model->record(index).value("设备类型").toString()
-        <<model->record(index).value("设备号").toString()
-        <<model->record(index).value("通道号").toString();
-    qDebug()<<"getModelData 设备信息"<<list;
-    return list;
 }

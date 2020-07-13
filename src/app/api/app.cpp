@@ -86,6 +86,8 @@ int App::AlignFilter=1;
 QString App::AlignAngle="0";
 QString App::AlignDistance="2";
 
+QString App::HWVersion= "0102030405060708";
+
 bool App::HexSendTcpClient = false;
 bool App::HexReceiveTcpClient = false;
 bool App::AsciiTcpClient = false;
@@ -203,6 +205,10 @@ void App::readConfig()
     App::AlignDistance= set.value("AlignDistance").toString();
     set.endGroup();
 
+    set.beginGroup("EOLConfig");
+    App::HWVersion= set.value("HWVersion").toString();
+    set.endGroup();
+
     set.beginGroup("TcpClientConfig");
     App::HexSendTcpClient = set.value("HexSendTcpClient").toBool();
     App::HexReceiveTcpClient = set.value("HexReceiveTcpClient").toBool();
@@ -318,6 +324,10 @@ void App::writeConfig()
     set.setValue("AlignFilter", App::AlignFilter);
     set.setValue("AlignFilter", App::AlignAngle);
     set.setValue("AlignFilter", App::AlignDistance);
+    set.endGroup();
+
+    set.beginGroup("EOLConfig");
+    set.setValue("HWVersion",App::HWVersion);
     set.endGroup();
 
     set.beginGroup("TcpClientConfig");

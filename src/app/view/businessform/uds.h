@@ -140,9 +140,9 @@ class UDS : public QObject
     Q_OBJECT
 public:
     explicit UDS(QObject *parent = nullptr);
-    const static uint SEND_CAN_ID = 0x7A1;//
+    const static uint SEND_CAN_ID = 0x7A1;//uds send
     const static uint FUNCTION_ID = 0x7DF;
-    const static uint RECEIVE_CAN_ID=0x7A9;
+    const static uint RECEIVE_CAN_ID=0x7A9;//uds recv
     const static uint Timeout = 2500;
     const uint TIME_OUT = 2;
     const int INTERVAL= 30;

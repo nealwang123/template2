@@ -30,5 +30,9 @@
         <file>imageTest/tree_parent.png</file>
         <file>imageTest/widgets.qm</file>
         <file>main.ico</file>
+        <file>imageTest/buttongray.png</file>
+        <file>imageTest/buttongreen.png</file>
+        <file>imageTest/buttonred.png</file>
+        <file>imageTest/buttonyellow.png</file>
     </qresource>
 </RCC>

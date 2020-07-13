@@ -463,6 +463,9 @@ public:
     //字节数组转ushort
     static int byteToUShort(const QByteArray &data);
     static int byteToUShortRec(const QByteArray &data);
+    //字节数组转float
+    static float QUIHelper::Byte2Float(QByteArray byte);
+    static QByteArray QUIHelper::Float2Byte(float data);
 
     //异或加密算法
     static QString getXorEncryptDecrypt(const QString &str, char key);

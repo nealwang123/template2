@@ -8,6 +8,8 @@
 #include "canapi.h"
 #include "uds.h"
 #include "temperaturedelegate.h"
+#include"algorithmparadelegate.h"
+#include<QtEndian>
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -52,8 +54,8 @@ public:
     void sendCommandByIndex(int index);
     void recorveyState();
     ECANStatus SendAndReceive(uint can_id,byte data[],int dataLength);
-    void eolSendCommandOnce();
-
+    ECANStatus eolSendCommandOnce();
+    float Byte2Float(QByteArray byte);
 private:
     Ui::UDSForm *ui;
 
@@ -84,6 +86,7 @@ private:
     QStringList m_list_canSendDiscrib;
     int m_eolcommandIndex;
     QString m_eolselfSendStr;
+    QStringList sendSeqList;
     //定时器
     QTimer *m_eolsendCommandTimer;
     int m_modelIndex;
@@ -92,6 +95,10 @@ private:
 
     //高低温测试
     TemperatureDelegate* tempwidget;
+
+
+    //算法参数窗口
+    AlgorithmParaDelegate* algowiget;
 private slots:
     void initForm(QString fileName);
     void slot_demarcationTimer();
@@ -119,6 +126,8 @@ private slots:
     void on_cBoxcansend_activated(int index);
     void on_lineEdit_PW_editingFinished();
     void on_pushButton_2_released();
+    void on_comboBox_activated(int index);
+    void on_lineEdit_HV_editingFinished();
 };
 
 #endif // UDSFORM_H

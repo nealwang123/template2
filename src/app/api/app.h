@@ -93,6 +93,10 @@ public:
     static int IntervalTcpClient;       //发送数据间隔
     static QString TcpServerIP;         //服务器IP
     static int TcpServerPort;           //服务器端口
+
+    //EOL config
+    static QString HWVersion;
+
     //轨迹配置
     static int XWidth;         //水平
     static int YHeight;        //纵向

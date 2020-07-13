@@ -1918,6 +1918,29 @@ int QUIHelper::byteToUShortRec(const QByteArray &data)
     return i;
 }
 
+float QUIHelper::Byte2Float(QByteArray byte)
+{
+    float result = 0;
+    int size = byte.size();
+    char* data_char = byte.data();
+    char* p = (char*)&result;
+    for(int index = 0; index < size; index++)
+    {
+        *(p + index) = *(data_char + size - 1 - index);
+    }
+    return result;
+}
+QByteArray QUIHelper::Float2Byte(float data)
+{
+    QByteArray byte_data;
+
+    char* data_char = (char*)&data;
+    for(int index = 3; index >= 0; index--)
+    {
+        byte_data.append(data_char[index]);
+    }
+    return byte_data;
+}
 QString QUIHelper::getXorEncryptDecrypt(const QString &str, char key)
 {
     QByteArray data = str.toLatin1();

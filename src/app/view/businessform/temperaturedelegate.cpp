@@ -105,7 +105,7 @@ void TemperatureDelegate::initForm(QString fileName)
    columnNames<<"序号"<<"雷达编号"<<"原始数据"<<"帧ID"<<"VCO温度"<<"seq1"<< "seq2"
                <<"seq3"<<"详细结果"<<"结果"<<"日期"<<"温度";
    columnWidths.clear();
-   columnWidths <<30<<60<<160<<60<<60<<60<<60<<60<<60<<60<<160<<60;
+   columnWidths <<50<<60<<160<<60<<60<<60<<60<<60<<120<<60<<140<<60;
    if(columnNames.length()!=columnWidths.length()){
        QUIHelper::showMessageBoxError(QString("columnWidths!=columnNames:columnWidths=%1 columnNames=%2").arg(columnWidths.length()).arg(columnNames.length()));
        return;

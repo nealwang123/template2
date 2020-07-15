@@ -292,6 +292,7 @@ void UDS::ReceiveDataProc(){
 
 //    try
 //    {
+        VCI_ResetCAN(4,0,0);
         //始终不停循环的接收CAN卡发送过来的数据帧。
         while (true)//表示连续不断的循环
         {
@@ -361,27 +362,27 @@ void UDS::ReceiveDataProc(){
                     //qDebug()<<("recvdata:"+QUIHelper::byteArrayToHexStr(QByteArray((char *)ReceiveOneFrame.Data)));
                     //工厂模式或者客户模式下
                     if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode!=UDSUPDATE))){
-                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
-                               <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8")
-                                .arg(ReceiveOneFrame.Data[0],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[1],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[2],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[3],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[4],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[5],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[6],2,16,QChar('0'))
-                                .arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
+//                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
+//                               <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8")
+//                                .arg(ReceiveOneFrame.Data[0],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[1],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[2],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[3],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[4],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[5],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[6],2,16,QChar('0'))
+//                                .arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
                         QByteArray b ;
                         b.resize(ReceiveOneFrame.DataLen);
                         b=QByteArray((const char*)ReceiveOneFrame.Data);
                         QString str=QUIHelper::byteArrayToAsciiStr(b);
                         str=str.left(4);
-                        static quint32 lastlen=0;
+                        static qint32 lastlen=0;
 
                         if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="PARA"){
 
                             respHead=str;
-                            lastlen=(quint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
+                            lastlen=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
                             qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
                             m_recvArray.clear();
                             m_recvArray.resize(lastlen);
@@ -397,31 +398,31 @@ void UDS::ReceiveDataProc(){
 
                         }else{//非限定字符串
                             if(lastlen>0){//限定字符串后续有效内容
-                                if(lastlen-ReceiveOneFrame.DataLen<0){
-                                    qDebug()<<"出现不连续帧现象";
-                                    continue;
-                                }
-                                static int index=0;
-//                                QByteArray bar;
-//                                bar.resize(ReceiveOneFrame.DataLen);
-                                for(int count=0;count<ReceiveOneFrame.DataLen;count++){
-                                    m_recvArray[index]=ReceiveOneFrame.Data[count];
-                                    index++;
-                                }
-                               // m_recvArray=QByteArray((const char*)ReceiveOneFrame.Data);
-                                //m_recvArray.append(bar);
-                                lastlen-=ReceiveOneFrame.DataLen;
-                                if(lastlen==0){
-                                    //获取完有效数据发送到界面
-                                    emit(emitEOLInfo(respHead,m_recvArray));
-                                    //qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
-                                    m_waitforNext=1;
-                                    index=0;
+                                qDebug()<<"lastlen"<<lastlen<<"ReceiveOneFrame.DataLen"<<ReceiveOneFrame.DataLen<<" (lastlen-ReceiveOneFrame.DataLen)"<<(lastlen-ReceiveOneFrame.DataLen);
+                                if((lastlen-ReceiveOneFrame.DataLen)>=0){
+                                    qDebug()<<"找到连续帧";
+                                    static int index=0;
+    //                                QByteArray bar;
+    //                                bar.resize(ReceiveOneFrame.DataLen);
+                                    for(int count=0;count<ReceiveOneFrame.DataLen;count++){
+                                        m_recvArray[index]=ReceiveOneFrame.Data[count];
+                                        index++;
+                                    }
+                                   // m_recvArray=QByteArray((const char*)ReceiveOneFrame.Data);
+                                    //m_recvArray.append(bar);
+                                    lastlen-=ReceiveOneFrame.DataLen;
+                                    qDebug()<<"lastlen运算后"<<lastlen;
+                                    if(lastlen==0){
+                                        //获取完有效数据发送到界面
+                                        emit(emitEOLInfo(respHead,m_recvArray));
+                                        qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                        m_waitforNext=1;
+                                        index=0;
+                                    }
                                 }
                             }else{//lastlen==0执行内容，非限定字符串
-
-                                //qDebug()<<lastlen<<"非工厂模式限定字符串 ReceiveOneFrame.Data[0]:"<<QString::number(ReceiveOneFrame.Data[0])<<QString::number(ReceiveOneFrame.Data[0]&0x0F)<<QString::number((ReceiveOneFrame.Data[0]&0x0F)==0x02);
-                                if((ReceiveOneFrame.Data[0]&0x0F)==0x02){//高低温测试
+                                if(((ReceiveOneFrame.Data[0]&0xFF)==0x02)){//高低温测试
+                                    qDebug()<<lastlen<<"非工厂模式限定字符串 ReceiveOneFrame.Data[0]:"<<QString::number(ReceiveOneFrame.Data[0])<<QString::number(ReceiveOneFrame.Data[0]&0x0F)<<QString::number((ReceiveOneFrame.Data[0]&0x0F)==0x02);
                                     QStringList list;
                                     list=dbcloader->parseMSGWithData(0x01,ReceiveOneFrame.Data);
                                     QString tempstr="";

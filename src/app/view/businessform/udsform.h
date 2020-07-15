@@ -56,6 +56,7 @@ public:
     ECANStatus SendAndReceive(uint can_id,byte data[],int dataLength);
     ECANStatus eolSendCommandOnce();
     float Byte2Float(QByteArray byte);
+    int judgeResult();
 private:
     Ui::UDSForm *ui;
 
@@ -128,6 +129,12 @@ private slots:
     void on_pushButton_2_released();
     void on_comboBox_activated(int index);
     void on_lineEdit_HV_editingFinished();
+    void on_button_InFactory_released();
+    void on_button_queryMode_released();
+    void on_button_burnInfo_released();
+    void on_button_queryInfo_released();
+    void on_button_AlgoQuery_released();
+    void on_button_Consumer_released();
 };
 
 #endif // UDSFORM_H

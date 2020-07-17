@@ -1637,6 +1637,29 @@
                 </widget>
                </item>
                <item>
+                <widget class="QPushButton" name="button_export">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>导出</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>备注</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_remark"/>
+               </item>
+               <item>
                 <spacer name="horizontalSpacer">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -1650,6 +1673,13 @@
                 </spacer>
                </item>
               </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labInfo1">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1681,15 +1711,33 @@
       <layout class="QHBoxLayout" name="horizontalLayout_27">
        <item>
         <widget class="QFrame" name="frame_3">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>170</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
+         <layout class="QVBoxLayout" name="verticalLayout_10">
           <item>
            <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -1701,24 +1749,205 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_20">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_26">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>温度</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_Temp">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_25">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>首次在线数</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_Temp_first">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>0000</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_27">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>实时在线数</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_Temp_realtime">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>0000</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_28">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>离线</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_Temp_dead">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>0000</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_onlineTest">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
-             <string>温度</string>
+             <string>test</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_Temp">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="enabled">
+             <bool>false</bool>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_4">
             <property name="text">
              <string>reset</string>
             </property>
@@ -1749,6 +1978,9 @@
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QWidget" name="widget_Temp" native="true">
            <property name="sizePolicy">
@@ -1764,15 +1996,45 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>140</height>
+             <height>440</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>140</height>
+             <height>440</height>
             </size>
            </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="onlineDevice_frame">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -1837,16 +2099,20 @@ p, li { white-space: pre-wrap; }
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;修改日期&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;V1.1.0&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;V1.1.4&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;1:添加操作按钮，方便测试;&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;2:查询信息功能删除算法参数查询；&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;1:高低温实时显示状态&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2:数据导出xls文件功能&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;3:管理员权限下运行表格删除、保存、清空非首行操作；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;4:当前测试，新旧版本CANalyst-II均支持测试功能；&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;2020.07.15&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2020.07.20&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;V1.0.8&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;1:添加操作按钮，方便测试;&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;2:查询信息功能删除算法参数查询；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;1：修复调试指令错位bug；&lt;br /&gt;2：开发者权限，允许打开自动下发功能；&lt;br /&gt;3：高低温测试添加首次收到异常帧报警功能；&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.14​&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -1869,7 +2135,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; color:#000000;&quot;&gt;按钮操作：&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; color:#000000;&quot;&gt;按照按钮提示操作即可；&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;高低温测试窗口&lt;/span&gt;&lt;/h2&gt;
-&lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：点击开始记录按钮&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：输入温度信息，点击开始记录按钮&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;标定测试&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;暂无内容； &lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;权限管理&lt;/span&gt;&lt;/h2&gt;

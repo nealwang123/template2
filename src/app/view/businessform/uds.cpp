@@ -292,7 +292,7 @@ void UDS::ReceiveDataProc(){
 
 //    try
 //    {
-        VCI_ResetCAN(4,0,0);
+        //VCI_ResetCAN(4,0,0);
         //始终不停循环的接收CAN卡发送过来的数据帧。
         while (true)//表示连续不断的循环
         {
@@ -553,9 +553,9 @@ void UDS::ReceiveDataProc(){
                                                .arg(seedkey.keybyte[1],2,16,QChar('0'))
                                                .arg(seedkey.keybyte[2],2,16,QChar('0'))
                                                .arg(seedkey.keybyte[3],2,16,QChar('0')));
-                                }else if(session->receiveFrame.receivedData[0]==0x71&& session->receiveFrame.length==5){
+                                }else if(session->receiveFrame.receivedData[0]==0x71&& session->receiveFrame.length==6){
                                     if(session->receiveFrame.receivedData[2]==0x02&&session->receiveFrame.receivedData[3]==0x02){
-                                        dataVerify=session->receiveFrame.receivedData[4];
+                                        dataVerify=session->receiveFrame.receivedData[5];
                                         qDebug()<<("dataVerify:" + QString("%1")
                                                    .arg(dataVerify,2,16,QChar('0'))
                                                    );

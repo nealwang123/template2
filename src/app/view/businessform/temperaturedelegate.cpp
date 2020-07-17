@@ -78,6 +78,11 @@ bool TemperatureDelegate:: createConnection()
    return true;
 
 }
+void TemperatureDelegate::setChildEnable(bool b){
+    ui->btnClear->setEnabled(b);
+    ui->btnSave->setEnabled(b);
+    ui->btnDelete->setEnabled(b);
+}
 void TemperatureDelegate::initForm(QString fileName)
 {
    ui->tableMain->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -219,6 +224,8 @@ void TemperatureDelegate::on_btnSave_clicked()
        model->database().rollback();
        QUIHelper::showMessageBoxError("保存设备信息失败,设备信息不能为空,请重新填写!");
    }
+   //保持滚动条在底部
+   ui->tableMain->scrollToBottom();
 }
 
 void TemperatureDelegate::on_btnDelete_clicked()
@@ -249,11 +256,50 @@ void TemperatureDelegate::on_btnClear_clicked()
    if (model->rowCount() <= 0) {
        return;
    }
-
-   if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
-       QString sql = "delete from PortInfo";
-       QSqlQuery query;
-       query.exec(sql);
-       model->select();
+   int result=QUIHelper::showMessageBoxQuestion("确定要清空所有温度测试数据吗?");
+   if ( result== QMessageBox::Yes) {
+       QString sql = "delete FROM TemperatureTest where 序号 !='00000'";
+       QSqlQuery query(_db);
+       bool value =query.exec(sql);
+       value=model->select();
+   }else{
    }
+}
+
+void TemperatureDelegate::on_button_export_released()
+{
+    QString file;
+    //开始计算用时
+    QTime time;
+    time.start();
+    int MaxCount1=10000;
+    QStringList content;
+    for (int i = 0; i < MaxCount1; i++) {
+        QStringList list;
+        for (int j = 0; j < 12; j++) {
+            QString text =model->index(i, j).data().toString();
+            list.append(text);
+        }
+
+        content.append(list.join(";"));
+    }
+
+    QList<QString> columnNames;
+    QList<int> columnWidths;
+    columnNames<<"序号"<<"雷达编号"<<"原始数据"<<"帧ID"<<"VCO温度"<<"seq1"<< "seq2"
+                <<"seq3"<<"详细结果"<<"结果"<<"日期"<<"温度";
+
+    columnWidths <<50<<60<<160<<60<<60<<60<<60<<60<<120<<60<<140<<60;
+
+    file = qApp->applicationDirPath() +QString("/输出信息/高低温测试%1_%2.xls")
+            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm"))
+            .arg(ui->lineEdit_remark->text());
+    ExcelAPI::Instance()->saveExcel(file, "高低温信息", "所有信息", QString("%1 导出信息").arg(DATETIME), columnNames, columnWidths, content, true, false, 3, "==", "高低温测试");
+
+    double ms = time.elapsed();
+    ui->labInfo1->setText(QString("导出 %1 条数据成功,用时 %2 秒").arg(MaxCount1).arg(QString::number(ms / 1000, 'f', 2)));
+    //如果打开excel会有警告提示,要去掉警告提示请双击运行源码下的 excel禁止提示.reg
+    //qDebug() << "用时" << ExcelThread::Instance()->getTakeTime() << "毫秒";
+    QString url = QString("file:///%1").arg(file);
+    QDesktopServices::openUrl(QUrl(url, QUrl::TolerantMode));
 }

@@ -9,7 +9,10 @@
 #include "uds.h"
 #include "temperaturedelegate.h"
 #include"algorithmparadelegate.h"
+#include <QStandardItemModel>
 #include<QtEndian>
+#include"olinedeviceform.h"
+
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -57,6 +60,8 @@ public:
     ECANStatus eolSendCommandOnce();
     float Byte2Float(QByteArray byte);
     int judgeResult();
+
+    void initOnLineTableView();
 private:
     Ui::UDSForm *ui;
 
@@ -100,6 +105,18 @@ private:
 
     //算法参数窗口
     AlgorithmParaDelegate* algowiget;
+
+    //
+    //QVector<CLASS*> mClasses;   //模拟数据
+    //在线设备列表
+    OlineDeviceForm *onlineDeviceForm;
+    int onlineDeviceFlage;
+    QTimer *onlineDeviceTimer;
+    int onlineDeviceTimerCounter;
+    int onlineDeviceNum;
+    QMap<int,ItemData>mapOnlineDevice;
+    QMap<int,ItemData>mapAllDevice;
+
 private slots:
     void initForm(QString fileName);
     void slot_demarcationTimer();
@@ -107,6 +124,7 @@ private slots:
     void slot_UDSFrameRecv(VCI_CAN_OBJ cAN_OBJ1);
     void slot_EOLInfo(QString respHead,QByteArray array);
     void slot_TemperatureTest(int id,QString ,QStringList list);
+    void slot_onlineDeviceTimer();
 private slots:
     void on_btnAdd_clicked();
     void on_btnSave_clicked();
@@ -135,6 +153,9 @@ private slots:
     void on_button_queryInfo_released();
     void on_button_AlgoQuery_released();
     void on_button_Consumer_released();
+    void on_pushButton_onlineTest_released();
+    void on_pushButton_3_released();
+    void on_button_export_released();
 };
 
 #endif // UDSFORM_H

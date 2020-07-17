@@ -19,6 +19,7 @@ public:
     const static uint SEND_CAN_ID_Self1 = 0x3E8;//
     const static uint RECV_CAN_ID_MIN = 0;
     const static uint RECV_CAN_ID_MAX = 9999;
+
     /// <summary>
     /// 设备连接
     /// </summary>
@@ -44,7 +45,7 @@ public:
     /// </summary>
     /// <param name="frame">发送经过UDS网络层之后的数据帧</param>
     /// <returns></returns>
-    static ECANStatus SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ frame[]);
+    static ECANStatus SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ frame[],int devicetype=4,int deviceindex=0,int ch=0);
     static ECANStatus RecvFrames(VCI_CAN_OBJ[], int count);
     static ECANStatus SendFrames(VCI_CAN_OBJ[],int count);
 };

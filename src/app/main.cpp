@@ -40,7 +40,9 @@ int main(int argc, char *argv[])
     App::Intervals << "1" << "10" << "20" << "50" << "100" << "200" << "300" << "500" << "1000" << "1500" << "2000" << "3000" << "5000" << "10000";
     App::readSendData();
     App::readDeviceData();
-    QString _version("1.1.0");
+    //管理目录列表，不存在则创建
+    QUIHelper::newDir("输出信息");
+    QString _version("1.1.4");
     QString nameversion("测试程序"+_version);
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion(_version);

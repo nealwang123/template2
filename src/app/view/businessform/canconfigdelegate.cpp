@@ -236,12 +236,16 @@ void CANConfigDelegate::on_btnClear_clicked()
    if (model->rowCount() <= 0) {
        return;
    }
+   int result=QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?");
 
-   if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
+   if ( result== QMessageBox::Yes) {
        QString sql = "delete from PortInfo";
        QSqlQuery query;
        query.exec(sql);
        model->select();
+       qDebug()<<"删除所有！！！";
+   }else{
+        qDebug()<<"没有删除";
    }
 }
 QStringList CANConfigDelegate::getModelData(int index){

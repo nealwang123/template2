@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OlineDeviceForm</class>
+ <widget class="QWidget" name="OlineDeviceForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>744</width>
+    <height>422</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="allBtn">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#allBtn{
+background:white;
+border:1px solid gray;
+border-radius:5px;
+padding:2px 4px;
+color:gray;
+}
+
+QPushButton#allBtn:checked{
+background:gray;
+color:white;
+}</string>
+         </property>
+         <property name="text">
+          <string>All</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="redBtn">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#redBtn{
+background:white;
+border:1px solid rgb(255, 84, 92);
+border-radius:5px;
+padding:2px 4px;
+color:rgb(255, 84, 92);
+}
+
+QPushButton#redBtn:checked{
+background:rgb(255, 84, 92);
+color:white;
+}</string>
+         </property>
+         <property name="text">
+          <string>离线</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="blueBtn">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#blueBtn{
+background:white;
+border:1px solid #3288E8;
+border-radius:5px;
+padding:2px 4px;
+color:#3288E8;
+}
+
+QPushButton#blueBtn:checked{
+background:#3288E8;
+color:white;
+}</string>
+         </property>
+         <property name="text">
+          <string>在线</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="yellowBtn">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#yellowBtn{
+background:white;
+border:1px solid rgb(255, 226, 6);
+border-radius:5px;
+padding:2px 4px;
+color:rgb(255, 226, 6);
+}
+
+QPushButton#yellowBtn:checked{
+background:rgb(255, 226, 6);
+color:white;
+}</string>
+         </property>
+         <property name="text">
+          <string>异常</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>更新时间</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Time">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="setRedBtn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#setRedBtn{
+border:1px solid rgb(255, 84, 92);
+border-radius:5px;
+padding:2px 4px;
+background:rgb(255, 84, 92);
+color:white;
+}</string>
+         </property>
+         <property name="text">
+          <string>set red</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QListView" name="listView">
+       <property name="styleSheet">
+        <string notr="true">QListView {
+   background-color: transparent;
+	border:1px solid #EFEFEF;
+}
+
+</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,11 +1,9 @@
 ﻿#include "canapi.h"
-
 /// <summary>
 /// 设备连接
 /// </summary>
 /// <returns></returns>
 bool CANApi::OpenDevice(int devicetype,int deviceindex,int ch){
-
     ECANStatus eCANStatus = (ECANStatus)VCI_OpenDevice(devicetype,deviceindex,ch);
 
     if (eCANStatus == _STATUS_OK)
@@ -170,30 +168,30 @@ bool CANApi::StartCan(int devicetype,int deviceindex,int ch){
 /// </summary>
 /// <param name="frame">发送经过UDS网络层之后的数据帧</param>
 /// <returns></returns>
-ECANStatus CANApi::SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ frame[]){
-    VCI_CAN_OBJ cAN_OBJ[1] ;
+ECANStatus CANApi::SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ frame[],int devicetype,int deviceindex,int ch){
+    VCI_CAN_OBJ cAN_OBJ[1];
 
-//    lock (Lock_Object)//锁定主要用于多线程资源的共享，在同一时刻只允许一个线程对资源进行访问
-//    {
-        memcpy(cAN_OBJ,frame,sizeof (VCI_CAN_OBJ));
-        //cAN_OBJ = frame;
+//  lock (Lock_Object)//锁定主要用于多线程资源的共享，在同一时刻只允许一个线程对资源进行访问
+//  {
+    memcpy(cAN_OBJ,frame,sizeof (VCI_CAN_OBJ));
+    //cAN_OBJ = frame;
+    cAN_OBJ[0].SendType = 0;
+    cAN_OBJ[0].ExternFlag = externflag;
+    cAN_OBJ[0].RemoteFlag = remoteflag;
 
-        cAN_OBJ[0].ExternFlag = externflag;
-        cAN_OBJ[0].RemoteFlag = remoteflag;
 
 
+    ECANStatus eCANStatus = (ECANStatus)VCI_Transmit(devicetype, deviceindex, ch, cAN_OBJ, 1);
 
-        ECANStatus eCANStatus = (ECANStatus)VCI_Transmit(4, 0, 0, cAN_OBJ, 1);
-
-        if (eCANStatus != _STATUS_OK)
-        {
-            return _STATUS_ERR;
-        }
-        else
-        {
-            return _STATUS_OK;
-        }
-    //}
+    if (eCANStatus != _STATUS_OK)
+    {
+        return _STATUS_ERR;
+    }
+    else
+    {
+        return _STATUS_OK;
+    }
+  //}
 }
 ECANStatus  CANApi::RecvFrames(VCI_CAN_OBJ obj[], int count){
     return (ECANStatus)VCI_Receive(4,0,0,obj,count,1);

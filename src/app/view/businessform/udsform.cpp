@@ -19,7 +19,19 @@ UDSForm::UDSForm(QWidget *parent) :
     qRegisterMetaType<VCI_CAN_OBJ>("VCI_CAN_OBJ&");
     qRegisterMetaType<VCI_CAN_OBJ>("VCI_CAN_OBJ");
     ui->setupUi(this);
-    createConnection();
+    qDebug()<<"UDSBurnData open:"<<createConnection();
+    QSqlQuery query;
+    qDebug()<<query.exec("SELECT * FROM UDSBurnData;");
+    while(query.next())
+    {
+        QString id = query.value(0).toString();
+        QString name = query.value(1).toString();
+        QString score = query.value(2).toString();
+        QString classs = query.value(3).toString();
+
+        qDebug()<<id<<name<<score<<classs;
+    }
+
     this->initForm("UDSBurnData");
     demarcationTimer=new QTimer(this);
     connect(demarcationTimer,&QTimer::timeout,this,&UDSForm::slot_demarcationTimer);
@@ -86,12 +98,73 @@ UDSForm::UDSForm(QWidget *parent) :
 
    //ui->lineEdit_HV->text()
     ui->lineEdit_HV->setText(App::HWVersion);
+    initOnLineTableView();
 
+    {//init onlineDeviceForm
+        onlineDeviceForm=new OlineDeviceForm();
+        onlineDeviceForm->show();
+        QVBoxLayout *laOnline=new QVBoxLayout;
+        laOnline->addWidget(onlineDeviceForm);
+        ui->onlineDevice_frame->setLayout(laOnline);
+    }
+    {
+        onlineDeviceFlage=0;
+        onlineDeviceTimerCounter=0;
+        onlineDeviceTimer=new QTimer();
+        onlineDeviceTimer->setSingleShot(true);
+        connect(onlineDeviceTimer,&QTimer::timeout,this,&UDSForm::slot_onlineDeviceTimer);
+    }
 }
 
 UDSForm::~UDSForm()
 {
     delete ui;
+}
+/*
+ *定时器执行槽函数
+ */
+void UDSForm::slot_onlineDeviceTimer(){
+    if(onlineDeviceTimerCounter==0){
+        ui->lineEdit_Temp_first->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
+        ui->lineEdit_Temp_realtime->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
+        ui->lineEdit_Temp_dead->setText(QString("%1").arg((0),4,10,QChar('0')));
+        mapAllDevice=mapOnlineDevice;
+    }else{
+        ui->lineEdit_Temp_realtime->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
+        ui->lineEdit_Temp_dead->setText(QString("%1").arg((ui->lineEdit_Temp_first->text().toInt(nullptr,10)-onlineDeviceNum),4,10,QChar('0')));
+    }
+    //清空设备列表
+    onlineDeviceForm->resetData();
+    //更新在线列表，遍历对比
+    QMap<int,ItemData>::const_iterator i;
+
+    for (i = mapAllDevice.constBegin(); i != mapAllDevice.constEnd(); ++i) {
+        qDebug()<< i.key()<< i.value().id;
+        int id=i.key();
+        int radarstate=i.value().state;
+        QString datastr=i.value().date;
+        if(mapOnlineDevice.contains(id)){
+           QMap<int,ItemData>::const_iterator iter= mapOnlineDevice.find(id);
+
+            {
+                if(radarstate==0){//异常
+                    onlineDeviceForm->addData(id,iter.value().date,2);
+                }else if(radarstate==1){//在线
+                    //统计在线数据
+                    onlineDeviceForm->addData(id,iter.value().date,1);
+                }
+            }
+        }else{
+            onlineDeviceForm->addData(id,datastr,0);
+        }
+    }
+
+
+    onlineDeviceTimerCounter++;
+    onlineDeviceFlage=0;
+}
+void UDSForm::initOnLineTableView(){
+
 }
 void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
     if(ui->pushButton_2->text()!="记录中..."){
@@ -116,16 +189,16 @@ void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
         QUIHelper::showMessageBoxError("温度测试列表长度异常！");
         return;
     }
-    qDebug()<<QString("id:%1 data:%2").arg(id)
-              .arg(raw)
-              ;
+
+
+    qDebug()<<QString("id:%1 data:%2").arg(id).arg(raw);
     qDebug()<<list;
     QString swVer=templist.at(0).split("|").at(1);
     QString frameID=templist.at(6).split("|").at(2);
     QString vcoTemp=templist.at(3).split("|").at(2);
-    QString flagRunSeq01=templist.at(5).split("|").at(2).right(1);
-    QString flagRunSeq02=templist.at(4).split("|").at(2).right(2);
-    QString flagRunSeq03=templist.at(1).split("|").at(2).right(1);
+    QString flagRunSeq01=templist.at(5).split("|").at(2);
+    QString flagRunSeq02=templist.at(4).split("|").at(2);
+    QString flagRunSeq03=templist.at(1).split("|").at(2);
     //QString vcoTemp=templist.at(3).split("|").at(2).right(1);
     int count=tempwidget->addRow();
     tempwidget->setData(count,0,QString("%1").arg(count,5,10,QChar('0')));
@@ -133,24 +206,59 @@ void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
     tempwidget->setData(count,2,raw);
     tempwidget->setData(count,3,QString("%1").arg(qRound(frameID.toFloat()),5,10,QChar('0')));
     tempwidget->setData(count,4,vcoTemp);
-    tempwidget->setData(count,5,QString("%1").arg(flagRunSeq01.toInt(nullptr,16),4,2,QChar('0')));
-    tempwidget->setData(count,6,QString("%1").arg(flagRunSeq02.toInt(nullptr,16),8,2,QChar('0')));
-    tempwidget->setData(count,7,QString("%1").arg(flagRunSeq03.toInt(nullptr,16),4,2,QChar('0')));
-    QString tempstr=QString("%1%2%3").arg(flagRunSeq01.toInt(nullptr,16),4,2,QChar('0'))
-                            .arg(flagRunSeq02.toInt(nullptr,16),8,2,QChar('0'))
-                            .arg(flagRunSeq03.toInt(nullptr,16),4,2,QChar('0'));
+    tempwidget->setData(count,5,QString("%1").arg(qRound(flagRunSeq01.toDouble()),4,2,QChar('0')));
+    tempwidget->setData(count,6,QString("%1").arg(qRound(flagRunSeq02.toDouble()),8,2,QChar('0')));
+    tempwidget->setData(count,7,QString("%1").arg(qRound(flagRunSeq03.toDouble()),4,2,QChar('0')));
+    QString tempstr=QString("%1%2%3").arg(qRound(flagRunSeq01.toDouble()),4,2,QChar('0'))
+                            .arg(qRound(flagRunSeq02.toDouble()),8,2,QChar('0'))
+                            .arg(qRound(flagRunSeq03.toDouble()),4,2,QChar('0'));
     tempwidget->setData(count,8,tempstr);
     tempwidget->setData(count,11,ui->lineEdit_Temp->text());
+    int radarstate=0;
     //判定
     if(tempstr=="0000000000000000"){
         tempwidget->setData(count,9,"PASS");
+        radarstate=1;
     }else{
         tempwidget->setData(count,9,"FAIL");
+        radarstate=0;
     }
-
-    tempwidget->setData(count,10,QString("%1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")));
+    QString timeStr=QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    tempwidget->setData(count,10,QString("%1").arg(timeStr));
     //保存到sql数据库
     tempwidget->on_btnSave_clicked();
+
+
+    //启动10s定时器，统计最大数量
+    if(onlineDeviceFlage==0){
+        onlineDeviceFlage=1;
+        {//清空
+            onlineDeviceNum=0;
+
+            mapOnlineDevice.clear();
+        }
+        onlineDeviceTimer->start(10000);
+    }
+
+    QString datastr=QString("帧号:%1 vco:%2")
+            .arg(qRound(frameID.toFloat()),5,10,QChar('0'))
+            .arg(vcoTemp);
+    if(onlineDeviceFlage==1){
+
+        //更新到在线map
+        ItemData itemdata;
+        itemdata.id=id;
+        itemdata.date=QString("帧ID:%1 VCO:%2")
+                .arg(qRound(frameID.toFloat()),5,10,QChar('0'))
+                .arg(vcoTemp);
+        itemdata.state=radarstate;
+        mapOnlineDevice.insert(id,itemdata);
+
+        onlineDeviceForm->updateTime();
+        onlineDeviceNum++;
+    }
+
+
 }
 void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
     qDebug()<<"----------------------slot_EOLInfo----------------------"<<array.size();
@@ -251,6 +359,7 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             model->data(model->index(m_modelIndex, 1),Qt::BackgroundRole);
             model->setData(model->index(m_modelIndex, 1),"FAIL");
         }
+
     }
     //更新数据库
     on_btnSave_clicked();
@@ -535,7 +644,7 @@ void UDSForm::initForm(QString fileName)
     listItem.insert(10, "34 01");
     listItem.insert(11, "36 **");
     listItem.insert(12, "37");
-    listItem.insert(13, "31 01 02 02");
+    listItem.insert(13, "31 01 02 02 01");
     listItem.insert(14, "31 01 FF 01");
     listItem.insert(15, "11 01");
 
@@ -636,6 +745,8 @@ void UDSForm::on_btnSave_clicked()
         model->database().rollback();
         QUIHelper::showMessageBoxError("保存信息失败,信息不能为空,请重新填写!");
     }
+    //保持滚动条在底部
+    ui->tableMain->scrollToBottom();
 }
 
 void UDSForm::on_btnDelete_clicked()
@@ -662,16 +773,18 @@ void UDSForm::on_btnReturn_clicked()
 
 void UDSForm::on_btnClear_clicked()
 {
-//    if (model->rowCount() <= 0) {
-//        return;
-//    }
+    if (model->rowCount() <= 0) {
+        return;
+    }
 
-//    if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
-//        QString sql = "delete from PortInfo";
-//        QSqlQuery query;
-//        query.exec(sql);
-//        model->select();
-//    }
+    int result=QUIHelper::showMessageBoxQuestion("确定要清空所有生产测试数据吗?");
+    if ( result== QMessageBox::Yes) {
+        QString sql = "delete FROM UDSBurnData where 序号 !=0";
+        QSqlQuery query(_db);
+        bool value =query.exec(sql);
+        value=model->select();
+    }else{
+    }
 }
 
 void UDSForm::on_pushButton_clicked()
@@ -1313,14 +1426,15 @@ ECANStatus UDSForm::SendAndReceive(uint can_id,byte data[],int dataLength){
     memset(obj,0,sizeof (VCI_CAN_OBJ));
     for (int i=0;i<n;i++) {
         obj[i].ID=can_id;
-
+        obj[i].SendType = 0;
         obj[i].ExternFlag = 0;
         obj[i].RemoteFlag = 0;
         if ((dataLength - i * 8) >= 8){
             obj[i].DataLen=8;
             memcpy(obj[i].Data,(data+i*8),8);
         }else{
-            obj[i].DataLen=dataLength - i*8;
+            //obj[i].DataLen=dataLength - i*8;
+            obj[i].DataLen=(dataLength - i*8);//(dataLength - i*8);//;
             memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
         }
         qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
@@ -1388,7 +1502,9 @@ void UDSForm::on_lineEdit_PW_editingFinished()
         ui->button_AlgoQuery->setEnabled(true);
         ui->button_Consumer->setEnabled(true);
         ui->comboBox->setEnabled(true);
+        ui->btnClear->setEnabled(true);
 
+        tempwidget->setChildEnable(true);
     }
 }
 
@@ -1402,7 +1518,9 @@ void UDSForm::on_pushButton_2_released()
         return;
     }
     if(ui->pushButton_2->text()=="开始记录"){
+
         ui->pushButton_2->setText("记录中...");
+
     }else{
         ui->pushButton_2->setText("开始记录");
     }
@@ -1589,4 +1707,52 @@ void UDSForm::on_button_Consumer_released()
 {
     ui->comboBox->setCurrentIndex(13);
     on_comboBox_activated(13);
+}
+
+void UDSForm::on_pushButton_onlineTest_released()
+{
+    qsrand(time(NULL));
+    int n = qrand() % 100;    //产生100以内的随机数
+    onlineDeviceForm->addData(n,"222222222",0);
+}
+
+void UDSForm::on_pushButton_3_released()
+{
+    onlineDeviceForm->resetData();
+}
+
+void UDSForm::on_button_export_released()
+{
+    QString file;
+    //开始计算用时
+    QTime time;
+    time.start();
+    int MaxCount1=10000;
+    QStringList content;
+    for (int i = 0; i < MaxCount1; i++) {
+        QStringList list;
+        for (int j = 0; j < 12; j++) {
+            QString text =model->index(i, j).data().toString();
+            list.append(text);
+        }
+
+        content.append(list.join(";"));
+    }
+
+    QList<QString> columnNames;
+    QList<int> columnWidths;
+    columnNames << "序号" <<"详细结果"<<"结果"<< "写入"<< "模式" << "序列号"<< "软件版本" << "硬件版本" <<"Boot版本"<< "雷达参数" << "用户" << "时间" ;
+    columnWidths <<40<<50<<70<<130<<70<<130<<130<<130<<80<<80<<160<<160 ;
+
+    file = qApp->applicationDirPath() +QString("/输出信息/生产测试%1_%2.xls")
+            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm"))
+            .arg(ui->lineEdit_remark->text());
+    ExcelAPI::Instance()->saveExcel(file, "生产测试信息", "所有信息", QString("%1 导出信息").arg(DATETIME), columnNames, columnWidths, content, true, false, 3, "==", "高低温测试");
+
+    double ms = time.elapsed();
+    ui->labInfo1->setText(QString("导出 %1 条数据成功,用时 %2 秒").arg(MaxCount1).arg(QString::number(ms / 1000, 'f', 2)));
+    //如果打开excel会有警告提示,要去掉警告提示请双击运行源码下的 excel禁止提示.reg
+    //qDebug() << "用时" << ExcelThread::Instance()->getTakeTime() << "毫秒";
+    QString url = QString("file:///%1").arg(file);
+    QDesktopServices::openUrl(QUrl(url, QUrl::TolerantMode));
 }

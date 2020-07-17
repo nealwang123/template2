@@ -5,6 +5,7 @@
 #include <QtSql>
 #include "quiwidget.h"
 #include "dbdelegate.h"
+#include "excelapi.h"
 namespace Ui {
 class TemperatureDelegate;
 }
@@ -19,8 +20,11 @@ public:
     bool createConnection();
     int addRow();
     void setData(int row,int col,QString data);
+    void setChildEnable(bool);
 private slots:
     void initForm(QString fileName);
+    void on_button_export_released();
+
 public slots:
     void on_btnAdd_clicked();
     void on_btnSave_clicked();

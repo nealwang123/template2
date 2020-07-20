@@ -28,6 +28,19 @@
       <attribute name="title">
        <string>Tab 2</string>
       </attribute>
+      <widget class="QPushButton" name="pushButton_Config">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>11</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>配置</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>

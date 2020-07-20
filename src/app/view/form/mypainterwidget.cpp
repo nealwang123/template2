@@ -43,17 +43,17 @@ void MyPainterWidget::draw_point(int const x, int const y, QColor const c, Frame
     QPainter painter(&Pix);             // 创建QPainter一个对象
     QPen pen;
     //pen.setStyle(Qt::DashLine);
-    pen.setColor(Qt::red);           // 设置画笔为黄色
-    pen.setWidth(3);
-    painter.setPen(pen);
+
     painter.save(); //保存坐标系状态
     painter.translate(this->width()*App::ZeroPointX,App::ZeroPointY*this->height()); //将点（100，100）设为原点
     //
     //painter.setBrush(Qt::gray);
-
-    painter.drawRect(-10,-10,20,20);
-    painter.drawRect(-5,-5,10,10);
-
+    pen.setColor(Qt::gray);           // 设置画笔为黄色
+    pen.setWidth(1);
+    painter.setPen(pen);
+    painter.drawLine(0,-2000,0,300);
+    painter.drawLine(-500,0,500,0);
+    pen.setWidth(2);
     for(int j=0;j<frame.num_obj;j++){
         int id=0;
         memcpy(&id,frame.objectData[j].id,sizeof(int));
@@ -131,4 +131,7 @@ void MyPainterWidget::paintEvent(QPaintEvent *)
 {
     QPainter Painter(this);
     Painter.drawPixmap(0, 0, this->width(), this->height(),Pix);
+}
+void MyPainterWidget::clearPath(){
+     memset(mypath,0,100*sizeof (MyPoints));
 }

@@ -60,8 +60,8 @@ int main(int argc, char *argv[])
 //    frm.show();
 //    frmMain frm;
     //初始化托盘
-    TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
-//    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
+    //TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
+    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
 //    TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
 
     TrayIcon::Instance()->setIcon(":/main.ico");
@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
     TrayIcon::Instance()->setVisible(true);
 
     //初始化主窗体
-    qui.setMainWidget(&c.getUDSForm());
-//    qui.setMainWidget(&c.getSocketFormMain());
+//    qui.setMainWidget(&c.getUDSForm());
+    qui.setMainWidget(&c.getSocketFormMain());
     qui.setTitle(nameversion);
     qui.setMinHide(false);
     qui.setAlignment(Qt::AlignCenter);

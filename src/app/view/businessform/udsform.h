@@ -12,6 +12,7 @@
 #include <QStandardItemModel>
 #include<QtEndian>
 #include"olinedeviceform.h"
+#include"mainform.h"
 
 #define SQLDATAINDEX 7
 namespace Ui {
@@ -67,7 +68,7 @@ private:
 
     QList<QString> columnNames; //列名集合
     QList<int> columnWidths;    //列宽集合
-    QSqlTableModel *model;      //数据表格模型
+    MySubClassedSqlTableModel *model;      //数据表格模型
 
     QSqlDatabase _db;
     QStringList m_deviceInfoList;
@@ -106,6 +107,9 @@ private:
     //算法参数窗口
     AlgorithmParaDelegate* algowiget;
 
+    //安装标定
+    MainForm installAlign;
+
     //
     //QVector<CLASS*> mClasses;   //模拟数据
     //在线设备列表
@@ -116,6 +120,9 @@ private:
     int onlineDeviceNum;
     QMap<int,ItemData>mapOnlineDevice;
     QMap<int,ItemData>mapAllDevice;
+
+    //模式标识
+    int guiworkmode;
 
 private slots:
     void initForm(QString fileName);
@@ -156,6 +163,8 @@ private slots:
     void on_pushButton_onlineTest_released();
     void on_pushButton_3_released();
     void on_button_export_released();
+
+    void on_tabWidget_currentChanged(int index);
 };
 
 #endif // UDSFORM_H

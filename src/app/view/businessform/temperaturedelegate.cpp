@@ -91,7 +91,7 @@ void TemperatureDelegate::initForm(QString fileName)
    ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
    ui->tableMain->setEditTriggers(QAbstractItemView::CurrentChanged | QAbstractItemView::DoubleClicked);
 
-   model = new QSqlTableModel(this,_db);
+   model = new MySubClassedSqlTableModel(this,_db);
    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
    //设置表名
 //    model->setTable("PortInfo");

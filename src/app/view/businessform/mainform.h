@@ -1,4 +1,4 @@
-#ifndef MAINFORM_H
+﻿#ifndef MAINFORM_H
 #define MAINFORM_H
 
 #include <QWidget>
@@ -13,6 +13,8 @@
 #include<QTimer>
 #include"zhelpers.hpp"
 #include<QStandardItemModel>
+#include"canapi.h"
+
 namespace Ui {
 class MainForm;
 }
@@ -41,6 +43,8 @@ private slots:
     void on_pushButton_6_clicked();
 
     void on_pushButton_7_clicked();
+
+    void on_pushButton_4_released();
 
 private:
     Ui::MainForm *ui;

@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>7</number>
+      <number>5</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -2043,21 +2043,28 @@
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="title">
-       <string>标定测试</string>
+       <string>安装标定</string>
       </attribute>
-      <widget class="QLabel" name="label_21">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>140</y>
-         <width>54</width>
-         <height>12</height>
-        </rect>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <property name="spacing">
+        <number>0</number>
        </property>
-       <property name="text">
-        <string>暂无</string>
+       <property name="leftMargin">
+        <number>0</number>
        </property>
-      </widget>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget_installAlign" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">

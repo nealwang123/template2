@@ -199,7 +199,7 @@ void MainForm::on_pushButton_4_clicked()
     //状态复位
     m_sendFrameIndex=0;
     m_getResultCount=0;
-    for(int i=0;i<18;i++){
+    for(int i=0;i<18;i++){//结果清空
         demarcationForm->setData(i,11," ");
 
     }
@@ -215,7 +215,7 @@ void MainForm::slot_commandTimer(){
         m_sendFrameIndex=0;
         m_getResultCount=0;
         commandTimer->stop();
-        ui->textBrowser->append("一次标定动作完成！！！");
+        ui->textBrowser->append("一次安装标定动作完成！！！");
 
         return;
     }
@@ -228,8 +228,24 @@ void MainForm::slot_commandTimer(){
             .arg(m_senddata)
             .arg(m_sendFrameIndex,4,10,QChar('0'));
     header=header+senddata;
+    //从数据库获取数据，发送指令
+    if(0)
+        emit sig_msgToRadar(header);
+    qDebug()<<"m_sendFrameIndex:"<<m_sendFrameIndex<<"m_senddata:"<<m_senddata;
+    QByteArray arry=QUIHelper::hexStrToByteArray(m_senddata);
+    //直接发送
+    VCI_CAN_OBJ *obj=new VCI_CAN_OBJ[1];
+    memset(obj,0,sizeof (VCI_CAN_OBJ));
+    obj[0].ID=0x7A1;
+    obj[0].SendType = 0;
+    obj[0].ExternFlag = 0;
+    obj[0].RemoteFlag = 0;
+    obj[0].DataLen=8;
+    memcpy(obj[0].Data,arry.data(),8);
+    qDebug()<<" obj[0].ID"<<QString("%1").arg(obj[0].ID,4,16,QChar('0'))<<"obj[0].DataLen"<<obj[0].DataLen;
+    int ret=VCI_Transmit(4,0,0,&obj[0],1);
+    qDebug()<<"ret=="<<ret;
 
-    emit sig_msgToRadar(header);
 }
 //断开设备
 void MainForm::on_pushButton_5_clicked()
@@ -275,7 +291,7 @@ void MainForm::recThread(){
  * function:雷达反馈数据更新到界面
  */
 void MainForm::slot_msgToPC(QString str){
-//    qDebug()<<"MainForm::slot_msgToPC:"<<str;
+    qDebug()<<"MainForm::slot_msgToPC:"<<str;
 
     static QString err_resultstr;
 //    qDebug()<<"str.len"<<str.length()<<str.mid(34,23);
@@ -359,11 +375,14 @@ void MainForm::slot_msgToPC(QString str){
             }
             state+=" PASS";
             demarcationForm->setData(m_sendFrameIndex,11,"PASS");
+
             demarcationForm->setData(m_sendFrameIndex+1,11,"PASS");
+
             QModelIndex index = model->index(m_sendFrameIndex+1, 0, QModelIndex());
             ui->tableView->setCurrentIndex(index);
             ui->tableView->selectRow(m_sendFrameIndex+1);
             m_sendFrameIndex+=2;
+
         }else{//指令格式异常
             ui->textBrowser->append("command format error!");
         }
@@ -394,4 +413,9 @@ void MainForm::slot_stateInfoDataModel(QString str){
 void MainForm::on_pushButton_7_clicked()
 {
     recvTimer->start(100);
+}
+
+void MainForm::on_pushButton_4_released()
+{
+
 }

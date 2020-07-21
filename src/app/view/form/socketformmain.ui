@@ -38,7 +38,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>配置</string>
+        <string>配置（清空）</string>
        </property>
       </widget>
      </widget>

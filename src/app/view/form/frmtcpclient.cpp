@@ -175,10 +175,6 @@ void frmTcpClient::handleMsg(){
     //与QDataStream绑定，方便操作。
     QDataStream packet(m_buffer);
     packet.setByteOrder(QDataStream::BigEndian);
-
-    packet >> type_id >> mesg_len;
-    totalLen = m_buffer.size();
-    //小端转换
     //packet >> type_id >> mesg_len;
     //totalLen = m_buffer.size();
     while(totalLen >= 4){
@@ -206,12 +202,6 @@ void frmTcpClient::handleMsg(){
 
     while(1)
     {
-        //如果不够长度等够了在来解析
-        if(totalLen <len)
-        {
-            break;
-        }
-        qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
         //如果不够长度等够了在来解析
         if(totalLen <len)
         {
@@ -286,9 +276,7 @@ void frmTcpClient::handleMsg(){
 //接收消息
 void frmTcpClient::slot_readmesg()
 {
-    qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
     //qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
-
     QFuture<void> f1 =QtConcurrent::run(this,&frmTcpClient::handleMsg);
 
 }

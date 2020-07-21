@@ -38,7 +38,7 @@ UDSForm::UDSForm(QWidget *parent) :
     connect(&uDS,&UDS::emitEventRecv,this,&UDSForm::slot_UDSFrameRecv,Qt::QueuedConnection);
     connect(&uDS,&UDS::emitEOLInfo,this,&UDSForm::slot_EOLInfo,Qt::QueuedConnection);
     connect(&uDS,&UDS::emitTemperatureTest,this,&UDSForm::slot_TemperatureTest,Qt::QueuedConnection);
-
+    connect(&uDS,&UDS::installAlignData,&installAlign,&MainForm::slot_msgToPC,Qt::QueuedConnection);
 
     sendCommandTimer=new QTimer(this);
     sendCommandTimer->setSingleShot(true);
@@ -113,6 +113,14 @@ UDSForm::UDSForm(QWidget *parent) :
         onlineDeviceTimer=new QTimer();
         onlineDeviceTimer->setSingleShot(true);
         connect(onlineDeviceTimer,&QTimer::timeout,this,&UDSForm::slot_onlineDeviceTimer);
+    }
+
+
+    {//安装标定
+        QVBoxLayout *laAlign=new QVBoxLayout;
+        laAlign->addWidget(&installAlign);
+        ui->widget_installAlign->setLayout(laAlign);
+
     }
 }
 
@@ -565,7 +573,7 @@ void UDSForm::initForm(QString fileName)
     ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
     ui->tableMain->setEditTriggers(QAbstractItemView::CurrentChanged | QAbstractItemView::DoubleClicked);
 
-    model = new QSqlTableModel(this,_db);
+    model = new MySubClassedSqlTableModel(this,_db);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     //设置表名
 //    model->setTable("PortInfo");
@@ -1226,6 +1234,7 @@ void UDSForm::on_cBox_command_activated(int index)
 void UDSForm::on_pushButton_released()
 {
     if(ui->pushButton->text()=="开始升级"){
+        uDS.setWorkMode(UDSUPDATE);
         recorveyState();
         slot_demarcationTimer();
         ui->pushButton->setText("升级...");
@@ -1755,4 +1764,31 @@ void UDSForm::on_button_export_released()
     //qDebug() << "用时" << ExcelThread::Instance()->getTakeTime() << "毫秒";
     QString url = QString("file:///%1").arg(file);
     QDesktopServices::openUrl(QUrl(url, QUrl::TolerantMode));
+}
+
+
+void UDSForm::on_tabWidget_currentChanged(int index)
+{
+
+    guiworkmode=uDS.getWorkMode();
+    if(index==5){
+        if(uDS.getWorkMode()!=ALIGN){
+            QUIHelper::showMessageBoxInfo("切换至整车EOL标定功能");
+            uDS.setWorkMode(ALIGN);
+
+        }
+    }else if(index==1){
+        if(uDS.getWorkMode()!=UDSUPDATE){
+            QUIHelper::showMessageBoxInfo("切换至UDS升级功能");
+            uDS.setWorkMode(UDSUPDATE);
+
+        }
+    }else if(index==2||index==3||index==4){
+        if(uDS.getWorkMode()!=FACTORY&&uDS.getWorkMode()!=CONSUMER){
+            QUIHelper::showMessageBoxInfo("切换至生产测试功能");
+            uDS.setWorkMode(FACTORY);
+
+        }
+    }
+    qDebug()<<"guiworkmode"<<guiworkmode<<"uDS.setWorkMode"<<uDS.getWorkMode();
 }

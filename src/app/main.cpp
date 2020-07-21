@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     App::readDeviceData();
     //管理目录列表，不存在则创建
     QUIHelper::newDir("输出信息");
-    QString _version("1.1.4");
+    QString _version("1.1.5");
     QString nameversion("测试程序"+_version);
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion(_version);
@@ -61,16 +61,16 @@ int main(int argc, char *argv[])
 //    frmMain frm;
     //初始化托盘
     //TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
-    TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
-//    TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
+    //TrayIcon::Instance()->setMainWidget(&c.getSocketFormMain());
+    TrayIcon::Instance()->setMainWidget(&c.getUDSForm());
 
     TrayIcon::Instance()->setIcon(":/main.ico");
     TrayIcon::Instance()->setToolTip(nameversion);
     TrayIcon::Instance()->setVisible(true);
 
     //初始化主窗体
-//    qui.setMainWidget(&c.getUDSForm());
-    qui.setMainWidget(&c.getSocketFormMain());
+    qui.setMainWidget(&c.getUDSForm());
+    //qui.setMainWidget(&c.getSocketFormMain());
     qui.setTitle(nameversion);
     qui.setMinHide(false);
     qui.setAlignment(Qt::AlignCenter);

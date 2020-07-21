@@ -85,6 +85,7 @@ public:
     FACTORY = 0x00,//工厂模式
     CONSUMER = 0x01,//客户模式
     UDSUPDATE = 0x02,//UDS升级模式
+    ALIGN=0x03,//安装标定模式
 };
  class SeedKey//发送解锁密钥
  {
@@ -190,6 +191,7 @@ public:
     quint8 getdataVerify();
     quint8 getconsistencyVerify();
     void setWorkMode(int mode);
+    int getWorkMode();
 private:
     int m_exitStateThread1;
     int m_exitStateThread2;
@@ -206,6 +208,7 @@ signals:
     void emitEventRecv(VCI_CAN_OBJ obj);
     void emitEOLInfo(QString respHead,QByteArray array);
     void emitTemperatureTest(int id,QString rawdata,QStringList list);
+    void installAlignData(QString data);
 public slots:
 
 };

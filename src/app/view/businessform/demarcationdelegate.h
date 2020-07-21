@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QtConcurrent>
 #include "zhelpers.hpp"
+#include "mysubclassedsqltablemodel.h"
 namespace Ui {
 class DemarcationDelegate;
 }

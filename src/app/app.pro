@@ -14,7 +14,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG -= qml_debug
 #CONFIG += console
-TARGET = UDSApp
+TARGET = RadarTools
 TEMPLATE = app
 DESTDIR = $$IDE_APP_PATH
 

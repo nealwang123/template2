@@ -6,6 +6,7 @@
 #include "quiwidget.h"
 #include "dbdelegate.h"
 #include "excelapi.h"
+#include "mysubclassedsqltablemodel.h"
 namespace Ui {
 class TemperatureDelegate;
 }
@@ -34,7 +35,7 @@ public slots:
 private:
     QList<QString> columnNames; //列名集合
     QList<int> columnWidths;    //列宽集合
-    QSqlTableModel *model;      //数据表格模型
+    MySubClassedSqlTableModel *model;      //数据表格模型
     QSqlDatabase _db;
 private:
     Ui::TemperatureDelegate *ui;

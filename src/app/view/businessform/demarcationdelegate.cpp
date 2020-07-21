@@ -131,7 +131,7 @@ void DemarcationDelegate::initForm(QString fileName)
     ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
     ui->tableMain->setEditTriggers(QAbstractItemView::CurrentChanged | QAbstractItemView::DoubleClicked);
 
-    model = new QSqlTableModel(this,_db);
+    model = new MySubClassedSqlTableModel(this,_db);
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     //设置表名
 //    model->setTable("PortInfo");
@@ -383,4 +383,6 @@ void DemarcationDelegate::getDataByIndex(int index,QString &send_data,QString &r
 }
 void DemarcationDelegate::setData(int row,int clown,QString data){
     model->setData(model->index(row, clown), data);
+
+    ui->tableMain->scrollTo(model->index(row, 0));
 }

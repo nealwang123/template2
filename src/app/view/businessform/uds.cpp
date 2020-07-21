@@ -359,9 +359,43 @@ void UDS::ReceiveDataProc(){
                     VCI_CAN_OBJ ReceiveOneFrame;
 
                     memcpy(&ReceiveOneFrame,&gRecMsgBuf[i],sizeof (VCI_CAN_OBJ));
-                    //qDebug()<<("recvdata:"+QUIHelper::byteArrayToHexStr(QByteArray((char *)ReceiveOneFrame.Data)));
+                    //
+//                    QString temp,data;
+
+//                    for(int j=0;j<ReceiveOneFrame.DataLen;j++){
+//                        temp=QString("%1").arg(ReceiveOneFrame.Data[j],2,16,QChar('0'));
+//                        data.append(temp);
+//                        data.append(" ");
+//                    }
+//                    QTime now=QTime::fromMSecsSinceStartOfDay(qRound(ReceiveOneFrame.TimeStamp*0.1));
+
+//                    qDebug()<<QString("ID:0x%1 Data:%2 time:%3 %5%6").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
+//                              .arg(data)
+//                              .arg(ReceiveOneFrame.TimeStamp,8,16,QChar('0'))
+//                              .arg(now.toString("hh:mm:ss.zzz."))
+//                              .arg(QString::number(ReceiveOneFrame.TimeStamp%10));
+                    //安装标定模式，进入扩展会话模式
+                    if(workmode==ALIGN&&(ReceiveOneFrame.ID==0x7A9||ReceiveOneFrame.ID==0x4E0)){
+                        QString temp,data;
+                        for(int j=0;j<ReceiveOneFrame.DataLen;j++){
+                            temp=QString("%1").arg(ReceiveOneFrame.Data[j],2,16,QChar('0'));
+                            data.append(temp);
+                            data.append(" ");
+                        }
+                        QString header=QString("TOPC %1 %2 %3").arg(4).arg(0).arg(0);
+                        QString senddata=QString(" %1 %2 %3 %4 %5")
+                                .arg(ReceiveOneFrame.TimeStamp,8,16,QChar('0'))
+                                .arg(ReceiveOneFrame.ID,8,16,QChar('0'))
+                                .arg(ReceiveOneFrame.DataLen,4,10,QChar('0'))
+                                .arg(data)
+                                .arg(i,4,10,QChar('0'));
+                        header=header+senddata;
+
+                        emit(installAlignData(header));
+
+                    }
                     //工厂模式或者客户模式下
-                    if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode!=UDSUPDATE))){
+                    else if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode==FACTORY||workmode==CONSUMER))){
 //                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
 //                               <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8")
 //                                .arg(ReceiveOneFrame.Data[0],2,16,QChar('0'))
@@ -670,4 +704,8 @@ bool UDS::udsSleep(int sec)
 void UDS::setWorkMode(int mode){
 
     workmode=mode;
+}
+int  UDS::getWorkMode(){
+
+    return workmode;
 }

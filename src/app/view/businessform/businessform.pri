@@ -15,6 +15,7 @@ HEADERS += \
     $$PWD/itemdef.h \
     $$PWD/itemdelegate.h \
     $$PWD/mainform.h \
+    $$PWD/mysubclassedsqltablemodel.h \
     $$PWD/olinedeviceform.h \
     $$PWD/temperaturedelegate.h \
     $$PWD/uds.h \

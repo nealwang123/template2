@@ -140,6 +140,7 @@ class UDS : public QObject
 {
     Q_OBJECT
 public:
+    static UDS *Instance();
     explicit UDS(QObject *parent = nullptr);
     const static uint SEND_CAN_ID = 0x7A1;//uds send
     const static uint FUNCTION_ID = 0x7DF;
@@ -186,13 +187,17 @@ public:
     ECANStatus sendFirstFrame(byte data[], int dataLength,UDSDataFrame frame);
     bool udsSleep(int sec);
     int getNextState();
+    void setNextState();
     SeedKey seedkey;
     QString getSeedKey();
     quint8 getdataVerify();
     quint8 getconsistencyVerify();
     void setWorkMode(int mode);
     int getWorkMode();
+    //非uds带交互发送
+    ECANStatus NormalSendAndReceive(uint can_id,byte data[],int dataLength);
 private:
+    static QScopedPointer<UDS> self;
     int m_exitStateThread1;
     int m_exitStateThread2;
     QMutex mutex;

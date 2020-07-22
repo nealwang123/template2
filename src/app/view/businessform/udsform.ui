@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>6</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -2063,6 +2063,16 @@
        </property>
        <item>
         <widget class="QWidget" name="widget_installAlign" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_9">
+      <attribute name="title">
+       <string>EOL标定</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_30">
+       <item>
+        <widget class="QWidget" name="widget_Initial" native="true"/>
        </item>
       </layout>
      </widget>

@@ -1,5 +1,18 @@
 ﻿#include "uds.h"
 bool UDS::mConnected = false;
+QScopedPointer<UDS> UDS::self;
+UDS *UDS::Instance()
+{
+    if (self.isNull()) {
+        QMutex mutex;
+        QMutexLocker locker(&mutex);
+        if (self.isNull()) {
+            self.reset(new UDS);
+        }
+    }
+
+    return self.data();
+}
 UDS::UDS(QObject *parent) : QObject(parent)
 {
     qDebug()<<"AbstractDevice construct!"<<QThread::currentThread();
@@ -105,6 +118,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
        // Array.Copy(data, 0, frame[0].Data, 1, data.Length);//用于矩阵中数组的复制操作
         frame[0].DataLen = 8;/// (byte)data.Length;
 
+        setNextState();
         //进行单帧的发送
         if (CANApi::SendOneFrame(0, 0, frame) != _STATUS_OK)
         {
@@ -113,6 +127,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
         emitEventRecv(frame[0]);
 
         //Console.WriteLine("sendData:"+ QUIHelper::byteArrayToHexStr(frame[0].Data));
+
         if (udsSleep((int)TimeOut*2)){
             //雷达响应
             if(m_waitforNext==1){//正响应
@@ -188,6 +203,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
         UDSDataFrame frame;
         //CAN地址获取
         frame.canID = canID;
+        setNextState();
         //step9：首帧发送
         if (sendFirstFrame(data,dataLength, frame) != _STATUS_OK)
         {
@@ -230,7 +246,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
                     memcpy(cAN_OBJs[0].Data+1,serialFrameGlabol[count].data,serialFrameGlabol[count].length);
                     //Array.Copy(serialFrameGlabol[count].data, 0, cAN_OBJs[0].data, 1, serialFrameGlabol[count].length);
                     emitEventRecv(cAN_OBJs[0]);
-
+                    setNextState();
                     //连续帧中单帧数据的发送
                     if (CANApi::SendOneFrame(0, 0, cAN_OBJs) != _STATUS_OK)
                     {
@@ -283,6 +299,10 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
 int UDS::getNextState(){
     return m_waitforNext;
 }
+void UDS::setNextState(){
+    m_waitforNext=0;
+}
+
 /// <summary>
 /// 接收数据处理
 /// </summary>
@@ -396,25 +416,14 @@ void UDS::ReceiveDataProc(){
                     }
                     //工厂模式或者客户模式下
                     else if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode==FACTORY||workmode==CONSUMER))){
-//                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
-//                               <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8")
-//                                .arg(ReceiveOneFrame.Data[0],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[1],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[2],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[3],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[4],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[5],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[6],2,16,QChar('0'))
-//                                .arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
+                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))<<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8").arg(ReceiveOneFrame.Data[0],2,16,QChar('0')).arg(ReceiveOneFrame.Data[1],2,16,QChar('0')).arg(ReceiveOneFrame.Data[2],2,16,QChar('0')).arg(ReceiveOneFrame.Data[3],2,16,QChar('0')).arg(ReceiveOneFrame.Data[4],2,16,QChar('0')).arg(ReceiveOneFrame.Data[5],2,16,QChar('0')).arg(ReceiveOneFrame.Data[6],2,16,QChar('0')).arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
                         QByteArray b ;
                         b.resize(ReceiveOneFrame.DataLen);
                         b=QByteArray((const char*)ReceiveOneFrame.Data);
                         QString str=QUIHelper::byteArrayToAsciiStr(b);
                         str=str.left(4);
                         static qint32 lastlen=0;
-
                         if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="PARA"){
-
                             respHead=str;
                             lastlen=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
                             qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
@@ -429,7 +438,6 @@ void UDS::ReceiveDataProc(){
 
                         }else if(str=="GBYE"){//异常指令，相当于uds异常帧，帧重发
                             m_waitforNext=-1;
-
                         }else{//非限定字符串
                             if(lastlen>0){//限定字符串后续有效内容
                                 qDebug()<<"lastlen"<<lastlen<<"ReceiveOneFrame.DataLen"<<ReceiveOneFrame.DataLen<<" (lastlen-ReceiveOneFrame.DataLen)"<<(lastlen-ReceiveOneFrame.DataLen);
@@ -451,6 +459,7 @@ void UDS::ReceiveDataProc(){
                                         emit(emitEOLInfo(respHead,m_recvArray));
                                         qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
                                         m_waitforNext=1;
+                                        qDebug()<<"m_waitforNext"<<m_waitforNext;
                                         index=0;
                                     }
                                 }
@@ -471,7 +480,7 @@ void UDS::ReceiveDataProc(){
                         }
                     }
                     //step7：判断接收到的数据帧的ID地址是否与设定地址相同
-                    else if (RECEIVE_CAN_ID == ReceiveOneFrame.ID)
+                    else if (RECEIVE_CAN_ID == ReceiveOneFrame.ID&&(workmode==UDSUPDATE))
                     {
                         //step8：检查登陆日志文件
                         //logmanager.Writelog(logmanager.ArrayToString(frame.Data), RECEIVE_CAN_ID.ToString("X3") + "  接收");
@@ -685,11 +694,11 @@ void UDS::stateThread(){
 }
 bool UDS::udsSleep(int sec)
 {
-    m_waitforNext=0;
+
     QTime dieTime = QTime::currentTime().addMSecs(sec);
     while (QTime::currentTime() < dieTime) {
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-        //qDebug()<<"延时等待。。。";
+        //qDebug()<<"延时等待。。。"<<m_waitforNext;
         if(m_waitforNext==1){//正响应
             qDebug()<<"延时等待结束 正响应";
             return true;
@@ -697,6 +706,7 @@ bool UDS::udsSleep(int sec)
             qDebug()<<"延时等待结束 负响应";
             return false;
         }
+
 
     }
     return false;
@@ -708,4 +718,49 @@ void UDS::setWorkMode(int mode){
 int  UDS::getWorkMode(){
 
     return workmode;
+}
+//非uds
+ECANStatus UDS::NormalSendAndReceive(uint can_id,byte data[],int dataLength){
+    int n=0;
+    if (dataLength % 8 == 0){
+        n=dataLength/8;
+    }else{
+        n=(dataLength/8)+1;
+    }
+    VCI_CAN_OBJ *obj=new VCI_CAN_OBJ[n];
+    memset(obj,0,sizeof (VCI_CAN_OBJ));
+    for (int i=0;i<n;i++) {
+        obj[i].ID=can_id;
+        obj[i].SendType = 0;
+        obj[i].ExternFlag = 0;
+        obj[i].RemoteFlag = 0;
+        if ((dataLength - i * 8) >= 8){
+            obj[i].DataLen=8;
+            memcpy(obj[i].Data,(data+i*8),8);
+        }else{
+            //obj[i].DataLen=dataLength - i*8;
+            obj[i].DataLen=(dataLength - i*8);//(dataLength - i*8);//;
+            memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
+        }
+        qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
+        setNextState();
+        int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        //QThread::msleep(1);
+        qDebug()<<"ret=="<<ret;
+    }
+    //int ret=VCI_Transmit(4,0,0,obj,n);
+    //int ret=VCI_Transmit(4,0,0,obj,n);
+    qDebug()<<"uDS.get"<<getNextState();
+    if(udsSleep(2000)){
+        qDebug()<<"指令正常完成！";
+    }else{
+
+        if(getNextState()==-1){
+            qDebug()<<"指令异常！ _STATUS_ERR";
+            return _STATUS_ERR;
+        }
+        qDebug()<<"指令异常！ _STATUS_TIME_OUT";
+        return _STATUS_TIME_OUT;
+    }
+    return _STATUS_OK;
 }

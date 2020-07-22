@@ -13,6 +13,7 @@
 #include<QtEndian>
 #include"olinedeviceform.h"
 #include"mainform.h"
+#include"initialphaseform.h"
 
 #define SQLDATAINDEX 7
 namespace Ui {
@@ -110,6 +111,8 @@ private:
     //安装标定
     MainForm installAlign;
 
+    //
+    InitialPhaseForm initialphaseform;
     //
     //QVector<CLASS*> mClasses;   //模拟数据
     //在线设备列表

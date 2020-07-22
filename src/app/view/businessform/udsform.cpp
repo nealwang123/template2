@@ -116,12 +116,18 @@ UDSForm::UDSForm(QWidget *parent) :
     }
 
 
-    {//安装标定
+    {//安装标定界面
         QVBoxLayout *laAlign=new QVBoxLayout;
         laAlign->addWidget(&installAlign);
         ui->widget_installAlign->setLayout(laAlign);
 
     }
+    {//初相校准界面
+        QVBoxLayout* initial=new QVBoxLayout;
+        initial->addWidget(&initialphaseform);
+        ui->widget_Initial->setLayout(initial);
+    }
+
 }
 
 UDSForm::~UDSForm()
@@ -918,7 +924,7 @@ void UDSForm::on_button_Connect_released()
         {
             ui->textBrowser_Debug->append("CAN通信启动成功");
             UDS::mConnected = true;//证明设备当前处于连接状态
-            uDS.startHandleThread();//启动CAN帧数据的接收
+            UDS::Instance()->startHandleThread();//启动CAN帧数据的接收
         }
         else
         {
@@ -939,7 +945,7 @@ void UDSForm::on_button_Connect_released()
             QUIHelper::showMessageBoxError("设备关闭失败");
             return;
         }
-        //uDS.setExitState(1,0);//启动CAN帧数据的接收
+        //UDS::Instance()->setExitState(1,0);//启动CAN帧数据的接收
         ui->button_Connect->setText("连接");
     }
 }
@@ -1059,7 +1065,7 @@ ECANStatus UDSForm::writeBinBlockData(QList<BinRecordBlock> BinBlockList, int ty
         }
         ui->progressBar->setValue(100*i/cansendframe.count());
         qDebug()<<"send:"<<(QUIHelper::byteArrayToHexStr(arr))<<"i="<<i<<"cansendframe.count()="<<cansendframe.count();
-        result=uDS.SendAndReceive( UDS::SEND_CAN_ID,cansendframe[i].DATA,1024+2);
+        result=UDS::Instance()->SendAndReceive( UDS::SEND_CAN_ID,cansendframe[i].DATA,1024+2);
         if (result != _STATUS_OK)
         {
             return result;
@@ -1075,10 +1081,10 @@ ECANStatus UDSForm::writeBinBlockData(QList<BinRecordBlock> BinBlockList, int ty
     //consistencyVerify();
     sendCommandByIndex(13);
     //获取校验结果
-    if(uDS.getdataVerify()!=0||uDS.getconsistencyVerify()!=0){
+    if(UDS::Instance()->getdataVerify()!=0||UDS::Instance()->getconsistencyVerify()!=0){
         QUIHelper::showMessageBoxError(QString("数据校验：%1;一致性校验:%2")
-                                       .arg(uDS.getdataVerify(),2,16,QChar('0'))
-                                       .arg(uDS.getconsistencyVerify(),2,16,QChar('0'))
+                                       .arg(UDS::Instance()->getdataVerify(),2,16,QChar('0'))
+                                       .arg(UDS::Instance()->getconsistencyVerify(),2,16,QChar('0'))
                                        );
     }else{
         //复位ECU
@@ -1089,7 +1095,7 @@ ECANStatus UDSForm::writeBinBlockData(QList<BinRecordBlock> BinBlockList, int ty
     ui->progressBar->setValue(100);
     //状态恢复
     /*
-    result = uDS.SendAndReceive(cansendframe[0].DATA, UDS.SEND_CAN_ID);
+    result = UDS::Instance()->SendAndReceive(cansendframe[0].DATA, UDS::Instance()->SEND_CAN_ID);
     Console.WriteLine(Can_Card_Call.byteToHexStr(cansendframe[0].DATA));
     if (result != ECANStatus.STATUS_OK)
     {
@@ -1179,8 +1185,8 @@ void UDSForm::on_cBox_command_activated(int index)
     qDebug()<<"on_cBox_command_activated"<<index;
     commandIndex = ui->cBox_command->currentIndex();
     if (ui->cBox_command->currentIndex() == 5){//发送key
-        qDebug()<<"uDS.getSeedKey():"<<uDS.getSeedKey();
-        selfSendStr = "27 02 " + uDS.getSeedKey();
+        qDebug()<<"UDS::Instance()->getSeedKey():"<<UDS::Instance()->getSeedKey();
+        selfSendStr = "27 02 " + UDS::Instance()->getSeedKey();
         //ui->cBox_command->setCurrentText(selfSendStr);
     }else if (ui->cBox_command->currentIndex() == 6){//写入数据
 
@@ -1234,7 +1240,7 @@ void UDSForm::on_cBox_command_activated(int index)
 void UDSForm::on_pushButton_released()
 {
     if(ui->pushButton->text()=="开始升级"){
-        uDS.setWorkMode(UDSUPDATE);
+        UDS::Instance()->setWorkMode(UDSUPDATE);
         recorveyState();
         slot_demarcationTimer();
         ui->pushButton->setText("升级...");
@@ -1315,7 +1321,7 @@ void UDSForm::on_buttonSingleTest_released()
     }
 
     QByteArray arry=QUIHelper::hexStrToByteArray(strc);
-    ECANStatus result=uDS.SendAndReceive(UDS::SEND_CAN_ID,(byte*)arry.data(),arry.count());
+    ECANStatus result=UDS::Instance()->SendAndReceive(UDS::SEND_CAN_ID,(byte*)arry.data(),arry.count());
     if ( result== _STATUS_OK){
         ui->textBrowser_Debug->append("Sucess:服务名:"+listcommandKey[commandIndex]+"状态：OK");
     }else if ( result== _STATUS_ERR){
@@ -1394,14 +1400,14 @@ ECANStatus UDSForm::eolSendCommandOnce(){
     //生成指令
     QByteArray array=QUIHelper::hexStrToByteArray(m_eolselfSendStr);
     qDebug()<<"m_eolselfSendStr:"<<m_eolselfSendStr<<"array.size()"<<array.size();
-    uDS.setWorkMode(FACTORY);
+    UDS::Instance()->setWorkMode(FACTORY);
     QPixmap pixmap(QString(":/imageTest/buttongray.png"));
     ui->label_state->setFixedSize(64,64);
     QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
     ui->label_state->setPixmap(fitpixmap);
     ui->label_state->setScaledContents(true);
     //发送指令
-    ECANStatus ret= SendAndReceive(CANApi::SEND_CAN_ID_Self1,(byte*)array.data(),array.size());
+    ECANStatus ret= UDS::Instance()->NormalSendAndReceive(CANApi::SEND_CAN_ID_Self1,(byte*)array.data(),array.size());
     if(ret==_STATUS_OK){
         QPixmap pixmap(QString(":/imageTest/buttongreen.png"));
         ui->label_state->setFixedSize(64,64);
@@ -1423,52 +1429,7 @@ ECANStatus UDSForm::eolSendCommandOnce(){
     }
     return ret;
 }
-//非uds
-ECANStatus UDSForm::SendAndReceive(uint can_id,byte data[],int dataLength){
-    int n=0;
-    if (dataLength % 8 == 0){
-        n=dataLength/8;
-    }else{
-        n=(dataLength/8)+1;
-    }
-    VCI_CAN_OBJ *obj=new VCI_CAN_OBJ[n];
-    memset(obj,0,sizeof (VCI_CAN_OBJ));
-    for (int i=0;i<n;i++) {
-        obj[i].ID=can_id;
-        obj[i].SendType = 0;
-        obj[i].ExternFlag = 0;
-        obj[i].RemoteFlag = 0;
-        if ((dataLength - i * 8) >= 8){
-            obj[i].DataLen=8;
-            memcpy(obj[i].Data,(data+i*8),8);
-        }else{
-            //obj[i].DataLen=dataLength - i*8;
-            obj[i].DataLen=(dataLength - i*8);//(dataLength - i*8);//;
-            memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
-        }
-        qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
-        int ret=VCI_Transmit(4,0,0,&obj[i],1);
-        //QThread::msleep(1);
-        qDebug()<<"ret=="<<ret;
-    }
 
-    //int ret=VCI_Transmit(4,0,0,obj,n);
-
-    //int ret=VCI_Transmit(4,0,0,obj,n);
-
-    if(uDS.udsSleep(2000)){
-        qDebug()<<"指令正常完成！";
-    }else{
-
-        if(uDS.getNextState()==-1){
-            qDebug()<<"指令异常！ _STATUS_ERR";
-            return _STATUS_ERR;
-        }
-        qDebug()<<"指令异常！ _STATUS_TIME_OUT";
-        return _STATUS_TIME_OUT;
-    }
-    return _STATUS_OK;
-}
 
 void UDSForm::on_cBoxcansend_activated(int index)
 {
@@ -1770,25 +1731,25 @@ void UDSForm::on_button_export_released()
 void UDSForm::on_tabWidget_currentChanged(int index)
 {
 
-    guiworkmode=uDS.getWorkMode();
+    guiworkmode=UDS::Instance()->getWorkMode();
     if(index==5){
-        if(uDS.getWorkMode()!=ALIGN){
+        if(UDS::Instance()->getWorkMode()!=ALIGN){
             QUIHelper::showMessageBoxInfo("切换至整车EOL标定功能");
-            uDS.setWorkMode(ALIGN);
+            UDS::Instance()->setWorkMode(ALIGN);
 
         }
     }else if(index==1){
-        if(uDS.getWorkMode()!=UDSUPDATE){
+        if(UDS::Instance()->getWorkMode()!=UDSUPDATE){
             QUIHelper::showMessageBoxInfo("切换至UDS升级功能");
-            uDS.setWorkMode(UDSUPDATE);
+            UDS::Instance()->setWorkMode(UDSUPDATE);
 
         }
     }else if(index==2||index==3||index==4){
-        if(uDS.getWorkMode()!=FACTORY&&uDS.getWorkMode()!=CONSUMER){
+        if(UDS::Instance()->getWorkMode()!=FACTORY&&UDS::Instance()->getWorkMode()!=CONSUMER){
             QUIHelper::showMessageBoxInfo("切换至生产测试功能");
-            uDS.setWorkMode(FACTORY);
+            UDS::Instance()->setWorkMode(FACTORY);
 
         }
     }
-    qDebug()<<"guiworkmode"<<guiworkmode<<"uDS.setWorkMode"<<uDS.getWorkMode();
+    qDebug()<<"guiworkmode"<<guiworkmode<<"UDS::Instance()->setWorkMode"<<UDS::Instance()->getWorkMode();
 }

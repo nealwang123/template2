@@ -17,14 +17,12 @@ InitialPhaseForm::~InitialPhaseForm()
 {
     delete ui;
 }
-
+void InitialPhaseForm::displayWorkmode(QString str){
+    ui->label_5->setText(str);
+}
 void InitialPhaseForm::on_cBoxcansend_activated(int index)
 {
     ui->cBoxCanSendDiscrib->setCurrentIndex(index);
-    qDebug()<<"on_cBoxcansend_activated";
-    //根据实际情况获取UDSForm窗口指针
-    //UDSForm *ptr = (UDSForm*)(parentWidget()->parentWidget());  //"parentWidget" very important. 获得父部件指针，同时需要类型强转.
-
     m_commandIndex=ui->cBoxcansend->currentIndex();
     m_selfSendStr=ui->cBoxcansend->currentText();
     ui->cBoxCanSendDiscrib->setCurrentIndex(index);

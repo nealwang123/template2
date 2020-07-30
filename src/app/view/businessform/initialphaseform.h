@@ -14,10 +14,10 @@ class InitialPhaseForm : public QWidget
 public:
     explicit InitialPhaseForm(QWidget *parent = nullptr);
     ~InitialPhaseForm();
-
+    void displayWorkmode(QString str);
+    void initialHandle();
 private slots:
     void on_cBoxcansend_activated(int index);
-
     void on_cBoxCanSendDiscrib_activated(int index);
 
 private:

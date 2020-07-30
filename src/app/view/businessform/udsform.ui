@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>6</number>
+      <number>8</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -388,6 +388,16 @@
          </item>
         </layout>
        </widget>
+      </widget>
+      <widget class="QWidget" name="widget_onlineBurn" native="true">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>210</y>
+         <width>671</width>
+         <height>451</height>
+        </rect>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="tab">
@@ -751,70 +761,6 @@
              </property>
              <property name="text">
               <string>指令描述</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>用户</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_User">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Admin</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_13">
-             <property name="text">
-              <string>密码</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_PW">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Password</enum>
              </property>
             </widget>
            </item>
@@ -1729,7 +1675,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
+         <layout class="QVBoxLayout" name="verticalLayout_14">
           <item>
            <widget class="QPushButton" name="pushButton_2">
             <property name="minimumSize">
@@ -1948,10 +1894,60 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="text">
-             <string>reset</string>
+             <string>首次在线清零</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>收集信息时长（ms）</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_Delay">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string>统计2000ms内在线设备个数，且延时2000ms后设备指示灯离线</string>
+              </property>
+              <property name="text">
+               <string>2000</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer">
@@ -2068,7 +2064,7 @@
      </widget>
      <widget class="QWidget" name="tab_9">
       <attribute name="title">
-       <string>EOL标定</string>
+       <string>初相校准</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout_30">
        <item>
@@ -2080,18 +2076,92 @@
       <attribute name="title">
        <string>权限管理</string>
       </attribute>
-      <widget class="QLabel" name="label_23">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>170</x>
-         <y>150</y>
-         <width>54</width>
-         <height>12</height>
+         <x>20</x>
+         <y>80</y>
+         <width>161</width>
+         <height>71</height>
         </rect>
        </property>
-       <property name="text">
-        <string>暂无</string>
-       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_31">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>用户</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>密码</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_User">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Admin</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_PW">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="whatsThis">
+             <string>请输入密码</string>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="tab_7">
@@ -2116,28 +2186,35 @@ p, li { white-space: pre-wrap; }
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;修改日期&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;V1.1.4&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.6&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.7&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;1:高低温实时显示状态&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2:数据导出xls文件功能&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;1:高低温实时显示状态，且延时2s后状态切换为离线。&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2:数据导出xls文件功能，点击数据库表格右上角导出按钮，会自动导出并显示文件；导出目录为exe同级目录下“输出信息”文件夹；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;3:管理员权限下运行表格删除、保存、清空非首行操作；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;4:当前测试，新旧版本CANalyst-II均支持测试功能；&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;4:当前测试，新旧版本CANalyst-II均支持测试功能；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;5:修复高低温记录bug&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;6&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;在写入、读取雷达数据时添加SN重复性判定，并提示操作员；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;7&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;测试结果标识&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400; color:#ec0000;&quot;&gt;PASS&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400; color:#00d969;&quot;&gt;FAIL&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;变色显示&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:高低温实时显示状态，且延时2s后状态切换为下线状态，灰色指示；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;同时显示离线状态；&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;2:初相校准功能暂时不集成，请勿在此软件进行该项测试；&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2020.07.20&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.07.24&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;​2020.07.27&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;V1.0.8&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.8&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;1:添加操作按钮，方便测试;&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;2:查询信息功能删除算法参数查询；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;1：修复调试指令错位bug；&lt;br /&gt;2：开发者权限，允许打开自动下发功能；&lt;br /&gt;3：高低温测试添加首次收到异常帧报警功能；&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:在配置窗口添加固件升级程序；针对部分雷达升级不成功问题测试修复；根本原因为采样率不一致；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.14​&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.30&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;配置窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;can配置，当前仅连接按钮可用；&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：点击连接按钮；&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;后续功能请确保can处于连接状态；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#aa0000;&quot;&gt;固件升级相关说明见配置窗口；&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;UDS升级窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;可以uds协议方式升级&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：点击选择文件按钮选择加载bin文件；&lt;/span&gt;&lt;/p&gt;
@@ -2153,6 +2230,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; color:#000000;&quot;&gt;按照按钮提示操作即可；&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;高低温测试窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：输入温度信息，点击开始记录按钮&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;标定测试&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;暂无内容； &lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;权限管理&lt;/span&gt;&lt;/h2&gt;

@@ -133,7 +133,7 @@ color:white;
 }</string>
          </property>
          <property name="text">
-          <string>异常</string>
+          <string>下线或异常</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

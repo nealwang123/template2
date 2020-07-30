@@ -35,10 +35,12 @@ UDSForm::UDSForm(QWidget *parent) :
     this->initForm("UDSBurnData");
     demarcationTimer=new QTimer(this);
     connect(demarcationTimer,&QTimer::timeout,this,&UDSForm::slot_demarcationTimer);
-    connect(&uDS,&UDS::emitEventRecv,this,&UDSForm::slot_UDSFrameRecv,Qt::QueuedConnection);
-    connect(&uDS,&UDS::emitEOLInfo,this,&UDSForm::slot_EOLInfo,Qt::QueuedConnection);
-    connect(&uDS,&UDS::emitTemperatureTest,this,&UDSForm::slot_TemperatureTest,Qt::QueuedConnection);
-    connect(&uDS,&UDS::installAlignData,&installAlign,&MainForm::slot_msgToPC,Qt::QueuedConnection);
+    connect(UDS::Instance(),&UDS::emitEventRecv,this,&UDSForm::slot_UDSFrameRecv,Qt::QueuedConnection);
+    connect(UDS::Instance(),&UDS::emitEOLInfo,this,&UDSForm::slot_EOLInfo,Qt::QueuedConnection);
+    connect(UDS::Instance(),&UDS::emitOnlineBurnInfo,this,&UDSForm::slot_OnlineBurnInfo,Qt::QueuedConnection);
+
+    connect(UDS::Instance(),&UDS::emitTemperatureTest,this,&UDSForm::slot_TemperatureTest,Qt::QueuedConnection);
+    connect(UDS::Instance(),&UDS::installAlignData,&installAlign,&MainForm::slot_msgToPC,Qt::QueuedConnection);
 
     sendCommandTimer=new QTimer(this);
     sendCommandTimer->setSingleShot(true);
@@ -84,11 +86,15 @@ UDSForm::UDSForm(QWidget *parent) :
    ui->label_state->setFixedSize(64,64);
    QPixmap fitpixmap = pixmap.scaled(64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
    ui->label_state->setPixmap(fitpixmap);
-   //高低温测试窗口初始化
-   tempwidget=new TemperatureDelegate();
-   QHBoxLayout *lapv=new QHBoxLayout;
-   lapv->addWidget(tempwidget);
-   ui->widget_Temp->setLayout(lapv);
+
+   {
+       //高低温测试窗口初始化
+       tempwidget=new TemperatureDelegate();
+       QHBoxLayout *lapv=new QHBoxLayout;
+       lapv->addWidget(tempwidget);
+       ui->widget_Temp->setLayout(lapv);
+       ui->lineEdit_Delay->setText(QString::number(App::OnlineCaStatDelay));
+   }
 
    //算法参数
    algowiget=new AlgorithmParaDelegate();
@@ -113,6 +119,10 @@ UDSForm::UDSForm(QWidget *parent) :
         onlineDeviceTimer=new QTimer();
         onlineDeviceTimer->setSingleShot(true);
         connect(onlineDeviceTimer,&QTimer::timeout,this,&UDSForm::slot_onlineDeviceTimer);
+
+        disableTimer=new QTimer();
+        connect(disableTimer,&QTimer::timeout,this,&UDSForm::slot_disableTimer);
+        disableTimer->setSingleShot(true);
     }
 
 
@@ -128,17 +138,46 @@ UDSForm::UDSForm(QWidget *parent) :
         ui->widget_Initial->setLayout(initial);
     }
 
+    {//设置成在线更新程序
+        UDS::Instance()->setWorkMode(ONLINEUPDATE);
+        QVBoxLayout* onlineBurn=new QVBoxLayout;
+        onlineBurn->addWidget(&onlineburnform);
+        ui->widget_onlineBurn->setLayout(onlineBurn);
+    }
+
 }
 
 UDSForm::~UDSForm()
 {
     delete ui;
 }
+void UDSForm::slot_disableTimer(){
+    //清空设备列表
+    onlineDeviceForm->resetData();
+    //更新在线列表，遍历对比
+    QMap<int,ItemData>::const_iterator i;
+    for (i = mapAllDevice.constBegin(); i != mapAllDevice.constEnd(); ++i) {
+        qDebug()<<"i.key()"<< i.key()<<"i.value().id"<< i.value().id;
+        int id=i.key();
+        int radarstate=i.value().state;
+        QString datastr=i.value().date;
+        if(mapOnlineDevice.contains(id)){
+            QMap<int,ItemData>::const_iterator iter= mapOnlineDevice.find(id);
+            {
+                onlineDeviceForm->addData(id,iter.value().date,2);
+
+            }
+        }else{
+            onlineDeviceForm->addData(id,datastr,0);
+        }
+    }
+}
 /*
  *定时器执行槽函数
  */
 void UDSForm::slot_onlineDeviceTimer(){
-    if(onlineDeviceTimerCounter==0){
+
+    if(onlineDeviceTimerCounter==0){//首次更新
         ui->lineEdit_Temp_first->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
         ui->lineEdit_Temp_realtime->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
         ui->lineEdit_Temp_dead->setText(QString("%1").arg((0),4,10,QChar('0')));
@@ -147,13 +186,14 @@ void UDSForm::slot_onlineDeviceTimer(){
         ui->lineEdit_Temp_realtime->setText(QString("%1").arg(onlineDeviceNum,4,10,QChar('0')));
         ui->lineEdit_Temp_dead->setText(QString("%1").arg((ui->lineEdit_Temp_first->text().toInt(nullptr,10)-onlineDeviceNum),4,10,QChar('0')));
     }
+
     //清空设备列表
     onlineDeviceForm->resetData();
     //更新在线列表，遍历对比
     QMap<int,ItemData>::const_iterator i;
 
     for (i = mapAllDevice.constBegin(); i != mapAllDevice.constEnd(); ++i) {
-        qDebug()<< i.key()<< i.value().id;
+        qDebug()<<"i.key()"<< i.key()<<"i.value().id"<< i.value().id;
         int id=i.key();
         int radarstate=i.value().state;
         QString datastr=i.value().date;
@@ -176,6 +216,10 @@ void UDSForm::slot_onlineDeviceTimer(){
 
     onlineDeviceTimerCounter++;
     onlineDeviceFlage=0;
+
+    //启动置灰定时器
+    int delayms=ui->lineEdit_Delay->text().toInt();
+    disableTimer->start(delayms);
 }
 void UDSForm::initOnLineTableView(){
 
@@ -215,6 +259,7 @@ void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
     QString flagRunSeq03=templist.at(1).split("|").at(2);
     //QString vcoTemp=templist.at(3).split("|").at(2).right(1);
     int count=tempwidget->addRow();
+    qDebug()<<"";
     tempwidget->setData(count,0,QString("%1").arg(count,5,10,QChar('0')));
     tempwidget->setData(count,1,QString("%1").arg(id,4,10,QChar('0')));
     tempwidget->setData(count,2,raw);
@@ -248,10 +293,10 @@ void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
         onlineDeviceFlage=1;
         {//清空
             onlineDeviceNum=0;
-
             mapOnlineDevice.clear();
         }
-        onlineDeviceTimer->start(10000);
+        int delayms=ui->lineEdit_Delay->text().toInt();
+        onlineDeviceTimer->start(delayms);
     }
 
     QString datastr=QString("帧号:%1 vco:%2")
@@ -274,6 +319,18 @@ void UDSForm::slot_TemperatureTest(int id,QString raw,QStringList list){
 
 
 }
+void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
+    qDebug()<<"----------------------slot_OnlineBurnInfo----------------------"<<array.size();
+    if(respHead=="BOOT"){
+        QUIHelper::showMessageBoxInfo(QString("进入BOOT升级流程!\r\n固件版本：%1").arg(QUIHelper::byteArrayToAsciiStr(array)),2);
+        onlineburnform.displayStr(QString("进入BOOT升级流程! 固件版本：%1\n").arg(QUIHelper::byteArrayToAsciiStr(array)));
+    }else if(respHead=="GBYE"){
+        QUIHelper::showMessageBoxInfo("固件升级成功,待重启反馈版本号！",2);
+        onlineburnform.displayStr("固件升级成功,待重启反馈版本号！");
+    }else if(respHead=="SW"){
+        onlineburnform.displayStr(QString("软件版本号：%1%2").arg((quint8)array[6],2,16,QChar('0')).arg((quint8)array[7],2,16,QChar('0')));
+    }
+}
 void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
     qDebug()<<"----------------------slot_EOLInfo----------------------"<<array.size();
 //    qDebug()<<QString("Head:%1  hexContext:%2 AsciiContext:%3 m_modelIndex:%4")
@@ -282,102 +339,164 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
 //              .arg(QUIHelper::byteArrayToAsciiStr(array))
 //              .arg(m_modelIndex);
     //str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"
-    ui->label_out->setText(respHead);
-    int testItem=0;
     QString tempstr;
-    if(respHead=="DONE"){//正常反馈
+    int testItem=0;
+    if(guiworkmode==FACTORY||guiworkmode==CONSUMER){
+        ui->label_out->setText(respHead);
+        if(respHead=="DONE"){//正常反馈
 
-    }else if(respHead=="RRCF"){//读取模式
+        }else if(respHead=="RRCF"){//读取模式
 
-        if(QUIHelper::byteArrayToHexStr(array)=="5A 5A 5A 5A"){
-            tempstr="客户模式";
-        } else if(QUIHelper::byteArrayToHexStr(array)=="50 5A 5A 5A"){
-            tempstr="工厂模式";
-        }else {//
-            tempstr="未知模式";
+            if(QUIHelper::byteArrayToHexStr(array)=="5A 5A 5A 5A"){
+                tempstr="客户模式";
+            } else if(QUIHelper::byteArrayToHexStr(array)=="50 5A 5A 5A"){
+                tempstr="工厂模式";
+            }else {//
+                tempstr="未知模式";
+            }
+            ui->pushButton_workMode->setText(tempstr);
+            model->setData(model->index(m_modelIndex, 4),tempstr);
+            ui->tableMain->setCurrentIndex(model->index(m_modelIndex, 0));
+            //testItem=
+        }else if(respHead=="EOLR"){//进入EOL模式反馈
+
+        }else if(respHead=="EOLS"){//EOL子模式
+
+        }else if(respHead=="RRSN"){//SN获取
+            tempstr=QUIHelper::byteArrayToAsciiStr(array).remove(QRegExp("\\s"));
+            ui->lineEdit_SNoutput->setText(tempstr);
+            qDebug()<<"save SN"<<model->setData(model->index(m_modelIndex, 5), tempstr);
+        }else if(respHead=="RRSV"){//软件版本获取
+            tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+            ui->lineEdit_SWOutput->setText(tempstr);
+            qDebug()<<"save SV"<<model->setData(model->index(m_modelIndex, 6), tempstr);
+        }else if(respHead=="RRHV"){//硬件版本获取
+            tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+            ui->lineEdit_HWOutput->setText(tempstr);
+            qDebug()<<"save HV"<<model->setData(model->index(m_modelIndex, 7), tempstr);
+        }else if(respHead=="RRBV"){//boot版本获取
+            tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
+            ui->lineEdit_BootOutput->setText(tempstr);
+            qDebug()<<"save BV"<<model->setData(model->index(m_modelIndex, 8), tempstr);
+        }else if(respHead=="PARA"){//算法参数版本获取
+            //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
+            //add data to table
+            tempstr=QUIHelper::byteArrayToHexStr(array);
+
+            int rowcount=algowiget->getRow();
+
+            if(array.size()==512){
+                qDebug()<<"合法数据";
+            }
+            for(int i=0;i<rowcount;i++){
+                int type=algowiget->getType(i);
+                QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
+                algowiget->setData(i,2,temp);
+                //type
+                if(type==1){
+                    qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
+                    //
+                    algowiget->setData(i,3,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
+                }else{
+                    algowiget->setData(i,3,QString("%1")
+                                       .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
+                                            );
+                }
+
+
+            }
+            model->setData(model->index(m_modelIndex, 9), "获得参数");
+            //保存到算法参数sql数据库
+            algowiget->on_btnSave_clicked();
         }
-        ui->pushButton_workMode->setText(tempstr);
-        model->setData(model->index(m_modelIndex, 4),tempstr);
-        ui->tableMain->setCurrentIndex(model->index(m_modelIndex, 0));
-        //testItem=
-    }else if(respHead=="EOLR"){//进入EOL模式反馈
+        qDebug()<<"m_eolcommandIndex:"<<m_eolcommandIndex;
+        if(m_eolcommandIndex>=12){
+            int ret=judgeResult();
+            model->setData(model->index(m_modelIndex, 2),QString("%1").arg(ret,8,2,QChar('0')));
+            QString resultpara=model->record(0).value(2).toString();
+            QString result=model->record(m_modelIndex).value(2).toString();
 
-    }else if(respHead=="EOLS"){//EOL子模式
+            //qDebug()<<"resultpara"<<resultpara<<"result"<<result;
+            //qDebug()<<QString("resultpara：%1").arg(resultpara.toInt(nullptr,2),8,2,QChar('0'))<<QString("result：%1").arg(result.toInt(nullptr,2),8,2,QChar('0'));
 
-    }else if(respHead=="RRSN"){//SN获取
-        tempstr=QUIHelper::byteArrayToAsciiStr(array).remove(QRegExp("\\s"));
-        ui->lineEdit_SNoutput->setText(tempstr);
-        qDebug()<<"save SN"<<model->setData(model->index(m_modelIndex, 5), tempstr);
-    }else if(respHead=="RRSV"){//软件版本获取
-        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
-        ui->lineEdit_SWOutput->setText(tempstr);
-        qDebug()<<"save SV"<<model->setData(model->index(m_modelIndex, 6), tempstr);
-    }else if(respHead=="RRHV"){//硬件版本获取
-        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
-        ui->lineEdit_HWOutput->setText(tempstr);
-        qDebug()<<"save HV"<<model->setData(model->index(m_modelIndex, 7), tempstr);
-    }else if(respHead=="RRBV"){//boot版本获取
-        tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
-        ui->lineEdit_BootOutput->setText(tempstr);
-        qDebug()<<"save BV"<<model->setData(model->index(m_modelIndex, 8), tempstr);
-    }else if(respHead=="PARA"){//算法参数版本获取
-        //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
-        //add data to table
-        tempstr=QUIHelper::byteArrayToHexStr(array);
-
-        int rowcount=algowiget->getRow();
-
-        if(array.size()==512){
-            qDebug()<<"合法数据";
-        }
-        for(int i=0;i<rowcount;i++){
-            int type=algowiget->getType(i);
-            QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
-                                .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
-                                .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
-                                .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
-            algowiget->setData(i,2,temp);
-            //type
-            if(type==1){
-                qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
-                //
-                algowiget->setData(i,3,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
+            if((resultpara.toInt(nullptr,2)&result.toInt(nullptr,2))==resultpara.toInt(nullptr,2)){
+    //            model->setData(model->index(m_modelIndex, 1), QBrush(QColor(255, 0, 0)), Qt::TextColorRole);
+                //设置单元格文本颜色，张三的数据设置为红色
+                model->data(model->index(m_modelIndex, 1),Qt::BackgroundRole);
+                model->setData(model->index(m_modelIndex, 1),"PASS");
             }else{
-                algowiget->setData(i,3,QString("%1")
-                                   .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
-                                        );
+                model->data(model->index(m_modelIndex, 1),Qt::BackgroundRole);
+                model->setData(model->index(m_modelIndex, 1),"FAIL");
             }
 
+        }
+        //更新数据库
+        on_btnSave_clicked();
+    }else if(guiworkmode==INITIALPHASE){//初相校准模式更新
+        if(respHead=="DONE"){//正常反馈
+
+        }else if(respHead=="RRCF"){//读取模式
+
+            if(QUIHelper::byteArrayToHexStr(array)=="5A 5A 5A 5A"){
+                tempstr="客户模式";
+            } else if(QUIHelper::byteArrayToHexStr(array)=="50 5A 5A 5A"){
+                tempstr="工厂模式";
+            }else {//
+                tempstr="未知模式";
+            }
+            //
+            initialphaseform.displayWorkmode(tempstr);
+        }else if(respHead=="PARA"){//算法参数版本获取
+            //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
+            //add data to table
+            tempstr=QUIHelper::byteArrayToHexStr(array);
+
+            int rowcount=algowiget->getRow();
+
+            if(array.size()==512){
+                qDebug()<<"合法数据";
+            }
+            float para_cal[12];
+
+            for(int i=0;i<rowcount;i++){
+                int type=algowiget->getType(i);
+                QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
+                                    .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
+                algowiget->setData(i,2,temp);
+                //type
+                if(type==1){
+                    float a=QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
+                    qDebug()<<"float:"<<a;
+                    //
+                    algowiget->setData(i,3,QString::number(a,'g',6));
+                    if(i>=1&&i<=12){
+                        para_cal[i-1]=a;
+                    }
+                }else{
+                    algowiget->setData(i,3,QString("%1")
+                                       .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
+                                            );
+                }
+
+
+            }
+            model->setData(model->index(m_modelIndex, 9), "获得参数");
+            //保存到算法参数sql数据库
+            algowiget->on_btnSave_clicked();
+
+
+            //
+        }else if(respHead=="PARA"){//远距
+
+        }else if(respHead=="PARA"){//近距
 
         }
-        model->setData(model->index(m_modelIndex, 9), "获得参数");
-        //保存到算法参数sql数据库
-        algowiget->on_btnSave_clicked();
     }
-    qDebug()<<"m_eolcommandIndex:"<<m_eolcommandIndex;
-    if(m_eolcommandIndex>=12){
-        int ret=judgeResult();
-        model->setData(model->index(m_modelIndex, 2),QString("%1").arg(ret,8,2,QChar('0')));
-        QString resultpara=model->record(0).value(2).toString();
-        QString result=model->record(m_modelIndex).value(2).toString();
-
-        //qDebug()<<"resultpara"<<resultpara<<"result"<<result;
-        //qDebug()<<QString("resultpara：%1").arg(resultpara.toInt(nullptr,2),8,2,QChar('0'))<<QString("result：%1").arg(result.toInt(nullptr,2),8,2,QChar('0'));
-
-        if((resultpara.toInt(nullptr,2)&result.toInt(nullptr,2))==resultpara.toInt(nullptr,2)){
-//            model->setData(model->index(m_modelIndex, 1), QBrush(QColor(255, 0, 0)), Qt::TextColorRole);
-            //设置单元格文本颜色，张三的数据设置为红色
-            model->data(model->index(m_modelIndex, 1),Qt::BackgroundRole);
-            model->setData(model->index(m_modelIndex, 1),"PASS");
-        }else{
-            model->data(model->index(m_modelIndex, 1),Qt::BackgroundRole);
-            model->setData(model->index(m_modelIndex, 1),"FAIL");
-        }
-
-    }
-    //更新数据库
-    on_btnSave_clicked();
-
 }
 
 int UDSForm::judgeResult(){
@@ -595,7 +714,7 @@ void UDSForm::initForm(QString fileName)
 //    columnNames << "端口编号" << "端口名称" << "连接类型" << "通讯方式" << "串口号" << "波特率" << "IP地址" << "通讯端口" << "采集周期(秒)" << "通讯超时(次)";
 //    columnNames << "索引" << "描述" << "传输方向" << "步骤"<< "类型" << "ID(Hex)"<< "协议头" << "数据" << "协议尾"<<"回执"<<"延时"<<"校验结果" ;
 //    columnNames << "序号" << "名称" << "帧ID" << "类型"<< "格式" << "DLC"<< "数据" << "帧数" << "方向" ;
-    columnNames << "序号" <<"详细结果"<<"结果"<< "写入"<< "模式" << "序列号"<< "软件版本" << "硬件版本" <<"Boot版本"<< "雷达参数" << "用户" << "时间" ;
+    columnNames << "序号" <<"详细结果"<<"结果"<< "写入SN"<< "模式" << "序列号"<< "软件版本" << "硬件版本" <<"Boot版本"<< "雷达参数" << "用户" << "时间" ;
     columnWidths.clear();
     columnWidths <<40<<50<<70<<130<<70<<130<<130<<130<<80<<80<<160<<160 ;
 
@@ -1473,8 +1592,10 @@ void UDSForm::on_lineEdit_PW_editingFinished()
         ui->button_Consumer->setEnabled(true);
         ui->comboBox->setEnabled(true);
         ui->btnClear->setEnabled(true);
-
+        //
         tempwidget->setChildEnable(true);
+        //高低温首次计数清零按钮
+        ui->pushButton_3->setEnabled(true);
     }
 }
 
@@ -1657,12 +1778,44 @@ void UDSForm::on_button_queryMode_released()
 //写入信息
 void UDSForm::on_button_burnInfo_released()
 {
+    //添加查重功能
+    QString sn=QString("%1%2%3").arg(ui->lineEdit_SNHead->text())
+    .arg(ui->dateEdit_SN->text())
+    .arg(ui->lineEdit_SNTail->text());
+    QString sql = QString("select * FROM UDSBurnData where 写入信息 == %1;").arg(sn);
+    QSqlQuery query(_db);
+    bool value =query.exec(sql);
+    qDebug()<<"查询value:"<<value;
+    if(query.next()){//开始就先执行一次next()函数，那么query指向结果集的第一条记录
+        int ret=QUIHelper::showMessageBoxQuestion(QString("查询到SN记录已存在,请确认是否继续写入！"));
+        if (ret==QMessageBox::Yes){
+
+        }else{
+            return;
+        }
+    }
+
     ui->comboBox->setCurrentIndex(2);
     on_comboBox_activated(2);
 }
 //获取信息
 void UDSForm::on_button_queryInfo_released()
 {
+    QString sn=QString("%1%2%3").arg(ui->lineEdit_SNHead->text())
+    .arg(ui->dateEdit_SN->text())
+    .arg(ui->lineEdit_SNTail->text());
+    QString sql = QString("select * FROM UDSBurnData where 写入信息 == %1;").arg(sn);
+    QSqlQuery query(_db);
+    bool value =query.exec(sql);
+    qDebug()<<"查询value:"<<value;
+    if(query.next()){//开始就先执行一次next()函数，那么query指向结果集的第一条记录
+        int ret=QUIHelper::showMessageBoxQuestion(QString("查询到SN记录已存在,请确认是否继续写入！"));
+        if (ret==QMessageBox::Yes){
+
+        }else{
+            return;
+        }
+    }
     ui->comboBox->setCurrentIndex(3);
     on_comboBox_activated(3);
 }
@@ -1688,7 +1841,10 @@ void UDSForm::on_pushButton_onlineTest_released()
 
 void UDSForm::on_pushButton_3_released()
 {
+    onlineDeviceTimerCounter=0;
+    //清空设备列表
     onlineDeviceForm->resetData();
+
 }
 
 void UDSForm::on_button_export_released()
@@ -1730,26 +1886,43 @@ void UDSForm::on_button_export_released()
 
 void UDSForm::on_tabWidget_currentChanged(int index)
 {
-
     guiworkmode=UDS::Instance()->getWorkMode();
     if(index==5){
-        if(UDS::Instance()->getWorkMode()!=ALIGN){
+        if(guiworkmode!=ALIGN){
             QUIHelper::showMessageBoxInfo("切换至整车EOL标定功能");
             UDS::Instance()->setWorkMode(ALIGN);
-
+            guiworkmode=ALIGN;
         }
     }else if(index==1){
-        if(UDS::Instance()->getWorkMode()!=UDSUPDATE){
+        if(guiworkmode!=UDSUPDATE){
             QUIHelper::showMessageBoxInfo("切换至UDS升级功能");
             UDS::Instance()->setWorkMode(UDSUPDATE);
-
+            guiworkmode=UDSUPDATE;
         }
     }else if(index==2||index==3||index==4){
-        if(UDS::Instance()->getWorkMode()!=FACTORY&&UDS::Instance()->getWorkMode()!=CONSUMER){
+        if(guiworkmode!=FACTORY&&guiworkmode!=CONSUMER){
             QUIHelper::showMessageBoxInfo("切换至生产测试功能");
             UDS::Instance()->setWorkMode(FACTORY);
-
+            guiworkmode=FACTORY;
+        }
+    }else if(index==6){
+        if(guiworkmode!=INITIALPHASE){
+            QUIHelper::showMessageBoxInfo("切换至初相校准功能");
+            UDS::Instance()->setWorkMode(INITIALPHASE);
+            guiworkmode=INITIALPHASE;
         }
     }
-    qDebug()<<"guiworkmode"<<guiworkmode<<"UDS::Instance()->setWorkMode"<<UDS::Instance()->getWorkMode();
+    qDebug()<<"guiworkmode"<<guiworkmode<<"UDS::Instance()->setWorkMode"<<guiworkmode;
+}
+
+void UDSForm::on_lineEdit_Delay_editingFinished()
+{
+    QUIHelper::showMessageBoxInfo("请确保输入内容为数字，建议范围1000-3000");
+    App::OnlineCaStatDelay=ui->lineEdit_Delay->text().toInt();
+    App::writeConfig();
+}
+
+void UDSForm::on_tabWidget_tabBarClicked(int index)
+{
+
 }

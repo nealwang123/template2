@@ -7,6 +7,7 @@ typedef enum{
     S_RED,
     S_BLUE,
     S_YELLOW,
+    S_GRAY,
 } ItemStatus;
 
 struct ItemData{

@@ -14,7 +14,7 @@
 #include"olinedeviceform.h"
 #include"mainform.h"
 #include"initialphaseform.h"
-
+#include"onlineburnform.h"
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -86,8 +86,11 @@ private:
     //整块block数据bin文件
     static QList<BinRecordBlock> binRecordBlocks_DriverList ;
 
+
     //定时器
     QTimer *sendCommandTimer;
+    //延时置灰定时器
+    QTimer *disableTimer;
 
     //can发送指令
     QStringList m_list_canSendCommand;
@@ -111,8 +114,10 @@ private:
     //安装标定
     MainForm installAlign;
 
-    //
+    //初相校准
     InitialPhaseForm initialphaseform;
+    //在线升级程序
+    OnlineBurnForm onlineburnform;
     //
     //QVector<CLASS*> mClasses;   //模拟数据
     //在线设备列表
@@ -133,8 +138,10 @@ private slots:
     void slot_eolsendCommandTimer();
     void slot_UDSFrameRecv(VCI_CAN_OBJ cAN_OBJ1);
     void slot_EOLInfo(QString respHead,QByteArray array);
+    void slot_OnlineBurnInfo(QString respHead,QByteArray array);
     void slot_TemperatureTest(int id,QString ,QStringList list);
     void slot_onlineDeviceTimer();
+    void slot_disableTimer();
 private slots:
     void on_btnAdd_clicked();
     void on_btnSave_clicked();
@@ -168,6 +175,8 @@ private slots:
     void on_button_export_released();
 
     void on_tabWidget_currentChanged(int index);
+    void on_lineEdit_Delay_editingFinished();
+    void on_tabWidget_tabBarClicked(int index);
 };
 
 #endif // UDSFORM_H

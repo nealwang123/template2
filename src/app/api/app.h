@@ -96,6 +96,8 @@ public:
 
     //EOL config
     static QString HWVersion;
+    static int OnlineCaStatDelay;//在线设备统计延时量
+    static QString OnlineBurnfile;//固件升级文件路径
 
     //轨迹配置
     static int XWidth;         //水平

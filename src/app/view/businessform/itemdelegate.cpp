@@ -86,8 +86,8 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             painter->setPen(QPen(Qt::green));
             break;
         case S_YELLOW:
-            painter->setBrush(Qt::yellow);
-            painter->setPen(QPen(Qt::yellow));
+            painter->setBrush(Qt::gray);
+            painter->setPen(QPen(Qt::gray));
             break;
         }
 

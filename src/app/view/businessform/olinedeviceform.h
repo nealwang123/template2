@@ -9,6 +9,7 @@
 #include "itemdelegate.h"
 #include "itemdef.h"
 #include <QDateTime>
+#include<QTimer>
 namespace Ui {
 class OlineDeviceForm;
 }
@@ -22,9 +23,11 @@ public:
     ~OlineDeviceForm();
     void addData(int index,QString Date,int state=1);
     void resetData();
+
     void updateButtonNum();
     void updateTime();
     void setData(int id,int frameid,int state);
+
 private:
 
 private slots:
@@ -49,7 +52,6 @@ private:
     int redNum;
     int blueNum;
     int yellowNum;
-
 
 };
 

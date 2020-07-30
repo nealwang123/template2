@@ -87,6 +87,8 @@ QString App::AlignAngle="0";
 QString App::AlignDistance="2";
 
 QString App::HWVersion= "0102030405060708";
+int App::OnlineCaStatDelay=2000;
+QString App::OnlineBurnfile="";
 
 bool App::HexSendTcpClient = false;
 bool App::HexReceiveTcpClient = false;
@@ -207,6 +209,8 @@ void App::readConfig()
 
     set.beginGroup("EOLConfig");
     App::HWVersion= set.value("HWVersion").toString();
+    App::OnlineCaStatDelay=set.value("OnlineCaStatDelay").toInt();
+    App::OnlineBurnfile=set.value("OnlineBurnfile").toString();
     set.endGroup();
 
     set.beginGroup("TcpClientConfig");
@@ -328,6 +332,8 @@ void App::writeConfig()
 
     set.beginGroup("EOLConfig");
     set.setValue("HWVersion",App::HWVersion);
+    set.setValue("OnlineCaStatDelay",App::OnlineCaStatDelay);
+    set.setValue("OnlineBurnfile",App::OnlineBurnfile);
     set.endGroup();
 
     set.beginGroup("TcpClientConfig");

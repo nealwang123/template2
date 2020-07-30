@@ -377,25 +377,72 @@ void UDS::ReceiveDataProc(){
 
                     //提取出一帧数据
                     VCI_CAN_OBJ ReceiveOneFrame;
-
                     memcpy(&ReceiveOneFrame,&gRecMsgBuf[i],sizeof (VCI_CAN_OBJ));
-                    //
-//                    QString temp,data;
-
-//                    for(int j=0;j<ReceiveOneFrame.DataLen;j++){
-//                        temp=QString("%1").arg(ReceiveOneFrame.Data[j],2,16,QChar('0'));
-//                        data.append(temp);
-//                        data.append(" ");
-//                    }
-//                    QTime now=QTime::fromMSecsSinceStartOfDay(qRound(ReceiveOneFrame.TimeStamp*0.1));
-
-//                    qDebug()<<QString("ID:0x%1 Data:%2 time:%3 %5%6").arg(ReceiveOneFrame.ID,4,16,QChar('0'))
-//                              .arg(data)
-//                              .arg(ReceiveOneFrame.TimeStamp,8,16,QChar('0'))
-//                              .arg(now.toString("hh:mm:ss.zzz."))
-//                              .arg(QString::number(ReceiveOneFrame.TimeStamp%10));
+                    if(workmode==ONLINEUPDATE){
+                        QString temp,data;
+                        for(int j=0;j<ReceiveOneFrame.DataLen;j++){
+                            temp=QString("%1").arg(ReceiveOneFrame.Data[j],2,16,QChar('0'));
+                            data.append(temp);
+                            data.append(" ");
+                        }
+                        qDebug()<<QString("ONLINEUPDATE ReceiveOneFrame.ID %1 Data:%2 timestamp:%3")
+                                  .arg(ReceiveOneFrame.ID,8,16,QChar('0'))
+                                  .arg(data)
+                                  .arg(ReceiveOneFrame.TimeStamp);
+                        if(1){
+                            //接收payload类型数据
+                            QByteArray b ;
+                            b.resize(ReceiveOneFrame.DataLen);
+                            b=QByteArray((const char*)ReceiveOneFrame.Data);
+                            QString str=QUIHelper::byteArrayToAsciiStr(b);
+                            str=str.left(4);
+                            static qint32 lastlen1=0;
+                            if(ReceiveOneFrame.ID==0x7D0&&(str=="BOOT"||str=="GBYE")){
+                                respHead=str;
+                                lastlen1=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
+                                qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen1;
+                                m_recvArray.clear();
+                                m_recvArray.resize(lastlen1);
+                                if(lastlen1==0){
+                                    //获取完有效数据发送到界面
+                                    qDebug()<<"1获取到有效数据。。。。。。";
+                                    emit(emitOnlineBurnInfo(respHead,m_recvArray));
+                                }
+                            }else{
+                                if(ReceiveOneFrame.ID==0x7D0&&lastlen1>0){//限定字符串后续有效内容
+                                    if((lastlen1-ReceiveOneFrame.DataLen)>=0){
+                                        qDebug()<<"找到连续帧";
+                                        static int index1=0;
+        //                                QByteArray bar;
+        //                                bar.resize(ReceiveOneFrame.DataLen);
+                                        for(int count=0;count<ReceiveOneFrame.DataLen;count++){
+                                            m_recvArray[index1]=ReceiveOneFrame.Data[count];
+                                            index1++;
+                                        }
+                                        lastlen1-=ReceiveOneFrame.DataLen;
+                                        qDebug()<<"lastlen1运算后"<<lastlen1;
+                                        if(lastlen1==0){
+                                            //获取完有效数据发送到界面
+                                            emit(emitOnlineBurnInfo(respHead,m_recvArray));
+                                            qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                            index1=0;
+                                        }
+                                    }
+                                }else{
+                                    if(((ReceiveOneFrame.Data[0]&0x0F)==0x02)){//高低温语句用于获取 app版本
+                                        int index=0;
+                                        for(int count=0;count<ReceiveOneFrame.DataLen;count++){
+                                            m_recvArray[index]=ReceiveOneFrame.Data[count];
+                                            index++;
+                                        }
+                                        emit(emitOnlineBurnInfo("SW",m_recvArray));
+                                    }
+                                }
+                            }
+                        }
+                    }
                     //安装标定模式，进入扩展会话模式
-                    if(workmode==ALIGN&&(ReceiveOneFrame.ID==0x7A9||ReceiveOneFrame.ID==0x4E0)){
+                    else if(workmode==ALIGN&&(ReceiveOneFrame.ID==0x7A9||ReceiveOneFrame.ID==0x4E0)){
                         QString temp,data;
                         for(int j=0;j<ReceiveOneFrame.DataLen;j++){
                             temp=QString("%1").arg(ReceiveOneFrame.Data[j],2,16,QChar('0'));
@@ -410,12 +457,10 @@ void UDS::ReceiveDataProc(){
                                 .arg(data)
                                 .arg(i,4,10,QChar('0'));
                         header=header+senddata;
-
                         emit(installAlignData(header));
-
                     }
                     //工厂模式或者客户模式下
-                    else if(((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999)&&(workmode==FACTORY||workmode==CONSUMER))){
+                    else if((workmode==FACTORY||workmode==CONSUMER||workmode==INITIALPHASE)&&((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999))){
                         qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))<<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8").arg(ReceiveOneFrame.Data[0],2,16,QChar('0')).arg(ReceiveOneFrame.Data[1],2,16,QChar('0')).arg(ReceiveOneFrame.Data[2],2,16,QChar('0')).arg(ReceiveOneFrame.Data[3],2,16,QChar('0')).arg(ReceiveOneFrame.Data[4],2,16,QChar('0')).arg(ReceiveOneFrame.Data[5],2,16,QChar('0')).arg(ReceiveOneFrame.Data[6],2,16,QChar('0')).arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
                         QByteArray b ;
                         b.resize(ReceiveOneFrame.DataLen);
@@ -464,7 +509,7 @@ void UDS::ReceiveDataProc(){
                                     }
                                 }
                             }else{//lastlen==0执行内容，非限定字符串
-                                if(((ReceiveOneFrame.Data[0]&0xFF)==0x02)){//高低温测试
+                                if(((ReceiveOneFrame.Data[0]&0x0F)==0x02)){//高低温测试
                                     qDebug()<<lastlen<<"非工厂模式限定字符串 ReceiveOneFrame.Data[0]:"<<QString::number(ReceiveOneFrame.Data[0])<<QString::number(ReceiveOneFrame.Data[0]&0x0F)<<QString::number((ReceiveOneFrame.Data[0]&0x0F)==0x02);
                                     QStringList list;
                                     list=dbcloader->parseMSGWithData(0x01,ReceiveOneFrame.Data);
@@ -480,8 +525,7 @@ void UDS::ReceiveDataProc(){
                         }
                     }
                     //step7：判断接收到的数据帧的ID地址是否与设定地址相同
-                    else if (RECEIVE_CAN_ID == ReceiveOneFrame.ID&&(workmode==UDSUPDATE))
-                    {
+                    else if ((workmode==UDSUPDATE)&&RECEIVE_CAN_ID == ReceiveOneFrame.ID){
                         //step8：检查登陆日志文件
                         //logmanager.Writelog(logmanager.ArrayToString(frame.Data), RECEIVE_CAN_ID.ToString("X3") + "  接收");
 
@@ -718,6 +762,50 @@ void UDS::setWorkMode(int mode){
 int  UDS::getWorkMode(){
 
     return workmode;
+}
+ECANStatus UDS::NormalSend(uint can_id,byte data[],int dataLength,int delay ){
+
+    int n=0;
+    if (dataLength % 8 == 0){
+        n=dataLength/8;
+    }else{
+        n=(dataLength/8)+1;
+    }
+    VCI_CAN_OBJ *obj=new VCI_CAN_OBJ[n];
+    memset(obj,0,sizeof (VCI_CAN_OBJ));
+    for (int i=0;i<n;i++) {
+        obj[i].ID=can_id;
+        obj[i].SendType = 0;
+        obj[i].ExternFlag = 0;
+        obj[i].RemoteFlag = 0;
+        if ((dataLength - i * 8) >= 8){
+            obj[i].DataLen=8;
+            memcpy(obj[i].Data,(data+i*8),8);
+        }else{
+            //obj[i].DataLen=dataLength - i*8;
+            obj[i].DataLen=(dataLength - i*8);//(dataLength - i*8);//;
+            memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
+        }
+        qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
+        int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        if(delay>0){
+            QUIHelper::sleep(delay);//ms延时
+        }else if(delay==0){
+            static int counterZeroDelay=0;
+            if(counterZeroDelay>100){
+                QUIHelper::sleep(1);//ms延时
+                counterZeroDelay=0;
+            }
+            counterZeroDelay++;
+        }
+        if(ret){
+            qDebug()<<"指令正常完成！_STATUS_OK";
+        }else{
+            qDebug()<<"指令异常！ _STATUS_ERR";
+            return _STATUS_ERR;
+        }
+        return _STATUS_OK;
+    }
 }
 //非uds
 ECANStatus UDS::NormalSendAndReceive(uint can_id,byte data[],int dataLength){

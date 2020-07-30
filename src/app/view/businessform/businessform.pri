@@ -5,6 +5,7 @@ FORMS += \
     $$PWD/initialphaseform.ui \
     $$PWD/mainform.ui \
     $$PWD/olinedeviceform.ui \
+    $$PWD/onlineburnform.ui \
     $$PWD/temperaturedelegate.ui \
     $$PWD/udsform.ui
 
@@ -19,6 +20,7 @@ HEADERS += \
     $$PWD/mainform.h \
     $$PWD/mysubclassedsqltablemodel.h \
     $$PWD/olinedeviceform.h \
+    $$PWD/onlineburnform.h \
     $$PWD/temperaturedelegate.h \
     $$PWD/uds.h \
     $$PWD/udsform.h
@@ -32,6 +34,7 @@ SOURCES += \
     $$PWD/itemdelegate.cpp \
     $$PWD/mainform.cpp \
     $$PWD/olinedeviceform.cpp \
+    $$PWD/onlineburnform.cpp \
     $$PWD/temperaturedelegate.cpp \
     $$PWD/uds.cpp \
     $$PWD/udsform.cpp

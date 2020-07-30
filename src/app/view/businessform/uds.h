@@ -85,7 +85,9 @@ public:
     FACTORY = 0x00,//工厂模式
     CONSUMER = 0x01,//客户模式
     UDSUPDATE = 0x02,//UDS升级模式
-    ALIGN=0x03,//安装标定模式
+    ALIGN = 0x03,//安装标定模式
+    INITIALPHASE = 0x04,//初相校准
+    ONLINEUPDATE = 0x05,//在线更新，非UDS
 };
  class SeedKey//发送解锁密钥
  {
@@ -194,8 +196,11 @@ public:
     quint8 getconsistencyVerify();
     void setWorkMode(int mode);
     int getWorkMode();
+
     //非uds带交互发送
     ECANStatus NormalSendAndReceive(uint can_id,byte data[],int dataLength);
+    //非UDS不带交互发送
+    ECANStatus NormalSend(uint can_id,byte data[],int dataLength,int delay );
 private:
     static QScopedPointer<UDS> self;
     int m_exitStateThread1;
@@ -214,6 +219,7 @@ signals:
     void emitEOLInfo(QString respHead,QByteArray array);
     void emitTemperatureTest(int id,QString rawdata,QStringList list);
     void installAlignData(QString data);
+    void emitOnlineBurnInfo(QString respHead,QByteArray array);
 public slots:
 
 };
@@ -223,11 +229,21 @@ class CAN_SEND_FRAME
 public:
     uint FrameNumber;
     byte DATA[1024+2];
-
-
+};
+class CAN_Standard_FRAME
+{
+public:
+    uint FrameNumber;
+    uint validlen;
+    byte DATA[8];
 };
 
 class BinRecordBlock
+{
+public:
+    QList<byte> data;//字符列表
+};
+class HexRecordBlock
 {
 public:
     QList<byte> data;//字符列表
@@ -314,6 +330,43 @@ class FileParse
 //                return false;
 //            }
 //        }
+        bool ParseHexFile(QString path, QList<HexRecordBlock>& hexBlockList)
+        {
+            QFileInfo *fileInfo = new QFileInfo(path);
+
+            qDebug()<<"Hex Size:" + QString::number(fileInfo->size());
+            QFile *file = new QFile;
+            /*
+            * 读取Hex文件
+            */
+            QByteArray arry;
+            file->setFileName(path);
+            if(file->open(QIODevice::ReadOnly)){
+                QDataStream HexFileData(file);
+                char *pBuff = new char[fileInfo->size()];
+                HexFileData.readRawData(pBuff,static_cast<int>(fileInfo->size()));
+                arry = QByteArray(pBuff,static_cast<int>(fileInfo->size()));
+                file->close();
+            }else {
+                qDebug()<<"无法读取,请检查Hex文件路径!";
+                return false;
+            }
+
+            hexBlockList.clear();
+
+            HexRecordBlock block;
+            qDebug()<<"arry"<<arry.size();
+            for(int i=0;i<arry.size();i++){
+                block.data.append(arry[i]);
+
+            }
+
+            hexBlockList.append(block);
+            qDebug()<<"hexBlockList"<<hexBlockList.at(0).data.size()<<"count"<<hexBlockList.at(0).data.count();
+
+            qDebug()<<""<<hexBlockList.at(0).data.at(0)<<hexBlockList.at(0).data.at(1);
+            return true;
+        }
 
 
     };

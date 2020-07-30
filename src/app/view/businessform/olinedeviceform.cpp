@@ -39,7 +39,6 @@ OlineDeviceForm::OlineDeviceForm(QWidget *parent) :
     ui->listView->setDragEnabled(false);            //控件不允许拖动
 
 
-
 }
 
 OlineDeviceForm::~OlineDeviceForm()
@@ -54,6 +53,8 @@ void OlineDeviceForm::resetData(){
     yellowNum = 0;
     updateButtonNum();
 }
+
+
 void OlineDeviceForm::addData(int index,QString Date,int state)
 {
 
@@ -77,12 +78,15 @@ void OlineDeviceForm::addData(int index,QString Date,int state)
         itemStatus = S_YELLOW;
         yellowNum++;
         break;
+
     }
     Item->setData(itemStatus,Qt::UserRole);  // 单一存取
     Item->setData(QVariant::fromValue(itemData),Qt::UserRole+1);//整体存取
     m_model->appendRow(Item);      //追加Item
-
+    //ui->listView->setSelectionMode();
+    ui->listView->setSelectionRectVisible(false);
     updateButtonNum();
+
 }
 void OlineDeviceForm::updateTime(){
     ui->label_Time->setText(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss"));
@@ -99,7 +103,7 @@ void OlineDeviceForm::updateButtonNum()
     ui->allBtn->setText(tr("All %1").arg(totalNum));
     ui->redBtn->setText(tr("离线 %1").arg(redNum));
     ui->blueBtn->setText(tr("在线 %1").arg(blueNum));
-    ui->yellowBtn->setText(tr("异常 %1").arg(yellowNum));
+    ui->yellowBtn->setText(tr("下线或异常 %1").arg(yellowNum));
 }
 
 void OlineDeviceForm::on_redBtn_clicked()

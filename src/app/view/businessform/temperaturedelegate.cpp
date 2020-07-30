@@ -15,7 +15,11 @@ TemperatureDelegate::~TemperatureDelegate()
     delete ui;
 }
 int TemperatureDelegate::addRow(){
+    while(model->canFetchMore()){///重要*没有这个while，更新数据超过256无法保存
+        model->fetchMore();
+    }
     int count = model->rowCount();
+    qDebug()<<"count ="<<count;
     model->insertRow(count);
     ui->tableMain->setCurrentIndex(model->index(count, 0));
     return count;
@@ -99,6 +103,9 @@ void TemperatureDelegate::initForm(QString fileName)
    model->setTable(fileName);
    model->setSort(0,Qt::AscendingOrder);
    model->select();
+   while(model->canFetchMore()){///重要*没有这个while，更新数据超过256无法保存
+       model->fetchMore();
+   }
    ui->tableMain->setModel(model);
    ui->tableMain->setProperty("model", true);
 

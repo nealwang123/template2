@@ -38,7 +38,6 @@ OlineDeviceForm::OlineDeviceForm(QWidget *parent) :
     ui->listView->setViewMode(QListView::IconMode); //设置Item图标显示
     ui->listView->setDragEnabled(false);            //控件不允许拖动
 
-
 }
 
 OlineDeviceForm::~OlineDeviceForm()

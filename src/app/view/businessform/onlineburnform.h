@@ -19,7 +19,9 @@ public:
     void stringToHtmlFilter(QString &str);
     void stringToHtml(QString& str,QColor crl);
     void displayStr(QString str,int index=0);
+    void updateDone();
 private slots:
+    void slot_burnTimer();
     void on_cBoxcansend_activated(int index);
     void on_cBoxCanSendDiscrib_activated(int index);
 
@@ -40,6 +42,8 @@ private:
     static QList<HexRecordBlock> hexRecordBlocks_DriverList ;
     FileParse fileParse;
     bool m_ParseFile;
+    //
+    QTimer * burnTimer;
 };
 
 #endif // ONLINEBURNFORM_H

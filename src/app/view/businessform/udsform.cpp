@@ -327,6 +327,7 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
     }else if(respHead=="GBYE"){
         QUIHelper::showMessageBoxInfo("固件升级成功,待重启反馈版本号！",2);
         onlineburnform.displayStr("固件升级成功,待重启反馈版本号！");
+        onlineburnform.updateDone();
     }else if(respHead=="SW"){
         onlineburnform.displayStr(QString("软件版本号：%1%2").arg((quint8)array[6],2,16,QChar('0')).arg((quint8)array[7],2,16,QChar('0')));
     }

@@ -39,13 +39,18 @@ OnlineBurnForm::OnlineBurnForm(QWidget *parent) :
 
 
     }
-
-
+    burnTimer=new QTimer(this);
+    connect(burnTimer,&QTimer::timeout,this,&OnlineBurnForm::slot_burnTimer);
+    burnTimer->setSingleShot(true);
 }
 
 OnlineBurnForm::~OnlineBurnForm()
 {
     delete ui;
+}
+void OnlineBurnForm::slot_burnTimer(){
+    QUIHelper::showMessageBoxError("固件升级失败！",3);
+    displayStr("固件升级失败！",1);
 }
 void OnlineBurnForm::on_cBoxcansend_activated(int index)
 {
@@ -257,8 +262,10 @@ void OnlineBurnForm::on_pushButton_update_released()
      if(ret==_STATUS_OK){
         QString str("数据发送完毕!");
         displayStr("数据发送完毕!\n");
+        burnTimer->start(5000);
+
      }else{
-         QUIHelper::showMessageBoxError("升级中途结束，数据发送出现异常，需重新升级！");
+         QUIHelper::showMessageBoxError("升级中途结束，数据发送出现异常，需重新升级！",3);
      }
 }
 void OnlineBurnForm::displayStr(QString str,int index){
@@ -270,4 +277,9 @@ void OnlineBurnForm::displayStr(QString str,int index){
         clrR= QColor(255,0,0);
     stringToHtml(str,clrR);
     ui->textBrowser_Debug->insertHtml(str);
+}
+void OnlineBurnForm::updateDone(){
+    if(burnTimer->isActive()){
+        burnTimer->stop();
+    }
 }

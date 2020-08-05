@@ -243,7 +243,9 @@ void MainForm::slot_commandTimer(){
     obj[0].DataLen=8;
     memcpy(obj[0].Data,arry.data(),8);
     qDebug()<<" obj[0].ID"<<QString("%1").arg(obj[0].ID,4,16,QChar('0'))<<"obj[0].DataLen"<<obj[0].DataLen;
-    int ret=VCI_Transmit(4,0,0,&obj[0],1);
+    int ret=CANApi::SendOneFrame(0, 0, &obj[0]);
+//    int ret=VCI_Transmit(4,0,0,&obj[0],1);
+
     qDebug()<<"ret=="<<ret;
 
 }
@@ -348,7 +350,7 @@ void MainForm::slot_msgToPC(QString str){
                 }
             }else if(step==6){//查询错误码
                 quint8 err_result=data.trimmed().mid(12,2).toInt(nullptr,16);
-                err_result=(err_result>>2);
+                err_result=(err_result>>3);//
                 err_resultstr=QString("%1 ").arg(err_result,6,2,QChar('0'));
                 if(m_AlignErrorStates.contains(err_result)){
                     err_resultstr.append(m_AlignErrorStates.find(err_result).value());

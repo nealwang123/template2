@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     App::readDeviceData();
     //管理目录列表，不存在则创建
     QUIHelper::newDir("输出信息");
-    QString _version("1.1.9");
+    QString _version("1.2.2 内部专用");
     QString nameversion("测试程序"+_version);
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion(_version);

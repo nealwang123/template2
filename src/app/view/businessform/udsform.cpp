@@ -144,12 +144,37 @@ UDSForm::UDSForm(QWidget *parent) :
         onlineBurn->addWidget(&onlineburnform);
         ui->widget_onlineBurn->setLayout(onlineBurn);
     }
-
+    {//调试界面
+        connect(UDS::Instance(),&UDS::sendCanData,&debugform,&CanDebugForm::slot_sendCanData,Qt::QueuedConnection);
+        connect(UDS::Instance(),&UDS::recvCanData,&debugform,&CanDebugForm::slot_sendCanData,Qt::QueuedConnection);
+        //debugform.show();
+        on_lineEdit_PW_editingFinished();
+        calTimeoutTimer=new QTimer(this);
+        connect(calTimeoutTimer,&QTimer::timeout,this,&UDSForm::slot_calTimeoutTimer);
+        calTimeoutTimer->setSingleShot(true);
+        m_calTimeoutTimes=0;
+        failTimes=0;
+    }
 }
 
 UDSForm::~UDSForm()
 {
     delete ui;
+}
+void UDSForm::slot_calTimeoutTimer(){
+    qDebug()<<"超时一次..."<<m_calTimeoutTimes;
+    QUIHelper::showMessageBoxInfo(QString("30s超时重发！第%1次，此情形可通过进入EOL复位。").arg(m_calTimeoutTimes,2,10,QChar('0')),2,true);
+    m_calTimeoutTimes++;
+    if(m_calTimeoutTimes>=10){
+        qDebug()<<"超时10次，校准失败！！！！！";
+        ui->label_out->setText("EOL子功能超时10次！");
+        m_calTimeoutTimes=0;
+        failTimes=0;
+    }else{//重新发送指令
+        ui->label_out->setText("EOL子功能超时，重新发送！");
+        eolSendCommandOnce();
+        calTimeoutTimer->start(30000);
+    }
 }
 void UDSForm::slot_disableTimer(){
     //清空设备列表
@@ -345,7 +370,32 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
     if(guiworkmode==FACTORY||guiworkmode==CONSUMER){
         ui->label_out->setText(respHead);
         if(respHead=="DONE"){//正常反馈
+            if(calTimeoutTimer->isActive()&&array.size()!=0){//如果是EOL子模式，则停止定时器重发
+                calTimeoutTimer->stop();
+                qDebug()<<"array.size()"<<QString("%1 %2").arg(array.at(array.size()-2)).arg(array.at(array.size()-1));
+                if(array.at(array.size()-1)==0x01){
+                    qDebug()<<"失败，重新发送";
+                    failTimes++;
+                    if(failTimes>=10){
+                        ui->label_out->setText(QString("EOL子功能失败 %1次,执行失败！").arg(failTimes,2,10,QChar('0')));
+                        QUIHelper::showMessageBoxError(QString("EOL子功能失败 %1次,执行失败！请重新操作！").arg(failTimes,2,10,QChar('0')),2,true);
+                        failTimes=0;
+                        m_calTimeoutTimes=0;
+                        return;
+                    }else{
+                        ui->label_out->setText(QString("EOL子功能失败，重新发送 %1").arg(failTimes,2,10,QChar('0')));
+                    }
 
+                    //重新发送
+                    eolSendCommandOnce();
+                }else if(array.at(array.size()-1)==0x00){
+                    failTimes=0;
+                    qDebug()<<"成功，可进行下一条指令";
+                    ui->label_out->setText("EOL子功能执行成功，可进行下一条指令");
+                    QUIHelper::showMessageBoxInfo(QString("EOL子功能执行成功，可进行下一步操作!"),2,true);
+                }
+
+            }
         }else if(respHead=="RRCF"){//读取模式
 
             if(QUIHelper::byteArrayToHexStr(array)=="5A 5A 5A 5A"){
@@ -360,9 +410,14 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             ui->tableMain->setCurrentIndex(model->index(m_modelIndex, 0));
             //testItem=
         }else if(respHead=="EOLR"){//进入EOL模式反馈
-
+            QUIHelper::showMessageBoxInfo("进入EOL模式成功！",2,true);
+        }else if(respHead=="EEOL"){//退出EOL模式
+            QUIHelper::showMessageBoxInfo("退出EOL模式成功！",2,true);
         }else if(respHead=="EOLS"){//EOL子模式
+            //进入子模式响应，启动超时定时器，30s内未返回重新发送
+            ui->label_out->setText(QString("启动30s定时器,30s后无响应重发！%1").arg(m_calTimeoutTimes,2,10,QChar('0')));
 
+            calTimeoutTimer->start(30000);
         }else if(respHead=="RRSN"){//SN获取
             tempstr=QUIHelper::byteArrayToAsciiStr(array).remove(QRegExp("\\s"));
             ui->lineEdit_SNoutput->setText(tempstr);
@@ -378,6 +433,7 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
         }else if(respHead=="RRBV"){//boot版本获取
             tempstr=QUIHelper::byteArrayToHexStr(array).remove(QRegExp("\\s"));
             ui->lineEdit_BootOutput->setText(tempstr);
+
             qDebug()<<"save BV"<<model->setData(model->index(m_modelIndex, 8), tempstr);
         }else if(respHead=="PARA"){//算法参数版本获取
             //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
@@ -388,6 +444,11 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
 
             if(array.size()==512){
                 qDebug()<<"合法数据";
+                if(calTimeoutTimer->isActive()){
+                    calTimeoutTimer->stop();
+                }
+                QUIHelper::showMessageBoxInfo("算法参数更新成功！",2);
+
             }
             for(int i=0;i<rowcount;i++){
                 int type=algowiget->getType(i);
@@ -414,7 +475,7 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             algowiget->on_btnSave_clicked();
         }
         qDebug()<<"m_eolcommandIndex:"<<m_eolcommandIndex;
-        if(m_eolcommandIndex>=12){
+        if(m_eolcommandIndex>=12&&m_eolcommandIndex<=13){
             int ret=judgeResult();
             model->setData(model->index(m_modelIndex, 2),QString("%1").arg(ret,8,2,QChar('0')));
             QString resultpara=model->record(0).value(2).toString();
@@ -1488,7 +1549,10 @@ void UDSForm::on_buttonSendcan1_released()
         BurnInfo::HW_A=ui->lineEdit_HV->text().left(8);
         BurnInfo::HW_B=ui->lineEdit_HV->text().right(8);
     }
-    ui->buttonSendcan1->setEnabled(false);
+    //
+    if(ui->cBox_eolContinue->isChecked()){
+        ui->buttonSendcan1->setEnabled(false);
+    }
     m_eolsendCommandTimer->start(1000);
     //此处可添加can连接判定
     if(ui->cBox_eolContinue->isChecked()){//且为自动发送添加记录到表中
@@ -1589,7 +1653,7 @@ void UDSForm::on_lineEdit_PW_editingFinished()
         ui->btnDelete->setEnabled(true);
         ui->btnSave->setEnabled(true);
         ui->buttonSendcan1->setEnabled(true);
-        ui->button_AlgoQuery->setEnabled(true);
+        //ui->button_AlgoQuery->setEnabled(true);
         ui->button_Consumer->setEnabled(true);
         ui->comboBox->setEnabled(true);
         ui->btnClear->setEnabled(true);
@@ -1597,6 +1661,7 @@ void UDSForm::on_lineEdit_PW_editingFinished()
         tempwidget->setChildEnable(true);
         //高低温首次计数清零按钮
         ui->pushButton_3->setEnabled(true);
+        debugform.show();
     }
 }
 
@@ -1620,6 +1685,7 @@ void UDSForm::on_pushButton_2_released()
 //单项信息交互
 void UDSForm::on_comboBox_activated(int index)
 {
+    //单项测试对应指令集合
     QList<QStringList> commandPair;
     commandPair.clear();
     commandPair.append(QString("工厂模式_1").split("_"));//0
@@ -1636,7 +1702,11 @@ void UDSForm::on_comboBox_activated(int index)
     commandPair.append(QString("查询参数_13").split("_"));//11
     commandPair.append(QString("退出EOL模式_15").split("_"));//12
     commandPair.append(QString("客户模式_16").split("_"));//13
-    //判断合法性，获取参数真值
+    commandPair.append(QString("LRR-Cal_19").split("_"));//14
+    commandPair.append(QString("SRR-Cal_20").split("_"));//15
+    commandPair.append(QString("参数保存_21").split("_"));//16
+
+    //判断写入参数合法性，获取参数真值
     {
         if((ui->lineEdit_SNHead->text().length()!=4)&&
            (ui->dateEdit_SN->text().length()!=8)&&
@@ -1720,8 +1790,13 @@ void UDSForm::on_comboBox_activated(int index)
                 on_cBoxcansend_activated(ind);
                 QThread::msleep(30);
                 eolSendCommandOnce();
-            }else{
-
+            }else if(ind>16){
+                //发送指令
+                qDebug()<<"ind=="<<ind;
+                ui->cBoxcansend->setCurrentIndex(ind);
+                on_cBoxcansend_activated(ind);
+                QThread::msleep(30);
+                eolSendCommandOnce();
             }
         }
     }
@@ -1821,11 +1896,11 @@ void UDSForm::on_button_queryInfo_released()
     on_comboBox_activated(3);
 }
 
-void UDSForm::on_button_AlgoQuery_released()
-{
-    ui->comboBox->setCurrentIndex(11);
-    on_comboBox_activated(11);
-}
+//void UDSForm::on_button_AlgoQuery_released()
+//{
+//    ui->comboBox->setCurrentIndex(11);
+//    on_comboBox_activated(11);
+//}
 
 void UDSForm::on_button_Consumer_released()
 {
@@ -1927,3 +2002,35 @@ void UDSForm::on_tabWidget_tabBarClicked(int index)
 {
 
 }
+
+/***************************<<<***************************/
+void UDSForm::on_button_Calibration_1_released()
+{
+    ui->comboBox->setCurrentIndex(6);
+    on_comboBox_activated(6);
+}
+
+void UDSForm::on_button_Calibration_2_released()
+{
+    ui->comboBox->setCurrentIndex(14);
+    on_comboBox_activated(14);
+}
+
+void UDSForm::on_button_Calibration_3_released()
+{
+    ui->comboBox->setCurrentIndex(15);
+    on_comboBox_activated(15);
+}
+
+void UDSForm::on_button_Calibration_4_released()
+{
+    ui->comboBox->setCurrentIndex(16);
+    on_comboBox_activated(16);
+}
+
+void UDSForm::on_button_Calibration_5_released()
+{
+    ui->comboBox->setCurrentIndex(12);
+    on_comboBox_activated(12);
+}
+/*****************************>>>*************************/

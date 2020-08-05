@@ -1,6 +1,7 @@
 FORMS += \
     $$PWD/algorithmparadelegate.ui \
     $$PWD/canconfigdelegate.ui \
+    $$PWD/candebugform.ui \
     $$PWD/demarcationdelegate.ui \
     $$PWD/initialphaseform.ui \
     $$PWD/mainform.ui \
@@ -13,6 +14,7 @@ HEADERS += \
     $$PWD/algorithmparadelegate.h \
     $$PWD/canapi.h \
     $$PWD/canconfigdelegate.h \
+    $$PWD/candebugform.h \
     $$PWD/demarcationdelegate.h \
     $$PWD/initialphaseform.h \
     $$PWD/itemdef.h \
@@ -29,6 +31,7 @@ SOURCES += \
     $$PWD/algorithmparadelegate.cpp \
     $$PWD/canapi.cpp \
     $$PWD/canconfigdelegate.cpp \
+    $$PWD/candebugform.cpp \
     $$PWD/demarcationdelegate.cpp \
     $$PWD/initialphaseform.cpp \
     $$PWD/itemdelegate.cpp \

@@ -394,7 +394,7 @@
         <rect>
          <x>10</x>
          <y>210</y>
-         <width>671</width>
+         <width>521</width>
          <height>451</height>
         </rect>
        </property>
@@ -793,7 +793,7 @@
               <string>连续</string>
              </property>
              <property name="checked">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -1096,6 +1096,21 @@
                  <string>客户模式</string>
                 </property>
                </item>
+               <item>
+                <property name="text">
+                 <string>LRR-Cal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>SRR-Cal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>保存参数</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -1105,8 +1120,8 @@
              <rect>
               <x>10</x>
               <y>80</y>
-              <width>101</width>
-              <height>31</height>
+              <width>70</width>
+              <height>30</height>
              </rect>
             </property>
             <property name="text">
@@ -1116,10 +1131,10 @@
            <widget class="QPushButton" name="button_queryMode">
             <property name="geometry">
              <rect>
-              <x>140</x>
+              <x>100</x>
               <y>80</y>
-              <width>121</width>
-              <height>31</height>
+              <width>70</width>
+              <height>30</height>
              </rect>
             </property>
             <property name="text">
@@ -1129,10 +1144,10 @@
            <widget class="QPushButton" name="button_burnInfo">
             <property name="geometry">
              <rect>
-              <x>290</x>
+              <x>190</x>
               <y>80</y>
-              <width>121</width>
-              <height>31</height>
+              <width>70</width>
+              <height>30</height>
              </rect>
             </property>
             <property name="text">
@@ -1142,30 +1157,14 @@
            <widget class="QPushButton" name="button_queryInfo">
             <property name="geometry">
              <rect>
-              <x>440</x>
+              <x>280</x>
               <y>80</y>
-              <width>121</width>
-              <height>31</height>
+              <width>70</width>
+              <height>30</height>
              </rect>
             </property>
             <property name="text">
              <string>读取信息</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button_AlgoQuery">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="geometry">
-             <rect>
-              <x>710</x>
-              <y>80</y>
-              <width>101</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>算法参数查询</string>
             </property>
            </widget>
            <widget class="QPushButton" name="button_Consumer">
@@ -1174,15 +1173,65 @@
             </property>
             <property name="geometry">
              <rect>
-              <x>820</x>
+              <x>840</x>
               <y>80</y>
-              <width>101</width>
+              <width>81</width>
               <height>31</height>
              </rect>
             </property>
             <property name="text">
              <string>客户模式</string>
             </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>60</y>
+              <width>419</width>
+              <height>61</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>初相校准</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_32">
+             <item>
+              <widget class="QPushButton" name="button_Calibration_1">
+               <property name="text">
+                <string>1进入EOL</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="button_Calibration_2">
+               <property name="text">
+                <string>2远距校准</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="button_Calibration_3">
+               <property name="text">
+                <string>3近距校准</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="button_Calibration_4">
+               <property name="text">
+                <string>4更新参数</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="button_Calibration_5">
+               <property name="text">
+                <string>5退出EOL</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
@@ -2064,7 +2113,7 @@
      </widget>
      <widget class="QWidget" name="tab_9">
       <attribute name="title">
-       <string>初相校准</string>
+       <string>初相校准（废弃）</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout_30">
        <item>
@@ -2154,6 +2203,9 @@
             <property name="whatsThis">
              <string>请输入密码</string>
             </property>
+            <property name="text">
+             <string>admin</string>
+            </property>
             <property name="echoMode">
              <enum>QLineEdit::Password</enum>
             </property>
@@ -2203,13 +2255,18 @@ p, li { white-space: pre-wrap; }
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;​2020.07.27&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.9&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.9&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.1&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:在配置窗口添加固件升级程序；针对部分雷达升级不成功问题测试修复；根本原因为采样率不一致；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2：添加升级失败超时提示&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:生产测试窗口添加初相校准功能测试；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2:默认放开管理员权限，关闭连续发送，为方便can调试,添加CAN数据收发记录窗口，默认不显示；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;3:固件升级升级完成等待反馈定时器延长至5s；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;4:&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;初相校准功能操作说明&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;见下方生产测试窗口功能说明；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.31&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.31&lt;br /&gt;2020.08.04&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;配置窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;can配置，当前仅连接按钮可用；&lt;/span&gt;&lt;/p&gt;
@@ -2222,13 +2279,23 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤2：根据电流值判断雷达所处状态，并根据实际情况切换boot状态；&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤3：点击开始升级按钮，并等待结束；&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;生产测试窗口&lt;/span&gt;&lt;/h2&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：修改写入信息，包括日期、序列号、硬件版本号；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;全自动下发指令（当前禁用）：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤2：点击按钮，自动开始下发指令（模式切换、查询模式、信息写入、进入EOL、查询信息、退出EOL）；每点击一次按钮下方表格会生成一条记录；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;半自动下发指令：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤2：执行单项测试指令(工厂模式、模式查询、写入信息、读取信息)，四项需分开操作；读取信息时会提示是否生成新保存记录；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; color:#000000;&quot;&gt;按钮操作：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; color:#000000;&quot;&gt;按照按钮提示操作即可；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#000000;&quot;&gt;生产测试：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;    步骤1：修改写入信息，包括日期、序列号、硬件版本号；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;    全自动下发指令（当前禁用）：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;    步骤2：点击按钮，自动开始下发指令（模式切换、查询模式、信息写入、进入EOL、查询信息、退出EOL）；每点击一次按钮下方表格会生成一条记录；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;    半自动下发指令：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;    步骤2：执行单项测试指令(工厂模式、模式查询、写入信息、读取信息)，四项需分开操作；读取信息时会提示是否生成新保存记录；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#000000;&quot;&gt;按钮操作：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#000000;&quot;&gt;按照按钮提示操作即可；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#aa007f;&quot;&gt;初相校准：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#aa007f;&quot;&gt;    &lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;确保处于工厂模式(模式查询查看返回状态是否为工厂模式，是的话可继续后续操作)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;V1.2.1版本提供5个初相校准按键，按顺序点击，并根据提示确认是否进行下一步操作；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;1：进入EOL模式（正常情况会弹出&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; color:#008000;&quot;&gt;进入EOL模式成功！&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;，若无返回下方状态提示黄灯闪烁）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;2：近距校准（下发指令开始近距校准流程，正常情况会弹出&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; color:#008000;&quot;&gt;算法参数更新成功！&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;3：远距校准（下发指令开始远距校准流程，正常情况会弹出&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; color:#008000;&quot;&gt;算法参数更新成功！&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;4：参数保存（下发指令，保存算法参数，正常情况会弹出&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; color:#008000;&quot;&gt;算法参数更新成功！&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;5：退出EOL模式（下发指令退出EOL模式，正常会弹出&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; color:#008000;&quot;&gt;退出EOL模式成功！&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#aa007f;&quot;&gt;）&lt;/span&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;高低温测试窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;步骤1：输入温度信息，点击开始记录按钮&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;

@@ -91,7 +91,12 @@ ECANStatus UDS::sendFirstFrame(byte data[], int dataLength,UDSDataFrame frame)
     memcpy(cAN_OBJs[0].Data+2,data,6);
     //Array.Copy(data, 0, cAN_OBJs[0].data, 2, 6);  //FF装载6个字节数据
     emitEventRecv(cAN_OBJs[0]);
-    return CANApi::SendOneFrame(0, 0, cAN_OBJs);//发送一个单帧
+    return sendCanFrame(cAN_OBJs);
+}
+
+ECANStatus UDS::sendCanFrame(VCI_CAN_OBJ frame[]){
+    emit(sendCanData(frame[0]));
+    return CANApi::SendOneFrame(0, 0, frame);
 }
 /// <summary>
 /// 发送数据，包括单帧和多帧数据
@@ -120,7 +125,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
 
         setNextState();
         //进行单帧的发送
-        if (CANApi::SendOneFrame(0, 0, frame) != _STATUS_OK)
+        if (sendCanFrame(frame) != _STATUS_OK)
         {
             return _STATUS_ERR;
         }
@@ -248,7 +253,7 @@ ECANStatus UDS::sendData(uint canID,byte data[],int dataLength ){
                     emitEventRecv(cAN_OBJs[0]);
                     setNextState();
                     //连续帧中单帧数据的发送
-                    if (CANApi::SendOneFrame(0, 0, cAN_OBJs) != _STATUS_OK)
+                    if (sendCanFrame(cAN_OBJs) != _STATUS_OK)
                     {
                         return _STATUS_ERR;
                     }
@@ -360,16 +365,12 @@ void UDS::ReceiveDataProc(){
 
 
             //step4：对接收到的相应数据帧进行处理
-            if (ReceiveNum <= 0)//如果没有检测到数据，则获取CAN卡故障信息
-            {
+            if (ReceiveNum <= 0){//如果没有检测到数据，则获取CAN卡故障信息
                 //注意：如果没有读到数据则必须调用此函数来读取出当前的错误码，
                 //千万不能省略这一步（即使你可能不想知道错误码是什么）
                //CANApi::VCI_ReadErrInfo(4, 0, 0, cAN_ERR_INFO);
-            }
-            else//表示已经成功接收到信息
-            {
+            }else{//表示已经成功接收到信息
                 //qDebug()<<"ReceiveNum::"<<ReceiveNum;
-
                 //step6：对获取到的数据帧进行具体的单帧数据信息解析
                 for (int i = 0; i < ReceiveNum; i++)
                 {
@@ -378,6 +379,7 @@ void UDS::ReceiveDataProc(){
                     //提取出一帧数据
                     VCI_CAN_OBJ ReceiveOneFrame;
                     memcpy(&ReceiveOneFrame,&gRecMsgBuf[i],sizeof (VCI_CAN_OBJ));
+                    emit(recvCanData(ReceiveOneFrame));
                     if(workmode==ONLINEUPDATE){
                         QString temp,data;
                         for(int j=0;j<ReceiveOneFrame.DataLen;j++){
@@ -468,7 +470,7 @@ void UDS::ReceiveDataProc(){
                         QString str=QUIHelper::byteArrayToAsciiStr(b);
                         str=str.left(4);
                         static qint32 lastlen=0;
-                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="PARA"){
+                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="EEOL"||str=="PARA"){
                             respHead=str;
                             lastlen=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
                             qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
@@ -787,7 +789,8 @@ ECANStatus UDS::NormalSend(uint can_id,byte data[],int dataLength,int delay ){
             memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
         }
         qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
-        int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        //int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        ECANStatus ret=sendCanFrame(&obj[i]);
         if(delay>0){
             QUIHelper::sleep(delay);//ms延时
         }else if(delay==0){
@@ -832,12 +835,11 @@ ECANStatus UDS::NormalSendAndReceive(uint can_id,byte data[],int dataLength){
         }
         qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
         setNextState();
-        int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        //int ret=VCI_Transmit(4,0,0,&obj[i],1);
+        ECANStatus ret=sendCanFrame(&obj[i]);
         //QThread::msleep(1);
         qDebug()<<"ret=="<<ret;
     }
-    //int ret=VCI_Transmit(4,0,0,obj,n);
-    //int ret=VCI_Transmit(4,0,0,obj,n);
     qDebug()<<"uDS.get"<<getNextState();
     if(udsSleep(2000)){
         qDebug()<<"指令正常完成！";

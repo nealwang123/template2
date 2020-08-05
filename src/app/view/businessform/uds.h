@@ -201,6 +201,8 @@ public:
     ECANStatus NormalSendAndReceive(uint can_id,byte data[],int dataLength);
     //非UDS不带交互发送
     ECANStatus NormalSend(uint can_id,byte data[],int dataLength,int delay );
+
+    ECANStatus sendCanFrame(VCI_CAN_OBJ frame[]);
 private:
     static QScopedPointer<UDS> self;
     int m_exitStateThread1;
@@ -220,6 +222,8 @@ signals:
     void emitTemperatureTest(int id,QString rawdata,QStringList list);
     void installAlignData(QString data);
     void emitOnlineBurnInfo(QString respHead,QByteArray array);
+    void recvCanData(VCI_CAN_OBJ& obj);
+    void sendCanData(VCI_CAN_OBJ& obj);
 public slots:
 
 };

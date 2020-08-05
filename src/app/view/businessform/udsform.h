@@ -15,6 +15,7 @@
 #include"mainform.h"
 #include"initialphaseform.h"
 #include"onlineburnform.h"
+#include"candebugform.h"
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -131,6 +132,11 @@ private:
 
     //模式标识
     int guiworkmode;
+    //can调试输出窗口
+    CanDebugForm debugform;
+    QTimer *calTimeoutTimer;
+    int m_calTimeoutTimes;
+    int failTimes;
 
 private slots:
     void initForm(QString fileName);
@@ -142,6 +148,7 @@ private slots:
     void slot_TemperatureTest(int id,QString ,QStringList list);
     void slot_onlineDeviceTimer();
     void slot_disableTimer();
+    void slot_calTimeoutTimer();
 private slots:
     void on_btnAdd_clicked();
     void on_btnSave_clicked();
@@ -168,7 +175,7 @@ private slots:
     void on_button_queryMode_released();
     void on_button_burnInfo_released();
     void on_button_queryInfo_released();
-    void on_button_AlgoQuery_released();
+    //void on_button_AlgoQuery_released();
     void on_button_Consumer_released();
     void on_pushButton_onlineTest_released();
     void on_pushButton_3_released();
@@ -177,6 +184,11 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     void on_lineEdit_Delay_editingFinished();
     void on_tabWidget_tabBarClicked(int index);
+    void on_button_Calibration_1_released();
+    void on_button_Calibration_2_released();
+    void on_button_Calibration_3_released();
+    void on_button_Calibration_4_released();
+    void on_button_Calibration_5_released();
 };
 
 #endif // UDSFORM_H

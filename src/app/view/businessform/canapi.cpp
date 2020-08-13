@@ -44,10 +44,12 @@ bool CANApi::CANInit(int devicetype,int deviceindex,int ch,int baudrate){
 
     switch(baudrate)
     {
-        case 0://5Kbps
+        case 0://500Kbps
             {
-                iNIT_CONFIG.Timing0 =0xBF;
-                iNIT_CONFIG.Timing1 =0xFF;
+        //                iNIT_CONFIG.Timing0 =0x00;
+        //                iNIT_CONFIG.Timing1 =0x1C;
+                        iNIT_CONFIG.Timing0 =0x40;
+                        iNIT_CONFIG.Timing1 =0x58;
             }
             break;
         case 1://10Kbps
@@ -112,10 +114,7 @@ bool CANApi::CANInit(int devicetype,int deviceindex,int ch,int baudrate){
             break;
         case 11://500Kbps
             {
-//                iNIT_CONFIG.Timing0 =0x00;
-//                iNIT_CONFIG.Timing1 =0x1C;
-                iNIT_CONFIG.Timing0 =0x40;
-                iNIT_CONFIG.Timing1 =0x58;
+
             }
             break;
         case 12://666Kbps
@@ -195,8 +194,8 @@ ECANStatus CANApi::SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ fr
     }
   //}
 }
-ECANStatus  CANApi::RecvFrames(VCI_CAN_OBJ obj[], int count){
-    return (ECANStatus)VCI_Receive(4,0,0,obj,count,0);
+ECANStatus  CANApi::RecvFrames(VCI_CAN_OBJ obj[], int count,int devicetype,int deviceindex,int ch){
+    return (ECANStatus)VCI_Receive(devicetype,deviceindex,ch,obj,count,0);
 }
 ECANStatus  CANApi::SendFrames(VCI_CAN_OBJ[], int count){
     return _STATUS_OK;

@@ -22,6 +22,7 @@ public:
     void updateDone();
 private slots:
     void slot_burnTimer();
+    void slot_autoScroll();
     void on_cBoxcansend_activated(int index);
     void on_cBoxCanSendDiscrib_activated(int index);
 

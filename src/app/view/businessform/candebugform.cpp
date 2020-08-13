@@ -27,7 +27,8 @@ void CanDebugForm::slot_sendCanData(VCI_CAN_OBJ& obj){
     }
 }
 void CanDebugForm::slot_recvCanData(VCI_CAN_OBJ& obj){
-    if(ui->checkBox_2->isChecked()){
+
+    if(!ui->lineEdit_FilterText->text().isEmpty()&&ui->checkBox_2->isChecked()&&(obj.ID==ui->lineEdit_FilterText->text().toInt(nullptr,16))){
         QString str="";
         for (int i=0;i<obj.DataLen;i++) {
             str.append(QString("%1 ").arg(obj.Data[i],2,16,QChar('0')));

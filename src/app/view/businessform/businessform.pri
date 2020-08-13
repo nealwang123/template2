@@ -21,6 +21,7 @@ HEADERS += \
     $$PWD/itemdelegate.h \
     $$PWD/mainform.h \
     $$PWD/mysubclassedsqltablemodel.h \
+    $$PWD/mytablemodel.h \
     $$PWD/olinedeviceform.h \
     $$PWD/onlineburnform.h \
     $$PWD/temperaturedelegate.h \
@@ -36,6 +37,7 @@ SOURCES += \
     $$PWD/initialphaseform.cpp \
     $$PWD/itemdelegate.cpp \
     $$PWD/mainform.cpp \
+    $$PWD/mytablemodel.cpp \
     $$PWD/olinedeviceform.cpp \
     $$PWD/onlineburnform.cpp \
     $$PWD/temperaturedelegate.cpp \

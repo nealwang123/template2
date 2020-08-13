@@ -17,11 +17,11 @@ CANConfigDelegate::~CANConfigDelegate()
 bool CANConfigDelegate:: createConnection()
 {
 
-    if (QSqlDatabase::contains("qt_sql_default_connection")){
-        _db = QSqlDatabase::database("qt_sql_default_connection");
+    if (QSqlDatabase::contains("qt_sql_default_connection_")){
+        _db = QSqlDatabase::database("qt_sql_default_connection_");
     }else{
         //建立和sqlite数据的连接
-        _db = QSqlDatabase::addDatabase("QSQLITE","qt_sql_default_connection");
+        _db = QSqlDatabase::addDatabase("QSQLITE","qt_sql_default_connection_");
         //设置数据库文件的名字
 //         _db.setDatabaseName(QUIHelper::appPath() + App::LocalDBName);
         _db.setDatabaseName(QUIHelper::appPath() +"/tcms.db");

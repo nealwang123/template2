@@ -60,6 +60,9 @@ QWidget *DbDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &/
         time->setDisplayFormat("HH:mm:ss");
         time->setTime(QTime::fromString(delegateValue.at(0), "HH:mm:ss"));
         editor = time;
+    }else if(delegateType == "QCheckBox"){//添加checkbox
+        QCheckBox *cbox= new QCheckBox(parent);
+        editor = cbox;
     }
 
     editor->installEventFilter(const_cast<DbDelegate *>(this));
@@ -85,7 +88,11 @@ void DbDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
     } else if (delegateType == "QTimeEdit") {
         QTimeEdit *time = static_cast<QTimeEdit *>(editor);
         time->setTime(QTime::fromString(str, "HH:mm:ss"));
+    }else if(delegateType == "QCheckBox"){//添加checkbox
+        QCheckBox *cbox= static_cast<QCheckBox *>(editor);;
+        cbox->setCheckState((str=="true")?Qt::Checked:Qt::Unchecked);
     }
+
 }
 
 void DbDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index)const
@@ -110,7 +117,12 @@ void DbDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const 
         QTimeEdit *time = static_cast<QTimeEdit *>(editor);
         QString str = time->time().toString("HH:mm:ss");
         model->setData(index, str);
+    } else if(delegateType == "QCheckBox"){//添加checkbox
+        QCheckBox *cbox= static_cast<QCheckBox *>(editor);;
+        QString str = cbox->checkState()==Qt::Checked?"true":"false";
+        model->setData(index, str);
     }
+
 }
 
 void DbDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &) const
@@ -120,6 +132,36 @@ void DbDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewIte
 
 void DbDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
+//    if (index.column() == 0)
+//    {
+//        //获取值
+//        bool checked = index.model()->data(index, Qt::DisplayRole).toBool();
+//        //按钮的风格选项
+//        QStyleOptionButton *checkBoxOption = new QStyleOptionButton();
+//        checkBoxOption->state |= QStyle::State_Enabled;
+//        //根据值判断是否选中
+//        if(checked)
+//        {
+//            checkBoxOption->state |= QStyle::State_On;
+//        }
+//        else
+//        {
+//            checkBoxOption->state |= QStyle::State_Off;
+//        }
+//        //绘制按钮所需要的参数
+//        QStyleOptionButton checkBoxStyleOption;
+//        //按照给定的风格参数 返回元素子区域
+//        QRect checkBoxRect = QApplication::style()->subElementRect( QStyle::SE_CheckBoxIndicator, &checkBoxStyleOption);
+//        //返回QCheckBox坐标
+//        QPoint checkBoxPoint(option.rect.x() + option.rect.width() / 2 - checkBoxRect.width() / 2,
+//                             option.rect.y() + option.rect.height() / 2 - checkBoxRect.height() / 2);
+
+//        //返回QCheckBox几何形状
+//        checkBoxOption->rect = checkBoxRect;
+//        //绘制QCheckBox
+//        QApplication::style()->drawControl(QStyle::CE_CheckBox,checkBoxOption,painter);
+
+//    }
     if (pwdColumn >= 0 && index.column() == pwdColumn) {
         //获得索引对应Model中的数据,将对应数据格式替换
         QString str = index.model()->data(index, Qt::DisplayRole).toString();

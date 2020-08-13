@@ -16,6 +16,7 @@
 #include"initialphaseform.h"
 #include"onlineburnform.h"
 #include"candebugform.h"
+#include"xmlreader.h"
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -40,6 +41,7 @@ public:
     static QString HW_A;
     static QString HW_B;
 };
+
 
 class UDSForm : public QWidget
 {
@@ -137,6 +139,10 @@ private:
     QTimer *calTimeoutTimer;
     int m_calTimeoutTimes;
     int failTimes;
+    M_CANConfig m_CanConfig;
+    //算法参数列表
+    QList<AlgoPara > senddata;
+
 
 private slots:
     void initForm(QString fileName);
@@ -189,6 +195,15 @@ private slots:
     void on_button_Calibration_3_released();
     void on_button_Calibration_4_released();
     void on_button_Calibration_5_released();
+    void on_button_Connect_3_released();
+    void on_button_Connect_2_released();
+    void on_cBox_DeviceIndex_2_activated(int index);
+    void on_cBox_DeviceIndex_activated(int index);
+    void on_pushButton_4_released();
+    void on_pushButton_6_released();
+    void on_pushButton_import_released();
+    void on_pushButton_export_released();
+    void on_toolButton_released();
 };
 
 #endif // UDSFORM_H

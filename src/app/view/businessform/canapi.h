@@ -12,7 +12,13 @@ enum ECANStatus
     _STATUS_OK     =   0x00001,
     _STATUS_TIME_OUT =0x00002
 };
+typedef struct _M_CANConfig{//CAN参数
 
+    int m_deviceType;
+    int m_deviceIndex;
+    int m_deviceChannel;
+
+}M_CANConfig;
 class CANApi
 {
 public:
@@ -46,7 +52,7 @@ public:
     /// <param name="frame">发送经过UDS网络层之后的数据帧</param>
     /// <returns></returns>
     static ECANStatus SendOneFrame(byte remoteflag, byte externflag, VCI_CAN_OBJ frame[],int devicetype=4,int deviceindex=0,int ch=0);
-    static ECANStatus RecvFrames(VCI_CAN_OBJ[], int count);
+    static ECANStatus RecvFrames(VCI_CAN_OBJ[], int count,int devicetype=4,int deviceindex=0,int ch=0);
     static ECANStatus SendFrames(VCI_CAN_OBJ[],int count);
 };
 

@@ -146,7 +146,7 @@ UDSForm::UDSForm(QWidget *parent) :
     }
     {//调试界面
         connect(UDS::Instance(),&UDS::sendCanData,&debugform,&CanDebugForm::slot_sendCanData,Qt::QueuedConnection);
-        connect(UDS::Instance(),&UDS::recvCanData,&debugform,&CanDebugForm::slot_sendCanData,Qt::QueuedConnection);
+        connect(UDS::Instance(),&UDS::recvCanData,&debugform,&CanDebugForm::slot_recvCanData,Qt::QueuedConnection);
         //debugform.show();
         on_lineEdit_PW_editingFinished();
         calTimeoutTimer=new QTimer(this);
@@ -154,6 +154,11 @@ UDSForm::UDSForm(QWidget *parent) :
         calTimeoutTimer->setSingleShot(true);
         m_calTimeoutTimes=0;
         failTimes=0;
+    }
+    {//初始化can参数
+        m_CanConfig.m_deviceType=4;
+        m_CanConfig.m_deviceIndex=0;
+        m_CanConfig.m_deviceChannel=0;
     }
 }
 
@@ -354,7 +359,10 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
         onlineburnform.displayStr("固件升级成功,待重启反馈版本号！");
         onlineburnform.updateDone();
     }else if(respHead=="SW"){
-        onlineburnform.displayStr(QString("软件版本号：%1%2").arg((quint8)array[6],2,16,QChar('0')).arg((quint8)array[7],2,16,QChar('0')));
+        onlineburnform.displayStr(QString("目标个数：%1 软件版本号：%2%3\n")
+                                  .arg((quint8)array[0]&0xFF,2,10,QChar('0'))
+                                  .arg((quint8)array[6]&0x0F,2,16,QChar('0'))
+                                  .arg((quint8)array[7],2,16,QChar('0')));
     }
 }
 void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
@@ -435,7 +443,7 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             ui->lineEdit_BootOutput->setText(tempstr);
 
             qDebug()<<"save BV"<<model->setData(model->index(m_modelIndex, 8), tempstr);
-        }else if(respHead=="PARA"){//算法参数版本获取
+        }else if(respHead=="PARA"||respHead=="MESG"){//算法参数版本获取
             //ui->lineEdit_BootOutput->setText(QUIHelper::byteArrayToHexStr(array));
             //add data to table
             tempstr=QUIHelper::byteArrayToHexStr(array);
@@ -443,7 +451,7 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             int rowcount=algowiget->getRow();
 
             if(array.size()==512){
-                qDebug()<<"合法数据";
+                qDebug()<<"接收到合法参数数据！！！";
                 if(calTimeoutTimer->isActive()){
                     calTimeoutTimer->stop();
                 }
@@ -456,14 +464,15 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
                                     .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
-                algowiget->setData(i,2,temp);
+                algowiget->setData(i,RAWINDEX,temp);
                 //type
                 if(type==1){
-                    qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
+                    qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp))<<temp;
                     //
-                    algowiget->setData(i,3,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
+                    algowiget->setData(i,REALINDEX,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
                 }else{
-                    algowiget->setData(i,3,QString("%1")
+                    qDebug()<<"int:"<<QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp));
+                    algowiget->setData(i,REALINDEX,QString("%1")
                                        .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
                                             );
                 }
@@ -529,18 +538,18 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
                                     .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
-                algowiget->setData(i,2,temp);
+                algowiget->setData(i,RAWINDEX,temp);
                 //type
                 if(type==1){
                     float a=QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
                     qDebug()<<"float:"<<a;
                     //
-                    algowiget->setData(i,3,QString::number(a,'g',6));
+                    algowiget->setData(i,REALINDEX,QString::number(a,'g',6));
                     if(i>=1&&i<=12){
                         para_cal[i-1]=a;
                     }
                 }else{
-                    algowiget->setData(i,3,QString("%1")
+                    algowiget->setData(i,REALINDEX,QString("%1")
                                        .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
                                             );
                 }
@@ -1078,52 +1087,82 @@ void UDSForm::on_button_Connect_released()
 {
 
     if(ui->button_Connect->text()=="连接"){//连接设备
-        bool result = CANApi::OpenDevice(4,0,0);
+        bool result = CANApi::OpenDevice(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex,m_CanConfig.m_deviceChannel);
         if(result==true)
         {
-            ui->textBrowser_Debug->append("设备连接成功");
+            ui->textBrowser_Debug->append(QString("连接设备成功! Type:%1 Index:%2 CH:%3")
+                                          .arg(m_CanConfig.m_deviceType)
+                                          .arg(m_CanConfig.m_deviceIndex)
+                                          .arg(m_CanConfig.m_deviceChannel)
+                                          );
         }
         else
         {
-           QUIHelper::showMessageBoxError("设备连接失败");
+           QUIHelper::showMessageBoxError(QString("连接设备失败! Type:%1 Index:%2 CH:%3")
+                                          .arg(m_CanConfig.m_deviceType)
+                                          .arg(m_CanConfig.m_deviceIndex)
+                                          .arg(m_CanConfig.m_deviceChannel)
+                                          );
            return;
         }
 
-        result = CANApi::CANInit(4,0,0,ui->cBox_Baud->currentIndex());
+        result = CANApi::CANInit(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex,m_CanConfig.m_deviceChannel,ui->cBox_Baud->currentIndex());
         if (result == true)
         {
-            ui->textBrowser_Debug->append("设备初始化成功");
+            ui->textBrowser_Debug->append(QString("初始化设备成功! Type:%1 Index:%2 CH:%3")
+                                          .arg(m_CanConfig.m_deviceType)
+                                          .arg(m_CanConfig.m_deviceIndex)
+                                          .arg(m_CanConfig.m_deviceChannel)
+                                          );
         }
         else
         {
-            QUIHelper::showMessageBoxError("设备初始化失败");
+            QUIHelper::showMessageBoxError(QString("初始化设备失败! Type:%1 Index:%2 CH:%3")
+                                           .arg(m_CanConfig.m_deviceType)
+                                           .arg(m_CanConfig.m_deviceIndex)
+                                           .arg(m_CanConfig.m_deviceChannel)
+                                           );
             return;
         }
 
-        result = CANApi::StartCan(4,0,0);
+        result = CANApi::StartCan(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex,m_CanConfig.m_deviceChannel);
         if (result == true)
         {
-            ui->textBrowser_Debug->append("CAN通信启动成功");
+            ui->textBrowser_Debug->append(QString("启动设备成功! Type:%1 Index:%2 CH:%3")
+                                          .arg(m_CanConfig.m_deviceType)
+                                          .arg(m_CanConfig.m_deviceIndex)
+                                          .arg(m_CanConfig.m_deviceChannel)
+                                          );
             UDS::mConnected = true;//证明设备当前处于连接状态
-            UDS::Instance()->startHandleThread();//启动CAN帧数据的接收
+            UDS::Instance()->startHandleThread(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex,m_CanConfig.m_deviceChannel);//启动CAN帧数据的接收
         }
         else
         {
-            QUIHelper::showMessageBoxError("CAN通信启动失败");
+            QUIHelper::showMessageBoxError(QString("启动设备失败! Type:%1 Index:%2 CH:%3")
+                                           .arg(m_CanConfig.m_deviceType)
+                                           .arg(m_CanConfig.m_deviceIndex)
+                                           .arg(m_CanConfig.m_deviceChannel)
+                                           );
             return;
         }
         ui->button_Connect->setText("关闭");
     }else if(ui->button_Connect->text()=="关闭"){//关闭设备
-        bool result = CANApi::CloseDevice(4,0);
+        bool result = CANApi::CloseDevice(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex);
 
         if (result == true)
         {
-            ui->textBrowser_Debug->append("设备关闭成功");
+            ui->textBrowser_Debug->append(QString("关闭设备成功! Type:%1 Index:%2")
+                                          .arg(m_CanConfig.m_deviceType)
+                                          .arg(m_CanConfig.m_deviceIndex)
+                                          );
             UDS::mConnected = false;//证明设备当前处于连接状态
         }
         else
         {
-            QUIHelper::showMessageBoxError("设备关闭失败");
+            QUIHelper::showMessageBoxError(QString("关闭设备失败！ Type:%1 Index:%2")
+                                           .arg(m_CanConfig.m_deviceType)
+                                           .arg(m_CanConfig.m_deviceIndex)
+                                           );
             return;
         }
         //UDS::Instance()->setExitState(1,0);//启动CAN帧数据的接收
@@ -2034,3 +2073,246 @@ void UDSForm::on_button_Calibration_5_released()
     on_comboBox_activated(12);
 }
 /*****************************>>>*************************/
+
+void UDSForm::on_button_Connect_3_released()
+{
+
+        VCI_BOARD_INFO vbi;
+        DWORD dwRel;
+        QString ProductSn;
+        VCI_BOARD_INFO pInfo [50];
+        int num=VCI_FindUsbDevice2(pInfo);
+        for(int i=0;i<num;i++)
+        {
+            QString str="";
+            for(int j=0;j<20;j++)
+            {
+                str+=pInfo[i].str_Serial_Num[j];
+            }
+            ProductSn="USBCAN-"+str;
+            ui->textBrowser_2->append(ProductSn);
+        }
+//        dwRel = VCI_ReadBoardInfo(m_CanConfig.m_deviceType, m_CanConfig.m_deviceIndex, &vbi);
+//        ui->textBrowser_2->append(QString("CAN设备固件信息:\r\n hw_Version:0x%1\r\nfw_Version:0x%2\r\ndr_Version:0x%3\r\nin_Version:0x%4\r\nirq_Num:0x%5")
+//                  .arg(vbi.hw_Version,4,16,QChar('0'))
+//                  .arg(vbi.fw_Version,4,16,QChar('0'))
+//                  .arg(vbi.dr_Version,4,16,QChar('0'))
+//                  .arg(vbi.in_Version,4,16,QChar('0'))
+//                  .arg(vbi.irq_Num,4,16,QChar('0'))
+//                  );
+//        ui->textBrowser_2->append(QString("can_Num:%1\r\nstr_Serial_Num:%2\r\nstr_hw_Type:%3 ")
+//                  .arg(vbi.can_Num,2,10,QChar('0'))
+//                  .arg(QString (vbi.str_Serial_Num))
+//                  .arg(QString (vbi.str_hw_Type))
+//                  );
+}
+
+void UDSForm::on_button_Connect_2_released()
+{
+    if(ui->button_Connect->text()=="关闭"){
+        VCI_UsbDeviceReset(m_CanConfig.m_deviceType, m_CanConfig.m_deviceIndex,0);
+        ui->button_Connect->setText("连接");
+        QUIHelper::showMessageBoxError("复位USB-CAN适配器完成，请重新连接！");
+    }else{
+        QUIHelper::showMessageBoxError("请先连接设备！",2);
+    }
+}
+
+void UDSForm::on_cBox_DeviceIndex_2_activated(int index)
+{
+    m_CanConfig.m_deviceChannel=index;
+}
+
+void UDSForm::on_cBox_DeviceIndex_activated(int index)
+{
+    m_CanConfig.m_deviceIndex=index;
+}
+
+
+void UDSForm::on_pushButton_4_released()
+{
+    //保存到算法参数sql数据库
+    algowiget->on_btnSave_clicked();
+    QThread::msleep(1000);
+    //更新待下载参数数据结构
+    senddata=algowiget->debugData();
+    qDebug()<<"senddata.length()"<<senddata.length()<<senddata.at(0).realstr;
+    //遍历数据；发送指令
+    byte data1[12]={0x43,0x41,0x50,0x4D,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x00};
+    byte data2[12]={0x43,0x41,0x50,0x4D,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x00};
+    //53 45 50 52 00 00 00 00
+    byte data3[8]={0x53,0x45,0x50,0x52,0x00,0x00,0x00,0x00};
+    //声明一个布尔类型
+    ECANStatus result = _STATUS_ERR;
+    int count=0;
+    for (int i=0;i<senddata.length();i++) {
+        int index=senddata.at(i)._index;
+
+        QString sendstr=senddata.at(i).realstr;
+        QByteArray arr;
+        //
+        if(senddata.at(i).enable=="true"){
+            if(senddata.at(i)._type==1){
+                //QUIHelper::byteArrayToHexStr();
+                arr=QUIHelper::Float2Byte(sendstr.toFloat());
+                qDebug()<<"QUIHelper::byteArrayToHexStr(arr):"<<QUIHelper::byteArrayToHexStr(arr)<<QString::number(arr.data()[0],16);
+            }else{
+                arr=QUIHelper::intToByte(sendstr.toInt());
+            }
+            data1[8]=(index>>8)&0xff;
+            data1[9]=(index)&0xff;
+            data1[10]=arr.data()[0];
+            data1[11]=arr.data()[1];
+
+            data2[8]=((index+1)>>8)&0xff;
+            data2[9]=(index+1)&0xff;
+            data2[10]=arr.data()[2];
+            data2[11]=arr.data()[3];
+
+            result=UDS::Instance()->NormalSend(CANApi::SEND_CAN_ID_Self1,data1,12,-1);
+            if(result==_STATUS_OK){
+                count++;
+                QPixmap pixmap(QString(":/imageTest/buttongreen.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+
+            }else if(result==_STATUS_ERR){
+                QPixmap pixmap(QString(":/imageTest/buttonred.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+
+            }
+            QUIHelper::sleep(200);
+            {
+                QPixmap pixmap(QString(":/imageTest/buttongray.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+            }
+            QUIHelper::sleep(300);
+
+
+            //        if(i==senddata.length()-1){
+            //            result=UDS::Instance()->NormalSendAndReceive(CANApi::SEND_CAN_ID_Self1,data2,12);
+            //        }else{
+                        result=UDS::Instance()->NormalSend(CANApi::SEND_CAN_ID_Self1,data2,12,-1);
+            //        }
+            if(result==_STATUS_OK){
+                count++;
+                QPixmap pixmap(QString(":/imageTest/buttongreen.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+
+            }else if(result==_STATUS_ERR){
+                QPixmap pixmap(QString(":/imageTest/buttonred.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+
+            }
+            QUIHelper::sleep(200);
+            {
+                QPixmap pixmap(QString(":/imageTest/buttongray.png"));
+                ui->label_state_setPara->setFixedSize(64,64);
+                QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+                ui->label_state_setPara->setPixmap(fitpixmap);
+                ui->label_state_setPara->setScaledContents(true);
+            }
+            QUIHelper::sleep(300);
+        }
+
+    }
+
+    int counter=0;
+    for (int i=0;i<senddata.length();i++) {
+        if(senddata.at(i).enable=="true"){
+            counter++;
+        }
+    }
+    if(QMessageBox::Yes!=QUIHelper::showMessageBoxQuestion(QString("指令总数：%1 指令成功数：%2\n操作建议:%3")
+                                      .arg(counter*2)
+                                      .arg(count)
+                                      .arg((count==counter*2)?"指令全部正常,确认继续！":"指令存在异常,请取消重新操作！")
+                                      )){
+        return;
+    }
+    //保存参数指令下发
+    result=UDS::Instance()->NormalSendAndReceive(CANApi::SEND_CAN_ID_Self1,data3,8);
+    if(result==_STATUS_OK){
+        QPixmap pixmap(QString(":/imageTest/buttongreen.png"));
+        ui->label_state_setPara->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_setPara->setPixmap(fitpixmap);
+        ui->label_state_setPara->setScaledContents(true);
+    }else if(result==_STATUS_ERR){
+        QPixmap pixmap(QString(":/imageTest/buttonred.png"));
+        ui->label_state_setPara->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_setPara->setPixmap(fitpixmap);
+        ui->label_state_setPara->setScaledContents(true);
+    }else{
+        QPixmap pixmap(QString(":/imageTest/buttonyellow.png"));
+        ui->label_state_setPara->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_setPara->setPixmap(fitpixmap);
+        ui->label_state_setPara->setScaledContents(true);
+    }
+}
+//查询参数
+void UDSForm::on_pushButton_6_released()
+{
+    ui->comboBox->setCurrentIndex(11);
+    on_comboBox_activated(11);
+}
+
+void UDSForm::on_pushButton_import_released()
+{
+    int result=QUIHelper::showMessageBoxQuestion("导入操作会覆盖参数表，请确认是否继续！");
+    if ( result!= QMessageBox::Yes) {
+        return;
+    }
+    QList<ReadXmlClass> list;
+    XmlReader::Instance()->setImportFile(ui->lineEdit->text());
+    list=XmlReader::Instance()->ReadXml();
+    ReadXmlClass xmlnode;
+    //更新model
+    for(int i=0;i<list.length();i++){
+        xmlnode=list.at(i);
+        algowiget->setData(xmlnode.index.toInt()/2,REALINDEX,xmlnode.readdata);
+        algowiget->setData(xmlnode.index.toInt()/2,TYPEINDEX+1,xmlnode.description);
+    }
+
+    //保存修改
+    //保存到算法参数sql数据库
+    algowiget->on_btnSave_clicked();
+    QUIHelper::showMessageBoxInfo("参数导入成功！");
+}
+
+void UDSForm::on_pushButton_export_released()
+{
+    QList<ReadXmlClass> list;
+    ReadXmlClass xmlnode;
+    senddata=algowiget->debugData();
+    for(int i=0;i<senddata.length();i++){
+        xmlnode.index=QString::number(senddata.at(i)._index);
+        xmlnode.readdata=senddata.at(i).realstr;
+        xmlnode.description=senddata.at(i).description;
+        list.append(xmlnode);
+    }
+    XmlReader::Instance()->WriteXml(list);
+    QUIHelper::showMessageBoxInfo("参数导出成功,存储目录./xmlfile/exportxmlfile.xml");
+}
+
+void UDSForm::on_toolButton_released()
+{
+   ui->lineEdit->setText(QUIHelper::getFileName("xml Files(*.xml)"));
+}
+

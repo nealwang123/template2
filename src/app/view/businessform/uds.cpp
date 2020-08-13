@@ -96,7 +96,7 @@ ECANStatus UDS::sendFirstFrame(byte data[], int dataLength,UDSDataFrame frame)
 
 ECANStatus UDS::sendCanFrame(VCI_CAN_OBJ frame[]){
     emit(sendCanData(frame[0]));
-    return CANApi::SendOneFrame(0, 0, frame);
+    return CANApi::SendOneFrame(0, 0, frame,m_devicetype,m_deviceindex,m_devicechannel);
 }
 /// <summary>
 /// 发送数据，包括单帧和多帧数据
@@ -336,7 +336,7 @@ void UDS::ReceiveDataProc(){
             {
                 uint mlen = 1;
                 //receive(设备类型，设备索引号，第几路can通道，接收结构体首地址指针，接收长度，等待时间)
-                if (!((CANApi::RecvFrames(&mmsg, 1) == _STATUS_OK) & (mlen > 0)))//如果接收不正常且接收数据长度为0，则跳出执行代码
+                if (!((CANApi::RecvFrames(&mmsg, 1,m_devicetype,m_deviceindex,m_devicechannel) == _STATUS_OK) & (mlen > 0)))//如果接收不正常且接收数据长度为0，则跳出执行代码
                 {
                     break;
                 }
@@ -426,16 +426,14 @@ void UDS::ReceiveDataProc(){
                                         if(lastlen1==0){
                                             //获取完有效数据发送到界面
                                             emit(emitOnlineBurnInfo(respHead,m_recvArray));
-                                            qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                            //qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
                                             index1=0;
                                         }
                                     }
                                 }else{
-                                    if(((ReceiveOneFrame.Data[0]&0x0F)==0x02)){//高低温语句用于获取 app版本
-                                        int index=0;
+                                    if((ReceiveOneFrame.ID==0x4E0)){
                                         for(int count=0;count<ReceiveOneFrame.DataLen;count++){
-                                            m_recvArray[index]=ReceiveOneFrame.Data[count];
-                                            index++;
+                                            m_recvArray[count]=ReceiveOneFrame.Data[count];
                                         }
                                         emit(emitOnlineBurnInfo("SW",m_recvArray));
                                     }
@@ -470,7 +468,7 @@ void UDS::ReceiveDataProc(){
                         QString str=QUIHelper::byteArrayToAsciiStr(b);
                         str=str.left(4);
                         static qint32 lastlen=0;
-                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="EEOL"||str=="PARA"){
+                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="EEOL"||str=="PARA"){//||str=="MESG"
                             respHead=str;
                             lastlen=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
                             qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
@@ -504,7 +502,7 @@ void UDS::ReceiveDataProc(){
                                     if(lastlen==0){
                                         //获取完有效数据发送到界面
                                         emit(emitEOLInfo(respHead,m_recvArray));
-                                        qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                        //qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
                                         m_waitforNext=1;
                                         qDebug()<<"m_waitforNext"<<m_waitforNext;
                                         index=0;
@@ -523,7 +521,6 @@ void UDS::ReceiveDataProc(){
                                     emit(emitTemperatureTest(ReceiveOneFrame.ID,tempstr.trimmed(),list));
                                 }
                             }
-
                         }
                     }
                     //step7：判断接收到的数据帧的ID地址是否与设定地址相同
@@ -717,7 +714,10 @@ int UDS::setExitState(int threadIndex,int exi){
     }
     return 0;
 }
-void UDS::startHandleThread(){
+void UDS::startHandleThread(int devicetype,int deviceindex,int ch){
+    m_devicetype=devicetype;
+    m_deviceindex=deviceindex;
+    m_devicechannel=ch;
     //启动接收线程
     this->star();
 }
@@ -774,7 +774,7 @@ ECANStatus UDS::NormalSend(uint can_id,byte data[],int dataLength,int delay ){
         n=(dataLength/8)+1;
     }
     VCI_CAN_OBJ *obj=new VCI_CAN_OBJ[n];
-    memset(obj,0,sizeof (VCI_CAN_OBJ));
+    memset(obj,0,n*sizeof (VCI_CAN_OBJ));
     for (int i=0;i<n;i++) {
         obj[i].ID=can_id;
         obj[i].SendType = 0;
@@ -788,7 +788,7 @@ ECANStatus UDS::NormalSend(uint can_id,byte data[],int dataLength,int delay ){
             obj[i].DataLen=(dataLength - i*8);//(dataLength - i*8);//;
             memcpy(obj[i].Data,(data+i*8),(dataLength - i*8));
         }
-        qDebug()<<" obj[i].ID"<<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
+        qDebug()<<" obj[i].ID"<< n<<i <<QString("%1").arg(obj[i].ID,4,16,QChar('0'))<<"obj[i].DataLen"<<obj[i].DataLen;
         //int ret=VCI_Transmit(4,0,0,&obj[i],1);
         ECANStatus ret=sendCanFrame(&obj[i]);
         if(delay>0){
@@ -800,15 +800,18 @@ ECANStatus UDS::NormalSend(uint can_id,byte data[],int dataLength,int delay ){
                 counterZeroDelay=0;
             }
             counterZeroDelay++;
+        }else{
+
         }
         if(ret){
-            qDebug()<<"指令正常完成！_STATUS_OK";
+            //qDebug()<<"指令正常完成！_STATUS_OK";
         }else{
             qDebug()<<"指令异常！ _STATUS_ERR";
             return _STATUS_ERR;
         }
-        return _STATUS_OK;
+
     }
+    return _STATUS_OK;
 }
 //非uds
 ECANStatus UDS::NormalSendAndReceive(uint can_id,byte data[],int dataLength){

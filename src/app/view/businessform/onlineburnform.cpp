@@ -42,8 +42,11 @@ OnlineBurnForm::OnlineBurnForm(QWidget *parent) :
     burnTimer=new QTimer(this);
     connect(burnTimer,&QTimer::timeout,this,&OnlineBurnForm::slot_burnTimer);
     burnTimer->setSingleShot(true);
+    connect(ui->textBrowser_Debug,&QTextBrowser::textChanged,this,&OnlineBurnForm::slot_autoScroll);
 }
-
+void OnlineBurnForm::slot_autoScroll(){
+    ui->textBrowser_Debug->moveCursor(QTextCursor::End);
+}
 OnlineBurnForm::~OnlineBurnForm()
 {
     delete ui;
@@ -52,6 +55,7 @@ void OnlineBurnForm::slot_burnTimer(){
     QUIHelper::showMessageBoxError("固件升级失败！",3);
     displayStr("固件升级失败！",1);
 }
+
 void OnlineBurnForm::on_cBoxcansend_activated(int index)
 {
     ui->cBoxCanSendDiscrib->setCurrentIndex(index);
@@ -95,11 +99,11 @@ void OnlineBurnForm::on_toolButton_released()
     if (m_ParseFile == true){
         App::OnlineBurnfile=ui->lineEditChooseFile->text();
         App::writeConfig();
-        displayStr("Hex应用程序解析成功!");
+        displayStr("Hex应用程序解析成功!\r\n");
         ui->pushButton_update->setEnabled(true);
     }else{
         QUIHelper::showMessageBoxError("Hex文件解析失败，请再次解析");
-        displayStr("Hex文件解析失败，请再次解析!",1);
+        displayStr("Hex文件解析失败，请再次解析!\r\n",1);
     }
 }
 ECANStatus OnlineBurnForm::writehexBlockData(QList<HexRecordBlock> HexBlockList, int type)
@@ -212,13 +216,14 @@ void OnlineBurnForm::on_pushButton_released()
 {
 
     ui->textBrowser_Debug->clear();
-    int ret=QUIHelper::showMessageBoxQuestion(QString("请确认进入固件更新模式！"));
-    if (ret==QMessageBox::Yes){
-        UDS::Instance()->setWorkMode(ONLINEUPDATE);
-    }else{
-        displayStr("未进入固件更新模式！\n",1);
-        return;
-    }
+    //int ret=QUIHelper::showMessageBoxQuestion(QString("请确认进入固件更新模式！"));
+    UDS::Instance()->setWorkMode(ONLINEUPDATE);
+//    if (ret==QMessageBox::Yes){
+//        UDS::Instance()->setWorkMode(ONLINEUPDATE);
+//    }else{
+//        displayStr("未进入固件更新模式！\n",1);
+//        return;
+//    }
     displayStr("上位机进入固件更新模式！\n");
     displayStr("发送初始化指令！\n");
     ui->cBoxcansend->setCurrentIndex(0);

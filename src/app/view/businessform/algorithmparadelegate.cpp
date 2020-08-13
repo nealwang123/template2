@@ -1,6 +1,23 @@
 ﻿#include "algorithmparadelegate.h"
 #include "ui_algorithmparadelegate.h"
+static bool createConnectionDateBase()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");; //创建QSQLdatabase对象，指定QT使用的哪一种SQL。
+    db.setDatabaseName("testSQL.db");
+    if(!db.open())
+    {
+        QMessageBox::critical(NULL,"数据库打开失败","打开数据库失败！",
+                              QMessageBox::Cancel);
+        return false;
+    }
+    QSqlQuery query;
+    query.exec("create table TEST_SQL (id int(1) primary key,name char(200),age int(1),chenked int (1))");
 
+    query.exec("insert into TEST_SQL values(1,'测试1',18,0)");
+    query.exec("insert into TEST_SQL values(2,'测试2',19,0)");
+    query.exec("insert into TEST_SQL values(3,'测试3',20,0)");
+    return true;
+}
 AlgorithmParaDelegate::AlgorithmParaDelegate(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AlgorithmParaDelegate)
@@ -8,6 +25,7 @@ AlgorithmParaDelegate::AlgorithmParaDelegate(QWidget *parent) :
     ui->setupUi(this);
     createConnection();
     this->initForm("Algorithm");
+
 }
 
 AlgorithmParaDelegate::~AlgorithmParaDelegate()
@@ -24,10 +42,16 @@ int AlgorithmParaDelegate::getRow(){
     return model->rowCount();
 }
 int AlgorithmParaDelegate::getType(int row){
-    return model->record(row).value(4).toInt();
+    return model->record(row).value(TYPEINDEX).toInt();
 }
 void AlgorithmParaDelegate::setData(int row,int col,QString data){
-    model->setData(model->index(row, col), data);
+    bool ret=false;
+    if(col==0){
+        ret=model->setData(model->index(row, col), data,Qt::CheckStateRole);
+    }else{
+        ret=model->setData(model->index(row, col), data);
+
+    }
 }
 
 bool AlgorithmParaDelegate:: createConnection()
@@ -35,12 +59,14 @@ bool AlgorithmParaDelegate:: createConnection()
 
     if (QSqlDatabase::contains("qt_sql_default_connection_")){
         _db = QSqlDatabase::database("qt_sql_default_connection_");
+        qDebug()<<"QSqlDatabase::contains";
     }else{
         //建立和sqlite数据的连接
         _db = QSqlDatabase::addDatabase("QSQLITE","qt_sql_default_connection_");
         //设置数据库文件的名字
 //         _db.setDatabaseName(QUIHelper::appPath() + App::LocalDBName);
         _db.setDatabaseName(QUIHelper::appPath() +"/targetDb.db");
+        qDebug()<<"!QSqlDatabase::contains";
     }
    QString path=QUIHelper::appPath() + App::LocalDBName;
    //自定义文件
@@ -77,10 +103,10 @@ bool AlgorithmParaDelegate:: createConnection()
 
    }
    if(ret == false){
-       qDebug()<<tr("TemperatureDelegate连接数据失败")<<endl;
+       qDebug()<<tr("AlgorithmParaDelegate连接数据失败")<<endl;
        return false;
    }
-   qDebug()<<tr("TemperatureDelegate连接数据库成功")<<endl;
+   qDebug()<<tr("AlgorithmParaDelegate连接数据库成功")<<endl;
    return true;
 
 }
@@ -91,12 +117,10 @@ void AlgorithmParaDelegate::initForm(QString fileName)
    ui->tableMain->horizontalHeader()->setStretchLastSection(true);
    ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
    ui->tableMain->setEditTriggers(QAbstractItemView::CurrentChanged | QAbstractItemView::DoubleClicked);
-
    model = new QSqlTableModel(this,_db);
+   qDebug()<<"_db"<<_db.connectionNames();
    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
    //设置表名
-//    model->setTable("PortInfo");
-//    =;
    model->setTable(fileName);
    model->setSort(0,Qt::AscendingOrder);
    model->select();
@@ -104,13 +128,9 @@ void AlgorithmParaDelegate::initForm(QString fileName)
    ui->tableMain->setProperty("model", true);
 
    columnNames.clear();
-
-//    columnNames << "端口编号" << "端口名称" << "连接类型" << "通讯方式" << "串口号" << "波特率" << "IP地址" << "通讯端口" << "采集周期(秒)" << "通讯超时(次)";
-//   columnNames << "序号" << "字段个数" << "设备类型" << "设备编号"<< "通道号" << "波特率"<< "dbc路径" << "用途策略" << "工作模式"<<"滤波模式"
-//               <<"AccCode"<<"AccMask"<<"滤波使能"<<"设备名称"<<"备注" ;
-   columnNames<<"ID"<<"索引"<<"读原始值"<<"读真实值"<<"类型"<<"写原始值"<<"写真实值"<< "描述";
+   columnNames<<"ID"<<"使能"<<"索引"<<"读原始值"<<"读真实值"<<"校对内容"<<"类型"<< "描述";
    columnWidths.clear();
-   columnWidths <<30<<60<<100<<60<<60<<100<<60<<100;
+   columnWidths <<30<<60<<60<<100<<60<<100<<20<<100;
    if(columnNames.length()!=columnWidths.length()){
        QUIHelper::showMessageBoxError(QString("columnWidths!=columnNames:columnWidths=%1 columnNames=%2").arg(columnWidths.length()).arg(columnNames.length()));
        return;
@@ -123,24 +143,22 @@ void AlgorithmParaDelegate::initForm(QString fileName)
    qDebug()<<columnWidths;
 
 //    //端口编号委托
-//    QStringList portID;
-//    for (int i = 1; i <= 255; i++) {
-//        portID.append(QString::number(i));
-//    }
+       QStringList connectType;
+       connectType << "true" << "false";
 
-//    DbDelegate *d_cbox_portID = new DbDelegate(this);
-//    d_cbox_portID->setDelegateType("QComboBox");
-//    d_cbox_portID->setDelegateValue(portID);
-//    ui->tableMain->setItemDelegateForColumn(0, d_cbox_portID);
+    DbDelegate *d_cbox_portID = new DbDelegate(this);
+    d_cbox_portID->setDelegateType("QCheckBox");
+    d_cbox_portID->setDelegateValue(connectType);
+    ui->tableMain->setItemDelegateForColumn(1, d_cbox_portID);
 
 //    //连接类型委托
 //    QStringList connectType;
-//    connectType << "Com_RS232" << "Com_Tcp_Client" << "Com_Tcp_Server" << "Tcp_Client" << "Tcp_Server";
+//    connectType << "true" << "false";
 
 //    DbDelegate *d_cbox_connectType = new DbDelegate(this);
-//    d_cbox_connectType->setDelegateType("QComboBox");
+//    d_cbox_connectType->setDelegateType("QCheckBox");
 //    d_cbox_connectType->setDelegateValue(connectType);
-//    ui->tableMain->setItemDelegateForColumn(2, d_cbox_connectType);
+//    ui->tableMain->setItemDelegateForColumn(5, d_cbox_connectType);
 
 //    //通讯方式委托
 //    QStringList connectMode;
@@ -149,7 +167,7 @@ void AlgorithmParaDelegate::initForm(QString fileName)
 //    DbDelegate *d_cbox_connectMode = new DbDelegate(this);
 //    d_cbox_connectMode->setDelegateType("QComboBox");
 //    d_cbox_connectMode->setDelegateValue(connectMode);
-//    ui->tableMain->setItemDelegateForColumn(3, d_cbox_connectMode);
+//    ui->tableMain->setItemDelegateForColumn(6, d_cbox_connectMode);
 
 //    //端口号委托
 //    QStringList comName;
@@ -215,15 +233,17 @@ void AlgorithmParaDelegate::on_btnAdd_clicked()
 
 void AlgorithmParaDelegate::on_btnSave_clicked()
 {
+   bool ret=false;
    //启用数据库事务加快执行速度
    model->database().transaction();
 
    if (model->submitAll()) {
-       model->database().commit();
+       ret=model->database().commit();
    } else {
-       model->database().rollback();
+       ret=model->database().rollback();
        QUIHelper::showMessageBoxError("保存设备信息失败,设备信息不能为空,请重新填写!");
    }
+   qDebug()<<"ret=========="<<ret;
 }
 
 void AlgorithmParaDelegate::on_btnDelete_clicked()
@@ -232,7 +252,6 @@ void AlgorithmParaDelegate::on_btnDelete_clicked()
        QUIHelper::showMessageBoxError("请选择要删除的设备!");
        return;
    }
-
    int row = ui->tableMain->currentIndex().row();
    model->removeRow(row);
    model->submitAll();
@@ -256,10 +275,33 @@ void AlgorithmParaDelegate::on_btnClear_clicked()
     }
 
 
-   if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
+    if (QUIHelper::showMessageBoxQuestion("确定要清空所有端口信息吗?") == QMessageBox::Yes) {
        QString sql = "delete from PortInfo";
        QSqlQuery query;
        query.exec(sql);
        model->select();
-   }
+    }
+}
+
+QList<AlgoPara > AlgorithmParaDelegate::debugData(){
+    QList<AlgoPara > list;
+    list.clear();
+    AlgoPara para;
+    //遍历所有，查找可更新参数表
+    for(int i=0;i<model->rowCount();i++){
+        QString test= model->index(i,SENDENABLEINDEX).data().toString();
+        QString index=model->index(i,SENDINDEX).data().toString();
+        QString sendstr=model->index(i,REALINDEX).data().toString();
+        QString type= model->index(i,TYPEINDEX).data().toString();
+        QString description = model->index(i,TYPEINDEX+1).data().toString();
+
+        para.enable=test;
+        para._index=index.toInt();
+        para._type=type.toInt();
+        para.realstr=sendstr;
+        para.description=description;
+        list.append(para);
+    }
+    return list;
+    //更新参数
 }

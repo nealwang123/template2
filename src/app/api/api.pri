@@ -4,7 +4,8 @@ HEADERS += \
     $$PWD/savelog.h \
     $$PWD/saveruntime.h \
     $$PWD/trayicon.h \
-    $$PWD/app.h
+    $$PWD/app.h \
+    $$PWD/xmlreader.h
 
 SOURCES += \
     $$PWD/appinit.cpp \
@@ -12,4 +13,5 @@ SOURCES += \
     $$PWD/savelog.cpp \
     $$PWD/saveruntime.cpp \
     $$PWD/trayicon.cpp \
-    $$PWD/app.cpp
+    $$PWD/app.cpp \
+    $$PWD/xmlreader.cpp

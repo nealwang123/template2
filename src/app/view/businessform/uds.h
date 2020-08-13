@@ -182,7 +182,7 @@ public:
     //线程2
     void star();
     void stateThread();
-    void startHandleThread();
+    void startHandleThread(int devicetype,int deviceindex,int ch);
 
     int setExitState(int threadIndex,int exi);
     int FrameNum(byte data[],int dataLength);
@@ -216,6 +216,9 @@ private:
     QString respHead;
     DBCReader *dbcloader;
 
+    int m_devicetype;
+    int m_deviceindex;
+    int m_devicechannel;
 signals:
     void emitEventRecv(VCI_CAN_OBJ obj);
     void emitEOLInfo(QString respHead,QByteArray array);

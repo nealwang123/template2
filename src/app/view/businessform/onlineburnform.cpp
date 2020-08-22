@@ -93,6 +93,7 @@ void OnlineBurnForm::on_cBoxCanSendDiscrib_activated(int index)
 //load hex file
 void OnlineBurnForm::on_toolButton_released()
 {
+    UDS::Instance()->setWorkMode(ONLINEUPDATE);
     ui->lineEditChooseFile->setText(QUIHelper::getFileName("Hex Files(*.hex)"));
     //已经成功对相关文件进行解析。
     m_ParseFile = fileParse.ParseHexFile(ui->lineEditChooseFile->text(), hexRecordBlocks_DriverList);
@@ -258,6 +259,7 @@ void OnlineBurnForm::stringToHtml(QString& str,QColor crl)
 
 void OnlineBurnForm::on_pushButton_update_released()
 {
+    UDS::Instance()->setWorkMode(ONLINEUPDATE);
      if(!m_ParseFile){
          QUIHelper::showMessageBoxError("升级固件异常，请检查路径！");
          return;

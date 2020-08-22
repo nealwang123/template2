@@ -144,6 +144,13 @@ private:
     QList<AlgoPara > senddata;
 
 
+    //射频或自定义指令表
+    int m_commandIndex;
+    QString m_selfSendStr;
+    QStringList m_list_canSendCommand_RF;
+    QStringList m_list_canSendDiscrib_RF;
+
+
 private slots:
     void initForm(QString fileName);
     void slot_demarcationTimer();
@@ -204,6 +211,10 @@ private slots:
     void on_pushButton_import_released();
     void on_pushButton_export_released();
     void on_toolButton_released();
+    void on_cBoxcansend_2_activated(int index);
+    void on_cBoxCanSendDiscrib_activated(int index);
+    void on_pushButton_selfsend_released();
+    void on_button_Calibration_1_pressed();
 };
 
 #endif // UDSFORM_H

@@ -320,10 +320,10 @@ void MainForm::slot_msgToPC(QString str){
         state=" STEP ";
         state+=QString("%1").arg(step,2,10,QChar('0'));
 
-        quint8 hor_alig_angle=0;
-        quint8 ver_measurid_angle=0;
-        quint8 alig_power_h=0;
-        quint8 alig_power_l=0;
+        static quint8 hor_alig_angle=0;
+        static quint8 ver_measurid_angle=0;
+        static quint8 alig_power_h=0;
+        static quint8 alig_power_l=0;
         qint16 alig_power=0;
         if(data.trimmed().toUpper()==m_recvdata.trimmed().toUpper()){//指令格式正常
             if(step==5){//查询标定状态
@@ -356,20 +356,24 @@ void MainForm::slot_msgToPC(QString str){
                     err_resultstr.append(m_AlignErrorStates.find(err_result).value());
                 }
             }else if(step==7){//查询标定结果
-                hor_alig_angle=data.trimmed().mid(15,2).toInt();
-                ver_measurid_angle=data.trimmed().mid(18,2).toInt();
-                alig_power_h=data.trimmed().mid(21,2).toInt();
+                //data="10 07 62 10 0a AA AA 32";
+                hor_alig_angle=data.trimmed().mid(15,2).toInt(nullptr,16);
+                ver_measurid_angle=data.trimmed().mid(18,2).toInt(nullptr,16);
+                alig_power_h=data.trimmed().mid(21,2).toInt(nullptr,16);
+                qDebug()<<data.trimmed()<<"hor_alig_angle:"<<hor_alig_angle<<ver_measurid_angle<<alig_power_h;
             }else if(step==8){
-                alig_power_l=data.trimmed().mid(0,2).toInt();
+                alig_power_l=data.trimmed().mid(0,2).toInt(nullptr,16);
                 alig_power=((quint16)alig_power_h)<<8+alig_power_l;
                 int count = model->rowCount();
                 model->insertRow(count);
 
                 model->setData(model->index(count, 0), err_resultstr);
+                qDebug()<<"hor_alig_angle data:"<<hor_alig_angle*0.1<<ver_measurid_angle*0.1<<(alig_power>>7)-69.2;
                 //设置新增加的行默认值
-                model->setData(model->index(count, 1), hor_alig_angle*0.1);
-                model->setData(model->index(count, 2), ver_measurid_angle*0.1);
-                model->setData(model->index(count, 3), (alig_power>>7)-69.2);
+
+                model->setData(model->index(count, 1), QString("%1").arg(hor_alig_angle*0.1));
+                model->setData(model->index(count, 2), QString("%1").arg(ver_measurid_angle*0.1));
+                model->setData(model->index(count, 3), QString("%1").arg((alig_power>>7)-69.2));
                 QDateTime dateTime(QDateTime::currentDateTime());
                 QString qStr = dateTime.toString("yyy-MM-dd hh:mm::ss ddd");
                 model->setData(model->index(count, 4), qStr);

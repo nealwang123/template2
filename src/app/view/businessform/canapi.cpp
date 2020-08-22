@@ -46,10 +46,17 @@ bool CANApi::CANInit(int devicetype,int deviceindex,int ch,int baudrate){
     {
         case 0://500Kbps
             {
+        //87.5
         //                iNIT_CONFIG.Timing0 =0x00;
         //                iNIT_CONFIG.Timing1 =0x1C;
+        //62.5
                         iNIT_CONFIG.Timing0 =0x40;
                         iNIT_CONFIG.Timing1 =0x58;
+//        //81.3
+//                        iNIT_CONFIG.Timing0 =0x00;
+//                        iNIT_CONFIG.Timing1 =0x2B;
+//        //75
+
             }
             break;
         case 1://10Kbps

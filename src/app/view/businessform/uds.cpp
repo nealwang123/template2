@@ -461,14 +461,17 @@ void UDS::ReceiveDataProc(){
                     }
                     //工厂模式或者客户模式下
                     else if((workmode==FACTORY||workmode==CONSUMER||workmode==INITIALPHASE)&&((ReceiveOneFrame.ID>=0)&&(ReceiveOneFrame.ID<=9999))){
-                        qDebug()<<"__ReceiveOneFrame.ID"<<QString("%1").arg(ReceiveOneFrame.ID,4,16,QChar('0'))<<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8").arg(ReceiveOneFrame.Data[0],2,16,QChar('0')).arg(ReceiveOneFrame.Data[1],2,16,QChar('0')).arg(ReceiveOneFrame.Data[2],2,16,QChar('0')).arg(ReceiveOneFrame.Data[3],2,16,QChar('0')).arg(ReceiveOneFrame.Data[4],2,16,QChar('0')).arg(ReceiveOneFrame.Data[5],2,16,QChar('0')).arg(ReceiveOneFrame.Data[6],2,16,QChar('0')).arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
+                        qDebug()<<QString("RecvID:%1 RecvLen:%2")
+                                  .arg(ReceiveOneFrame.ID,4,16,QChar('0'))
+                                  .arg(ReceiveOneFrame.DataLen,2,10,QChar('0'))
+                                <<QString("Data: %1 %2 %3 %4 %5 %6 %7 %8").arg(ReceiveOneFrame.Data[0],2,16,QChar('0')).arg(ReceiveOneFrame.Data[1],2,16,QChar('0')).arg(ReceiveOneFrame.Data[2],2,16,QChar('0')).arg(ReceiveOneFrame.Data[3],2,16,QChar('0')).arg(ReceiveOneFrame.Data[4],2,16,QChar('0')).arg(ReceiveOneFrame.Data[5],2,16,QChar('0')).arg(ReceiveOneFrame.Data[6],2,16,QChar('0')).arg(ReceiveOneFrame.Data[7],2,16,QChar('0'));
                         QByteArray b ;
                         b.resize(ReceiveOneFrame.DataLen);
                         b=QByteArray((const char*)ReceiveOneFrame.Data);
                         QString str=QUIHelper::byteArrayToAsciiStr(b);
                         str=str.left(4);
                         static qint32 lastlen=0;
-                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="EEOL"||str=="PARA"){//||str=="MESG"
+                        if(str=="DONE"||str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"||str=="EEOL"||str=="PARA"||str=="RTSM"){//||str=="MESG"
                             respHead=str;
                             lastlen=(qint32)(ReceiveOneFrame.Data[4]<<24)|(ReceiveOneFrame.Data[5]<<16)|(ReceiveOneFrame.Data[6]<<8)|(ReceiveOneFrame.Data[7]<<0);
                             qDebug()<<"respHead"<<respHead<<"lastlen"<<lastlen;
@@ -502,7 +505,7 @@ void UDS::ReceiveDataProc(){
                                     if(lastlen==0){
                                         //获取完有效数据发送到界面
                                         emit(emitEOLInfo(respHead,m_recvArray));
-                                        //qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
+                                        qDebug()<<"2获取到有效数据。。。。。。"<<"respHead"<<respHead<<"m_recvArray.size()"<<m_recvArray.size()<<" "<<QUIHelper::byteArrayToAsciiStr(m_recvArray);
                                         m_waitforNext=1;
                                         qDebug()<<"m_waitforNext"<<m_waitforNext;
                                         index=0;

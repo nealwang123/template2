@@ -139,7 +139,7 @@ UDSForm::UDSForm(QWidget *parent) :
     }
 
     {//设置成在线更新程序
-        UDS::Instance()->setWorkMode(ONLINEUPDATE);
+
         QVBoxLayout* onlineBurn=new QVBoxLayout;
         onlineBurn->addWidget(&onlineburnform);
         ui->widget_onlineBurn->setLayout(onlineBurn);
@@ -159,6 +159,14 @@ UDSForm::UDSForm(QWidget *parent) :
         m_CanConfig.m_deviceType=4;
         m_CanConfig.m_deviceIndex=0;
         m_CanConfig.m_deviceChannel=0;
+    }
+
+    {
+        m_commandIndex=0;
+        QUIHelper::readFileList("","InstructionFileSet/RFTest.txt",m_list_canSendCommand_RF,m_list_canSendDiscrib_RF);
+        ui->cBoxcansend_2->clear();
+        ui->cBoxcansend_2->addItems(m_list_canSendCommand_RF);
+        ui->cBoxCanSendDiscrib->addItems(m_list_canSendDiscrib_RF);
     }
 }
 
@@ -367,11 +375,11 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
 }
 void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
     qDebug()<<"----------------------slot_EOLInfo----------------------"<<array.size();
-//    qDebug()<<QString("Head:%1  hexContext:%2 AsciiContext:%3 m_modelIndex:%4")
-//              .arg(respHead)
-//              .arg(QUIHelper::byteArrayToHexStr(array))
-//              .arg(QUIHelper::byteArrayToAsciiStr(array))
-//              .arg(m_modelIndex);
+    qDebug()<<QString("Head:%1  hexContext:%2 AsciiContext:%3 m_modelIndex:%4")
+              .arg(respHead)
+              .arg(QUIHelper::byteArrayToHexStr(array))
+              .arg(QUIHelper::byteArrayToAsciiStr(array))
+              .arg(m_modelIndex);
     //str=="RRCF"||str=="EOLS"||str=="RRSN"||str=="RRSV"||str=="RRHV"||str=="RRBV"||str=="EOLR"
     QString tempstr;
     int testItem=0;
@@ -421,11 +429,12 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             QUIHelper::showMessageBoxInfo("进入EOL模式成功！",2,true);
         }else if(respHead=="EEOL"){//退出EOL模式
             QUIHelper::showMessageBoxInfo("退出EOL模式成功！",2,true);
-        }else if(respHead=="EOLS"){//EOL子模式
+        }else if(respHead=="EOLS"){//EOL子模式回复
             //进入子模式响应，启动超时定时器，30s内未返回重新发送
-            ui->label_out->setText(QString("启动30s定时器,30s后无响应重发！%1").arg(m_calTimeoutTimes,2,10,QChar('0')));
-
-            calTimeoutTimer->start(30000);
+            ui->label_out->setText(QString("EOL子模式回复"));
+            //取消30s重发机制
+//            qDebug("启动30s定时器,30s后无响应重发！");
+//            calTimeoutTimer->start(30000);
         }else if(respHead=="RRSN"){//SN获取
             tempstr=QUIHelper::byteArrayToAsciiStr(array).remove(QRegExp("\\s"));
             ui->lineEdit_SNoutput->setText(tempstr);
@@ -482,6 +491,12 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             model->setData(model->index(m_modelIndex, 9), "获得参数");
             //保存到算法参数sql数据库
             algowiget->on_btnSave_clicked();
+        }else if(respHead=="RTSM"){
+            qDebug()<<"respHead==RTSM";
+            ui->lineEdit_7->setText(QString::number((quint8)array.at(0)));
+            ui->lineEdit_8->setText(QString::number((quint8)array.at(1)-40));
+            ui->lineEdit_9->setText(QString::number((quint8)array.at(2)-60));
+            ui->lineEdit_10->setText(QString::number((quint8)array.at(3)-6));
         }
         qDebug()<<"m_eolcommandIndex:"<<m_eolcommandIndex;
         if(m_eolcommandIndex>=12&&m_eolcommandIndex<=13){
@@ -1676,6 +1691,24 @@ void UDSForm::on_cBoxcansend_activated(int index)
     }else if(ui->cBoxcansend->currentIndex()==7){//SHVB
         qDebug()<<QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_B));
         m_eolselfSendStr="53 48 56 42 00 00 00 04 "+QUIHelper::byteArrayToHexStr(QUIHelper::hexStrToByteArray(BurnInfo::HW_B));
+    }else if(ui->cBoxcansend->currentIndex()==24){//RTSC
+
+        qDebug()<<"QUIHelper::asciiStrToByteArray RTSC::"<<QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray("RTSC"));
+        QString str=QUIHelper::byteArrayToHexStr(QUIHelper::asciiStrToByteArray("RTSC"));
+        int range=ui->lineEdit_SRange->text().toInt();
+        int velocity=ui->lineEdit_SVelocity->text().toInt();
+        int angle=ui->lineEdit_SAngle->text().toInt();
+        int rcs=ui->lineEdit_SRCS->text().toInt();
+        m_eolselfSendStr=str+" 00 00 00 04 "+QString("%1 %2 %3 %4")
+                .arg(range,2,16,QChar('0'))
+                .arg((velocity+40),2,16,QChar('0'))
+                .arg((angle+60),2,16,QChar('0'))
+                .arg((rcs+6),2,16,QChar('0'));
+        //清空
+        ui->lineEdit_7->clear();
+        ui->lineEdit_8->clear();
+        ui->lineEdit_9->clear();
+        ui->lineEdit_10->clear();
     }else{
         m_eolselfSendStr=ui->cBoxcansend->currentText();
     }
@@ -1744,6 +1777,8 @@ void UDSForm::on_comboBox_activated(int index)
     commandPair.append(QString("LRR-Cal_19").split("_"));//14
     commandPair.append(QString("SRR-Cal_20").split("_"));//15
     commandPair.append(QString("参数保存_21").split("_"));//16
+    commandPair.append(QString("模拟器参数信息_23,24").split("_"));//17
+
 
     //判断写入参数合法性，获取参数真值
     {
@@ -2316,3 +2351,58 @@ void UDSForm::on_toolButton_released()
    ui->lineEdit->setText(QUIHelper::getFileName("xml Files(*.xml)"));
 }
 
+
+void UDSForm::on_cBoxcansend_2_activated(int index)
+{
+    //设置成工厂模式
+    UDS::Instance()->setWorkMode(FACTORY);
+    ui->cBoxCanSendDiscrib->setCurrentIndex(index);
+    m_commandIndex=ui->cBoxcansend_2->currentIndex();
+    m_selfSendStr=ui->cBoxcansend_2->currentText();
+    ui->cBoxCanSendDiscrib->setCurrentIndex(index);
+    QByteArray array=QUIHelper::hexStrToByteArray(m_selfSendStr);
+    //qDebug()<<"m_selfSendStr:"<<m_selfSendStr<<"array.size()"<<array.size();
+    {//
+        QPixmap pixmap(QString(":/imageTest/buttongray.png"));
+        ui->label_state_2->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_2->setPixmap(fitpixmap);
+        ui->label_state_2->setScaledContents(true);
+    }
+    ECANStatus ret=UDS::Instance()->NormalSend(CANApi::SEND_CAN_ID_Self1,(byte*)array.data(),array.size(),200); //ptr就是主窗口的指针，可以用来操作主窗口
+    if(ret==_STATUS_OK){
+
+        QPixmap pixmap(QString(":/imageTest/buttongreen.png"));
+        ui->label_state_2->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_2->setPixmap(fitpixmap);
+        ui->label_state_2->setScaledContents(true);
+
+    }else if(ret==_STATUS_ERR){
+        //displayStr("发送指令异常！\n",1);
+        QPixmap pixmap(QString(":/imageTest/buttonred.png"));
+        ui->label_state_2->setFixedSize(64,64);
+        QPixmap fitpixmap = pixmap.scaled(64,64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);  // 饱满填充
+        ui->label_state_2->setPixmap(fitpixmap);
+        ui->label_state_2->setScaledContents(true);
+
+    }
+
+}
+
+void UDSForm::on_cBoxCanSendDiscrib_activated(int index)
+{
+    ui->cBoxcansend_2->setCurrentIndex(index);
+    qDebug()<<"on_cBoxCanSendDiscrib_activated";
+}
+
+void UDSForm::on_pushButton_selfsend_released()
+{
+
+    on_cBoxcansend_2_activated(m_commandIndex);
+}
+
+void UDSForm::on_button_Calibration_1_pressed()
+{
+
+}

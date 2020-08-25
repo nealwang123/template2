@@ -23,6 +23,27 @@ MyPainterWidget::MyPainterWidget(QWidget *parent) :
     m_timer->start(50);
     //初始化数据结构
 
+
+    minValue = 0-App::XWidth/2;
+    maxValue = App::XWidth/2;
+    value = 0;
+
+    precision = 0;
+    longStep = 10;
+    shortStep = 1;
+    space = 0;
+
+    animation = false;
+    animationStep = 0.5;
+
+    bgColorStart = QColor(100, 100, 100);
+    bgColorEnd = QColor(60, 60, 60);
+    lineColor = Qt::gray;
+
+    pointerColor = QColor(100, 184, 255, 180);
+    pointerWidth = 3;
+    scaleStyle=0;
+
 }
 
 MyPainterWidget::~MyPainterWidget()
@@ -43,16 +64,27 @@ void MyPainterWidget::draw_point(int const x, int const y, QColor const c, Frame
     QPainter painter(&Pix);             // 创建QPainter一个对象
     QPen pen;
     //pen.setStyle(Qt::DashLine);
+    painter.save();
+    painter.setPen(Qt::NoPen);
+    QLinearGradient bgGradient(QPointF(0, 0), QPointF(0, height()));
+    bgGradient.setColorAt(0.0, bgColorStart);
+    bgGradient.setColorAt(1.0, bgColorEnd);
+    painter.setBrush(bgGradient);
+    painter.drawRect(rect());
+    painter.restore();
+
+
+
+
+    painter.save(); //保存坐标系状态
+    painter.translate(0,App::ZeroPointY*this->height()); //将点（100，100）设为原点
+    drawLeftScale(&painter);
+    drawRulerTop(&painter);
+    painter.restore();
 
     painter.save(); //保存坐标系状态
     painter.translate(this->width()*App::ZeroPointX,App::ZeroPointY*this->height()); //将点（100，100）设为原点
-    //
-    //painter.setBrush(Qt::gray);
-    pen.setColor(Qt::gray);           // 设置画笔为黄色
-    pen.setWidth(1);
-    painter.setPen(pen);
-    painter.drawLine(0,-2000,0,300);
-    painter.drawLine(-500,0,500,0);
+
     pen.setWidth(2);
     for(int j=0;j<frame.num_obj;j++){
         int id=0;
@@ -130,8 +162,124 @@ void MyPainterWidget::draw_point(int const x, int const y, QColor const c, Frame
 void MyPainterWidget::paintEvent(QPaintEvent *)
 {
     QPainter Painter(this);
+
+
+
     Painter.drawPixmap(0, 0, this->width(), this->height(),Pix);
 }
+
+void MyPainterWidget::drawLeftScale(QPainter *painter)
+{
+    double minValue = 0;
+    double maxValue = App::YHeight;
+    int longStep = 50;
+    int shortStep = 5;
+
+    QPen pen;
+    pen.setWidth(1);
+    pen.setCapStyle(Qt::RoundCap);
+    pen.setColor(lineColor);
+    painter->save();
+    painter->setPen(pen);
+
+    //绘制纵向标尺线
+    double initLeftX = space;
+    double initY = space;
+
+    //左侧纵向标尺线
+    painter->drawLine(QPointF(initLeftX, initY), QPointF(initLeftX, height() - space));
+
+    //绘制纵向标尺刻度
+    double length = height() - 2 * space;
+    //计算每一格移动多少
+    double increment = length / (maxValue - minValue);
+    //长线条短线条长度
+    int longLineLen = 1000;
+    int shortLineLen = 7;
+
+    //根据范围值绘制刻度值及刻度值
+    for (int i = minValue; i <= maxValue; i = i + shortStep) {
+        QString strValue = QString("%1").arg(i);
+        if (i % longStep == 0) {
+            painter->drawLine(QPointF(initLeftX + longLineLen, initY), QPointF(initLeftX, initY));
+            QPointF textLeftPot(initLeftX + 10 + shortLineLen, initY+ 4);
+            painter->drawText(textLeftPot, strValue);
+        } else {
+            if (i % (longStep / 2) == 0) {
+                shortLineLen = 7;
+            } else {
+                shortLineLen = 4;
+            }
+
+            painter->drawLine(QPointF(initLeftX + shortLineLen, initY), QPointF(initLeftX, initY));
+        }
+
+        initY -= increment * shortStep;
+    }
+
+    painter->restore();
+}
+
+void MyPainterWidget::drawRulerTop(QPainter *painter)
+{
+
+
+    painter->save();
+    painter->setPen(lineColor);
+
+    double initX = space;
+
+    //绘制横向标尺上部分底部线
+    double initTopY = space;
+    QPointF lineTopLeftPot = QPointF(initX, initTopY);
+    QPointF lineTopRightPot = QPointF(width() - initX, initTopY);
+    painter->drawLine(lineTopLeftPot, lineTopRightPot);
+
+    //绘制上部分及下部分横向标尺刻度
+    double length = width() - 2 * space;
+    //计算每一格移动多少
+    double increment = length / (maxValue - minValue);
+    //长线条短线条长度
+    int longLineLen = 15;
+    int shortLineLen = 10;
+
+    //根据范围值绘制刻度值及刻度值 长线条需要移动10像素 短线条需要移动5像素
+    for (int i = minValue; i <= maxValue; i = i + shortStep) {
+        if (i % longStep == 0) {
+            QPointF topPot = QPointF(initX, initTopY-3000);
+            QPointF bottomPot = QPointF(initX, initTopY + longLineLen);
+            painter->drawLine(topPot, bottomPot);
+
+            //如果间距小于5则第一个值和最后一个值不要绘制
+            if (space <= 5 && (i == minValue || i == maxValue)) {
+                initX += increment * shortStep;
+                continue;
+            }
+
+            QString strValue = QString("%1").arg((double)i, 0, 'f', precision);
+            double textWidth = fontMetrics().width(strValue);
+            double textHeight = fontMetrics().height();
+
+            QPointF textPot = QPointF(initX - textWidth / 2, initTopY + textHeight + longLineLen);
+            painter->drawText(textPot, strValue);
+        } else {
+            if (i % (longStep / 2) == 0) {
+                shortLineLen = 10;
+            } else {
+                shortLineLen = 6;
+            }
+
+            QPointF topPot = QPointF(initX, initTopY);
+            QPointF bottomPot = QPointF(initX, initTopY + shortLineLen);
+            painter->drawLine(topPot, bottomPot);
+        }
+
+        initX += increment * shortStep;
+    }
+
+    painter->restore();
+}
+
 void MyPainterWidget::clearPath(){
      memset(mypath,0,100*sizeof (MyPoints));
 }

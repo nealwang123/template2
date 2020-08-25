@@ -215,6 +215,8 @@ private slots:
     void on_cBoxCanSendDiscrib_activated(int index);
     void on_pushButton_selfsend_released();
     void on_button_Calibration_1_pressed();
+    void on_pushButton_5_released();
+    void on_pushButton_simulator_released();
 };
 
 #endif // UDSFORM_H

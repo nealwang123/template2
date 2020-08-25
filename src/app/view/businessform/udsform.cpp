@@ -147,7 +147,6 @@ UDSForm::UDSForm(QWidget *parent) :
     {//调试界面
         connect(UDS::Instance(),&UDS::sendCanData,&debugform,&CanDebugForm::slot_sendCanData,Qt::QueuedConnection);
         connect(UDS::Instance(),&UDS::recvCanData,&debugform,&CanDebugForm::slot_recvCanData,Qt::QueuedConnection);
-        //debugform.show();
         on_lineEdit_PW_editingFinished();
         calTimeoutTimer=new QTimer(this);
         connect(calTimeoutTimer,&QTimer::timeout,this,&UDSForm::slot_calTimeoutTimer);
@@ -1733,7 +1732,6 @@ void UDSForm::on_lineEdit_PW_editingFinished()
         tempwidget->setChildEnable(true);
         //高低温首次计数清零按钮
         ui->pushButton_3->setEnabled(true);
-        debugform.show();
     }
 }
 
@@ -2107,6 +2105,18 @@ void UDSForm::on_button_Calibration_5_released()
     ui->comboBox->setCurrentIndex(12);
     on_comboBox_activated(12);
 }
+
+void UDSForm::on_pushButton_simulator_released()
+{
+    int ret=QUIHelper::showMessageBoxQuestion(QString("请确认是否已进入EOL模式,确认请继续，否则请取消！"));
+    if (ret==QMessageBox::Yes){
+
+    }else{
+        return;
+    }
+    ui->comboBox->setCurrentIndex(17);
+    on_comboBox_activated(17);
+}
 /*****************************>>>*************************/
 
 void UDSForm::on_button_Connect_3_released()
@@ -2406,3 +2416,14 @@ void UDSForm::on_button_Calibration_1_pressed()
 {
 
 }
+
+void UDSForm::on_pushButton_5_released()
+{
+    if(debugform.isVisible()){
+        debugform.hide();
+    }else {
+        debugform.show();
+    }
+}
+
+

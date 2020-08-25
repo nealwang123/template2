@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>8</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -354,9 +354,9 @@
        <widget class="QGroupBox" name="groupBox_5">
         <property name="geometry">
          <rect>
-          <x>510</x>
+          <x>500</x>
           <y>20</y>
-          <width>381</width>
+          <width>331</width>
           <height>71</height>
          </rect>
         </property>
@@ -394,11 +394,24 @@
           <rect>
            <x>190</x>
            <y>20</y>
-           <width>181</width>
+           <width>131</width>
            <height>31</height>
           </rect>
          </property>
         </widget>
+       </widget>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>40</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>CANDebug</string>
+        </property>
        </widget>
       </widget>
       <widget class="QGroupBox" name="groupBox_6">
@@ -1366,7 +1379,7 @@
              <rect>
               <x>290</x>
               <y>60</y>
-              <width>381</width>
+              <width>341</width>
               <height>61</height>
              </rect>
             </property>
@@ -1374,6 +1387,21 @@
              <string>初相校准</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_32">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
              <item>
               <widget class="QPushButton" name="button_Calibration_1">
                <property name="text">
@@ -1414,10 +1442,10 @@
            <widget class="QGroupBox" name="groupBox_9">
             <property name="geometry">
              <rect>
-              <x>680</x>
+              <x>700</x>
               <y>60</y>
-              <width>241</width>
-              <height>71</height>
+              <width>221</width>
+              <height>61</height>
              </rect>
             </property>
             <property name="title">
@@ -1580,6 +1608,19 @@
               </layout>
              </item>
             </layout>
+           </widget>
+           <widget class="QPushButton" name="pushButton_simulator">
+            <property name="geometry">
+             <rect>
+              <x>640</x>
+              <y>72</y>
+              <width>51</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>模拟器</string>
+            </property>
            </widget>
           </widget>
          </item>
@@ -2736,23 +2777,16 @@ p, li { white-space: pre-wrap; }
 &lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.1.9&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.1&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.3&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.6&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:在配置窗口添加固件升级程序；针对部分雷达升级不成功问题测试修复；根本原因为采样率不一致；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2：添加升级失败超时提示&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:生产测试窗口添加初相校准功能测试；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2:默认放开管理员权限，关闭连续发送，为方便can调试,添加CAN数据收发记录窗口，默认不显示；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;3:固件升级升级完成等待反馈定时器延长至5s；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;4:&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;初相校准功能操作说明&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;见下方生产测试窗口功能说明；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:简化固件更新流程，删除点击初始化按钮后询问弹窗，方便操作；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2:客户模式下固件更新后添加版本号实时显示；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:添加模拟器参数发送指令；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2:取消初相校准30s重发；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;3:CAN采样率62.5暂不可调；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;4:CAN调试功能优化，默认隐藏；当需要can调试时可点击配置窗口 canDebug按钮调出；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.07.31&lt;br /&gt;2020.08.04&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;2020.08.07&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.08.25&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;配置窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;can配置，当前仅连接按钮可用；&lt;/span&gt;&lt;/p&gt;

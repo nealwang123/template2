@@ -1,5 +1,5 @@
-ÊÊÓÃ³¡¾°£º
-windows x64»·¾³
+é€‚ç”¨åœºæ™¯ï¼š
+windows x64çŽ¯å¢ƒ
 
-µçÄÔÊ×´ÎÔËÐÐÎÞ·¨´ò¿ª½â¾ö°ì·¨£º
-Ë«»÷°²×°³ÌÐòÄ¿Â¼ÏÂVCRunTimeÎÄ¼þ¼ÐÄÚvc_redist_2015-2019_x64.exe vcredist_2008_x64.exe
+ç”µè„‘é¦–æ¬¡è¿è¡Œæ— æ³•æ‰“å¼€è§£å†³åŠžæ³•ï¼š
+åŒå‡»å®‰è£…ç¨‹åºç›®å½•ä¸‹VCRunTimeæ–‡ä»¶å¤¹å†…vc_redist_2015-2019_x64.exe vcredist_2008_x64.exe

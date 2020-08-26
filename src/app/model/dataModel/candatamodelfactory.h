@@ -1,4 +1,4 @@
-#ifndef CANDATAMODELFACTORY_H
+﻿#ifndef CANDATAMODELFACTORY_H
 #define CANDATAMODELFACTORY_H
 #include"candatamodel.h"
 #include"abstractdatamodelfactory.h"

@@ -1,4 +1,4 @@
-#include "winpcapdevice.h"
+﻿#include "winpcapdevice.h"
 
 WinPcapDevice::WinPcapDevice()
 {

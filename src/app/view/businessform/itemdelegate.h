@@ -1,4 +1,4 @@
-#ifndef ITEMDELEGATE_H
+﻿#ifndef ITEMDELEGATE_H
 #define ITEMDELEGATE_H
 #include <QStyledItemDelegate>
 #include <QModelIndex>

@@ -1,4 +1,4 @@
-#ifndef HELLOWORLD_GLOBAL_H 
+﻿#ifndef HELLOWORLD_GLOBAL_H 
 #define  HELLOWORLD_GLOBAL_H 
 
 

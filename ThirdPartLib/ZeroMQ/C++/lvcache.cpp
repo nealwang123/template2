@@ -1,4 +1,4 @@
-//  Last value cache
+﻿//  Last value cache
 //  Uses XPUB subscription messages to re-send data
 
 #include <unordered_map>

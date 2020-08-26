@@ -1,4 +1,4 @@
-#include "serialdevicemanager.h"
+﻿#include "serialdevicemanager.h"
 
 SerialDeviceManager::SerialDeviceManager()
 {

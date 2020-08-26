@@ -1,4 +1,4 @@
-#ifndef	CLICCREATEDLG_H
+﻿#ifndef	CLICCREATEDLG_H
 #define	CLICCREATEDLG_H
 
 #include <QDialog>

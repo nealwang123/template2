@@ -1,4 +1,4 @@
-#ifndef CANDATAMODEL_H
+﻿#ifndef CANDATAMODEL_H
 #define CANDATAMODEL_H
 #include"abstractdatamodel.h"
 #include"zhelpers.hpp"

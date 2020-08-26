@@ -1,4 +1,4 @@
-//
+﻿//
 //  Weather update client in C++
 //  Connects SUB socket to tcp://localhost:5556
 //  Collects weather updates and finds avg temp in zipcode

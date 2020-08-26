@@ -1,4 +1,4 @@
-#include "candatamodelfactory.h"
+﻿#include "candatamodelfactory.h"
 
 CANDataModelFactory::CANDataModelFactory()
 {

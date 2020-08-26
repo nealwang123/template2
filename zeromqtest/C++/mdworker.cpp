@@ -1,4 +1,4 @@
-//
+﻿//
 //  Majordomo Protocol worker example
 //  Uses the mdwrk API to hide all MDP aspects
 //

@@ -1,4 +1,4 @@
-#include "candevicefactory.h"
+﻿#include "candevicefactory.h"
 
 CANDeviceFactory::CANDeviceFactory()
 {

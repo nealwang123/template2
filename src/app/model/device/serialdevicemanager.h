@@ -1,4 +1,4 @@
-#ifndef SERIALDEVICEMANAGER_H
+﻿#ifndef SERIALDEVICEMANAGER_H
 #define SERIALDEVICEMANAGER_H
 
 #include"abstractdevicemanager.h"

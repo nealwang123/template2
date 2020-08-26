@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 * Author      : James Chapman
 * License     : MIT/X11 (http://directory.fsf.org/wiki/License:X11)
 * Description : Simple UDP ping example

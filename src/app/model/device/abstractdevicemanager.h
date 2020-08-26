@@ -1,4 +1,4 @@
-#ifndef AbstractDeviceManager_H
+﻿#ifndef AbstractDeviceManager_H
 #define AbstractDeviceManager_H
 
 #include <QObject>

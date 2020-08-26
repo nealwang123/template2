@@ -1,4 +1,4 @@
-//
+﻿//
 //  Majordomo Protocol broker
 //  A minimal implementation of http://rfc.zeromq.org/spec:7 and spec:8
 //

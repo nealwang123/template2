@@ -1,4 +1,4 @@
-//  Pathological subscriber
+﻿//  Pathological subscriber
 //  Subscribes to one random topic and prints received messages
 
 #include "zhelpers.hpp"

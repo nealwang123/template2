@@ -1,4 +1,4 @@
-//
+﻿//
 //  Pubsub envelope publisher
 //  Note that the zhelpers.h file also provides s_sendmore
 //

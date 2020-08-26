@@ -1,4 +1,4 @@
-#ifndef WINPCAPDEVICEMANAGER_H
+﻿#ifndef WINPCAPDEVICEMANAGER_H
 #define WINPCAPDEVICEMANAGER_H
 
 #include"abstractdevicemanager.h"

@@ -1,7 +1,7 @@
-#ifndef _MT_API_
+О╩©#ifndef _MT_API_
 #define _MT_API_
 /*
-C╫с©знд╪Ч
+CФ▌╔Е▐ёФ√┤Д╩╤
 V3.12.1  updated at 2016 5 9
 */
 #pragma comment(lib,"MT_API.lib")

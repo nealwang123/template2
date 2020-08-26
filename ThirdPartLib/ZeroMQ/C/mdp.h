@@ -1,4 +1,4 @@
-//
+﻿//
 //  mdp.h
 //  Majordomo Protocol definitions
 //

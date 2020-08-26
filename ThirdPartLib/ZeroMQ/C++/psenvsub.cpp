@@ -1,4 +1,4 @@
-//
+﻿//
 //  Pubsub envelope subscriber
 //
 // Olivier Chamoux <olivier.chamoux@fr.thalesgroup.com>

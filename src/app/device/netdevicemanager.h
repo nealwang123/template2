@@ -1,4 +1,4 @@
-#ifndef NETDEVICEMANAGER_H
+﻿#ifndef NETDEVICEMANAGER_H
 #define NETDEVICEMANAGER_H
 
 #include"abstractdevicemanager.h"

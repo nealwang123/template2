@@ -1,4 +1,4 @@
-#include "clicconfigsoftdlg.h"
+﻿#include "clicconfigsoftdlg.h"
 #include "clicaddsoftdlg.h"
 
 #include <QSettings>

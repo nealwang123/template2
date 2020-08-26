@@ -1,4 +1,4 @@
-//
+﻿//
 // Lazy Pirate server
 // Binds REQ socket to tcp://*:5555
 // Like hwserver except:

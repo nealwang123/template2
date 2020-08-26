@@ -1,4 +1,4 @@
-#ifndef CANDEVICEFACTORY_H
+﻿#ifndef CANDEVICEFACTORY_H
 #define CANDEVICEFACTORY_H
 
 #include"abstractdevicefactory.h"

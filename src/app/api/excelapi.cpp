@@ -1,4 +1,4 @@
-#include "excelapi.h"
+﻿#include "excelapi.h"
 #include "qmutex.h"
 #include "qfile.h"
 #include "qdatetime.h"

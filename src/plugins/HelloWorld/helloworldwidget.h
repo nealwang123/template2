@@ -1,4 +1,4 @@
-#ifndef HELLOWORLDWIDGET_H
+﻿#ifndef HELLOWORLDWIDGET_H
 #define HELLOWORLDWIDGET_H
 
 #include <QWidget>

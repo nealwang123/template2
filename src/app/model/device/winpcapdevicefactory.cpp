@@ -1,4 +1,4 @@
-#include "winpcapdevicefactory.h"
+﻿#include "winpcapdevicefactory.h"
 
 WinPcapDeviceFactory::WinPcapDeviceFactory()
 {

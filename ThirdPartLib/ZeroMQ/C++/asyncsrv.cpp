@@ -1,4 +1,4 @@
-//  Asynchronous client-to-server (DEALER to ROUTER)
+﻿//  Asynchronous client-to-server (DEALER to ROUTER)
 //
 //  While this example runs in a single process, that is to make
 //  it easier to start and stop the example. Each task has its own

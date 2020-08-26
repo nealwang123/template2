@@ -1,4 +1,4 @@
-#ifndef	CLICCONFIGSOFTDLG_H
+﻿#ifndef	CLICCONFIGSOFTDLG_H
 #define	CLICCONFIGSOFTDLG_H
 
 #include <QDialog>

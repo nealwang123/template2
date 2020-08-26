@@ -1,4 +1,4 @@
-#ifndef EXCELAPI_H
+﻿#ifndef EXCELAPI_H
 #define EXCELAPI_H
 
 #include <QObject>

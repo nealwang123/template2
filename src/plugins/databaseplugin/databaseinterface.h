@@ -1,4 +1,4 @@
-#ifndef DATABASEINTERFACE_H
+﻿#ifndef DATABASEINTERFACE_H
 #define DATABASEINTERFACE_H
 
 #include "../../pluginmanager/plugininterface.h"

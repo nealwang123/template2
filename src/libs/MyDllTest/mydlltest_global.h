@@ -1,4 +1,4 @@
-#ifndef MYDLLTEST_GLOBAL_H
+﻿#ifndef MYDLLTEST_GLOBAL_H
 #define MYDLLTEST_GLOBAL_H
 
 #include <QtCore/qglobal.h>

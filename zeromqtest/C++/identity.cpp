@@ -1,4 +1,4 @@
-//
+﻿//
 //  Demonstrate identities as used by the request-reply pattern.  Run this
 //  program by itself.
 //

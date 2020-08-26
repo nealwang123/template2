@@ -1,4 +1,4 @@
-#include "dbcleanthread.h"
+﻿#include "dbcleanthread.h"
 
 QScopedPointer<DbCleanThread> DbCleanThread::self;
 DbCleanThread *DbCleanThread::Instance()

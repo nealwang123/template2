@@ -1,4 +1,4 @@
-#ifndef MYDBDELEGATEPLUGIN_H
+﻿#ifndef MYDBDELEGATEPLUGIN_H
 #define MYDBDELEGATEPLUGIN_H
 
 #include <QDesignerCustomWidgetInterface>

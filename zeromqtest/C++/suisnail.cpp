@@ -1,4 +1,4 @@
-//
+﻿//
 // Suicidal Snail
 //
 // Andreas Hoelzlwimmer <andreas.hoelzlwimmer@fh-hagenberg.at>

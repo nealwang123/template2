@@ -1,4 +1,4 @@
-//
+﻿//
 //  Report 0MQ version
 //
 #include "zhelpers.hpp"

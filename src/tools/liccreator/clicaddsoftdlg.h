@@ -1,4 +1,4 @@
-#ifndef	CLICADDSOFTDLG_H
+﻿#ifndef	CLICADDSOFTDLG_H
 #define	CLICADDSOFTDLG_H
 
 #include <QDialog>

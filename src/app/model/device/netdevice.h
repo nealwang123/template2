@@ -1,4 +1,4 @@
-#ifndef NETDEVICE_H
+﻿#ifndef NETDEVICE_H
 #define NETDEVICE_H
 
 #include"abstractdevice.h"

@@ -1,4 +1,4 @@
-#ifndef CANCONFIGDELEGATE_H
+﻿#ifndef CANCONFIGDELEGATE_H
 #define CANCONFIGDELEGATE_H
 
 #include <QWidget>

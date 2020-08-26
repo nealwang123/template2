@@ -1,4 +1,4 @@
-#include "cliccreatedlg.h"
+﻿#include "cliccreatedlg.h"
 #include "clicaddsoftdlg.h"
 #include "clicconfigsoftdlg.h"
 

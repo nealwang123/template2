@@ -1,4 +1,4 @@
-//
+﻿//
 //  Paranoid Pirate worker
 //
 //

@@ -1,4 +1,4 @@
-#ifndef MYDBDELEGATE_H
+﻿#ifndef MYDBDELEGATE_H
 #define MYDBDELEGATE_H
 
 #include <QWidget>

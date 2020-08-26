@@ -1,4 +1,4 @@
-#ifndef DBC_BASECLASS_H
+﻿#ifndef DBC_BASECLASS_H
 #define DBC_BASECLASS_H
 
 #include <QObject>

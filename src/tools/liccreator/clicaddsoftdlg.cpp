@@ -1,4 +1,4 @@
-#include "clicaddsoftdlg.h"
+﻿#include "clicaddsoftdlg.h"
 #include <QSettings>
 #include <QMessageBox>
 

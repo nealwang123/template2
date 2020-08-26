@@ -1,4 +1,4 @@
-//
+﻿//
 //  Task worker in C++
 //  Connects PULL socket to tcp://localhost:5557
 //  Collects workloads from ventilator via that socket

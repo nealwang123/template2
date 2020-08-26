@@ -1,4 +1,4 @@
-#ifndef WINPCAPDEVICEFACTORY_H
+﻿#ifndef WINPCAPDEVICEFACTORY_H
 #define WINPCAPDEVICEFACTORY_H
 #include"abstractdevicefactory.h"
 #include"winpcapdevice.h"

@@ -1,4 +1,4 @@
-#include "mydbdelegate.h"
+﻿#include "mydbdelegate.h"
 #include "mydbdelegateplugin.h"
 
 #include <QtPlugin>

@@ -1,4 +1,4 @@
-#ifndef SERIALDEVICEFACTORY_H
+﻿#ifndef SERIALDEVICEFACTORY_H
 #define SERIALDEVICEFACTORY_H
 
 #include"abstractdevicefactory.h"

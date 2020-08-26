@@ -1,4 +1,4 @@
-//
+﻿//
 //  Synchronized subscriber in C++
 //
 // Olivier Chamoux <olivier.chamoux@fr.thalesgroup.com>

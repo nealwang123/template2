@@ -1,4 +1,4 @@
-#ifndef DBCLEANTHREAD_H
+﻿#ifndef DBCLEANTHREAD_H
 #define DBCLEANTHREAD_H
 
 /**

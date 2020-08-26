@@ -1,4 +1,4 @@
-#include "usbdevicefactory.h"
+﻿#include "usbdevicefactory.h"
 USBDeviceFactory::USBDeviceFactory()
 {
 

@@ -1,4 +1,4 @@
-#include "abstractdatamodel.h"
+﻿#include "abstractdatamodel.h"
 
 AbstractDataModel::AbstractDataModel(QObject *parent) : QObject(parent)
 {

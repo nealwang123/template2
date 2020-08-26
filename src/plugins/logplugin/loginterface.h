@@ -1,4 +1,4 @@
-#ifndef LOGINTERFACE_H
+﻿#ifndef LOGINTERFACE_H
 #define LOGINTERFACE_H
 
 #include <QObject>

@@ -1,4 +1,4 @@
-#include "netdevicemanager.h"
+﻿#include "netdevicemanager.h"
 
 NetDeviceManager::NetDeviceManager()
 {

@@ -1,4 +1,4 @@
-#ifndef LOGPLUGIN_H
+﻿#ifndef LOGPLUGIN_H
 #define LOGPLUGIN_H
 
 #include <loginterface.h>

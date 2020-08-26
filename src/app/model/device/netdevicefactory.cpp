@@ -1,4 +1,4 @@
-#include "netdevicefactory.h"
+﻿#include "netdevicefactory.h"
 
 NetDeviceFactory::NetDeviceFactory()
 {

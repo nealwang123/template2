@@ -1,4 +1,4 @@
-//
+﻿//
 //  Synchronized publisher in C++
 //
 // Olivier Chamoux <olivier.chamoux@fr.thalesgroup.com>

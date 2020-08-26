@@ -1,4 +1,4 @@
-#include "serialdevice.h"
+﻿#include "serialdevice.h"
 
 SerialDevice::SerialDevice()
 {

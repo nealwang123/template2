@@ -1,4 +1,4 @@
-#ifndef MYDLLTEST_H
+﻿#ifndef MYDLLTEST_H
 #define MYDLLTEST_H
 
 #include "mydlltest_global.h"

@@ -1,4 +1,4 @@
-#include "logplugin.h"
+﻿#include "logplugin.h"
 #include <QDebug>
 
 LogPlugin::LogPlugin(QObject *parent) :

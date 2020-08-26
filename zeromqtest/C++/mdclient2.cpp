@@ -1,4 +1,4 @@
-//
+﻿//
 //  Majordomo Protocol client example - asynchronous
 //  Uses the mdcli API to hide all MDP aspects
 //

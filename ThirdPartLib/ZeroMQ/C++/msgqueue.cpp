@@ -1,4 +1,4 @@
-//
+﻿//
 //  Simple message queuing broker in C++
 //  Same as request-reply broker but using QUEUE device
 //

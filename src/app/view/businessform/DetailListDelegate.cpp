@@ -1,4 +1,4 @@
-#include "DetailListDelegate.h"
+﻿#include "DetailListDelegate.h"
 #include <QMouseEvent>
 #include <QApplication>
 #include <QToolTip>

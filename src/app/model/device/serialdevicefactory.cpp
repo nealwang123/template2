@@ -1,4 +1,4 @@
-#include "serialdevicefactory.h"
+﻿#include "serialdevicefactory.h"
 
 SerialDeviceFactory::SerialDeviceFactory()
 {

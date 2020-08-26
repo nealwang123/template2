@@ -1,4 +1,4 @@
-#ifndef NETDEVICEFACTORY_H
+﻿#ifndef NETDEVICEFACTORY_H
 #define NETDEVICEFACTORY_H
 
 #include"abstractdevicefactory.h"

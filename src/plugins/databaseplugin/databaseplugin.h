@@ -1,4 +1,4 @@
-#ifndef DATABASEPLUGIN_H
+﻿#ifndef DATABASEPLUGIN_H
 #define DATABASEPLUGIN_H
 
 #include <QGenericPlugin>

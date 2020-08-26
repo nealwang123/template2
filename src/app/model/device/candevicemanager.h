@@ -1,4 +1,4 @@
-#ifndef CANDEVICEMANAGER_H
+﻿#ifndef CANDEVICEMANAGER_H
 #define CANDEVICEMANAGER_H
 
 #include"abstractdevicemanager.h"

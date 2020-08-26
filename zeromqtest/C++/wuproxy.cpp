@@ -1,4 +1,4 @@
-//
+﻿//
 //  Weather proxy device C++
 //
 // Olivier Chamoux <olivier.chamoux@fr.thalesgroup.com>

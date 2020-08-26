@@ -1,4 +1,4 @@
-//
+﻿//
 //  Weather update server in C++
 //  Binds PUB socket to tcp://*:5556
 //  Publishes random weather updates

@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (c) 2007-2016 Contributors as noted in the AUTHORS file
 
     This file is part of libzmq, the ZeroMQ core engine in C++.

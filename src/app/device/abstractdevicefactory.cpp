@@ -1,4 +1,4 @@
-#include "abstractdevicefactory.h"
+﻿#include "abstractdevicefactory.h"
 
 AbstractDeviceFactory::AbstractDeviceFactory(QObject *parent) : QObject(parent)
 {

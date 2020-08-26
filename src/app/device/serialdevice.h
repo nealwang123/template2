@@ -1,4 +1,4 @@
-#ifndef SERIALDEVICE_H
+﻿#ifndef SERIALDEVICE_H
 #define SERIALDEVICE_H
 #include"abstractdevice.h"
 

@@ -1,4 +1,4 @@
-//
+﻿//
 //  Simple Pirate queue
 //  This is identical to the LRU pattern, with no reliability mechanisms
 //  at all. It depends on the client for recovery. Runs forever.

@@ -1,4 +1,4 @@
-/********************************************************************************
+﻿/********************************************************************************
 ** Form generated from reading UI file 'pluginerroroverview.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.6

@@ -1,4 +1,4 @@
-#include "winpcapdevicemanager.h"
+﻿#include "winpcapdevicemanager.h"
 
 WinpcapDeviceManager::WinpcapDeviceManager()
 {

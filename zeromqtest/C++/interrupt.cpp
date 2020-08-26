@@ -1,4 +1,4 @@
-//  Handling Interrupt Signals in C++
+﻿//  Handling Interrupt Signals in C++
 //
 //  Zaytsev Roman Borisovich <roman.zaytsev.borisovich@gmail.com>
 

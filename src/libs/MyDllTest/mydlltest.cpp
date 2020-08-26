@@ -1,4 +1,4 @@
-#include "mydlltest.h"
+﻿#include "mydlltest.h"
 
 
 MyDllTest::MyDllTest()

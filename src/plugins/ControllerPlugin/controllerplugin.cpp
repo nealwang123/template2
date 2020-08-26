@@ -1,4 +1,4 @@
-#include "controllerplugin.h"
+﻿#include "controllerplugin.h"
 #include "widget.h"
 #include <QDebug>
 #include <QDateTime>

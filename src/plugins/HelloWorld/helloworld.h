@@ -1,4 +1,4 @@
-#ifndef HELLOWORLD_H 
+﻿#ifndef HELLOWORLD_H 
 #define HELLOWORLD_H 
 
 #include <QObject>

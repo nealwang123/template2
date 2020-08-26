@@ -1,4 +1,4 @@
-//
+﻿//
 //  Paranoid Pirate queue
 //
 //     Andreas Hoelzlwimmer <andreas.hoelzlwimmer@fh-hagenberg.at>

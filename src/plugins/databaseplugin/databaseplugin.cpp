@@ -1,4 +1,4 @@
-#include "databaseplugin.h"
+﻿#include "databaseplugin.h"
 #include <QDebug>
 
 DatabasePlugin::DatabasePlugin(QObject *parent) :

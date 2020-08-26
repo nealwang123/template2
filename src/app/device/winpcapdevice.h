@@ -1,4 +1,4 @@
-#ifndef WINPCAPDEVICE_H
+﻿#ifndef WINPCAPDEVICE_H
 #define WINPCAPDEVICE_H
 /*
 *Winpcap 设备控件

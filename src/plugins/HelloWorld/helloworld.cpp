@@ -1,4 +1,4 @@
-#include "helloworld.h" 
+﻿#include "helloworld.h" 
 #include "helloworldwidget.h"
 
 #include <QDebug>

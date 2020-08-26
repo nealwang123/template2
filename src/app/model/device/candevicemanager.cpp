@@ -1,4 +1,4 @@
-#include "candevicemanager.h"
+﻿#include "candevicemanager.h"
 
 CanDeviceManager::CanDeviceManager()
 {

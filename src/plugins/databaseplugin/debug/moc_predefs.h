@@ -1,4 +1,4 @@
-#define __DBL_MIN_EXP__ (-1021)
+﻿#define __DBL_MIN_EXP__ (-1021)
 #define __cpp_attributes 200809
 #define __pentiumpro__ 1
 #define __UINT_LEAST16_MAX__ 0xffff

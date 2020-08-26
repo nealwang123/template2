@@ -1,4 +1,4 @@
-#ifndef CONTROLLERPLUGIN_GLOBAL_H
+﻿#ifndef CONTROLLERPLUGIN_GLOBAL_H
 #define CONTROLLERPLUGIN_GLOBAL_H
 
 #include <QtCore/qglobal.h>

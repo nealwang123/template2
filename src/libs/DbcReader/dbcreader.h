@@ -1,4 +1,4 @@
-#ifndef DBCREADER_H
+﻿#ifndef DBCREADER_H
 #define DBCREADER_H
 #include"dbcreader_global.h"
 #include <QObject>

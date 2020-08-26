@@ -1,4 +1,4 @@
-#include "NetDevice.h"
+﻿#include "NetDevice.h"
 
 NetDevice::NetDevice()
 {

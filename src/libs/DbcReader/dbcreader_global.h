@@ -1,4 +1,4 @@
-#ifndef DBCREADER_GLOBAL_H
+﻿#ifndef DBCREADER_GLOBAL_H
 #define DBCREADER_GLOBAL_H
 
 #include <QtCore/qglobal.h>

@@ -34,8 +34,7 @@ AlgorithmParaDelegate::~AlgorithmParaDelegate()
 }
 int AlgorithmParaDelegate::addRow(){
     int count = model->rowCount();
-    model->insertRow(count);
-    ui->tableMain->setCurrentIndex(model->index(count, 0));
+    on_btnAdd_clicked();
     return count;
 }
 int AlgorithmParaDelegate::getRow(){
@@ -187,45 +186,36 @@ void AlgorithmParaDelegate::on_btnAdd_clicked()
        int count = model->rowCount();
        model->insertRow(count);
 
-       int prePortID = model->index(count - 1, 0).data().toString().replace("0x","").toInt(nullptr,16)+1;
-
-       QString prePortName = model->index(count - 1, 1).data().toString();
-       QString preConnectType = model->index(count - 1, 2).data().toString();
-       QString preConnectMode = model->index(count - 1, 3).data().toString();
-       QString preComName = model->index(count - 1, 4).data().toString();
-       QString preBaudRate = model->index(count - 1, 5).data().toString();
-       QString preTcpIP = model->index(count - 1, 6).data().toString();
-       QString preTcpPort = model->index(count - 1, 7).data().toString();
-       int preReadInterval = model->index(count - 1, 8).data().toInt();
-       int preReadTimeout = model->index(count - 1, 9).data().toInt();
-
-       QStringList list = preTcpIP.split(".");
-       if (list.count() == 4) {
-           preTcpIP = QString("%1.%2.%3.%4").arg(list.at(0)).arg(list.at(1)).arg(list.at(2)).arg(list.at(3).toInt() + 1);
-       }
+       int preID = model->index(count - 1, 0).data().toString().toInt(nullptr,10)+1;
+       QString preEnable = model->index(count - 1, 1).data().toString();
+       int preIndex = model->index(count - 1, 2).data().toString().toInt(nullptr,10)+2;
+       QString preRaw = model->index(count - 1, 3).data().toString();
+       QString preReal = model->index(count - 1, 4).data().toString();
+       QString preCompare = model->index(count - 1, 5).data().toString();
+       QString preType = model->index(count - 1, 6).data().toString();
+       QString preDescription = "描述，待更新";
 
        if (count == 0) {
-           prePortID = 1;
-           prePortName = "默认端口1";
-           preConnectType = "Tcp_Client";
-           preConnectMode = "采集";
-           preTcpIP = "192.168.1.53";
-           preTcpPort = 502;
-           preReadInterval = 2;
-           preReadTimeout = 3;
+           preID = 0;
+           preEnable = "false";
+           preIndex = 0;
+           preRaw= "00 00 00 00";
+           preReal = "0";
+           preCompare = "0";
+           preType = "0";
+           preDescription = "描述，待更新";
        }
 
        //设置新增加的行默认值
-       model->setData(model->index(count, 0), QString("0x%1").arg(prePortID,3,16,QChar('0')));
-       model->setData(model->index(count, 1), prePortName);
-       model->setData(model->index(count, 2), preConnectType);
-       model->setData(model->index(count, 3), preConnectMode);
-       model->setData(model->index(count, 4), preComName);
-       model->setData(model->index(count, 5), preBaudRate);
-       model->setData(model->index(count, 6), preTcpIP);
-       model->setData(model->index(count, 7), preTcpPort);
-       model->setData(model->index(count, 8), preReadInterval);
-       model->setData(model->index(count, 9), preReadTimeout);
+       model->setData(model->index(count, 0), QString("%1").arg(preID));
+       model->setData(model->index(count, 1), preEnable);
+       model->setData(model->index(count, 2), QString("%1").arg(preIndex));
+       model->setData(model->index(count, 3), preRaw);
+       model->setData(model->index(count, 4), preReal);
+       model->setData(model->index(count, 5), preCompare);
+       model->setData(model->index(count, 6), preType);
+       model->setData(model->index(count, 7), preDescription);
+
 
        ui->tableMain->setCurrentIndex(model->index(count, 0));
 
@@ -241,7 +231,7 @@ void AlgorithmParaDelegate::on_btnSave_clicked()
        ret=model->database().commit();
    } else {
        ret=model->database().rollback();
-       QUIHelper::showMessageBoxError("保存设备信息失败,设备信息不能为空,请重新填写!");
+       QUIHelper::showMessageBoxError("保存信息失败,信息不能为空,请重新填写!");
    }
    qDebug()<<"ret=========="<<ret;
 }

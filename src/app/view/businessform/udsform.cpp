@@ -2328,8 +2328,13 @@ void UDSForm::on_pushButton_import_released()
     XmlReader::Instance()->setImportFile(ui->lineEdit->text());
     list=XmlReader::Instance()->ReadXml();
     ReadXmlClass xmlnode;
+    int row=algowiget->getRow();
     //更新model
     for(int i=0;i<list.length();i++){
+        if(i+1>row){
+            algowiget->addRow();
+            algowiget->on_btnSave_clicked();
+        }
         xmlnode=list.at(i);
         algowiget->setData(xmlnode.index.toInt()/2,REALINDEX,xmlnode.readdata);
         algowiget->setData(xmlnode.index.toInt()/2,TYPEINDEX+1,xmlnode.description);

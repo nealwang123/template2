@@ -32,7 +32,7 @@
       <item>
        <widget class="QPushButton" name="btnAdd">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimumSize">
          <size>
@@ -58,7 +58,7 @@
       <item>
        <widget class="QPushButton" name="btnSave">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimumSize">
          <size>
@@ -110,7 +110,7 @@
       <item>
        <widget class="QPushButton" name="btnReturn">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimumSize">
          <size>

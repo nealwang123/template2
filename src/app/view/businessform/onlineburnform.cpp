@@ -24,13 +24,15 @@ OnlineBurnForm::OnlineBurnForm(QWidget *parent) :
                     "步骤2：选择文件（若输入框已存在且路径正常无需重复选择）；\n"
                     "步骤3：点击‘开始升级’开始升级，正常情况下升级结束会弹窗提示；\n");
         displayStr(str,1);
+        str="注意事项：请务必在更新完成提示框弹出后进行后续操作！！！\n";
+        displayStr(str,1);
         m_ParseFile=false;
         if(QUIHelper::fileIsExist(App::OnlineBurnfile)){
             ui->lineEditChooseFile->setText(App::OnlineBurnfile);
             //已经成功对相关文件进行解析。
             m_ParseFile = fileParse.ParseHexFile(ui->lineEditChooseFile->text(), hexRecordBlocks_DriverList);
             if (m_ParseFile == true){
-                displayStr("Hex应用程序解析成功");
+                displayStr("Hex应用程序解析成功\n");
                 ui->pushButton_update->setEnabled(true);
             }else{
                 QUIHelper::showMessageBoxError("Hex文件解析失败，请再次解析");
@@ -53,7 +55,7 @@ OnlineBurnForm::~OnlineBurnForm()
 }
 void OnlineBurnForm::slot_burnTimer(){
     QUIHelper::showMessageBoxError("固件升级失败！",3);
-    displayStr("固件升级失败！",1);
+    displayStr("固件升级失败！\n",1);
 }
 
 void OnlineBurnForm::on_cBoxcansend_activated(int index)
@@ -209,7 +211,7 @@ ECANStatus OnlineBurnForm::writehexBlockData(QList<HexRecordBlock> HexBlockList,
         }
     }
     //烧写完成
-    ui->progressBar->setValue(100);
+    ui->progressBar->setValue(99);
     return _STATUS_OK;
 }
 
@@ -253,7 +255,7 @@ void OnlineBurnForm::stringToHtml(QString& str,QColor crl)
     array.append(crl.blue());
     QString strC(array.toHex());
     //str = QString("<span style=\"color:#%1;\">%2</span>").arg(strC).arg(str);
-    str = QString("<span style=\"color:#%1; font-size:14px\">%2</span>").arg(strC).arg(str);
+    str = QString("<span style=\"color:#%1; font-size:18px\">%2</span>").arg(strC).arg(str);
 }
 
 
@@ -286,6 +288,7 @@ void OnlineBurnForm::displayStr(QString str,int index){
     ui->textBrowser_Debug->insertHtml(str);
 }
 void OnlineBurnForm::updateDone(){
+    ui->progressBar->setValue(100);
     if(burnTimer->isActive()){
         burnTimer->stop();
     }

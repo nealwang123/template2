@@ -362,9 +362,17 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
         QUIHelper::showMessageBoxInfo(QString("进入BOOT升级流程!\r\n固件版本：%1").arg(QUIHelper::byteArrayToAsciiStr(array)),2);
         onlineburnform.displayStr(QString("进入BOOT升级流程! 固件版本：%1\n").arg(QUIHelper::byteArrayToAsciiStr(array)));
     }else if(respHead=="GBYE"){
-        QUIHelper::showMessageBoxInfo("固件下载完成,请务必等待3s后继续操作！待重启反馈版本号！",4,true);
-        onlineburnform.displayStr("固件下载完成,请请务必等待3s继续操作！待重启反馈版本号！");
-        onlineburnform.updateDone();
+        //Qt5 Lambda表达式
+        //这里需要注意 Lambda表达式是C++ 11 的内容，所以，需要再Pro项目文件中加入 CONFIG += C++ 11
+        // QTimer::singleShot(10, this,SLOT(eventOperation()));
+        QTimer::singleShot(3000,this,[=](){
+            QUIHelper::showMessageBoxInfo("固件下载完成,待重启反馈版本号！",3);
+            onlineburnform.displayStr("固件下载完成,待重启反馈版本号！");
+            onlineburnform.updateDone();
+        });
+
+
+
     }else if(respHead=="SW"){
         onlineburnform.displayStr(QString("目标个数：%1 软件版本号：%2%3\n")
                                   .arg((quint8)array[0]&0xFF,2,10,QChar('0'))

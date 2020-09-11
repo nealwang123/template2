@@ -362,8 +362,8 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
         QUIHelper::showMessageBoxInfo(QString("进入BOOT升级流程!\r\n固件版本：%1").arg(QUIHelper::byteArrayToAsciiStr(array)),2);
         onlineburnform.displayStr(QString("进入BOOT升级流程! 固件版本：%1\n").arg(QUIHelper::byteArrayToAsciiStr(array)));
     }else if(respHead=="GBYE"){
-        QUIHelper::showMessageBoxInfo("固件升级成功,待重启反馈版本号！",2);
-        onlineburnform.displayStr("固件升级成功,待重启反馈版本号！");
+        QUIHelper::showMessageBoxInfo("固件下载完成,请务必等待3s后继续操作！待重启反馈版本号！",4,true);
+        onlineburnform.displayStr("固件下载完成,请请务必等待3s继续操作！待重启反馈版本号！");
         onlineburnform.updateDone();
     }else if(respHead=="SW"){
         onlineburnform.displayStr(QString("目标个数：%1 软件版本号：%2%3\n")

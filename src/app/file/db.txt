@@ -1,2 +1,2 @@
-114.215.135.238,3306,tcms_liu_mysql,root,1988@mIP%12#89Klq09
+114.215.135.238,3306,tcms_liu_mysql,root,1988@mIP%12#89Klq09
 114.215.135.238,3306,tcms_tang_mysql,root,1988@mIP%12#89Klq09

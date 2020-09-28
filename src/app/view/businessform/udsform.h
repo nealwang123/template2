@@ -17,6 +17,7 @@
 #include"onlineburnform.h"
 #include"candebugform.h"
 #include"xmlreader.h"
+#include <QTime>
 #define SQLDATAINDEX 7
 namespace Ui {
 class UDSForm;
@@ -162,6 +163,7 @@ private slots:
     void slot_onlineDeviceTimer();
     void slot_disableTimer();
     void slot_calTimeoutTimer();
+    void slot_recvCanData(VCI_CAN_OBJ& obj);
 private slots:
     void on_btnAdd_clicked();
     void on_btnSave_clicked();

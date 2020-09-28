@@ -154,6 +154,24 @@ UDSForm::UDSForm(QWidget *parent) :
         m_calTimeoutTimes=0;
         failTimes=0;
     }
+    {//主界面
+        connect(UDS::Instance(),&UDS::recvCanData,this,&UDSForm::slot_recvCanData,Qt::QueuedConnection);
+
+        ui->tabWidget->setTabEnabled(0,true);
+        ui->tabWidget->setTabEnabled(1,false);
+        ui->tabWidget->setTabEnabled(2,false);
+        ui->tabWidget->setTabEnabled(3,false);
+        ui->tabWidget->setTabEnabled(4,false);
+        ui->tabWidget->setTabEnabled(5,false);
+        ui->tabWidget->setTabEnabled(6,false);
+        ui->tabWidget->setTabEnabled(7,false);
+        ui->tabWidget->setTabEnabled(8,false);
+        /*
+        * 似乎由于tab并不是QWidget的缘故，需要每次在对显示的tab进行调整后，调用setStyleSheet使其生效
+        */
+        ui->tabWidget->setStyleSheet("QTabBar::tab:disabled {width: 0; color: transparent;}");
+        ui->cBoxCanSendDiscrib->setEnabled(false);
+    }
     {//初始化can参数
         m_CanConfig.m_deviceType=4;
         m_CanConfig.m_deviceIndex=0;
@@ -172,6 +190,21 @@ UDSForm::UDSForm(QWidget *parent) :
 UDSForm::~UDSForm()
 {
     delete ui;
+}
+void UDSForm::slot_recvCanData(VCI_CAN_OBJ& obj){
+//    qDebug()<<"UDSForm::slot_recvCanData(VCI_CAN_OBJ& obj)*****************************";
+    if((obj.ID==0x7D0)&&((obj.Data[0]&0xF0)==0x10)){
+        QString str="";
+        for (int i=0;i<obj.DataLen;i++) {
+            str.append(QString("%1 ").arg(obj.Data[i],2,16,QChar('0')));
+        }
+        ui->textBrowser_3->append(QString("时间:%1 版本:CARR_TSMT_01_00_%2%3")
+                                  .arg(QTime::fromMSecsSinceStartOfDay(obj.TimeStamp/10).toString("hh:mm:ss.zzz"))
+                                  .arg((obj.Data[0]&0x0F),2,16,QChar('0')).toUpper()
+                                  .arg((obj.Data[1]&0xFF),2,16,QChar('0')).toUpper()
+                                );
+        ui->textBrowser_3->moveCursor(QTextCursor::End);
+    }
 }
 void UDSForm::slot_calTimeoutTimer(){
     qDebug()<<"超时一次..."<<m_calTimeoutTimes;

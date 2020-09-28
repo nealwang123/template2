@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -483,11 +483,16 @@
          <x>470</x>
          <y>370</y>
          <width>471</width>
-         <height>261</height>
+         <height>291</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="title">
-        <string>CAN指令发送</string>
+        <string>CAN指令</string>
        </property>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
@@ -583,6 +588,31 @@
         <property name="text">
          <string>状态</string>
         </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>94</x>
+          <y>80</y>
+          <width>371</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_15">
+         <item>
+          <widget class="QCheckBox" name="checkBox_4">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>实时版本信息</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="textBrowser_3"/>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
@@ -2768,9 +2798,9 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;2:参数写入功能完成后提示写入情况，并提供进一步操作提示：若有指令异常需重新操作；若无异常则可继续后续保存操作；&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;3:多参数更新，需通过点击勾选方法修改发送使能属性为true;&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;4:can debug 窗口添加id过滤；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;1:修复bug，安装标定解析数据显示异常；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;2:修复bug，candebug窗口过滤取消无效；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;3:配置界面添加射频测试发送指令列表；&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;1:修复bug，安装标定解析数据显示异常；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;2:修复bug，candebug窗口过滤取消无效；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;3:配置界面添加射频测试发送指令列表；&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.08.13&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.08.18&lt;/span&gt;&lt;/h2&gt;
@@ -2778,15 +2808,18 @@ p, li { white-space: pre-wrap; }
 &lt;tr&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.6&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; color:#000000;&quot;&gt;V1.2.8&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1:添加模拟器参数发送指令；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;2:取消初相校准30s重发；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;3:CAN采样率62.5暂不可调；&lt;/span&gt;&lt;/h2&gt;
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:x-large; font-weight:400;&quot;&gt;4:CAN调试功能优化，默认隐藏；当需要can调试时可点击配置窗口 canDebug按钮调出；&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;1：算法参数可收到那个添加；支持xml导入&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;2：固件更新完成延时弹框提示完成；&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;3：固件更新功能添加提示，务必等弹框后进行后续操作；&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;​2020.08.25&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;​2020.08.25&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;​2020.09.11&lt;/span&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; color:#000000;&quot;&gt;配置窗口&lt;/span&gt;&lt;/h2&gt;
 &lt;p style=&quot; margin-top:5px; margin-bottom:5px; margin-left:40px; margin-right:40px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:12px; font-weight:400; color:#000000;&quot;&gt;can配置，当前仅连接按钮可用；&lt;/span&gt;&lt;/p&gt;

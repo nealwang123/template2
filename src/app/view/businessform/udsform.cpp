@@ -156,16 +156,17 @@ UDSForm::UDSForm(QWidget *parent) :
     }
     {//主界面
         connect(UDS::Instance(),&UDS::recvCanData,this,&UDSForm::slot_recvCanData,Qt::QueuedConnection);
-
-        ui->tabWidget->setTabEnabled(0,true);
-        ui->tabWidget->setTabEnabled(1,false);
-        ui->tabWidget->setTabEnabled(2,false);
-        ui->tabWidget->setTabEnabled(3,false);
-        ui->tabWidget->setTabEnabled(4,false);
-        ui->tabWidget->setTabEnabled(5,false);
-        ui->tabWidget->setTabEnabled(6,false);
-        ui->tabWidget->setTabEnabled(7,false);
-        ui->tabWidget->setTabEnabled(8,false);
+        if(0){
+            ui->tabWidget->setTabEnabled(0,true);
+            ui->tabWidget->setTabEnabled(1,false);
+            ui->tabWidget->setTabEnabled(2,false);
+            ui->tabWidget->setTabEnabled(3,false);
+            ui->tabWidget->setTabEnabled(4,false);
+            ui->tabWidget->setTabEnabled(5,false);
+            ui->tabWidget->setTabEnabled(6,false);
+            ui->tabWidget->setTabEnabled(7,false);
+            ui->tabWidget->setTabEnabled(8,false);
+        }
         /*
         * 似乎由于tab并不是QWidget的缘故，需要每次在对显示的tab进行调整后，调用setStyleSheet使其生效
         */
@@ -398,10 +399,11 @@ void UDSForm::slot_OnlineBurnInfo(QString respHead,QByteArray array){
         //Qt5 Lambda表达式
         //这里需要注意 Lambda表达式是C++ 11 的内容，所以，需要再Pro项目文件中加入 CONFIG += C++ 11
         // QTimer::singleShot(10, this,SLOT(eventOperation()));
+        onlineburnform.updateDone(99);
         QTimer::singleShot(3000,this,[=](){
             QUIHelper::showMessageBoxInfo("固件下载完成,待重启反馈版本号！",3);
             onlineburnform.displayStr("固件下载完成,待重启反馈版本号！");
-            onlineburnform.updateDone();
+            onlineburnform.updateDone(100);
         });
 
 

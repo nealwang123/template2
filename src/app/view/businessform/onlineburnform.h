@@ -19,7 +19,7 @@ public:
     void stringToHtmlFilter(QString &str);
     void stringToHtml(QString& str,QColor crl);
     void displayStr(QString str,int index=0);
-    void updateDone();
+    void updateDone(int value);
 private slots:
     void slot_burnTimer();
     void slot_autoScroll();

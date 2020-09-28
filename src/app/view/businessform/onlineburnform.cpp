@@ -287,8 +287,8 @@ void OnlineBurnForm::displayStr(QString str,int index){
     stringToHtml(str,clrR);
     ui->textBrowser_Debug->insertHtml(str);
 }
-void OnlineBurnForm::updateDone(){
-    ui->progressBar->setValue(100);
+void OnlineBurnForm::updateDone(int value){
+    ui->progressBar->setValue(value);
     if(burnTimer->isActive()){
         burnTimer->stop();
     }

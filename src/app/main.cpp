@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         QUIHelper::newDir("InstructionFileSet");
 
     }
-    QString _version("1.2.9 客户版");
+    QString _version("1.3.0 内部版");
     QString nameversion("测试程序"+_version);
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion(_version);
@@ -84,6 +84,6 @@ int main(int argc, char *argv[])
 //    QObject::connect(&qui, SIGNAL(changeStyle(QString)), &c.getMainForm(), SLOT(changeStyle(QString)));
     QObject::connect(&qui, SIGNAL(closing()), TrayIcon::Instance(), SLOT(closeAll()));
     //添加退出信号
-
+    QObject::connect(&qui, SIGNAL(closing()), &c, SLOT(closeAll()));
     return a.exec();
 }

@@ -172,6 +172,20 @@ UDSForm::UDSForm(QWidget *parent) :
         */
         ui->tabWidget->setStyleSheet("QTabBar::tab:disabled {width: 0; color: transparent;}");
         ui->cBoxCanSendDiscrib->setEnabled(false);
+
+        //延时自动连接
+        QTimer::singleShot(2000,this,[=](){
+            //
+            on_button_Connect_released();
+        });
+        //CAN状态提示
+        ui->label_CANState->setText("<font color=#cc0000 size=7>未连接</font>");
+
+        qDebug()<<"test##################"<<QString("20.4").toInt()<<QString("20.6").toInt();
+        ui->lineEdit_SRange->setValidator(new QIntValidator(0, 180, this));
+        ui->lineEdit_SVelocity->setValidator(new QIntValidator(-40, 40, this));
+        ui->lineEdit_SAngle->setValidator(new QIntValidator(-60, 60, this));
+        ui->lineEdit_SRCS->setValidator(new QIntValidator(-6, 20, this));
     }
     {//初始化can参数
         m_CanConfig.m_deviceType=4;
@@ -509,6 +523,32 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
                 QUIHelper::showMessageBoxInfo("算法参数更新成功！",2);
 
             }
+//            for(int i=0;i<rowcount;i++){
+//                int type=algowiget->getType(i);
+//                QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
+//                                    .arg((quint8)array.at(i*4+1),2,16,QChar('0'))
+//                                    .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
+//                                    .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
+//                algowiget->setData(i,RAWINDEX,temp);
+//                //type
+//                if(type==1){
+//                    qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp))<<temp;
+//                    //
+//                    algowiget->setData(i,REALINDEX,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
+//                }else{
+//                    qDebug()<<"int:"<<QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp));
+//                    algowiget->setData(i,REALINDEX,QString("%1")
+//                                       .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
+//                                            );
+//                }
+
+
+//            }
+//            //更新生产测试窗口显示，封装函数
+
+//            model->setData(model->index(m_modelIndex, 9), "获得参数");
+            QStringList plist;
+            plist.clear();
             for(int i=0;i<rowcount;i++){
                 int type=algowiget->getType(i);
                 QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
@@ -516,21 +556,23 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
                                     .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
                 algowiget->setData(i,RAWINDEX,temp);
+                QString a;
                 //type
                 if(type==1){
-                    qDebug()<<"float:"<<QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp))<<temp;
+                    a=QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6);
+                    //qDebug()<<"float:"<<a;
                     //
-                    algowiget->setData(i,REALINDEX,QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6));
+                    algowiget->setData(i,REALINDEX,a);
                 }else{
-                    qDebug()<<"int:"<<QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp));
-                    algowiget->setData(i,REALINDEX,QString("%1")
-                                       .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
-                                            );
+                    a=QString("%1").arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)));
+                    algowiget->setData(i,REALINDEX,a);
                 }
-
-
+                if(i>=7&&i<=12)
+                    plist.append(a);
             }
-            model->setData(model->index(m_modelIndex, 9), "获得参数");
+            qDebug()<<"plist=="<<plist;
+            displayParameters(plist);
+
             //保存到算法参数sql数据库
             algowiget->on_btnSave_clicked();
         }else if(respHead=="RTSM"){
@@ -587,8 +629,9 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
             if(array.size()==512){
                 qDebug()<<"合法数据";
             }
-            float para_cal[12];
 
+            QStringList plist;
+            plist.clear();
             for(int i=0;i<rowcount;i++){
                 int type=algowiget->getType(i);
                 QString temp=QString("%1 %2 %3 %4").arg((quint8)array.at(i*4+0),2,16,QChar('0'))
@@ -596,22 +639,19 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
                                     .arg((quint8)array.at(i*4+2),2,16,QChar('0'))
                                     .arg((quint8)array.at(i*4+3),2,16,QChar('0'));
                 algowiget->setData(i,RAWINDEX,temp);
+                QString a;
                 //type
                 if(type==1){
-                    float a=QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp));
-                    qDebug()<<"float:"<<a;
+                    a=QString::number(QUIHelper::Byte2Float(QUIHelper::hexStrToByteArray(temp)),'g',6);
+                    qDebug()<<"float:"<<a<<"guiworkmode"<<guiworkmode;
                     //
-                    algowiget->setData(i,REALINDEX,QString::number(a,'g',6));
-                    if(i>=1&&i<=12){
-                        para_cal[i-1]=a;
-                    }
+                    algowiget->setData(i,REALINDEX,a);
                 }else{
-                    algowiget->setData(i,REALINDEX,QString("%1")
-                                       .arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)))
-                                            );
+                    a=QString("%1").arg(QUIHelper::byteToInt(QUIHelper::hexStrToByteArray(temp)));
+                    algowiget->setData(i,REALINDEX,a);
                 }
-
-
+                if(i>=1&&i<=12)
+                    plist.append(a);
             }
             model->setData(model->index(m_modelIndex, 9), "获得参数");
             //保存到算法参数sql数据库
@@ -626,7 +666,24 @@ void UDSForm::slot_EOLInfo(QString respHead,QByteArray array){
         }
     }
 }
+void UDSForm::displayParameters(QStringList list){
+//    model->data(model->index(m_modelIndex, 9),Qt::BackgroundRole);
+    bool result=true;
+    for(int i=0;i<list.length();i++){
+        ui->tableWidget->setItem(0,i,new QTableWidgetItem(list.at(i)));
+//        ui->tableWidget->setItem(0,i,new QTableWidgetItem("1.001"));
+        if(qAbs(list.at(i).toFloat())>1){
+            result=false;
+            break;
+        }
+    }
+    if(result){
+        model->setData(model->index(m_modelIndex, 9), "PASS");
+    }else{
+        model->setData(model->index(m_modelIndex, 9), "FAIL");
+    }
 
+}
 int UDSForm::judgeResult(){
     //获取首行内容
     QString workmodepara=model->record(0).value(4).toString();
@@ -1139,11 +1196,19 @@ void UDSForm::setData(int row,int clown,QString data){
 
 
 
-
+void UDSForm::closeAll(){
+    if(ui->button_Connect->text()=="关闭"){
+        on_button_Connect_released();
+        QThread::msleep(2000);
+    }
+    exit(0);
+}
 void UDSForm::on_button_Connect_released()
 {
 
     if(ui->button_Connect->text()=="连接"){//连接设备
+        ui->label_CANState->setText("<font color=#cc0000 size=7>未连接</font>");
+
         bool result = CANApi::OpenDevice(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex,m_CanConfig.m_deviceChannel);
         if(result==true)
         {
@@ -1203,6 +1268,7 @@ void UDSForm::on_button_Connect_released()
             return;
         }
         ui->button_Connect->setText("关闭");
+        ui->label_CANState->setText("<font color=#00b300 size=7>已连接</font>");
     }else if(ui->button_Connect->text()=="关闭"){//关闭设备
         bool result = CANApi::CloseDevice(m_CanConfig.m_deviceType,m_CanConfig.m_deviceIndex);
 
@@ -1843,7 +1909,7 @@ void UDSForm::on_comboBox_activated(int index)
     }
     //添加到记录
     if(index==3){
-        int result= QUIHelper::showMessageBoxQuestion("是否添加新记录？");
+        int result= QUIHelper::showMessageBoxQuestion("是否添加新记录？",1);
         if (result==QMessageBox::Yes){
             m_modelIndex=model->rowCount();
             model->insertRow(m_modelIndex);
@@ -1942,7 +2008,22 @@ void UDSForm::on_comboBox_activated(int index)
         ui->button_queryMode->setEnabled(true);
         ui->button_burnInfo->setEnabled(true);
         ui->button_queryInfo->setEnabled(true);
-        //
+
+        //工厂模式后自动查询
+        if(index==0){
+            //添加延时自动查询模式
+            QTimer::singleShot(500,this,[=](){
+                on_button_queryMode_released();
+                QThread::msleep(200);
+                on_button_queryMode_released();
+
+            });
+        }else if(index==2){
+            //添加延时自动查询参数
+            QTimer::singleShot(1000,this,[=](){
+                on_button_queryInfo_released();
+            });
+        }
 
     }
 
@@ -1978,7 +2059,7 @@ void UDSForm::on_button_burnInfo_released()
     bool value =query.exec(sql);
     qDebug()<<"查询value:"<<value;
     if(query.next()){//开始就先执行一次next()函数，那么query指向结果集的第一条记录
-        int ret=QUIHelper::showMessageBoxQuestion(QString("查询到SN记录已存在,请确认是否继续写入！"));
+        int ret=QUIHelper::showMessageBoxQuestion("查询到SN记录已存在,请确认是否继续写入！",0);
         if (ret==QMessageBox::Yes){
 
         }else{
@@ -2000,7 +2081,7 @@ void UDSForm::on_button_queryInfo_released()
     bool value =query.exec(sql);
     qDebug()<<"查询value:"<<value;
     if(query.next()){//开始就先执行一次next()函数，那么query指向结果集的第一条记录
-        int ret=QUIHelper::showMessageBoxQuestion(QString("查询到SN记录已存在,请确认是否继续写入！"));
+        int ret=QUIHelper::showMessageBoxQuestion("查询到SN记录已存在,请确认是否继续！",0);
         if (ret==QMessageBox::Yes){
 
         }else{
@@ -2021,6 +2102,14 @@ void UDSForm::on_button_Consumer_released()
 {
     ui->comboBox->setCurrentIndex(13);
     on_comboBox_activated(13);
+
+    //添加延时自动查询
+    QTimer::singleShot(1500,this,[=](){
+        on_button_queryMode_released();
+        QThread::msleep(200);
+        on_button_queryMode_released();
+
+    });
 }
 
 void UDSForm::on_pushButton_onlineTest_released()
@@ -2151,7 +2240,7 @@ void UDSForm::on_button_Calibration_5_released()
 
 void UDSForm::on_pushButton_simulator_released()
 {
-    int ret=QUIHelper::showMessageBoxQuestion(QString("请确认是否已进入EOL模式,确认请继续，否则请取消！"));
+    int ret=QUIHelper::showMessageBoxQuestion(QString("请确认是否已进入EOL模式,确认请继续，否则请取消！"),0);
     if (ret==QMessageBox::Yes){
 
     }else{
@@ -2475,3 +2564,8 @@ void UDSForm::on_pushButton_5_released()
 }
 
 
+//算法参数读取
+void UDSForm::on_button_queryInfo_2_released()
+{
+    on_pushButton_6_released();
+}

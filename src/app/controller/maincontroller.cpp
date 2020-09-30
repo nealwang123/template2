@@ -50,6 +50,9 @@ MainForm& MainController::getMainForm(){
 UDSForm& MainController::getUDSForm(){
     return udsfrm;
 }
+void MainController::closeAll(){
+    udsfrm.closeAll();
+}
 void MainController::freeDevice(){
     //关闭candata
     m_CanDataModel->stopDeviceProcess();//关闭两个线程

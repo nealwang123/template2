@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>8</number>
      </property>
      <property name="movable">
       <bool>true</bool>
@@ -589,7 +589,7 @@
          <string>状态</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>94</x>
@@ -988,6 +988,19 @@
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="cBox_eolContinue">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>连续</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="horizontalSpacer_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -1001,15 +1014,26 @@
             </spacer>
            </item>
            <item>
-            <widget class="QCheckBox" name="cBox_eolContinue">
-             <property name="enabled">
-              <bool>false</bool>
+            <widget class="QLabel" name="label_32">
+             <property name="font">
+              <font>
+               <pointsize>15</pointsize>
+              </font>
              </property>
              <property name="text">
-              <string>连续</string>
+              <string>CAN状态:</string>
              </property>
-             <property name="checked">
-              <bool>false</bool>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_CANState">
+             <property name="font">
+              <font>
+               <pointsize>15</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>未连接</string>
              </property>
             </widget>
            </item>
@@ -1026,13 +1050,13 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>130</height>
+             <height>180</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>130</height>
+             <height>180</height>
             </size>
            </property>
            <property name="title">
@@ -1340,9 +1364,9 @@
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>80</y>
-              <width>61</width>
-              <height>30</height>
+              <y>60</y>
+              <width>100</width>
+              <height>40</height>
              </rect>
             </property>
             <property name="text">
@@ -1352,10 +1376,10 @@
            <widget class="QPushButton" name="button_queryMode">
             <property name="geometry">
              <rect>
-              <x>80</x>
-              <y>80</y>
-              <width>61</width>
-              <height>30</height>
+              <x>230</x>
+              <y>60</y>
+              <width>100</width>
+              <height>40</height>
              </rect>
             </property>
             <property name="text">
@@ -1365,10 +1389,10 @@
            <widget class="QPushButton" name="button_burnInfo">
             <property name="geometry">
              <rect>
-              <x>150</x>
-              <y>80</y>
-              <width>61</width>
-              <height>30</height>
+              <x>10</x>
+              <y>120</y>
+              <width>100</width>
+              <height>40</height>
              </rect>
             </property>
             <property name="text">
@@ -1378,10 +1402,10 @@
            <widget class="QPushButton" name="button_queryInfo">
             <property name="geometry">
              <rect>
-              <x>220</x>
-              <y>80</y>
-              <width>61</width>
-              <height>30</height>
+              <x>120</x>
+              <y>120</y>
+              <width>100</width>
+              <height>40</height>
              </rect>
             </property>
             <property name="text">
@@ -1394,10 +1418,10 @@
             </property>
             <property name="geometry">
              <rect>
-              <x>820</x>
-              <y>20</y>
-              <width>81</width>
-              <height>31</height>
+              <x>120</x>
+              <y>60</y>
+              <width>100</width>
+              <height>40</height>
              </rect>
             </property>
             <property name="text">
@@ -1407,10 +1431,10 @@
            <widget class="QGroupBox" name="groupBox_4">
             <property name="geometry">
              <rect>
-              <x>290</x>
-              <y>60</y>
+              <x>350</x>
+              <y>70</y>
               <width>341</width>
-              <height>61</height>
+              <height>91</height>
              </rect>
             </property>
             <property name="title">
@@ -1473,9 +1497,9 @@
             <property name="geometry">
              <rect>
               <x>700</x>
-              <y>60</y>
+              <y>70</y>
               <width>221</width>
-              <height>61</height>
+              <height>91</height>
              </rect>
             </property>
             <property name="title">
@@ -1509,7 +1533,7 @@
                <item>
                 <widget class="QLineEdit" name="lineEdit_SRange">
                  <property name="toolTip">
-                  <string>单位m,范围(0,180)</string>
+                  <string>必须为范围内整数，单位m,范围(0,180)</string>
                  </property>
                  <property name="text">
                   <string>100</string>
@@ -1544,7 +1568,7 @@
                <item>
                 <widget class="QLineEdit" name="lineEdit_SVelocity">
                  <property name="toolTip">
-                  <string>单位m/s,范围(-40,40)</string>
+                  <string>必须为范围内整数，单位m/s,范围(-40,40)</string>
                  </property>
                  <property name="text">
                   <string>20</string>
@@ -1579,7 +1603,7 @@
                <item>
                 <widget class="QLineEdit" name="lineEdit_SAngle">
                  <property name="toolTip">
-                  <string>单位 °,范围(-60,60)</string>
+                  <string>必须为范围内整数，单位 °,范围(-60,60)</string>
                  </property>
                  <property name="text">
                   <string>20</string>
@@ -1614,7 +1638,7 @@
                <item>
                 <widget class="QLineEdit" name="lineEdit_SRCS">
                  <property name="toolTip">
-                  <string>单位dBsm,范围(-6,20)</string>
+                  <string>必须为范围内整数，单位dBsm,范围(-6,20)</string>
                  </property>
                  <property name="text">
                   <string>1</string>
@@ -1642,14 +1666,27 @@
            <widget class="QPushButton" name="pushButton_simulator">
             <property name="geometry">
              <rect>
-              <x>640</x>
-              <y>72</y>
-              <width>51</width>
-              <height>41</height>
+              <x>830</x>
+              <y>20</y>
+              <width>81</width>
+              <height>31</height>
              </rect>
             </property>
             <property name="text">
              <string>模拟器</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="button_queryInfo_2">
+            <property name="geometry">
+             <rect>
+              <x>230</x>
+              <y>120</y>
+              <width>100</width>
+              <height>40</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>雷达参数</string>
             </property>
            </widget>
           </widget>
@@ -1665,7 +1702,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>100</height>
+             <height>180</height>
             </size>
            </property>
            <property name="title">
@@ -1878,6 +1915,81 @@
              </item>
             </layout>
            </widget>
+           <widget class="QTableWidget" name="tableWidget">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>100</y>
+              <width>661</width>
+              <height>71</height>
+             </rect>
+            </property>
+            <row>
+             <property name="text">
+              <string>算法参数</string>
+             </property>
+            </row>
+            <column>
+             <property name="text">
+              <string>参数7</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>参数8</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>参数9</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>参数10</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>参数11</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>参数12</string>
+             </property>
+            </column>
+            <item row="0" column="0">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+            <item row="0" column="2">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+            <item row="0" column="3">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+            <item row="0" column="4">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+            <item row="0" column="5">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </item>
+           </widget>
           </widget>
          </item>
          <item>
@@ -2086,14 +2198,14 @@
                  </property>
                 </spacer>
                </item>
+               <item>
+                <widget class="QLabel" name="labInfo1">
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labInfo1">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
              </widget>
             </item>
            </layout>
@@ -2791,19 +2903,19 @@ p, li { white-space: pre-wrap; }
 &lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:x-large; font-weight:400; color:#000000;&quot;&gt;修改日期&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.4&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.2.5&lt;/span&gt;&lt;/h2&gt;&lt;/td&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans serif','tahoma','verdana','helvetica'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;V1.3.0&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;1:参数读写功能完善，可进行xml文件导入导出，方便更新参数；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;2:参数写入功能完成后提示写入情况，并提供进一步操作提示：若有指令异常需重新操作；若无异常则可继续后续保存操作；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;3:多参数更新，需通过点击勾选方法修改发送使能属性为true;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;4:can debug 窗口添加id过滤；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;1:修复bug，安装标定解析数据显示异常；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;2:修复bug，candebug窗口过滤取消无效；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#000000;&quot;&gt;3:配置界面添加射频测试发送指令列表；&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;1、添加&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;自动尝试连接CAN设备&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;，正常情况产线测试仅需在生产测试窗口进行操作；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2、弹窗提示可通过&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;左右键选择&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;确认或取消（焦点切换）、&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;回车按键确认&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;3、工厂模式、客户模式点击后不用再点击查询按钮，会&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;自动发送查询指令&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;4、添加雷达参数按钮，及相应的参数（7-12）；&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;查询参数不用切换界面&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;5、算法参数按给定规则判断并给出带提示色的结果到数据记录（绝对值&amp;lt;=1）；&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;6、固件更新提示失败的&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#0000ff;&quot;&gt;BUG&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; color:#0000ff;&quot;&gt;修复&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;7、添加模拟器配置参数&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400; color:#ff0000;&quot;&gt;整数限制&lt;/span&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;;&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.08.13&lt;/span&gt;&lt;/h2&gt;
-&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.08.18&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:14pt; font-weight:400;&quot;&gt;2020.09.29&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;
 &lt;h2 style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:x-large;&quot;&gt;&lt;br /&gt;&lt;/h2&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;

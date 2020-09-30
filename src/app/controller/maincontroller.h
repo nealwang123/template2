@@ -35,6 +35,7 @@ signals:
 public slots:
     void initDevice();
     void freeDevice();
+    void closeAll();
 
 private:
 //       static QScopedPointer<MainController> self;

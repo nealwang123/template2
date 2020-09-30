@@ -68,6 +68,8 @@ public:
     int judgeResult();
 
     void initOnLineTableView();
+    void displayParameters(QStringList );
+    void closeAll();
 private:
     Ui::UDSForm *ui;
 
@@ -219,6 +221,7 @@ private slots:
     void on_button_Calibration_1_pressed();
     void on_pushButton_5_released();
     void on_pushButton_simulator_released();
+    void on_button_queryInfo_2_released();
 };
 
 #endif // UDSFORM_H

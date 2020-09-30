@@ -462,6 +462,7 @@ void QUIWidget::on_btnMenu_Max_clicked()
 
 void QUIWidget::on_btnMenu_Close_clicked()
 {
+    qDebug()<<"on_btnMenu_Close_clicked";
     emit closing();
     exit(0);
 }
@@ -630,10 +631,19 @@ void QUIMessageBox::initControl()
 
     btnOk->setText("确定");
     btnCancel->setText("取消");
+    btnOk->setStyleSheet( QString("QPushButton{border:1px solid #000000}       \
+                                QPushButton:hover{border:2px dotted #00ff00} \
+                                QPushButton:pressed{border:3px groove #0000ff} \
+                                QPushButton:focus{border:3px groove #0000ff}") );
+    btnCancel->setStyleSheet( QString("QPushButton{border:1px solid #000000}       \
+                              QPushButton:hover{border:2px dotted #00ff00} \
+                              QPushButton:pressed{border:3px groove #0000ff} \
+                              QPushButton:focus{border:3px groove #0000ff}") );
 
     connect(btnOk, SIGNAL(clicked()), this, SLOT(on_btnOk_clicked()));
     connect(btnMenu_Close, SIGNAL(clicked()), this, SLOT(on_btnMenu_Close_clicked()));
     connect(btnCancel, SIGNAL(clicked()), this, SLOT(on_btnMenu_Close_clicked()));
+
 }
 
 void QUIMessageBox::initForm()
@@ -693,15 +703,18 @@ void QUIMessageBox::checkSec()
     QString str = QString("关闭倒计时 %1 s").arg(closeSec - currentSec + 1);
     this->labTime->setText(str);
 }
-
+/****************************
+* 复用closeSec变量，当type==1时，closeSec用来区分默认按键为OK或者Concel
+***************************/
 void QUIMessageBox::setMessage(const QString &msg, int type, int closeSec)
 {
-    this->closeSec = closeSec;
-    this->currentSec = 0;
-    this->labTime->clear();
+    if(type!=1){
+        this->closeSec = closeSec;
+        this->currentSec = 0;
+        this->labTime->clear();
 
-    checkSec();
-
+        checkSec();
+    }
     if (type == 0) {
         this->labIcoMain->setStyleSheet("border-image: url(:/imageTest/msg_info.png);");
         this->btnCancel->setVisible(false);
@@ -709,6 +722,13 @@ void QUIMessageBox::setMessage(const QString &msg, int type, int closeSec)
     } else if (type == 1) {
         this->labIcoMain->setStyleSheet("border-image: url(:/imageTest/msg_question.png);");
         this->labTitle->setText("询问");
+        if(closeSec==0){
+            btnOk->setFocus(); //设置默认焦点
+            btnOk->setDefault(true); //设置默认按钮，设置了这个属性，当用户按下
+        }else if(closeSec==1){
+            btnCancel->setFocus(); //设置默认焦点
+            btnCancel->setDefault(true); //设置默认按钮，设置了这个属性，当用户按下
+        }
     } else if (type == 2) {
         this->labIcoMain->setStyleSheet("border-image: url(:/imageTest/msg_error.png);");
         this->btnCancel->setVisible(false);
@@ -2685,10 +2705,14 @@ void QUIHelper::showMessageBoxError(const QString &info, int closeSec, bool exec
 #endif
 }
 
-int QUIHelper::showMessageBoxQuestion(const QString &info)
+int QUIHelper::showMessageBoxQuestion(const QString &info,int count)
 {
     QUIMessageBox msg;
-    msg.setMessage(info, 1);
+    if(count!=0){
+        msg.setMessage(info, 1,1);
+    }else{
+        msg.setMessage(info, 1,0);
+    }
     return msg.exec();
 }
 

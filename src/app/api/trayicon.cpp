@@ -5,7 +5,7 @@
 #include "qapplication.h"
 #include "qdesktopwidget.h"
 #include "qdebug.h"
-
+#include<QThread>
 TrayIcon *TrayIcon::self = NULL;
 TrayIcon::TrayIcon(QObject *parent) : QObject(parent)
 {
@@ -76,5 +76,5 @@ void TrayIcon::closeAll()
 {
     trayIcon->hide();
     trayIcon->deleteLater();
-    exit(0);
+
 }

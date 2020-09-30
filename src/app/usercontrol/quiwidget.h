@@ -553,7 +553,7 @@ public:
     //弹出错误框
     static void showMessageBoxError(const QString &info, int closeSec = 0, bool exec = false);
     //弹出询问框
-    static int showMessageBoxQuestion(const QString &info);
+    static int showMessageBoxQuestion(const QString &info,int count=0);
 
     //弹出输入框
     static QString showInputBox(const QString &title, int type = 0, int closeSec = 0,

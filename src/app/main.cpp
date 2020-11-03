@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         QUIHelper::newDir("InstructionFileSet");
 
     }
-    QString _version("1.3.0 内部版");
+    QString _version("1.3.3");
     QString nameversion("测试程序"+_version);
     a.setApplicationName(QUIHelper::appName());
     a.setApplicationVersion(_version);

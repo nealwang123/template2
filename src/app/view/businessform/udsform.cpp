@@ -213,8 +213,10 @@ void UDSForm::slot_recvCanData(VCI_CAN_OBJ& obj){
         for (int i=0;i<obj.DataLen;i++) {
             str.append(QString("%1 ").arg(obj.Data[i],2,16,QChar('0')));
         }
-        ui->textBrowser_3->append(QString("时间:%1 版本:CARR_TSMT_01_00_%2%3")
+
+        ui->textBrowser_3->append(QString("时间:%1 版本:%2%3%4")
                                   .arg(QTime::fromMSecsSinceStartOfDay(obj.TimeStamp/10).toString("hh:mm:ss.zzz"))
+                                  .arg(App::preVersionStr)
                                   .arg((obj.Data[0]&0x0F),2,16,QChar('0')).toUpper()
                                   .arg((obj.Data[1]&0xFF),2,16,QChar('0')).toUpper()
                                 );
@@ -1585,9 +1587,10 @@ void UDSForm::on_pushButton_released()
     if(ui->pushButton->text()=="开始升级"){
         UDS::Instance()->setWorkMode(UDSUPDATE);
         recorveyState();
-        slot_demarcationTimer();
         ui->pushButton->setText("升级...");
         ui->pushButton->setEnabled(false);
+        slot_demarcationTimer();
+
     }else{
 
     }
@@ -1640,7 +1643,15 @@ void UDSForm::slot_demarcationTimer(){
     //定时
     ui->cBox_command->setCurrentIndex(commandIndex);
     on_cBox_command_activated(commandIndex);
-    on_buttonSingleTest_released();
+    ECANStatus result=on_buttonSingleTest_released();
+    if(result!= _STATUS_OK){
+        ui->textBrowser_Debug->append("指令异常，停止升级！");
+        recorveyState();
+        ui->pushButton->setEnabled(true);
+        ui->pushButton->setText("开始升级");
+
+        return;
+    }
     commandIndex++;
     if(commandIndex<10){
         sendCommandTimer->start(1000);
@@ -1654,7 +1665,7 @@ void UDSForm::slot_demarcationTimer(){
         on_buttonDownload_released();
     }
 }
-void UDSForm::on_buttonSingleTest_released()
+ECANStatus  UDSForm::on_buttonSingleTest_released()
 {
     QString strc;
     if(ui->cBox_command->currentText().contains("xx")){
@@ -1672,6 +1683,7 @@ void UDSForm::on_buttonSingleTest_released()
     }else if ( result== _STATUS_TIME_OUT){
         ui->textBrowser_Debug->append("Failed:服务名:"+listcommandKey[commandIndex]+"状态：TIMEOUT");
     }
+    return result;
 }
 
 void UDSForm::on_checkBox_released()

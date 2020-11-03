@@ -105,6 +105,8 @@ int App::YHeight=300;
 double App::ZeroPointX=0.5;
 double App::ZeroPointY=0.8;
 
+
+QString App::preVersionStr="CARR_TSMT_01_00_";
 void App::readConfig()
 {
     if (!checkConfig()) {
@@ -231,6 +233,10 @@ void App::readConfig()
     App::ZeroPointY = set.value("ZeroPointY").toFloat();
     set.endGroup();
 
+    set.beginGroup("MoZhiConfig");
+    App::preVersionStr=set.value("preVersionStr").toString();
+    set.endGroup();
+
 }
 
 void App::writeConfig()
@@ -351,6 +357,10 @@ void App::writeConfig()
     set.setValue("YHeight", App::YHeight);
     set.setValue("ZeroPointX", App::ZeroPointX);
     set.setValue("ZeroPointY", App::ZeroPointY);
+    set.endGroup();
+
+    set.beginGroup("MoZhiConfig");
+    set.setValue("preVersionStr",App::preVersionStr);
     set.endGroup();
 }
 

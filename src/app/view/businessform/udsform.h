@@ -180,7 +180,7 @@ private slots:
     void on_buttonChooseFile_released();
     void on_buttonDownload_released();
     void on_cBox_Continue_stateChanged(int arg1);
-    void on_buttonSingleTest_released();
+    ECANStatus on_buttonSingleTest_released();
     void on_checkBox_released();
     void on_buttonSendcan1_released();
     void on_cBoxcansend_activated(int index);

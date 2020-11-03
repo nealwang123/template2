@@ -105,6 +105,9 @@ public:
     static double ZeroPointX;         //零点X
     static double ZeroPointY;        //零点Y
 
+    //
+    static QString preVersionStr;
+
     static void readConfig();       //读取配置文件,在main函数最开始加载程序载入
     static void writeConfig();      //写入配置文件,在更改配置文件程序关闭时调用
     static void newConfig();        //以初始值新建配置文件

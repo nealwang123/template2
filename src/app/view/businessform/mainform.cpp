@@ -356,7 +356,7 @@ void MainForm::slot_msgToPC(QString str){
                     err_resultstr.append(m_AlignErrorStates.find(err_result).value());
                 }
             }else if(step==7){//查询标定结果
-                //data="10 07 62 10 0a AA AA 32";
+//                data="10 07 62 10 0a AA AA 32";
                 hor_alig_angle=data.trimmed().mid(15,2).toInt(nullptr,16);
                 ver_measurid_angle=data.trimmed().mid(18,2).toInt(nullptr,16);
                 alig_power_h=data.trimmed().mid(21,2).toInt(nullptr,16);
@@ -371,8 +371,8 @@ void MainForm::slot_msgToPC(QString str){
                 qDebug()<<"hor_alig_angle data:"<<hor_alig_angle*0.1<<ver_measurid_angle*0.1<<(alig_power>>7)-69.2;
                 //设置新增加的行默认值
 
-                model->setData(model->index(count, 1), QString("%1").arg(hor_alig_angle*0.1));
-                model->setData(model->index(count, 2), QString("%1").arg(ver_measurid_angle*0.1));
+                model->setData(model->index(count, 1), QString("%1").arg((qint8)hor_alig_angle*0.1));
+                model->setData(model->index(count, 2), QString("%1").arg((qint8)ver_measurid_angle*0.1));
                 model->setData(model->index(count, 3), QString("%1").arg((alig_power>>7)-69.2));
                 QDateTime dateTime(QDateTime::currentDateTime());
                 QString qStr = dateTime.toString("yyy-MM-dd hh:mm::ss ddd");

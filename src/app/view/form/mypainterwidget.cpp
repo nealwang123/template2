@@ -105,7 +105,7 @@ void MyPainterWidget::draw_point(int const x, int const y, QColor const c, Frame
         //坐标转换
         float x=frame.objectData[j].distLat;
         float y=frame.objectData[j].distLong;
-        float xReal=(this->width()*x)/ App::XWidth;
+        float xReal=-(this->width()*x)/ App::XWidth;
         float yReal=-(this->height()*y)/App::YHeight;
         //float xReal=(this->width()/2)+a;
         //float yReal=this->height()-b;

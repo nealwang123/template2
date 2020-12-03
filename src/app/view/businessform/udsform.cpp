@@ -200,6 +200,7 @@ UDSForm::UDSForm(QWidget *parent) :
         ui->cBoxcansend_2->addItems(m_list_canSendCommand_RF);
         ui->cBoxCanSendDiscrib->addItems(m_list_canSendDiscrib_RF);
     }
+    commandIndex=0;
 }
 
 UDSForm::~UDSForm()

@@ -717,6 +717,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -2047,7 +2050,7 @@
                   <string>添加</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../other/main.qrc">
+                  <iconset>
                    <normaloff>:/imageTest/btn_add.png</normaloff>:/imageTest/btn_add.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2073,7 +2076,7 @@
                   <string>保存</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../other/main.qrc">
+                  <iconset>
                    <normaloff>:/imageTest/btn_ok.png</normaloff>:/imageTest/btn_ok.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2099,7 +2102,7 @@
                   <string>删除</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../other/main.qrc">
+                  <iconset>
                    <normaloff>:/imageTest/btn_close.png</normaloff>:/imageTest/btn_close.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2125,7 +2128,7 @@
                   <string>撤销</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../other/main.qrc">
+                  <iconset>
                    <normaloff>:/imageTest/btn_set.png</normaloff>:/imageTest/btn_set.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2151,7 +2154,7 @@
                   <string>清空</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../other/main.qrc">
+                  <iconset>
                    <normaloff>:/imageTest/btn_delete.png</normaloff>:/imageTest/btn_delete.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2981,8 +2984,6 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../other/main.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

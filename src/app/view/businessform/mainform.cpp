@@ -17,7 +17,7 @@ MainForm::MainForm(QWidget *parent) :
     initForm();
     commandTimer=new QTimer();
     connect(commandTimer, SIGNAL(timeout()), this, SLOT(slot_commandTimer()));
-//    commandTimer->setSingleShot(true);
+    commandTimer->setSingleShot(true);
 //    context =zmq::context_t(1);
 //    publisher = zmq::socket_t(context, ZMQ_PUB);
 //    publisher.connect("tcp://localhost:7777");
@@ -204,7 +204,8 @@ void MainForm::on_pushButton_4_clicked()
 
     }
     qDebug()<<"m_sendFrameIndex:"<<m_sendFrameIndex;
-    commandTimer->start(200);
+    commandTimer->start(30);
+
 
 }
 
@@ -243,10 +244,15 @@ void MainForm::slot_commandTimer(){
     obj[0].DataLen=8;
     memcpy(obj[0].Data,arry.data(),8);
     qDebug()<<" obj[0].ID"<<QString("%1").arg(obj[0].ID,4,16,QChar('0'))<<"obj[0].DataLen"<<obj[0].DataLen;
-    int ret=CANApi::SendOneFrame(0, 0, &obj[0]);
+    ECANStatus ret=CANApi::SendOneFrame(0, 0, &obj[0]);
 //    int ret=VCI_Transmit(4,0,0,&obj[0],1);
 
     qDebug()<<"ret=="<<ret;
+//    if(ret==_STATUS_OK){
+//        commandTimer->start(20);
+//    }else{
+//        QUIHelper::showMessageBoxError(QString("指令发送状态:%1(0:ERR;2:Timeout)").arg(ret));
+//    }
 
 }
 //断开设备
@@ -293,7 +299,7 @@ void MainForm::recThread(){
  * function:雷达反馈数据更新到界面
  */
 void MainForm::slot_msgToPC(QString str){
-    qDebug()<<"MainForm::slot_msgToPC:"<<str;
+//    qDebug()<<"MainForm::slot_msgToPC:"<<str;
 
     static QString err_resultstr;
 //    qDebug()<<"str.len"<<str.length()<<str.mid(34,23);

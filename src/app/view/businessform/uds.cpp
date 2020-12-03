@@ -746,7 +746,7 @@ bool UDS::udsSleep(int sec)
 
     QTime dieTime = QTime::currentTime().addMSecs(sec);
     while (QTime::currentTime() < dieTime) {
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 10);
         //qDebug()<<"延时等待。。。"<<m_waitforNext;
         if(m_waitforNext==1){//正响应
             qDebug()<<"延时等待结束 正响应";
